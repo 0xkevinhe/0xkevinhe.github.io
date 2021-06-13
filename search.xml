@@ -11,7 +11,7 @@
       
       <categories>
           
-          <category> code </category>
+          <category> code, blockchain </category>
           
       </categories>
       
@@ -532,9 +532,9 @@
       
         <tags>
             
-            <tag> macOS </tag>
-            
             <tag> 后端 </tag>
+            
+            <tag> macOS </tag>
             
         </tags>
       
