@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>小工具-sips-图片批量转大小 | 保持高速 | kvh 的个人博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="产品,用户体验">
+    
+    <meta name="description" content="家有设计师 我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。 看了她导了好几次，实在不能忍。得发挥程序员的能动性，做个小工具。 调研 imagemagick 是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。 设计师们大多在 MacOS 下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：">
+<meta name="keywords" content="产品,用户体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小工具-sips-图片批量转大小">
+<meta property="og:url" content="https://kvh.io/utility-sips.html">
+<meta property="og:site_name" content="保持高速 | kvh 的个人博客">
+<meta property="og:description" content="家有设计师 我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。 看了她导了好几次，实在不能忍。得发挥程序员的能动性，做个小工具。 调研 imagemagick 是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。 设计师们大多在 MacOS 下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img.kvh.io/17-5-16/81991562-file_1494919020294_e69d.jpg">
+<meta property="og:updated_time" content="2021-01-13T01:42:18.830Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小工具-sips-图片批量转大小">
+<meta name="twitter:description" content="家有设计师 我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。 看了她导了好几次，实在不能忍。得发挥程序员的能动性，做个小工具。 调研 imagemagick 是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。 设计师们大多在 MacOS 下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：">
+<meta name="twitter:image" content="https://img.kvh.io/17-5-16/81991562-file_1494919020294_e69d.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="//img.kvh.io/common/favicon/favicon-16x16.png">
+    
+
+    <link rel="stylesheet" href="/cn/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/cn/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/cn/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/cn/libs/bootstrap/bootstrap.min.css" type="text/css">
+
+    <link rel="stylesheet" href="/cn/css/style.css">
+
+    <script src="/cn/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f142b9b88cd58f44d4b17ba4c9f9f459";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/cn/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/cn/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/cn/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/cn/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/cn/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/cn/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/cn/categories/reading/">reading</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/cn/',
+        CONTENT_URL: '/cn/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/cn/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/cn/categories/code/">code</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-utility-sips" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        小工具-sips-图片批量转大小
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/cn/utility-sips.html" class="article-date">
+            <time datetime="2017-05-16T03:18:16.000Z" itemprop="datePublished">2017-05-16</time>
+        </a>
+    </div>
+
+
+            
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/cn/tags/产品/">产品</a>, <a class="tag-link" href="/cn/tags/用户体验/">用户体验</a>
+    </div>
+
+            
+                <br>
+            
+                <span style="text-transform:capitalize;"> Modified:
+                    <time datetime="2021-01-13T01:42:18.830Z" itemprop="dateModified">2021-01-13</time>
+                </span>
+            
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+
+            <html><head></head><body><h1 id="家有设计师">家有设计师</h1>
+<p>我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。</p>
+<p>看了她导了好几次，实在不能忍。得发挥程序员的能动性，做个小工具。</p>
+<h1 id="调研">调研</h1>
+<p><a href="http://www.imagemagick.org/script/index.php" target="_blank" rel="noopener">imagemagick</a> 是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。</p>
+<p>设计师们大多在 MacOS 下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：<a href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/sips.1.html" target="_blank" rel="noopener">sips</a>。</p>
+<p>sips 具有很友好的使用接口，可以实现大小转换、旋转、翻转等。这里我只需要大小转换功能，主要是如下命令：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sips -Z 100 input.png --out output.png</span><br></pre></td></tr></tbody></table></figure>
+<p>上面的例子可以将 <code>input.png</code> 图片最大边调整成100像素，等比缩放。</p>
+<h1 id="实践">实践</h1>
+<p>整个工具包含如下几个文件：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── convert.sh//转换程序</span><br><span class="line">├── icon.png//输入文件</span><br><span class="line">└── sizes.txt//目标尺寸</span><br></pre></td></tr></tbody></table></figure>
+<p>使用步骤如下：</p>
+<ol type="1">
+<li>替换 icon.png 文件为需要转换的文件</li>
+<li>修改 sizes.txt 文件，编辑目标尺寸，每一行为一个尺寸</li>
+<li>控制台运行 <code>./convert.sh</code> 即可</li>
+</ol>
+<p>为了很方便的让设计师同学使用这个工具，我在她的电脑上安装了一个 <a href="https://github.com/jbtule/cdto" target="_blank" rel="noopener">cdto</a> 工具，可以在当前 finder 目录下打开 控制台。还把这个工具拖到了 finder 的左侧快捷方式。PS: 用户接口要友好。。。</p>
+<h1 id="源码">源码</h1>
+<p>源码和配置文件都放在 <a href="https://github.com/kevinho/image-resizer" target="_blank" rel="noopener">github</a> 上。</p>
+<h1 id="todo">TODO</h1>
+<ol type="1">
+<li>目前只支持 png</li>
+</ol>
+</body></html>
+
+            <div class="toc-title"> 相关文章推荐</div>
+            <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/cn/play-alexa-1.html">亚马逊 Alexa Echo Dot——入门</a></li><li class="related-posts-item"><a class="related-posts-link" href="/cn/2d-ux.html">面向开发者服务的用户体验</a></li></ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+</div>
+
+
+
+        </footer>
+    </div>
+</article>
+<section id="comments">
+    
+        <div class="gitalk-container"></div>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    enable: 'true',
+    clientID: '30da78d7ebc4ef2b7349',
+    clientSecret: '7ba4c2d112c1f0af2e5bc33cec42c414e71cb405',
+    id: md5(location.pathname),
+    repo: 'gittalk-kvh-io',
+    owner: 'kevinho',
+    admin: 'kevinho',
+    language: 'zh-CN'
+  })
+  gitalk.render('comment-container')
+</script>
+
+
+    
+</section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/cn/spring-cloud-config.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Spring Cloud 配置中心
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/cn/play-alexa-1.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">亚马逊 Alexa Echo Dot——入门</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+
+        <div class="fixed-top" data-spy="scroll-nav" data-target="scroll-nav" data-offset="200">
+            <div class="navbar scroll-nav" data-spy="affix" data-offset-top="360" data-offset-bottom="300">
+            <!--tab-->
+            
+                
+                    <ul class="sidebar-nav nav nav-pills nav-stacked motion-element" data-offset-top="10"  data-offset-bottom="10" style="opacity:1;display:block;transform:translateX(0px);">
+                        <li class="sidebar-nav-toc sidebar-nav-active active" data-toggle="pill" data-target="post-toc-wrap" style="letter-spacing: .1rem;margin-right:10px;">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-toggle="pill" data-target="site-overview-wrap" style="letter-spacing:.1rem;margin-left:10px;">
+                            其他概览
+                        </li>
+                    </ul>
+                
+            
+
+
+            <!--toc-->
+            
+            <!--noindex-->
+                <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
+                    <div class="post-toc" style="max-height:400px">
+                        
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#家有设计师"><span class="nav-text">家有设计师</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调研"><span class="nav-text">调研</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践"><span class="nav-text">实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-text">源码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#todo"><span class="nav-text">TODO</span></a></li></ol>
+                        
+
+                        
+
+                        
+                    </div>
+                </section>
+            
+
+            <!--overview-->
+            <section class="site-overview-wrap motion-element sidebar-panel" style="opacity:1;">
+                <div class="widgets-container" style="max-height:500px;overflow:auto;">
+                    
+                        
+                            
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalogue</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#家有设计师"><span class="toc-number">1.</span> <span class="toc-text">家有设计师</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#调研"><span class="toc-number">2.</span> <span class="toc-text">调研</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实践"><span class="toc-number">3.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码"><span class="toc-number">4.</span> <span class="toc-text">源码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#todo"><span class="toc-number">5.</span> <span class="toc-text">TODO</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+                        
+                            
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/cn/sparse-merkle-tree.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img.kvh.io/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/cn/categories/code/">code</a></p>
+                            <p class="item-title"><a href="/cn/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
+                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/cn/smart-wallet.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img.kvh.io/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/cn/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/cn/smart-wallet.html" class="title">关于智能钱包</a></p>
+                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/cn/0x-intro.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img.kvh.io/16-6-18/37420542.jpg)" alt="0x协议-介绍" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/cn/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/cn/0x-intro.html" class="title">0x协议-介绍</a></p>
+                            <p class="item-date"><time datetime="2021-01-01T02:49:05.000Z" itemprop="datePublished">2021-01-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/cn/reading-emotion-coaching.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img.kvh.io/16-7-7/93234566.jpg)" alt="《你就是孩子最好的玩具》读书笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/cn/categories/reading/">reading</a></p>
+                            <p class="item-title"><a href="/cn/reading-emotion-coaching.html" class="title">《你就是孩子最好的玩具》读书笔记</a></p>
+                            <p class="item-date"><time datetime="2020-10-05T10:05:12.000Z" itemprop="datePublished">2020-10-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/cn/blockchain-bsc-intro.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://img.kvh.io/16-6-18/24636638.jpg)" alt="币安链（BC）与币安智能链（BSC）简介" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/cn/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/cn/blockchain-bsc-intro.html" class="title">币安链（BC）与币安智能链（BSC）简介</a></p>
+                            <p class="item-date"><time datetime="2020-09-19T03:46:03.000Z" itemprop="datePublished">2020-09-19</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/cn/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/cn/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/cn/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/cn/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/cn/categories/reading/">reading</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/cn/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/cn/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/cn/tags/Android/" style="font-size: 20px;">Android</a> <a href="/cn/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/cn/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/cn/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/cn/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/cn/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/cn/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/cn/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/cn/tags/defi/" style="font-size: 10px;">defi</a> <a href="/cn/tags/education/" style="font-size: 10px;">education</a> <a href="/cn/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/cn/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/cn/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/cn/tags/个人/" style="font-size: 10px;">个人</a> <a href="/cn/tags/产品/" style="font-size: 15px;">产品</a> <a href="/cn/tags/后端/" style="font-size: 10px;">后端</a> <a href="/cn/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/cn/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/cn/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/cn/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+                        
+                    
+                </div>
+            </section>
+
+            </div>
+        </div>
+
+
+
+    
+    <div id="totop" title="to_top">
+    <canvas id="totop-canvas" width="48" height="48"></canvas>
+    <div id="totop-percent"></div>
+</div>
+
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/cn/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 kvh</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script src='https://unpkg.com/mermaid@8.4.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme:'default', startOnLoad:true, flowchart:{ useMaxWidth:false }, htmlLabels: true});
+      }
+    </script>
+
+
+
+        
+
+
+    
+    
+    
+
+
+
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+<script src="/cn/libs/bootstrap/bootstrap.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="/cn/js/main.js"></script>
+
+
+        <script src="https://ucstatic.iyouchain.com/vendors/jquery.min.js"></script>
+        <script src="https://ucstatic.iyouchain.com/vendors/jweixin-1.2.0.js"></script>
+        <script src="https://ucstatic.iyouchain.com/broadcast/scripts/main.js"></script>
+        <script>
+          window.onload = function () {
+            if(isWeChat()){
+
+              wxShare({
+                title: document.title,
+                desc: document.title,
+                logo: "https://mmbiz.qlogo.cn/mmbiz_jpg/5GOQQXbnSDHKtsNOKOTicUAztQ4nA4nWVl0L6UMYIgZniaAxf5yzicc9TL5AlaWRIstn1WP5IxF2EwdhAuicVCDNNw/300?wx_fmt=jpeg&wxfrom=1"
+              });
+            }
+          };
+        </script>
+    </div>
+</body>
+</html>
