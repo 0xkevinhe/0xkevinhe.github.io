@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kvh.io/"/>
-  <updated>2021-06-13T18:09:51.859Z</updated>
+  <updated>2021-06-13T18:18:05.202Z</updated>
   <id>https://kvh.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kvh.io/sparse-merkle-tree.html"/>
     <id>https://kvh.io/sparse-merkle-tree.html</id>
     <published>2021-02-09T12:02:00.000Z</published>
-    <updated>2021-06-13T18:09:51.859Z</updated>
+    <updated>2021-06-13T18:18:05.202Z</updated>
     
     <content type="html"><![CDATA[<html><head></head><body><h1 id="简介">简介</h1><p>本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。</p><h1 id="merkle-tree">merkle tree</h1><p><a href="https://en.wikipedia.org/wiki/Merkle_tree" target="_blank" rel="noopener">merkle tree</a> 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。</p><figure><img src="./sparse-merkle-tree/merkle-tree.png" alt="merkle-tree"><figcaption aria-hidden="true">merkle-tree</figcaption></figure><p>对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验 merkle 证明。</p><p>计算 merkle 证明包含：</p><p>1）计算存在证明</p><p>2）计算不存在证明</p><p>在原始的 merkle tree 上，很容易生成存在性证明，但是难以生成不存在证明。</p><h1 id="sparse-merkle-tree">sparse merkle tree</h1><p>为了解决这个问题，同时零知识证明也要求账号在树上的位置具有确定性，因此引入 sparse merkle tree，有如下特点：</p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一棵满二叉树</span><br><span class="line">数据是索引的，每个数据会放到对应的索引的叶子上</span><br><span class="line">存在性证明，merkle path</span><br><span class="line">不存在性证明，需要证明是 null</span><br></pre></td></tr></tbody></table></figure><h1 id="优化">优化</h1><p>1）预计算空值哈希</p><p>由于大部分情况下，树并不会真的满，而是非常的稀疏。可以预计算H(null)、H(H(null)|H(null))、H(H(H(null)|H(null))|H(H(null)|H(null)))等层级上的值，达到加速的效果。</p><p>2）并行计算左右子树哈希</p><p>H(H(left)|H(right)) 这类操作要求 快速计算左右子树的哈希值，并行计算可以计算。</p><h1 id="实现">实现</h1><p><a href="https://github.com/matter-labs/zksync/blob/master/core/lib/crypto/src/merkle_tree/parallel_smt.rs" target="_blank" rel="noopener">rust-matter-labs</a></p><p><a href="https://github.com/iden3/iden3js/blob/master/src/sparse-merkle-tree/sparse-merkle-tree.js" target="_blank" rel="noopener">js-iden3</a></p><p><a href="https://github.com/iden3/go-iden3-core/blob/master/merkletree/merkletree.go" target="_blank" rel="noopener">golang-iden3</a></p><h1 id="文献参考">文献参考</h1><p><a href="https://medium.com/@kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837" target="_blank" rel="noopener">whats-a-sparse-merkle-tree</a></p><p><a href="https://blog.iden3.io/sparse-merkle-trees-visual-introduction.html" target="_blank" rel="noopener">sparse-merkle-trees-visual-introduction</a></p></body></html>]]></content>
     
@@ -38,8 +38,6 @@
     </summary>
     
       <category term="code" scheme="https://kvh.io/categories/code/"/>
-    
-      <category term="blockchain" scheme="https://kvh.io/categories/code/blockchain/"/>
     
     
       <category term="zkp" scheme="https://kvh.io/tags/zkp/"/>
