@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>保持高速 | kvh 的个人博客</title>
+  <title>Changbin He&#39;s Website</title>
   
   
-  <link href="/cn/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
   <link href="https://kvh.io/"/>
   <updated>2021-02-09T12:34:25.585Z</updated>

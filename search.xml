@@ -5,8 +5,8 @@
     
     <entry>
       <title>zksync 存储：sparse-merkle-tree 存储</title>
-      <link href="/cn/sparse-merkle-tree.html"/>
-      <url>/cn/sparse-merkle-tree.html</url>
+      <link href="sparse-merkle-tree.html"/>
+      <url>sparse-merkle-tree.html</url>
       
       
       <categories>
@@ -28,8 +28,8 @@
     
     <entry>
       <title>关于智能钱包</title>
-      <link href="/cn/smart-wallet.html"/>
-      <url>/cn/smart-wallet.html</url>
+      <link href="smart-wallet.html"/>
+      <url>smart-wallet.html</url>
       
       
       <categories>
@@ -51,8 +51,8 @@
     
     <entry>
       <title>0x协议-介绍</title>
-      <link href="/cn/0x-intro.html"/>
-      <url>/cn/0x-intro.html</url>
+      <link href="0x-intro.html"/>
+      <url>0x-intro.html</url>
       
       
       <categories>
@@ -74,8 +74,8 @@
     
     <entry>
       <title>《你就是孩子最好的玩具》读书笔记</title>
-      <link href="/cn/reading-emotion-coaching.html"/>
-      <url>/cn/reading-emotion-coaching.html</url>
+      <link href="reading-emotion-coaching.html"/>
+      <url>reading-emotion-coaching.html</url>
       
       
       <categories>
@@ -97,8 +97,8 @@
     
     <entry>
       <title>币安链（BC）与币安智能链（BSC）简介</title>
-      <link href="/cn/blockchain-bsc-intro.html"/>
-      <url>/cn/blockchain-bsc-intro.html</url>
+      <link href="blockchain-bsc-intro.html"/>
+      <url>blockchain-bsc-intro.html</url>
       
       
       <categories>
@@ -122,8 +122,8 @@
     
     <entry>
       <title>《影响力》读书笔记</title>
-      <link href="/cn/reading-influence.html"/>
-      <url>/cn/reading-influence.html</url>
+      <link href="reading-influence.html"/>
+      <url>reading-influence.html</url>
       
       
       <categories>
@@ -145,8 +145,8 @@
     
     <entry>
       <title>开源许可证介绍与项目实战</title>
-      <link href="/cn/open-source-license.html"/>
-      <url>/cn/open-source-license.html</url>
+      <link href="open-source-license.html"/>
+      <url>open-source-license.html</url>
       
       
       
@@ -156,8 +156,8 @@
     
     <entry>
       <title>macOS 作为服务器</title>
-      <link href="/cn/osx-as-server.html"/>
-      <url>/cn/osx-as-server.html</url>
+      <link href="osx-as-server.html"/>
+      <url>osx-as-server.html</url>
       
       
       <categories>
@@ -179,8 +179,8 @@
     
     <entry>
       <title>Spring Cloud 配置中心</title>
-      <link href="/cn/spring-cloud-config.html"/>
-      <url>/cn/spring-cloud-config.html</url>
+      <link href="spring-cloud-config.html"/>
+      <url>spring-cloud-config.html</url>
       
       
       <categories>
@@ -202,8 +202,8 @@
     
     <entry>
       <title>小工具-sips-图片批量转大小</title>
-      <link href="/cn/utility-sips.html"/>
-      <url>/cn/utility-sips.html</url>
+      <link href="utility-sips.html"/>
+      <url>utility-sips.html</url>
       
       
       <categories>
@@ -227,8 +227,8 @@
     
     <entry>
       <title>亚马逊 Alexa Echo Dot——入门</title>
-      <link href="/cn/play-alexa-1.html"/>
-      <url>/cn/play-alexa-1.html</url>
+      <link href="play-alexa-1.html"/>
+      <url>play-alexa-1.html</url>
       
       
       <categories>
@@ -252,8 +252,8 @@
     
     <entry>
       <title>读一首诗——纪伯伦《孩子》</title>
-      <link href="/cn/on-children.html"/>
-      <url>/cn/on-children.html</url>
+      <link href="on-children.html"/>
+      <url>on-children.html</url>
       
       
       
@@ -263,8 +263,8 @@
     
     <entry>
       <title>SDK 开发最佳实践之一：为你的 SDK 增加 No-Op 版本</title>
-      <link href="/cn/sdk-noop.html"/>
-      <url>/cn/sdk-noop.html</url>
+      <link href="sdk-noop.html"/>
+      <url>sdk-noop.html</url>
       
       
       <categories>
@@ -286,8 +286,8 @@
     
     <entry>
       <title>Android Gradle 构建系统·初探</title>
-      <link href="/cn/gradle-build-system-overview.html"/>
-      <url>/cn/gradle-build-system-overview.html</url>
+      <link href="gradle-build-system-overview.html"/>
+      <url>gradle-build-system-overview.html</url>
       
       
       <categories>
@@ -311,8 +311,8 @@
     
     <entry>
       <title>Android Gradle 技巧之二： 最爱命令行</title>
-      <link href="/cn/gradle-indepth-cmd.html"/>
-      <url>/cn/gradle-indepth-cmd.html</url>
+      <link href="gradle-indepth-cmd.html"/>
+      <url>gradle-indepth-cmd.html</url>
       
       
       <categories>
@@ -336,8 +336,8 @@
     
     <entry>
       <title>Android Gradle 技巧之一： Build Variant 相关</title>
-      <link href="/cn/gradle-indepth-build-variant.html"/>
-      <url>/cn/gradle-indepth-build-variant.html</url>
+      <link href="gradle-indepth-build-variant.html"/>
+      <url>gradle-indepth-build-variant.html</url>
       
       
       <categories>
@@ -361,8 +361,8 @@
     
     <entry>
       <title>拥抱 Android Studio 之五：Gradle 插件开发</title>
-      <link href="/cn/embrace-android-studio-gradle-plugin.html"/>
-      <url>/cn/embrace-android-studio-gradle-plugin.html</url>
+      <link href="embrace-android-studio-gradle-plugin.html"/>
+      <url>embrace-android-studio-gradle-plugin.html</url>
       
       
       <categories>
@@ -388,8 +388,8 @@
     
     <entry>
       <title>如何更好的提出技术问题</title>
-      <link href="/cn/a-good-question.html"/>
-      <url>/cn/a-good-question.html</url>
+      <link href="a-good-question.html"/>
+      <url>a-good-question.html</url>
       
       
       <categories>
@@ -411,8 +411,8 @@
     
     <entry>
       <title>拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建</title>
-      <link href="/cn/embrace-android-studio-maven-deploy.html"/>
-      <url>/cn/embrace-android-studio-maven-deploy.html</url>
+      <link href="embrace-android-studio-maven-deploy.html"/>
+      <url>embrace-android-studio-maven-deploy.html</url>
       
       
       <categories>
@@ -438,8 +438,8 @@
     
     <entry>
       <title>拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</title>
-      <link href="/cn/embrace-android-studio-groovy-gradle.html"/>
-      <url>/cn/embrace-android-studio-groovy-gradle.html</url>
+      <link href="embrace-android-studio-groovy-gradle.html"/>
+      <url>embrace-android-studio-groovy-gradle.html</url>
       
       
       <categories>
@@ -465,8 +465,8 @@
     
     <entry>
       <title>拥抱 Android Studio 之二：Android Studio 与 Gradle 深入</title>
-      <link href="/cn/embrace-android-studio-indepth.html"/>
-      <url>/cn/embrace-android-studio-indepth.html</url>
+      <link href="embrace-android-studio-indepth.html"/>
+      <url>embrace-android-studio-indepth.html</url>
       
       
       <categories>
@@ -492,8 +492,8 @@
     
     <entry>
       <title>拥抱 Android Studio 之一：从 ADT 到 Android Studio</title>
-      <link href="/cn/embrace-android-studio-migration.html"/>
-      <url>/cn/embrace-android-studio-migration.html</url>
+      <link href="embrace-android-studio-migration.html"/>
+      <url>embrace-android-studio-migration.html</url>
       
       
       <categories>
@@ -519,8 +519,8 @@
     
     <entry>
       <title>在  OSX 上安装使用 Supervisor</title>
-      <link href="/cn/osx-supervisor.html"/>
-      <url>/cn/osx-supervisor.html</url>
+      <link href="osx-supervisor.html"/>
+      <url>osx-supervisor.html</url>
       
       
       <categories>
@@ -544,8 +544,8 @@
     
     <entry>
       <title>面向开发者服务的用户体验</title>
-      <link href="/cn/2d-ux.html"/>
-      <url>/cn/2d-ux.html</url>
+      <link href="2d-ux.html"/>
+      <url>2d-ux.html</url>
       
       
       <categories>
@@ -569,8 +569,8 @@
     
     <entry>
       <title>关于 KVH</title>
-      <link href="/cn/about.html"/>
-      <url>/cn/about.html</url>
+      <link href="about.html"/>
+      <url>about.html</url>
       
       
       <categories>
