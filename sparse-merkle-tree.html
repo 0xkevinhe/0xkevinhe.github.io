@@ -21,7 +21,7 @@
 <meta property="og:description" content="简介 本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle tree merkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  merkle-tree  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://img.kvh.io/17-10-14/32035268.jpg">
-<meta property="og:updated_time" content="2021-06-13T17:39:04.319Z">
+<meta property="og:updated_time" content="2021-06-13T17:42:39.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zksync 存储：sparse-merkle-tree 存储">
 <meta name="twitter:description" content="简介 本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle tree merkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  merkle-tree  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验">
@@ -179,7 +179,7 @@ var _hmt = _hmt || [];
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2021-06-13T17:39:04.319Z" itemprop="dateModified">2021-06-14</time>
+                    <time datetime="2021-06-13T17:42:39.162Z" itemprop="dateModified">2021-06-14</time>
                 </span>
             
             </div>
@@ -208,11 +208,11 @@ var _hmt = _hmt || [];
 <p>2）并行计算左右子树哈希</p>
 <p>H(H(left)|H(right)) 这类操作要求 快速计算左右子树的哈希值，并行计算可以计算。</p>
 <h1 id="实现">实现</h1>
-<p>rust： https://github.com/matter-labs/zksync/blob/master/core/lib/crypto/src/merkle_tree/parallel_smt.rs</p>
-<p>js： https://github.com/iden3/iden3js/blob/master/src/sparse-merkle-tree/sparse-merkle-tree.js</p>
-<p>golang： https://github.com/iden3/go-iden3-core/blob/master/merkletree/merkletree.go</p>
+<p><a href="https://github.com/matter-labs/zksync/blob/master/core/lib/crypto/src/merkle_tree/parallel_smt.rs" target="_blank" rel="noopener">rust</a></p>
+<p><a href="https://github.com/iden3/iden3js/blob/master/src/sparse-merkle-tree/sparse-merkle-tree.js" target="_blank" rel="noopener">js</a></p>
+<p><a href="https://github.com/iden3/go-iden3-core/blob/master/merkletree/merkletree.go" target="_blank" rel="noopener">golang</a></p>
 <h1 id="文献参考">文献参考</h1>
-<p>https://medium.com/<span class="citation" data-cites="kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837">@kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837</span> https://blog.iden3.io/sparse-merkle-trees-visual-introduction.html</p>
+<p><span class="citation" data-cites="kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837">[https://medium.com/@kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837]</span>(https://medium.com/<span class="citation" data-cites="kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837">@kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837</span>) <a href="https://blog.iden3.io/sparse-merkle-trees-visual-introduction.html" target="_blank" rel="noopener">https://blog.iden3.io/sparse-merkle-trees-visual-introduction.html</a></p>
 </body></html>
 
             <div class="toc-title"> 相关文章推荐</div>
