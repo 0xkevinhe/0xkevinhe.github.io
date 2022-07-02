@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>关于智能钱包 | Changbin He&#39;s Website</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="wallet">
+    
+    <meta name="description" content="Vitalik 在 1-11 在博客上发表了关于智能钱包的综述。文中介绍了硬件钱包、多签钱包，着重介绍了社交恢复智能钱包，针对社交恢复钱包面临的各方面问题，提出了对应的策略。 原文不赘述，下文将主要记录要点和思考。 原文 英文 中文 要点 guardian 的选择 抵抗 guardian 联合作恶： 1）不公开  对 list 进行哈希   fulllist，如何获得？   guardian 确定">
+<meta name="keywords" content="wallet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于智能钱包">
+<meta property="og:url" content="http://changbin.xyz/smart-wallet.html">
+<meta property="og:site_name" content="Changbin He&#39;s Website">
+<meta property="og:description" content="Vitalik 在 1-11 在博客上发表了关于智能钱包的综述。文中介绍了硬件钱包、多签钱包，着重介绍了社交恢复智能钱包，针对社交恢复钱包面临的各方面问题，提出了对应的策略。 原文不赘述，下文将主要记录要点和思考。 原文 英文 中文 要点 guardian 的选择 抵抗 guardian 联合作恶： 1）不公开  对 list 进行哈希   fulllist，如何获得？   guardian 确定">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg">
+<meta property="og:updated_time" content="2022-07-02T07:16:07.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于智能钱包">
+<meta name="twitter:description" content="Vitalik 在 1-11 在博客上发表了关于智能钱包的综述。文中介绍了硬件钱包、多签钱包，着重介绍了社交恢复智能钱包，针对社交恢复钱包面临的各方面问题，提出了对应的策略。 原文不赘述，下文将主要记录要点和思考。 原文 英文 中文 要点 guardian 的选择 抵抗 guardian 联合作恶： 1）不公开  对 list 进行哈希   fulllist，如何获得？   guardian 确定">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Changbin He&#39;s Website" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f142b9b88cd58f44d4b17ba4c9f9f459";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/blockchain/">blockchain</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-smart-wallet" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        关于智能钱包
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/smart-wallet.html" class="article-date">
+            <time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time>
+        </a>
+    </div>
+
+
+            
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/wallet/">wallet</a>
+    </div>
+
+            
+                <br>
+            
+                <span style="text-transform:capitalize;"> Modified:
+                    <time datetime="2022-07-02T07:16:07.117Z" itemprop="dateModified">2022-07-02</time>
+                </span>
+            
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+
+            <html><head></head><body><p>Vitalik 在 1-11 在博客上发表了关于智能钱包的综述。文中介绍了硬件钱包、多签钱包，着重介绍了社交恢复智能钱包，针对社交恢复钱包面临的各方面问题，提出了对应的策略。</p>
+<p>原文不赘述，下文将主要记录要点和思考。</p>
+<h1 id="原文">原文</h1>
+<p><a href="https://vitalik.ca/general/2021/01/11/recovery.html" target="_blank" rel="noopener">英文</a></p>
+<p><a href="https://www.chainnews.com/articles/195564221840.htm" target="_blank" rel="noopener">中文</a></p>
+<h1 id="要点">要点</h1>
+<h2 id="guardian-的选择">guardian 的选择</h2>
+<p>抵抗 guardian 联合作恶：</p>
+<p>1）不公开</p>
+<ul>
+<li>对 list 进行哈希</li>
+</ul>
+<blockquote>
+<p>fulllist，如何获得？</p>
+</blockquote>
+<ul>
+<li>guardian 确定性的生成一个用于恢复的地址；只在需要恢复的时候用到一次；</li>
+</ul>
+<p>2）来自不同的 social circle</p>
+<h2 id="对于加密价值的讨论">对于加密价值的讨论</h2>
+<p>有一种论调认为，社交恢复，是恢复到了相信人，是对区块链和加密的背叛。</p>
+<p>Vitalik 认为，加密不是移除所有的信任，其目的是提供更多的选择，来决定去相信谁；允许可控的信任：容许某些人代替做某些事，而没有能力做所有事。</p>
+<h2 id="对抗小偷">对抗小偷</h2>
+<p>sign key 可能丢失，可以增加一个保险柜功能，把 token 进入其中；在保险柜中的 token，交易可消。在发起交易和交易生效中间，增加了一个可撤回的缓冲期；还可以通过增加 vault 的可编程性支持更多的功能。</p>
+<h2 id="argent-和路印等现行社交钱包的两大挑战">Argent 和路印等现行社交钱包的两大挑战</h2>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1）对中继的依赖</span><br><span class="line">2）交易费高</span><br></pre></td></tr></tbody></table></figure>
+<p>目前的流行做法，是中继官方的签名的在链下进行，收集之后打包发送到服务器；</p>
+<blockquote>
+<p>对于这里的「收集」的概念有一定疑问； 假设一个用户有 7 个guardian，路印是收集齐了4 个guardian的签名，才发送到链上？</p>
+</blockquote>
+<h2 id="两大挑战的解决方案">两大挑战的解决方案：</h2>
+<ul>
+<li>当前改造方式</li>
+</ul>
+<p><a href="https://docs.opengsn.org/learn.html" target="_blank" rel="noopener">generalized decentralized relayer network</a></p>
+<blockquote>
+<p>以太坊加油站（与 heco 的元交易有异曲同工之处）</p>
+</blockquote>
+<p><a href="https://our.status.im/account-abstraction-eip-2938/" target="_blank" rel="noopener">allow transactions to begin from contracts</a></p>
+<blockquote>
+<p>修改以太坊协议，允许合约主动发起交易。</p>
+</blockquote>
+<ul>
+<li>彻底改造方式：迁移到 layer2</li>
+</ul>
+<blockquote>
+<p>为什么能解决问题？资金首先来自 1 层？在二层里面实现智能钱包逻辑？</p>
+</blockquote>
+<h1 id="思考">思考</h1>
+<ol type="1">
+<li><p>如果是一个定制的链的场景，可以采用更激进的方式来改造链，是否可以定制一个对用户友好的钱包系统？</p></li>
+<li><p>思考免费钱包或者网络可能性，可以使用<a href="https://docs.hecochain.com/#/en-us/dev/meta_tx" target="_blank" rel="noopener">原生元交易</a>，对交易费进行补贴。</p></li>
+</ol>
+<h1 id="总结">总结</h1>
+<p>钱包本身存在易用性和安全性的矛盾。公私钥、备份助记词这种操作，对于习惯了只记录一个 pin 的 web2.0 用户而言不友好，这可能也是阻碍区块链向更大量的用户普及的一部分原因。</p>
+<p>支持社交恢复的智能钱包，免去了用户记录助记词的困难，将安全性托付于社交关系，易用性上有了提升，但是也存在一些问题。Vitalik 难得之处在于，不止提出问题，还提供了解决方案的思考。</p>
+<p>当前以太坊社区，开始逐步理解和使用 layer2，将 layer2 和智能钱包结合，将有利于以太坊网络向更大体量的用户推广。</p>
+<p>欢迎留言或者联系博主对相关问题讨论！</p>
+</body></html>
+
+            <div class="toc-title"> 相关文章推荐</div>
+            <p class="related-posts-none">No related post.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+</div>
+
+
+
+        </footer>
+    </div>
+</article>
+<section id="comments">
+    
+        <div class="gitalk-container"></div>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    enable: 'true',
+    clientID: '30da78d7ebc4ef2b7349',
+    clientSecret: '7ba4c2d112c1f0af2e5bc33cec42c414e71cb405',
+    id: md5(location.pathname),
+    repo: 'gittalk-kvh-io',
+    owner: 'kevinho',
+    admin: 'kevinho',
+    language: 'zh-CN'
+  })
+  gitalk.render('comment-container')
+</script>
+
+
+    
+</section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/ChangbinHe" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kevinho" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/sparse-merkle-tree.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            zksync 存储：sparse-merkle-tree 存储
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/0x-intro.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">0x协议-介绍</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+
+        <div class="fixed-top" data-spy="scroll-nav" data-target="scroll-nav" data-offset="200">
+            <div class="navbar scroll-nav" data-spy="affix" data-offset-top="360" data-offset-bottom="300">
+            <!--tab-->
+            
+                
+                    <ul class="sidebar-nav nav nav-pills nav-stacked motion-element" data-offset-top="10"  data-offset-bottom="10" style="opacity:1;display:block;transform:translateX(0px);">
+                        <li class="sidebar-nav-toc sidebar-nav-active active" data-toggle="pill" data-target="post-toc-wrap" style="letter-spacing: .1rem;margin-right:10px;">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-toggle="pill" data-target="site-overview-wrap" style="letter-spacing:.1rem;margin-left:10px;">
+                            其他概览
+                        </li>
+                    </ul>
+                
+            
+
+
+            <!--toc-->
+            
+            <!--noindex-->
+                <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
+                    <div class="post-toc" style="max-height:400px">
+                        
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原文"><span class="nav-text">原文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#要点"><span class="nav-text">要点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#guardian-的选择"><span class="nav-text">guardian 的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于加密价值的讨论"><span class="nav-text">对于加密价值的讨论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对抗小偷"><span class="nav-text">对抗小偷</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#argent-和路印等现行社交钱包的两大挑战"><span class="nav-text">Argent 和路印等现行社交钱包的两大挑战</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两大挑战的解决方案"><span class="nav-text">两大挑战的解决方案：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思考"><span class="nav-text">思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol>
+                        
+
+                        
+
+                        
+                    </div>
+                </section>
+            
+
+            <!--overview-->
+            <section class="site-overview-wrap motion-element sidebar-panel" style="opacity:1;">
+                <div class="widgets-container" style="max-height:500px;overflow:auto;">
+                    
+                        
+                            
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalogue</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#原文"><span class="toc-number">1.</span> <span class="toc-text">原文</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#要点"><span class="toc-number">2.</span> <span class="toc-text">要点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#guardian-的选择"><span class="toc-number">2.1.</span> <span class="toc-text">guardian 的选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对于加密价值的讨论"><span class="toc-number">2.2.</span> <span class="toc-text">对于加密价值的讨论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对抗小偷"><span class="toc-number">2.3.</span> <span class="toc-text">对抗小偷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#argent-和路印等现行社交钱包的两大挑战"><span class="toc-number">2.4.</span> <span class="toc-text">Argent 和路印等现行社交钱包的两大挑战</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两大挑战的解决方案"><span class="toc-number">2.5.</span> <span class="toc-text">两大挑战的解决方案：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思考"><span class="toc-number">3.</span> <span class="toc-text">思考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+                        
+                            
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/sparse-merkle-tree.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
+                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/smart-wallet.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
+                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/0x-intro.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="0x协议-介绍" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/0x-intro.html" class="title">0x协议-介绍</a></p>
+                            <p class="item-date"><time datetime="2021-01-01T02:49:05.000Z" itemprop="datePublished">2021-01-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/reading-emotion-coaching.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-7-7/93234566.jpg)" alt="《你就是孩子最好的玩具》读书笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/reading/">reading</a></p>
+                            <p class="item-title"><a href="/reading-emotion-coaching.html" class="title">《你就是孩子最好的玩具》读书笔记</a></p>
+                            <p class="item-date"><time datetime="2020-10-05T10:05:12.000Z" itemprop="datePublished">2020-10-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/blockchain-bsc-intro.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/24636638.jpg)" alt="币安链（BC）与币安智能链（BSC）简介" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/blockchain-bsc-intro.html" class="title">币安链（BC）与币安智能链（BSC）简介</a></p>
+                            <p class="item-date"><time datetime="2020-09-19T03:46:03.000Z" itemprop="datePublished">2020-09-19</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+                        
+                    
+                </div>
+            </section>
+
+            </div>
+        </div>
+
+
+
+    
+    <div id="totop" title="to_top">
+    <canvas id="totop-canvas" width="48" height="48"></canvas>
+    <div id="totop-percent"></div>
+</div>
+
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 kvh</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script src='https://unpkg.com/mermaid@8.4.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme:'default', startOnLoad:true, flowchart:{ useMaxWidth:false }, htmlLabels: true});
+      }
+    </script>
+
+
+
+        
+
+
+    
+    
+    
+
+
+
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+<script src="/libs/bootstrap/bootstrap.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+
+        <script src="https://ucstatic.iyouchain.com/vendors/jquery.min.js"></script>
+        <script src="https://ucstatic.iyouchain.com/vendors/jweixin-1.2.0.js"></script>
+        <script src="https://ucstatic.iyouchain.com/broadcast/scripts/main.js"></script>
+        <script>
+          window.onload = function () {
+            if(isWeChat()){
+
+              wxShare({
+                title: document.title,
+                desc: document.title,
+                logo: "https://mmbiz.qlogo.cn/mmbiz_jpg/5GOQQXbnSDHKtsNOKOTicUAztQ4nA4nWVl0L6UMYIgZniaAxf5yzicc9TL5AlaWRIstn1WP5IxF2EwdhAuicVCDNNw/300?wx_fmt=jpeg&wxfrom=1"
+              });
+            }
+          };
+        </script>
+    </div>
+</body>
+</html>
