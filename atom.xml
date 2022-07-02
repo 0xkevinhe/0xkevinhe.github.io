@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://changbin.xyz/"/>
+  <link href="https://changbin.xyz/"/>
   <updated>2022-07-02T07:16:07.117Z</updated>
-  <id>http://changbin.xyz/</id>
+  <id>https://changbin.xyz/</id>
   
   <author>
     <name>kvh</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>zksync 存储：sparse-merkle-tree 存储</title>
-    <link href="http://changbin.xyz/sparse-merkle-tree.html"/>
-    <id>http://changbin.xyz/sparse-merkle-tree.html</id>
+    <link href="https://changbin.xyz/sparse-merkle-tree.html"/>
+    <id>https://changbin.xyz/sparse-merkle-tree.html</id>
     <published>2021-02-09T12:02:00.000Z</published>
     <updated>2022-07-02T07:16:07.117Z</updated>
     
@@ -37,17 +37,17 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="zkp" scheme="http://changbin.xyz/tags/zkp/"/>
+      <category term="zkp" scheme="https://changbin.xyz/tags/zkp/"/>
     
   </entry>
   
   <entry>
     <title>关于智能钱包</title>
-    <link href="http://changbin.xyz/smart-wallet.html"/>
-    <id>http://changbin.xyz/smart-wallet.html</id>
+    <link href="https://changbin.xyz/smart-wallet.html"/>
+    <id>https://changbin.xyz/smart-wallet.html</id>
     <published>2021-01-13T01:58:57.000Z</published>
     <updated>2022-07-02T07:16:07.117Z</updated>
     
@@ -63,17 +63,17 @@
     
     </summary>
     
-      <category term="blockchain" scheme="http://changbin.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://changbin.xyz/categories/blockchain/"/>
     
     
-      <category term="wallet" scheme="http://changbin.xyz/tags/wallet/"/>
+      <category term="wallet" scheme="https://changbin.xyz/tags/wallet/"/>
     
   </entry>
   
   <entry>
     <title>0x协议-介绍</title>
-    <link href="http://changbin.xyz/0x-intro.html"/>
-    <id>http://changbin.xyz/0x-intro.html</id>
+    <link href="https://changbin.xyz/0x-intro.html"/>
+    <id>https://changbin.xyz/0x-intro.html</id>
     <published>2021-01-01T02:49:05.000Z</published>
     <updated>2022-07-02T07:16:06.442Z</updated>
     
@@ -93,17 +93,17 @@
     
     </summary>
     
-      <category term="blockchain" scheme="http://changbin.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://changbin.xyz/categories/blockchain/"/>
     
     
-      <category term="defi" scheme="http://changbin.xyz/tags/defi/"/>
+      <category term="defi" scheme="https://changbin.xyz/tags/defi/"/>
     
   </entry>
   
   <entry>
     <title>《你就是孩子最好的玩具》读书笔记</title>
-    <link href="http://changbin.xyz/reading-emotion-coaching.html"/>
-    <id>http://changbin.xyz/reading-emotion-coaching.html</id>
+    <link href="https://changbin.xyz/reading-emotion-coaching.html"/>
+    <id>https://changbin.xyz/reading-emotion-coaching.html</id>
     <published>2020-10-05T10:05:12.000Z</published>
     <updated>2022-07-02T07:16:06.443Z</updated>
     
@@ -120,17 +120,17 @@
     
     </summary>
     
-      <category term="reading" scheme="http://changbin.xyz/categories/reading/"/>
+      <category term="reading" scheme="https://changbin.xyz/categories/reading/"/>
     
     
-      <category term="education" scheme="http://changbin.xyz/tags/education/"/>
+      <category term="education" scheme="https://changbin.xyz/tags/education/"/>
     
   </entry>
   
   <entry>
     <title>币安链（BC）与币安智能链（BSC）简介</title>
-    <link href="http://changbin.xyz/blockchain-bsc-intro.html"/>
-    <id>http://changbin.xyz/blockchain-bsc-intro.html</id>
+    <link href="https://changbin.xyz/blockchain-bsc-intro.html"/>
+    <id>https://changbin.xyz/blockchain-bsc-intro.html</id>
     <published>2020-09-19T03:46:03.000Z</published>
     <updated>2022-07-02T07:16:07.117Z</updated>
     
@@ -146,19 +146,19 @@
     
     </summary>
     
-      <category term="blockchain" scheme="http://changbin.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://changbin.xyz/categories/blockchain/"/>
     
     
-      <category term="blockchain" scheme="http://changbin.xyz/tags/blockchain/"/>
+      <category term="blockchain" scheme="https://changbin.xyz/tags/blockchain/"/>
     
-      <category term="DeFi" scheme="http://changbin.xyz/tags/DeFi/"/>
+      <category term="DeFi" scheme="https://changbin.xyz/tags/DeFi/"/>
     
   </entry>
   
   <entry>
     <title>《影响力》读书笔记</title>
-    <link href="http://changbin.xyz/reading-influence.html"/>
-    <id>http://changbin.xyz/reading-influence.html</id>
+    <link href="https://changbin.xyz/reading-influence.html"/>
+    <id>https://changbin.xyz/reading-influence.html</id>
     <published>2020-08-17T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:06.443Z</updated>
     
@@ -175,17 +175,17 @@
     
     </summary>
     
-      <category term="reading" scheme="http://changbin.xyz/categories/reading/"/>
+      <category term="reading" scheme="https://changbin.xyz/categories/reading/"/>
     
     
-      <category term="社会心理学" scheme="http://changbin.xyz/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/"/>
+      <category term="社会心理学" scheme="https://changbin.xyz/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/"/>
     
   </entry>
   
   <entry>
     <title>开源许可证介绍与项目实战</title>
-    <link href="http://changbin.xyz/open-source-license.html"/>
-    <id>http://changbin.xyz/open-source-license.html</id>
+    <link href="https://changbin.xyz/open-source-license.html"/>
+    <id>https://changbin.xyz/open-source-license.html</id>
     <published>2020-04-28T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -210,8 +210,8 @@
   
   <entry>
     <title>macOS 作为服务器</title>
-    <link href="http://changbin.xyz/osx-as-server.html"/>
-    <id>http://changbin.xyz/osx-as-server.html</id>
+    <link href="https://changbin.xyz/osx-as-server.html"/>
+    <id>https://changbin.xyz/osx-as-server.html</id>
     <published>2017-12-04T03:21:55.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -228,17 +228,17 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="macOS" scheme="http://changbin.xyz/tags/macOS/"/>
+      <category term="macOS" scheme="https://changbin.xyz/tags/macOS/"/>
     
   </entry>
   
   <entry>
     <title>Spring Cloud 配置中心</title>
-    <link href="http://changbin.xyz/spring-cloud-config.html"/>
-    <id>http://changbin.xyz/spring-cloud-config.html</id>
+    <link href="https://changbin.xyz/spring-cloud-config.html"/>
+    <id>https://changbin.xyz/spring-cloud-config.html</id>
     <published>2017-10-13T15:18:16.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -256,17 +256,17 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Spring" scheme="http://changbin.xyz/tags/Spring/"/>
+      <category term="Spring" scheme="https://changbin.xyz/tags/Spring/"/>
     
   </entry>
   
   <entry>
     <title>小工具-sips-图片批量转大小</title>
-    <link href="http://changbin.xyz/utility-sips.html"/>
-    <id>http://changbin.xyz/utility-sips.html</id>
+    <link href="https://changbin.xyz/utility-sips.html"/>
+    <id>https://changbin.xyz/utility-sips.html</id>
     <published>2017-05-16T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:06.442Z</updated>
     
@@ -284,19 +284,19 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="产品" scheme="http://changbin.xyz/tags/%E4%BA%A7%E5%93%81/"/>
+      <category term="产品" scheme="https://changbin.xyz/tags/%E4%BA%A7%E5%93%81/"/>
     
-      <category term="用户体验" scheme="http://changbin.xyz/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
+      <category term="用户体验" scheme="https://changbin.xyz/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
     
   </entry>
   
   <entry>
     <title>亚马逊 Alexa Echo Dot——入门</title>
-    <link href="http://changbin.xyz/play-alexa-1.html"/>
-    <id>http://changbin.xyz/play-alexa-1.html</id>
+    <link href="https://changbin.xyz/play-alexa-1.html"/>
+    <id>https://changbin.xyz/play-alexa-1.html</id>
     <published>2017-03-21T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:06.442Z</updated>
     
@@ -313,19 +313,19 @@
     
     </summary>
     
-      <category term="product" scheme="http://changbin.xyz/categories/product/"/>
+      <category term="product" scheme="https://changbin.xyz/categories/product/"/>
     
     
-      <category term="产品" scheme="http://changbin.xyz/tags/%E4%BA%A7%E5%93%81/"/>
+      <category term="产品" scheme="https://changbin.xyz/tags/%E4%BA%A7%E5%93%81/"/>
     
-      <category term="用户体验" scheme="http://changbin.xyz/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
+      <category term="用户体验" scheme="https://changbin.xyz/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
     
   </entry>
   
   <entry>
     <title>读一首诗——纪伯伦《孩子》</title>
-    <link href="http://changbin.xyz/on-children.html"/>
-    <id>http://changbin.xyz/on-children.html</id>
+    <link href="https://changbin.xyz/on-children.html"/>
+    <id>https://changbin.xyz/on-children.html</id>
     <published>2016-10-07T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:06.442Z</updated>
     
@@ -346,8 +346,8 @@
   
   <entry>
     <title>SDK 开发最佳实践之一：为你的 SDK 增加 No-Op 版本</title>
-    <link href="http://changbin.xyz/sdk-noop.html"/>
-    <id>http://changbin.xyz/sdk-noop.html</id>
+    <link href="https://changbin.xyz/sdk-noop.html"/>
+    <id>https://changbin.xyz/sdk-noop.html</id>
     <published>2016-09-29T03:20:30.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -363,17 +363,17 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="SDK" scheme="http://changbin.xyz/tags/SDK/"/>
+      <category term="SDK" scheme="https://changbin.xyz/tags/SDK/"/>
     
   </entry>
   
   <entry>
     <title>Android Gradle 构建系统·初探</title>
-    <link href="http://changbin.xyz/gradle-build-system-overview.html"/>
-    <id>http://changbin.xyz/gradle-build-system-overview.html</id>
+    <link href="https://changbin.xyz/gradle-build-system-overview.html"/>
+    <id>https://changbin.xyz/gradle-build-system-overview.html</id>
     <published>2016-08-13T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:07.118Z</updated>
     
@@ -388,19 +388,19 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Android" scheme="http://changbin.xyz/tags/Android/"/>
+      <category term="Android" scheme="https://changbin.xyz/tags/Android/"/>
     
-      <category term="Gradle" scheme="http://changbin.xyz/tags/Gradle/"/>
+      <category term="Gradle" scheme="https://changbin.xyz/tags/Gradle/"/>
     
   </entry>
   
   <entry>
     <title>Android Gradle 技巧之二： 最爱命令行</title>
-    <link href="http://changbin.xyz/gradle-indepth-cmd.html"/>
-    <id>http://changbin.xyz/gradle-indepth-cmd.html</id>
+    <link href="https://changbin.xyz/gradle-indepth-cmd.html"/>
+    <id>https://changbin.xyz/gradle-indepth-cmd.html</id>
     <published>2016-06-04T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:07.117Z</updated>
     
@@ -417,19 +417,19 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Android" scheme="http://changbin.xyz/tags/Android/"/>
+      <category term="Android" scheme="https://changbin.xyz/tags/Android/"/>
     
-      <category term="Gradle 技巧" scheme="http://changbin.xyz/tags/Gradle-%E6%8A%80%E5%B7%A7/"/>
+      <category term="Gradle 技巧" scheme="https://changbin.xyz/tags/Gradle-%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
   <entry>
     <title>Android Gradle 技巧之一： Build Variant 相关</title>
-    <link href="http://changbin.xyz/gradle-indepth-build-variant.html"/>
-    <id>http://changbin.xyz/gradle-indepth-build-variant.html</id>
+    <link href="https://changbin.xyz/gradle-indepth-build-variant.html"/>
+    <id>https://changbin.xyz/gradle-indepth-build-variant.html</id>
     <published>2016-06-03T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:06.442Z</updated>
     
@@ -446,19 +446,19 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Android" scheme="http://changbin.xyz/tags/Android/"/>
+      <category term="Android" scheme="https://changbin.xyz/tags/Android/"/>
     
-      <category term="Gradle 技巧" scheme="http://changbin.xyz/tags/Gradle-%E6%8A%80%E5%B7%A7/"/>
+      <category term="Gradle 技巧" scheme="https://changbin.xyz/tags/Gradle-%E6%8A%80%E5%B7%A7/"/>
     
   </entry>
   
   <entry>
     <title>拥抱 Android Studio 之五：Gradle 插件开发</title>
-    <link href="http://changbin.xyz/embrace-android-studio-gradle-plugin.html"/>
-    <id>http://changbin.xyz/embrace-android-studio-gradle-plugin.html</id>
+    <link href="https://changbin.xyz/embrace-android-studio-gradle-plugin.html"/>
+    <id>https://changbin.xyz/embrace-android-studio-gradle-plugin.html</id>
     <published>2016-03-28T03:20:30.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -473,21 +473,21 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Android" scheme="http://changbin.xyz/tags/Android/"/>
+      <category term="Android" scheme="https://changbin.xyz/tags/Android/"/>
     
-      <category term="EmbraceAndroidStudio" scheme="http://changbin.xyz/tags/EmbraceAndroidStudio/"/>
+      <category term="EmbraceAndroidStudio" scheme="https://changbin.xyz/tags/EmbraceAndroidStudio/"/>
     
-      <category term="拥抱 Android Studio" scheme="http://changbin.xyz/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/"/>
+      <category term="拥抱 Android Studio" scheme="https://changbin.xyz/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/"/>
     
   </entry>
   
   <entry>
     <title>如何更好的提出技术问题</title>
-    <link href="http://changbin.xyz/a-good-question.html"/>
-    <id>http://changbin.xyz/a-good-question.html</id>
+    <link href="https://changbin.xyz/a-good-question.html"/>
+    <id>https://changbin.xyz/a-good-question.html</id>
     <published>2016-02-03T03:18:16.000Z</published>
     <updated>2022-07-02T07:16:07.117Z</updated>
     
@@ -502,17 +502,17 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="程序员必读" scheme="http://changbin.xyz/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/"/>
+      <category term="程序员必读" scheme="https://changbin.xyz/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/"/>
     
   </entry>
   
   <entry>
     <title>拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建</title>
-    <link href="http://changbin.xyz/embrace-android-studio-maven-deploy.html"/>
-    <id>http://changbin.xyz/embrace-android-studio-maven-deploy.html</id>
+    <link href="https://changbin.xyz/embrace-android-studio-maven-deploy.html"/>
+    <id>https://changbin.xyz/embrace-android-studio-maven-deploy.html</id>
     <published>2016-01-20T03:20:30.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -528,21 +528,21 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Android" scheme="http://changbin.xyz/tags/Android/"/>
+      <category term="Android" scheme="https://changbin.xyz/tags/Android/"/>
     
-      <category term="EmbraceAndroidStudio" scheme="http://changbin.xyz/tags/EmbraceAndroidStudio/"/>
+      <category term="EmbraceAndroidStudio" scheme="https://changbin.xyz/tags/EmbraceAndroidStudio/"/>
     
-      <category term="拥抱 Android Studio" scheme="http://changbin.xyz/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/"/>
+      <category term="拥抱 Android Studio" scheme="https://changbin.xyz/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/"/>
     
   </entry>
   
   <entry>
     <title>拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</title>
-    <link href="http://changbin.xyz/embrace-android-studio-groovy-gradle.html"/>
-    <id>http://changbin.xyz/embrace-android-studio-groovy-gradle.html</id>
+    <link href="https://changbin.xyz/embrace-android-studio-groovy-gradle.html"/>
+    <id>https://changbin.xyz/embrace-android-studio-groovy-gradle.html</id>
     <published>2016-01-04T03:20:30.000Z</published>
     <updated>2022-07-02T07:16:07.116Z</updated>
     
@@ -558,14 +558,14 @@
     
     </summary>
     
-      <category term="code" scheme="http://changbin.xyz/categories/code/"/>
+      <category term="code" scheme="https://changbin.xyz/categories/code/"/>
     
     
-      <category term="Android" scheme="http://changbin.xyz/tags/Android/"/>
+      <category term="Android" scheme="https://changbin.xyz/tags/Android/"/>
     
-      <category term="EmbraceAndroidStudio" scheme="http://changbin.xyz/tags/EmbraceAndroidStudio/"/>
+      <category term="EmbraceAndroidStudio" scheme="https://changbin.xyz/tags/EmbraceAndroidStudio/"/>
     
-      <category term="拥抱 Android Studio" scheme="http://changbin.xyz/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/"/>
+      <category term="拥抱 Android Studio" scheme="https://changbin.xyz/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/"/>
     
   </entry>
   

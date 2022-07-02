@@ -543,6 +543,29 @@
     
     
     <entry>
+      <title>关于 KVH</title>
+      <link href="about.html"/>
+      <url>about.html</url>
+      
+      
+      <categories>
+          
+          <category> personal </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 个人 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>面向开发者服务的用户体验</title>
       <link href="2d-ux.html"/>
       <url>2d-ux.html</url>
@@ -560,29 +583,6 @@
             <tag> 产品 </tag>
             
             <tag> 用户体验 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于 KVH</title>
-      <link href="about.html"/>
-      <url>about.html</url>
-      
-      
-      <categories>
-          
-          <category> personal </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 个人 </tag>
             
         </tags>
       
