@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建 | Changbin He&#39;s Website</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
+    
+    <meta name="description" content="使用、创造和分享 笔者曾经不思量力的思考过『是什么推动了互联网技术的快速发展？』这种伟大的命题。结论是，除了摩尔定律之外，技术经验的快速积累和广泛分享，也是重要的原因。 有人戏称，『写 Java，首先要学会选包』，在这里不好评论对错。不过这句话里面，至少包含两层意思：首先 Java 有大量的现成的依赖包，不必要自己造轮子；其次，Java 的包存放较为集中，集成方式也方便。 笔者从事 Android">
+<meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建">
+<meta property="og:url" content="https://changbin.xyz/embrace-android-studio-maven-deploy.html">
+<meta property="og:site_name" content="Changbin He&#39;s Website">
+<meta property="og:description" content="使用、创造和分享 笔者曾经不思量力的思考过『是什么推动了互联网技术的快速发展？』这种伟大的命题。结论是，除了摩尔定律之外，技术经验的快速积累和广泛分享，也是重要的原因。 有人戏称，『写 Java，首先要学会选包』，在这里不好评论对错。不过这句话里面，至少包含两层意思：首先 Java 有大量的现成的依赖包，不必要自己造轮子；其次，Java 的包存放较为集中，集成方式也方便。 笔者从事 Android">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/7119458.jpg">
+<meta property="og:updated_time" content="2022-07-02T07:16:07.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建">
+<meta name="twitter:description" content="使用、创造和分享 笔者曾经不思量力的思考过『是什么推动了互联网技术的快速发展？』这种伟大的命题。结论是，除了摩尔定律之外，技术经验的快速积累和广泛分享，也是重要的原因。 有人戏称，『写 Java，首先要学会选包』，在这里不好评论对错。不过这句话里面，至少包含两层意思：首先 Java 有大量的现成的依赖包，不必要自己造轮子；其次，Java 的包存放较为集中，集成方式也方便。 笔者从事 Android">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/7119458.jpg">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Changbin He&#39;s Website" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?f142b9b88cd58f44d4b17ba4c9f9f459";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/code/">code</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-embrace-android-studio-maven-deploy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/embrace-android-studio-maven-deploy.html" class="article-date">
+            <time datetime="2016-01-20T03:20:30.000Z" itemprop="datePublished">2016-01-20</time>
+        </a>
+    </div>
+
+
+            
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a>, <a class="tag-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a>
+    </div>
+
+            
+                <br>
+            
+                <span style="text-transform:capitalize;"> Modified:
+                    <time datetime="2022-07-02T07:16:07.116Z" itemprop="dateModified">2022-07-02</time>
+                </span>
+            
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+
+            <html><head></head><body><h1 id="使用创造和分享">使用、创造和分享</h1>
+<p>笔者曾经不思量力的思考过<code>『是什么推动了互联网技术的快速发展？』</code>这种伟大的命题。结论是，除了摩尔定律之外，<code>技术经验的快速积累和广泛分享</code>，也是重要的原因。</p>
+<p>有人戏称，『写 Java，首先要学会选包』，在这里不好评论对错。不过这句话里面，至少包含两层意思：首先 Java 有大量的现成的依赖包，不必要自己造轮子；其次，Java 的包存放较为集中，集成方式也方便。</p>
+<p>笔者从事 Android 和 Java 开发以来，经历了几个阶段：</p>
+<p><code>闭门造轮子 &gt; 使用别人的轮子 &gt; 开门造轮子 &gt; 分享轮子</code></p>
+<p>在使用、创造、分享轮子的过程中，maven 仓库的使用可谓必备技能。</p>
+<p>相信各位使用 Android Studio，对于 <code>jcenter()</code>、<code>mavenCentral()</code> 等概念应该是司空见惯了。程序员要知其然，知其所以然。本篇将按照如下脉络介绍在 Android Studio 中 Maven 仓库相关的概念和应用。</p>
+<ul>
+<li>Maven 包</li>
+<li>Maven 仓库</li>
+<li>发布包到本地仓库</li>
+<li>发布包到 Bintray Jcenter 远程仓库</li>
+<li>发布包到 Sonatype MavenCentral 远程仓库</li>
+<li>搭建私有 Sonatype 仓库</li>
+<li>搭建私有 Artifacotory 仓库</li>
+</ul>
+<h1 id="maven-包package">Maven 包（Package）</h1>
+<p>至于 Maven 是什么，请参考 <a href="https://zh.wikipedia.org/wiki/Apache_Maven" target="_blank" rel="noopener">Apache Maven</a>。</p>
+<p>对于 Android 开发者而言，只需要知道 Maven 是一种构建工具，Maven 包是由所谓 POM（Project Object Model）所定义的文件包格式即可。</p>
+<p>Gradle 可以使用 Maven 包，而且大部分的 Android 能够使用的远程依赖包都是 Maven 包。</p>
+<p>先来看一个托管在某仓库上的 Maven 包：Bugtags-Android-Lib 所包含的内容：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">bugtags-lib-1.1.0-javadoc.jar//javadoc 文件</span><br><span class="line">bugtags-lib-1.1.0-javadoc.jar.asc//javadoc 文件的签名</span><br><span class="line">bugtags-lib-1.1.0-sources.jar//源码文件</span><br><span class="line">bugtags-lib-1.1.0-sources.jar.asc//源码文件的签名</span><br><span class="line">bugtags-lib-1.1.0.aar//Android Library 的主文件包</span><br><span class="line">bugtags-lib-1.1.0.aar.asc//主文件包的签名</span><br><span class="line">bugtags-lib-1.1.0.pom//包描述文件</span><br><span class="line">bugtags-lib-1.1.0.pom.asc//描述文件的签名</span><br></pre></td></tr></tbody></table></figure>
+<p>对于一个合符规范的 Maven Package，<code>pom 文件、aar（或者 jar） 文件</code>是必须的。</p>
+<p>而 javadoc 文件、源码文件、签名文件都不是必要的，但是<code>某些公开仓库</code>（如 mavenCentral ）有此要求。</p>
+<p>使用这个包的方式，相信大家已经很熟悉了：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile 'com.bugtags.library:bugtags-lib:1.1.0'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="pom-文件">POM 文件</h2>
+<p>一个 Maven Package，最重要就是 POM（Project Object Model） 文件，这其实是一个 XML 文件，这里截取 Bugtags-Android-Lib POM 主要内容如下：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">&lt;project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"</span><br><span class="line">    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;</span><br><span class="line">  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">  &lt;groupId&gt;com.bugtags.library&lt;/groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;bugtags-lib&lt;/artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.1.0&lt;/version&gt;</span><br><span class="line">  &lt;packaging&gt;aar&lt;/packaging&gt;</span><br><span class="line">  &lt;dependencies&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;com.android.support&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;support-v4&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;19.0.0&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">  &lt;/dependencies&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><p>modelVersion: 从 mvn 2.x 起，这个数值都是4.0.0</p></li>
+<li><p>packaging：打包方式，aar 是 Android Libirary 的打包方式，常用的还有 jar</p></li>
+<li><p>dependency：声明依赖列表</p></li>
+<li><p>包的唯一标示：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--包组 id，通常是发布者拥有的域名的反向，以免跟别人的重复--&gt;</span><br><span class="line">&lt;groupId&gt;com.bugtags.library&lt;/groupId&gt;</span><br><span class="line">&lt;!--包 artifactId，不好意思我也不知道如何准确翻译，其实就是组以下应该有一个更小的归类--&gt;</span><br><span class="line">&lt;artifactId&gt;bugtags-lib&lt;/artifactId&gt;</span><br><span class="line">&lt;!--包版本--&gt;</span><br><span class="line">&lt;version&gt;1.1.0&lt;/version&gt;</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>其中三个字段与 Gradle 的依赖格式 <code>'com.bugtags.library:bugtags-lib:1.1.0'</code> 冒号分割的三段一一对应。这就解释了所谓的 <code>Gradle 兼容 Maven 包</code>。</p></li>
+</ul>
+<h1 id="maven-仓库">Maven 仓库</h1>
+<p>Maven 包集中存放的地方，就是 Maven 仓库。这些仓库，可以是放在本地，也可以放在某个远程服务器上。 可以是私有仓库，也可以是公开的。下面是笔者日常开发用的库列表：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mavenCentral();</span><br><span class="line">jcenter()</span><br><span class="line">maven {</span><br><span class="line">     url 'file:///Users/my-user-name/Documents/Android/repo/'</span><br><span class="line">}</span><br><span class="line">maven {</span><br><span class="line">     url 'http://192.168.99.100:8081/content/repositories/releases/'</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">maven { </span><br><span class="line">    url "https://jitpack.io" </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>Android Studio Gradle 主要支持两个 Maven 中央库：<code>mavenCentral</code> 和 <code>jcenter</code>。</p>
+<ul>
+<li>mavenCentral 是最早的 maven 中央仓库</li>
+<li>jcenter 是 Android Studio 0.8 版本起的默认 maven 中央仓库</li>
+<li>第三个是笔者的本机的仓库</li>
+<li>第四个是笔者部署在内网服务器的私有仓库</li>
+<li>第五个是可以把 github 项目发不成 maven 库（jitpack 本身是一个很酷的 idea）</li>
+</ul>
+<p>读者可能会发现两个问题：</p>
+<ul>
+<li>为什么有了 mavenCentral，谷歌还切换到了 jcenter？</li>
+<li><code>maven { url : xxx}</code>，这种格式可以配置任何一个存在的仓库？</li>
+</ul>
+<p>解释如下：</p>
+<h2 id="jcenter-vs.-mavencentral">jcenter VS. mavenCentral</h2>
+<p>根据<a href="http://blog.bintray.com/2015/02/09/android-studio-migration-from-maven-central-to-jcenter/" target="_blank" rel="noopener">这篇博客</a>，jcenter 具有如下优胜特点，使得谷歌进行切换：</p>
+<ul>
+<li>jcenter 是一个 mavenCentral 的超集，jcenter 还包含了其他 maven 包</li>
+<li>jcenter 具有更好的 cdn，默认支持 https，这个对于谷歌有巨大吸引力</li>
+<li>bintray（jcenter 的服务提供商）表示 jcenter 具有更好的性能</li>
+<li>有数据表明 bintray jcenter 占用更少的本地缓存空间</li>
+<li>更好的交互界面，可以从 jcenter 向 mavenCentral 同步包（下面两个平台的使用教程将会证实这一点）</li>
+</ul>
+<blockquote>
+<p>笔者亲测，在 bintray 上发布包到 jcenter 在易用性上的确比 在 sonatype 发布到到 mavenCentral 要好得多。</p>
+</blockquote>
+<h2 id="使用符合规范的-maven-仓库">使用符合规范的 maven 仓库</h2>
+<p>没错，你可以通过 <code>maven { url : xxx }</code>使用任何一个符合 maven 规范的仓库。</p>
+<ul>
+<li><p>存在本地的</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">maven {</span><br><span class="line">    url 'file:///Users/my-user-name/Documents/Android/repo/'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>存在内网服务器的</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">maven {</span><br><span class="line">    url 'http://192.168.99.100:8081/content/repositories/releases/'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>存在某个远程服务器的</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">maven {</span><br><span class="line">   	url 'https://raw.githubusercontent.com/liaohuqiu/umeng-libs/master/repository'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<blockquote>
+<p>此仓库由 <a href="https://github.com/liaohuqiu" target="_blank" rel="noopener">liaohuqiu</a> 同学为方便大家使用友盟开发者工具，把相应的包做成了符合规范的 Maven 包，托管在 github 项目中。</p>
+</blockquote></li>
+</ul>
+<h1 id="发布-maven-包">发布 Maven 包</h1>
+<p>使用 maven 包相信已经很清楚了，让我们更进一步。</p>
+<p>当我们在日常开发实践中，积累了一些公共库，想要固定下来，被自己或者别人方便的使用，就需要发布 maven 包。</p>
+<p>一个符合规范的 maven 包至少包含 pom 文件和主文件包。难道这些都要手动编写和创建么？</p>
+<p>答案是：有了 gradle 插件，你只需要干很少的事儿。</p>
+<h2 id="全局设定">全局设定</h2>
+<p>下面以发布这系列包为示例：</p>
+<ul>
+<li>groupId: com.as-gradle.demo //改成你的 groupId</li>
+<li>artifcatId: x //artifactId 会有些变化，这里先用 <code>x</code> 代替，下面会修改。</li>
+<li>version: 1.0.0</li>
+</ul>
+<p>也就是<code>'com.as-gradle.demo:x:1.0.0'</code></p>
+<blockquote>
+<p>读者要进行练习的时候，最好改一下你的 <code>groupId</code>，否则可能会发布失败</p>
+</blockquote>
+<p>下面使用到的示例工程已经放在了 <a href="https://github.com/kevinho/Embrace-Android-Studio-Demo" target="_blank" rel="noopener">github</a> 上。</p>
+<p>为了后面使用方便，首先在工程的项目 <code>gradle.properties</code> 中定义一些属性，<strong>这些属性，主要是用生成 POM 文件，将会在通篇文章中用到</strong>：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 包信息</span><br><span class="line">PROJ_GROUP=com.as-gradle.demo</span><br><span class="line">PROJ_VERSION=1.0.0</span><br><span class="line"></span><br><span class="line"># 项目的描述</span><br><span class="line">PROJ_WEBSITEURL=https://bugtags.com</span><br><span class="line">PROJ_ISSUETRACKERURL=https://github.com/bugtags/Bugtags-Android/issues</span><br><span class="line">PROJ_VCSURL=https://github.com/bugtags/Bugtags-Android.git</span><br><span class="line">PROJ_DESCRIPTION=Simple and effective bug &amp; crash reporting tool for Android apps</span><br><span class="line"></span><br><span class="line"># Licence信息</span><br><span class="line">PROJ_LICENCE_NAME=The Apache Software License, Version 2.0</span><br><span class="line">PROJ_LICENCE_URL=http://www.apache.org/licenses/LICENSE-2.0.txt</span><br><span class="line">PROJ_LICENCE_DEST=repo</span><br><span class="line"></span><br><span class="line"># Developer 信息</span><br><span class="line">DEVELOPER_ID=your-dev-id</span><br><span class="line">DEVELOPER_NAME=your-dev-name</span><br><span class="line">DEVELOPER_EMAIL=your-email@your-mailbox.com</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="发布包到本地仓库">发布包到本地仓库</h2>
+<ul>
+<li><p>创建一个 module：<code>localrepo</code></p></li>
+<li><p>将本地某个路径设置为仓库根目录： <code>/Users/your-user-name/Documents/Android/repo/</code>（ Mac 下）</p>
+<p>这里使用了一个叫做 <code>your-user-name</code> 的用户下的某个目录，请读者__自行替换__成自己的登录用户名。</p></li>
+<li><p>为了优雅，在 localrepo 这个 module 的 <code>gradle.properties</code> 定义属性：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PROJ_NAME=localrepo</span><br><span class="line">PROJ_ARTIFACTID=localrepo</span><br><span class="line">PROJ_POM_NAME=Local Repository</span><br><span class="line">LOCAL_REPO_URL=file:///Users/your-user-name/Documents/Android/repo/</span><br><span class="line">#以上是 Mac 的本地路径，如果是 Windows，则是类似：</span><br><span class="line">#LOCAL_REPO_URL=file:///C:/Users/cadmanager/Documents/repo/</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>在 module 中应用和配置 maven plugin：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'maven'</span><br><span class="line"></span><br><span class="line">uploadArchives {</span><br><span class="line">   	repositories.mavenDeployer {</span><br><span class="line">       	repository(url: LOCAL_REPO_URL)</span><br><span class="line">       	pom.groupId = PROJ_GROUP</span><br><span class="line">       	pom.artifactId = PROJ_ARTIFACTID</span><br><span class="line">       	pom.version = PROJ_VERSION    	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>在控制台运行：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p localrepo clean build uploadArchives --info</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>一切顺利的话，你的第一个本地包已经发布到设定的目录的本地仓库了：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">|	├── com</span><br><span class="line">│&nbsp;&nbsp; ├── as-gradle</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp; └── demo</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;     └── localrepo</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         ├── 1.0.0</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         │&nbsp;&nbsp; ├── localrepo-1.0.0.aar</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         │&nbsp;&nbsp; ├── localrepo-1.0.0.aar.md5</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         │&nbsp;&nbsp; ├── localrepo-1.0.0.aar.sha1</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         │&nbsp;&nbsp; ├── localrepo-1.0.0.pom</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         │&nbsp;&nbsp; ├── localrepo-1.0.0.pom.md5</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         │&nbsp;&nbsp; └── localrepo-1.0.0.pom.sha1</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         ├── maven-metadata.xml</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         ├── maven-metadata.xml.md5</span><br><span class="line">│&nbsp;&nbsp; │&nbsp;&nbsp;         └── maven-metadata.xml.sha1</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+</ul>
+<h3 id="使用本地包两个疑问向读者请教">使用本地包（两个疑问向读者请教）</h3>
+<ul>
+<li><p>要使用这个包，首先在项目的 build.gradle 中添加这个本地仓库：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">allprojects {</span><br><span class="line">   repositories {</span><br><span class="line">       jcenter()</span><br><span class="line"></span><br><span class="line">       maven{</span><br><span class="line">           url 'file:///Users/your-user-name/Documents/Android/repo/'</span><br><span class="line">       }</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>在某个 module（如 demo 项目中的 app） 的 build.gradle 中添加依赖：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile 'com.as-gradle.demo:localrepo:1.0.0@aar'</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+</ul>
+<blockquote>
+<p>这里有两个奇怪的地方，笔者也没有深入研究，初步猜测是 Android Studio 的 Bug，知道答案的读者请到我博客文章下留言赐教：</p>
+</blockquote>
+<pre><code>* 依赖末尾一般都需要加一个`@aar`，在某些版本的 Android Studio，又不需要，这是为什么？
+* 另外，如果本地包本身使用了了远程的依赖，也需要在使用本地包的时候，一并加上，否则会报缺少包，这又是为什么？</code></pre>
+<blockquote>
+<p>想要让更多的人使用到你的劳动成果，你就需要把 Maven 包放在一个别人有权访问的远程仓库上，而不是本机，接下来要介绍发布 Maven 到 jcenter 仓库和 mavenCentral 仓库。因为前者的使用简单，本着『先易后难，快速出成效』的原则，我先介绍 jcenter 的上传。</p>
+</blockquote>
+<h1 id="发布包到-bintray-jcenter-远程仓库">发布包到 Bintray jcenter 远程仓库</h1>
+<h2 id="简介">简介</h2>
+<p>jcenter 是由 <a href="https://bintray.com/" target="_blank" rel="noopener">bintray</a> 提供的 maven 中央库托管服务，bintray 又是 <a href="https://www.jfrog.com/" target="_blank" rel="noopener">jfrog</a> 公司的一款产品。jfrog 是一个商业公司，通过提供高级服务盈利，又为普通开发者提供了足够用的免费基础功能（截止至2016-01-24），笔者较为推崇这种开发者服务的商业模式。</p>
+<blockquote>
+<p>引用一张图来表述 bintray 的工作方式</p>
+</blockquote>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-27/11169370.jpg" alt="how-bintray-works"><figcaption aria-hidden="true">how-bintray-works</figcaption>
+</figure>
+<p>图片来源，http://inthecheesefactory.com/</p>
+<p>使用 jcenter 需要在 bintray 上注册账号，在本地进行加密签名配置，下面开始介绍。</p>
+<h2 id="注册账号">1. 注册账号</h2>
+<ul>
+<li>登陆 jcenter <a href="https://bintray.com/" target="_blank" rel="noopener">首页</a></li>
+<li>sigin -&gt; signup，填写表单，注意 username 这一栏是后面的 bintray 私有库的后缀，要慎重选择。</li>
+</ul>
+<h2 id="创建-gpg-签名">2. 创建 GPG 签名</h2>
+<blockquote>
+<p>前方高能预警：比较繁琐，切勿半途放弃</p>
+</blockquote>
+<p>前面介绍过，可以把 bintray 的包同步到 mavenCentral，而后者需要对包文件进行<a href="http://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/#.VqTRiFN94n0" target="_blank" rel="noopener">签名</a>，签名和验证过程需要用到一个叫做 <a href="https://www.gnupg.org/" target="_blank" rel="noopener">GPG</a> 的工具产生的公钥和私钥。<a href="https://www.gnupg.org/download/index.html" target="_blank" rel="noopener">这里</a>有适合<a href="https://www.gnupg.org/download/index.html" target="_blank" rel="noopener">多个平台</a>的 GPG 程序，下面只介绍 OSX 平台。</p>
+<blockquote>
+<p>这种工具大概的意义是产生公钥和私钥，把公钥发送到公开的服务器，私钥用来产生包文件签名。包的使用者在拿到包文件之后，通过公钥来验证文件的有效性，运行具体原理参考<a href="https://www.gnupg.org/gph/en/manual/x135.html" target="_blank" rel="noopener">这里</a>。</p>
+</blockquote>
+<ul>
+<li><p>下载 <a href="http://gpgtools.org/" target="_blank" rel="noopener">gpgtool</a>，安装</p></li>
+<li><p>检测安装成功，在命令行运行</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --version</span><br><span class="line">gpg (GnuPG/MacGPG2) 2.0.28</span><br><span class="line">libgcrypt 1.6.3</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>有类似的输出，就是正常安装了</p></li>
+<li><p>产生证书，运行命令，按照提示输入</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --gen-key</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>检查结果</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --list-keys</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>找到刚才创建证书的时候，输入的相关信息那三行，例如：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pub   2048R/2E686B39 2015-06-02</span><br><span class="line">uid       [ultimate] Your Name &lt;your-email@your-mailbox.com&gt;</span><br><span class="line">sub   2048R/your-sub-key-id 2015-06-02</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>上传公钥到服务器，找到你的 pub 的那一行，2048R/后的那一串八位字符串，如上面的：2E686B39，就是公钥 ID</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --keyserver hkp://pool.sks-keyservers.net --send-keys your-public-key-id</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>输出公钥和私钥成文件</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gpg -a --export your-email@your-mailbox.com &gt; public_key_sender.asc</span><br><span class="line">$ gpg -a --export-secret-key your-email@your-mailbox.com &gt; private_key_sender.asc</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>配置本地 gradle 运行环境的属性，位于<code>~/.gradle/gradle.properties</code>，添加内容：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">signing.keyId=your-public-key-id</span><br><span class="line">signing.password=your-gpg-password</span><br><span class="line">signing.secretKeyRingFile=/Users/your-user-name/.gnupg/secring.gpg</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>bintray 本身可以通过在 <a href="https://bintray.com/profile/edit" target="_blank" rel="noopener">profile-&gt;GPG Sining</a>中配置 public key 和 private key 来自动对上传的文件进行签名，在下图中，对应填入 <code>public_key_sender.asc</code> 与 <code>private_key_sender.asc</code> 的内容即可。 <img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-24/31700878.jpg" alt="gpg-signing"></p></li>
+<li><p>设置 bintray maven 包自动签名 选取 maven 仓库首页，进入 edit：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-27/8566871.jpg" alt="auto-sign"><figcaption aria-hidden="true">auto-sign</figcaption>
+</figure>
+<p>最下面有两个选项：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GPG sign uploaded files using Bintray's public/private key pair.</span><br><span class="line">GPG Sign uploaded files automatically</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>因为咱们是希望使用自己的 key，所以勾选第二个。</p></li>
+</ul>
+<h2 id="创建-bintray-项目">3. 创建 bintray 项目</h2>
+<p>首页-&gt; maven -&gt; add new package，填入对应的信息，其中 name 是在下面 bintray gradle 插件上传的时候，使用的项目名称，例如：bintryaar，这是要上传一个 Android Library，上传纯 Java 包的方式有<code>点点不一样</code>，下面有介绍。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-25/80371247.jpg" alt="create-package"><figcaption aria-hidden="true">create-package</figcaption>
+</figure>
+<h2 id="配置插件">4. 配置插件</h2>
+<p>bintray 官方在 github 上托管了 <a href="https://github.com/bintray/bintray-examples" target="_blank" rel="noopener">bintray-examples</a>，方便用户使用 gradle 上传包。</p>
+<p>因为这里要上传的是 aar 格式的包，所以，具体是参考 <a href="https://github.com/bintray/bintray-examples/tree/master/gradle-aar-example" target="_blank" rel="noopener">gradle-aar-example</a> 例子，然而例子有一些地方没有更新，请注意下面的描述。</p>
+<ul>
+<li>在项目中创建 local.properties 来配置 bintray 登陆信息以及 gpg 证书密码</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bintray.user=your-bintray-user</span><br><span class="line">bintray.apikey=your-bintray-apikey</span><br><span class="line">bintray.gpg.password=your-gpg-password</span><br></pre></td></tr></tbody></table></figure>
+<p>其中 your-bintray-user 就是 bintray 右上角显示的用户名称，your-bintray-apikey 在 profile-&gt;API Key 可以找到，your-gpg-password 则是创建 gpg 证书的时候的密码</p>
+<ul>
+<li>在项目的 build.gradle 配置 buildscript 的 classpath</li>
+</ul>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:1.3.0'</span><br><span class="line">        //下面两个包是用于上传的插件</span><br><span class="line">        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'</span><br><span class="line">        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'//注意此处</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li><p>在 module 的 gradle.properties 文件中定义属性</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROJ_NAME=bintrayaar</span><br><span class="line">PROJ_ARTIFACTID=bintrayaar</span><br><span class="line">PROJ_POM_NAME=Bintray Aar Repository</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>在 module 的 build.gradle 中使用插件</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'com.github.dcendents.android-maven'</span><br><span class="line">apply plugin: 'com.jfrog.bintray'</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>为了build.gradle 文件干净，笔者创建了一个名为 bintray.gradle 的文件配置插件信息，请参考<a href="https://github.com/kevinho/Embrace-Android-Studio-Demo/blob/master/S4-MavenDeploy/bintrayaar/bintray.gradle" target="_blank" rel="noopener">这个文件</a>。 关键点：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">artifacts {</span><br><span class="line">    archives javadocJar</span><br><span class="line">    archives sourcesJar</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>是为了同时生成 javadoc.jar 和 sources.jar 文件</p></li>
+<li><p>build，上传</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p bintrayrepo/ clean build bintrayUpload --info</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>如果一切顺利，你会在控制台看到多个文件上传成功的标输出</p></li>
+<li><p>踩坑实录</p>
+<ul>
+<li><p>HTTP/1.1 401 Unauthorized</p>
+<p>apikey 或者 user 填写错误</p></li>
+<li><p>HTTP/1.1 409 Conflict</p>
+<p>包的该版本已经存在，需要在 bintray 管理界面上删除该版本后才可以再次上传</p></li>
+<li><p>想让 sources.jar 或者 javadoc.jar 为空</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">task sourcesJar(type: Jar) {</span><br><span class="line">			classifier = 'sources'</span><br><span class="line">    		from sourceSets.main.java.srcDirs</span><br><span class="line">    		exclude '**'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+</ul></li>
+</ul>
+<h2 id="上传-jar-包">5. 上传 Jar 包</h2>
+<ul>
+<li><p>在上传 jar 的时候，使用的插件有些区别</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'maven-publish'</span><br><span class="line">apply plugin: 'com.jfrog.bintray'</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>在生成符合规定的 pom 文件的时候，要调用 groovy 的API，具体请参考<a href="https://github.com/kevinho/Embrace-Android-Studio-Demo/blob/master/S4-MavenDeploy/bintrayjar/bintray.gradle" target="_blank" rel="noopener">这个文件</a></p></li>
+</ul>
+<h2 id="通过私有仓库的方式引用">6. 通过私有仓库的方式引用</h2>
+<p>至此，刚才上传的两个库，已经可以通过如下方式引用了</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">allprojects {</span><br><span class="line">    repositories {</span><br><span class="line">            maven {</span><br><span class="line">            	url 'https://dl.bintray.com/freefaces/maven'//这个地址在包的页面的右方</span><br><span class="line">        	}</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compile 'com.as-gradle.demo:bintrayaar:1.0.0'</span><br><span class="line">compile 'com.as-gradle.demo:bintrayjar:1.0.0'</span><br></pre></td></tr></tbody></table></figure>
+<p>但是你也发现了，包的用户需要添加一个额外的 maven 仓库。作为一个以用户价值为先的库的开发者，那当然不希望用户麻烦的。那就需要把这个私有的库，推送到 jcenter 上去。</p>
+<h2 id="推送到-jcenter">7. 推送到 jcenter</h2>
+<p>在 bintray 的 maven 库的界面，有 <code>add to jcenter</code></p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-26/97161898.jpg" alt="add-to-jcenter"><figcaption aria-hidden="true">add-to-jcenter</figcaption>
+</figure>
+<p>点击之后，会进入一个消息页面，写或者不写都可以。提交，等待回复即可。</p>
+<p>记住,包必须满足如下条件：</p>
+<ul>
+<li>包含 sources.jar 和 javadoc.jar 文件</li>
+<li>必须是 maven 包</li>
+</ul>
+<blockquote>
+<p>bintray 的消息系统有些 bug，假设你的包提交申请被驳回，你修改之后再提交申请，可能没有人回复你。请<strong>不要傻等</strong>。直接找页面右侧的 Feedback，这个他们是很快有人回答的。</p>
+</blockquote>
+<p>成功了之后，会出现如下的标记：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-26/31312186.jpg" alt="inclusion-succeed"><figcaption aria-hidden="true">inclusion-succeed</figcaption>
+</figure>
+<p>你可以在 jcenter <a href="http://jcenter.bintray.com/" target="_blank" rel="noopener">服务器</a>上看到你的包了</p>
+<h2 id="推送到-mavencentral">8. 推送到 mavenCentral</h2>
+<p>在包管理页面，可以找到推送到 mavenCentral 功能， <img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-26/8597833.jpg" alt="sync-mavencentral"></p>
+<p>一个包要从 bintray 推送到 jcenter，有几个前提：</p>
+<ul>
+<li>已经推送到了 jcenter[已完成]</li>
+<li>每个文件都有对应的签名[已完成]</li>
+<li>有 sonatye 账户[未完成]</li>
+<li>maven 仓库经过审核[未完成]</li>
+</ul>
+<p>点击 Sync 之后，一段时间之后，右边的 Sync Status 会反馈出结果。</p>
+<p>当然了，现在咱还干不了这个，因为还有两个条件没准备好。那咱们就进入 mavenCentral 的条件准备。</p>
+<h1 id="发布包到-sonatype-mavencentral-远程仓库">发布包到 Sonatype MavenCentral 远程仓库</h1>
+<h2 id="注册-sonatye-账户">1. 注册 sonatye 账户</h2>
+<p>进入 <a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">sonatype issue</a> 页面，注册账号。</p>
+<h2 id="创建-issue">2. 创建 issue</h2>
+<p>登陆之后，顶部有按钮，<a href="https://issues.sonatype.org/secure/CreateIssue!default.jspa" target="_blank" rel="noopener">Created</a>，下面是关键的条目</p>
+<ul>
+<li>Project: <code>Community Support - Open Source Project Repository Hosting (OSSRH)</code></li>
+<li>Issue Type: New Project</li>
+<li>Group Id：就是你的包的 groupId</li>
+</ul>
+<p>其他的都认真填写。确认之后，大概两个工作日， Issue 会变成 resolved 状态，就可以发布你的包了。有了这两部，其实就可以从 bintray 上直接反向推到 mavenCentral ，而不需要走下面的步骤了，但是我还是简略介绍一下下面的步骤。如果很感兴趣详情，可以参考 <a href="http://www.trinea.cn/" target="_blank" rel="noopener">trinea</a> 的<a href="http://www.trinea.cn/dev-tools/upload-java-jar-or-android-aar-to-maven-center-repository/" target="_blank" rel="noopener">介绍</a>。</p>
+<h2 id="上传包">3. 上传包</h2>
+<p>也有方便的 gradle 插件帮助我们进行传送，可以参考 <a href="https://github.com/chrisbanes/gradle-mvn-push" target="_blank" rel="noopener">chrisbanes/gradle-mvn-push</a> 项目。配置好插件，上传。</p>
+<h2 id="发布包">4. 发布包</h2>
+<p>登陆 <a href="https://oss.sonatype.org/" target="_blank" rel="noopener">oss sonatype</a>，登陆，选择左边栏里的 <code>Staging Repositories</code>, 然后点Close 按钮，sonatype 会做响应的 validation，通过的话，就可以点 Release 发布啦，如果不通过，就检查问题，先 Drop，并重新做 Staging 发布。</p>
+<h2 id="检查包">5. 检查包</h2>
+<p>在 <a href="https://oss.sonatype.org/content/repositories/releases" target="_blank" rel="noopener">https://oss.sonatype.org/content/repositories/releases</a> 可以看到你发布的包。</p>
+<h2 id="为何如此简略">6. 为何如此简略</h2>
+<p>因为这个过程真的很繁琐，ui 也不友好，在体验了 bintray 的便捷和友好，并发现 bintray 可以反向推送到 mavenCentral 之后，我就再也不想使用 sonatype 了。无奈，贪嗔痴是人类天性。</p>
+<h1 id="搭建私服">搭建私服</h1>
+<p>由于“你懂得”的原因，在国内访问 jcenter，总是偶尔不稳定，经常会出现诸如 <a href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/" target="_blank" rel="noopener">peer not found</a> 这种错误。为了保证用户的稳定使用库，那就要考虑搭建放在自己服务器上的私有仓库。</p>
+<p>Sonatype 和 bintray 都提供了可供自己部署的 maven 库管理软件。Sonatype 提供了免费的 <a href="https://hub.docker.com/r/sonatype/nexus/" target="_blank" rel="noopener">sonatype/nexus</a>，bintray 提供了免费的 <a href="https://www.jfrog.com/open-source/" target="_blank" rel="noopener">artifactory-oss</a>。</p>
+<p>为了部署简便，笔者使用了 <a href="https://www.docker.com/" target="_blank" rel="noopener">docker</a> 进行这两个私服搭建。对于 docker 是什么，怎么用，并不是系列文章的重点。有兴趣可以自行学习。入门文档<a href="http://dockerpool.com/static/books/docker_practice/index.html" target="_blank" rel="noopener">在此</a>。</p>
+<h1 id="搭建私有-sonatype-仓库">搭建私有 Sonatype 仓库</h1>
+<ul>
+<li><p>下载安装 docker 镜像</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull sonatype/nexus</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>运行镜像</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>访问服务器</p>
+<p>因为的 docker-machine ip 是：<code>192.168.99.100</code>，于是可以通过在浏览器访问<code>http://192.168.99.100:8081/</code> 这个 URL 来访问 sonatype 私服。</p>
+<p>你会发现这个界面跟你在<code>https://oss.sonatype.org/</code>看到的几乎一样。</p>
+<p>默认账户密码是：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br><span class="line">admin123</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>设置仓库</p>
+<p>点击左侧 repository，会出现 repository 的列表，把其中的 <code>Releases</code> 的 <code>Configutation-&gt;Access Setting-&gt; Deploy Polocy</code> 设置成 <code>Allow Redeploy</code> 使得可以重复发布包。</p></li>
+<li><p>配置和使用插件</p>
+<p>我还是使用了 <a href="https://github.com/chrisbanes/gradle-mvn-push" target="_blank" rel="noopener">chrisbanes/gradle-mvn-push</a> 插件，稍微改动了一下字段的值，主要改动是环境配置，如账号密码，repository URL 等，具体请参考这里 <a href="https://github.com/kevinho/Embrace-Android-Studio-Demo/blob/master/S4-MavenDeploy/sonatyaar/gradle-mvn-push.gradle" target="_blank" rel="noopener">mvn-push</a>。</p></li>
+<li><p>关键设置</p>
+<p>要在<code>gradle.properties</code> 中设置：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PROJ_NAME=sonatyaar</span><br><span class="line">PROJ_ARTIFACTID=sonatyaar</span><br><span class="line">PROJ_POM_NAME=Sonatye Aar Repository</span><br><span class="line">POM_PACKAGING=aar</span><br><span class="line">RELEASE_REPOSITORY_URL=http://192.168.99.100:8081/content/repositories/releases</span><br><span class="line">SNAPSHOT_REPOSITORY_URL=http://192.168.99.100:8081/content/repositories/snapshots</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>查看</p>
+<p>上传成功之后，就可以在浏览器的<code>http://192.168.99.100:8081/content/repositories/releases</code>看到这个包。并可引用了。</p></li>
+<li><p>错误</p>
+<p>上传的时候，返回400，可能是<code>Configutation-&gt;Access Setting-&gt; Deploy Polocy</code>没设置好；返回401，可能是账号密码错误。</p></li>
+</ul>
+<h1 id="搭建私有-artifactory-仓库">搭建私有 Artifactory 仓库</h1>
+<p>bintray 其实提供了多个私有部署仓库的版本，分别是：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Artifactory OSS</span><br><span class="line">Artifactory Pro</span><br><span class="line">Artifactory Pro Registry</span><br></pre></td></tr></tbody></table></figure>
+<p>按名字来看，后两者可能是收费的，这里就只介绍 <code>Artifactory OSS</code>，依然是使用 docker 进行部署运行。更详细的使用手册，参考 <a href="https://www.jfrog.com/confluence/display/RTF/Running+with+Docker" target="_blank" rel="noopener">Running with Docker</a>。</p>
+<ul>
+<li><p>下载镜像（截止至2016-01-27，最新版本是4.4.1）</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull jfrog-docker-reg2.bintray.io/jfrog/artifactory-oss:4.4.1</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>运行镜像</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d -p 8080:8081 jfrog-docker-reg2.bintray.io/jfrog/artifactory-oss:4.4.1</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>在浏览器中访问<code>http://192.168.99.100:8080/</code>，默认账号密码是：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin</span><br><span class="line">password</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+</ul>
+<p>笔者写到这，发现这个篇幅已经太长了。现在的读者，其实也没有太多耐心看长篇大论，所以考虑将更详细的私服的部署，放在一篇独立的博客中讲解。</p>
+<h1 id="kevinhogradle-maven-complete">kevinho/gradle-maven-complete</h1>
+<p>为了方便读者使用 gradle 将 aar、jar包推送到 jcenter 和 mavenCentral，笔者决定将本文所使用的 sample 项目，分离出一个独立的 github 项目：<a href="https://github.com/kevinho/gradle-maven-complete" target="_blank" rel="noopener">kevinho/gradle-maven-complete</a>，里面包含如下范例：</p>
+<ul>
+<li>localrepo：本地仓库推送</li>
+<li>bintrayaar：bintray 的 aar 包推送</li>
+<li>bintrayjar：bintray 的 jar 包推送</li>
+<li>sonatypearr：mavenCentral 的 aar 包推送</li>
+</ul>
+<p>基本上覆盖到了主流的场景了，希望我这个小轮子，也能帮助大家，喜欢记得 star 哦！</p>
+<h1 id="总结">总结</h1>
+<p>这一篇，笔者结合实例讲解了 maven 仓库相关的知识，以及将 maven 包通过 gradle 插件上传本地仓库、bintray jcenter、sonatype mavenCentral，还简要介绍了 sonatype 和 artifactory 私服的 docker 搭建。或许你已经蠢蠢欲动了，那就赶紧打开你的电脑，把你的轮子，用 maven 武装起来吧！下一篇会介绍 gradle 插件的编写以及发布使用，敬请期待！</p>
+<h1 id="参考文献">参考文献</h1>
+<ul>
+<li><a href="http://inthecheesefactory.com/blog/how-to-upload-library-to-jcenter-maven-central-as-dependency/en" target="_blank" rel="noopener">inthecheesefactory.com</a></li>
+<li><a href="http://www.trinea.cn/android/maven/" target="_blank" rel="noopener">trinea.cn</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_Maven" target="_blank" rel="noopener">wikipedia</a></li>
+<li><a href="https://maven.apache.org/what-is-maven.html" target="_blank" rel="noopener">apache-maven</a></li>
+<li><a href="http://central.sonatype.org/pages/gradle.html" target="_blank" rel="noopener">sonatype-central</a></li>
+<li><a href="https://bintray.com/docs/usermanual/" target="_blank" rel="noopener">bintray-manual</a></li>
+</ul>
+<h1 id="系列导读">系列导读</h1>
+<p>本文是笔者《拥抱 Android Studio》系列第四篇，其他篇请点击：</p>
+<p><a href="http://kvh.io/2015/12/01/embrace-android-studio-migration/" target="_blank" rel="noopener">拥抱 Android Studio 之一：从 ADT 到 Android Studio</a></p>
+<p><a href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/" target="_blank" rel="noopener">拥抱 Android Studio 之二：Android Studio 与 Gradle 深入</a></p>
+<p><a href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/" target="_blank" rel="noopener">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></p>
+<p><a href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/" target="_blank" rel="noopener">拥抱 Android Studio 之四：Maven 公共仓库使用与私有仓库搭建</a></p>
+<p><a href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/" target="_blank" rel="noopener">拥抱 Android Studio 之五：Gradle 插件使用与开发</a></p>
+<blockquote>
+<p>有问题？在文章下留言或者加 qq 群：453503476，希望能帮到你。</p>
+</blockquote>
+<h1 id="番外">番外</h1>
+<p>笔者 <a href="http://kvh.io" target="_blank" rel="noopener">kvh</a> 在开发和运营 <a href="https://bugtags.com" target="_blank" rel="noopener">bugtags.com</a>，这是一款移动时代首选的 bug 管理系统，能够极大的提升 app 开发者的测试效率，欢迎使用、转发推荐。</p>
+<p>笔者目前关注点在于移动 SDK 研发，后端服务设计和实现。</p>
+<p>我们团队长期求 PHP 后端研发，有兴趣请加下面公众号勾搭：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-29/87155741.jpg" alt="bugtags"><figcaption aria-hidden="true">bugtags</figcaption>
+</figure>
+</body></html>
+
+            <div class="toc-title"> 相关文章推荐</div>
+            <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-gradle-plugin.html">拥抱 Android Studio 之五：Gradle 插件开发</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-groovy-gradle.html">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-indepth.html">拥抱 Android Studio 之二：Android Studio 与 Gradle 深入</a></li></ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+    <div class="bdsharebuttonbox">
+</div>
+
+
+
+        </footer>
+    </div>
+</article>
+<section id="comments">
+    
+        <div class="gitalk-container"></div>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<script>
+  var gitalk = new Gitalk({
+    enable: 'true',
+    clientID: '30da78d7ebc4ef2b7349',
+    clientSecret: '7ba4c2d112c1f0af2e5bc33cec42c414e71cb405',
+    id: md5(location.pathname),
+    repo: 'gittalk-kvh-io',
+    owner: 'kevinho',
+    admin: 'kevinho',
+    language: 'zh-CN'
+  })
+  gitalk.render('comment-container')
+</script>
+
+
+    
+</section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/ChangbinHe" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/kevinho" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/atom.xml" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/a-good-question.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            如何更好的提出技术问题
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/embrace-android-studio-groovy-gradle.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+
+        <div class="fixed-top" data-spy="scroll-nav" data-target="scroll-nav" data-offset="200">
+            <div class="navbar scroll-nav" data-spy="affix" data-offset-top="360" data-offset-bottom="300">
+            <!--tab-->
+            
+                
+                    <ul class="sidebar-nav nav nav-pills nav-stacked motion-element" data-offset-top="10"  data-offset-bottom="10" style="opacity:1;display:block;transform:translateX(0px);">
+                        <li class="sidebar-nav-toc sidebar-nav-active active" data-toggle="pill" data-target="post-toc-wrap" style="letter-spacing: .1rem;margin-right:10px;">
+                            文章目录
+                        </li>
+                        <li class="sidebar-nav-overview" data-toggle="pill" data-target="site-overview-wrap" style="letter-spacing:.1rem;margin-left:10px;">
+                            其他概览
+                        </li>
+                    </ul>
+                
+            
+
+
+            <!--toc-->
+            
+            <!--noindex-->
+                <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
+                    <div class="post-toc" style="max-height:400px">
+                        
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用创造和分享"><span class="nav-text">使用、创造和分享</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven-包package"><span class="nav-text">Maven 包（Package）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pom-文件"><span class="nav-text">POM 文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven-仓库"><span class="nav-text">Maven 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jcenter-vs.-mavencentral"><span class="nav-text">jcenter VS. mavenCentral</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用符合规范的-maven-仓库"><span class="nav-text">使用符合规范的 maven 仓库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布-maven-包"><span class="nav-text">发布 Maven 包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局设定"><span class="nav-text">全局设定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布包到本地仓库"><span class="nav-text">发布包到本地仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用本地包两个疑问向读者请教"><span class="nav-text">使用本地包（两个疑问向读者请教）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布包到-bintray-jcenter-远程仓库"><span class="nav-text">发布包到 Bintray jcenter 远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册账号"><span class="nav-text">1. 注册账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-gpg-签名"><span class="nav-text">2. 创建 GPG 签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-bintray-项目"><span class="nav-text">3. 创建 bintray 项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置插件"><span class="nav-text">4. 配置插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传-jar-包"><span class="nav-text">5. 上传 Jar 包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过私有仓库的方式引用"><span class="nav-text">6. 通过私有仓库的方式引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送到-jcenter"><span class="nav-text">7. 推送到 jcenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推送到-mavencentral"><span class="nav-text">8. 推送到 mavenCentral</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布包到-sonatype-mavencentral-远程仓库"><span class="nav-text">发布包到 Sonatype MavenCentral 远程仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-sonatye-账户"><span class="nav-text">1. 注册 sonatye 账户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-issue"><span class="nav-text">2. 创建 issue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上传包"><span class="nav-text">3. 上传包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布包"><span class="nav-text">4. 发布包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查包"><span class="nav-text">5. 检查包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为何如此简略"><span class="nav-text">6. 为何如此简略</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建私服"><span class="nav-text">搭建私服</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建私有-sonatype-仓库"><span class="nav-text">搭建私有 Sonatype 仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建私有-artifactory-仓库"><span class="nav-text">搭建私有 Artifactory 仓库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kevinhogradle-maven-complete"><span class="nav-text">kevinho/gradle-maven-complete</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系列导读"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#番外"><span class="nav-text">番外</span></a></li></ol>
+                        
+
+                        
+
+                        
+                    </div>
+                </section>
+            
+
+            <!--overview-->
+            <section class="site-overview-wrap motion-element sidebar-panel" style="opacity:1;">
+                <div class="widgets-container" style="max-height:500px;overflow:auto;">
+                    
+                        
+                            
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalogue</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用创造和分享"><span class="toc-number">1.</span> <span class="toc-text">使用、创造和分享</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maven-包package"><span class="toc-number">2.</span> <span class="toc-text">Maven 包（Package）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#pom-文件"><span class="toc-number">2.1.</span> <span class="toc-text">POM 文件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#maven-仓库"><span class="toc-number">3.</span> <span class="toc-text">Maven 仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jcenter-vs.-mavencentral"><span class="toc-number">3.1.</span> <span class="toc-text">jcenter VS. mavenCentral</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用符合规范的-maven-仓库"><span class="toc-number">3.2.</span> <span class="toc-text">使用符合规范的 maven 仓库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发布-maven-包"><span class="toc-number">4.</span> <span class="toc-text">发布 Maven 包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#全局设定"><span class="toc-number">4.1.</span> <span class="toc-text">全局设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布包到本地仓库"><span class="toc-number">4.2.</span> <span class="toc-text">发布包到本地仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用本地包两个疑问向读者请教"><span class="toc-number">4.2.1.</span> <span class="toc-text">使用本地包（两个疑问向读者请教）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发布包到-bintray-jcenter-远程仓库"><span class="toc-number">5.</span> <span class="toc-text">发布包到 Bintray jcenter 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">5.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册账号"><span class="toc-number">5.2.</span> <span class="toc-text">1. 注册账号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-gpg-签名"><span class="toc-number">5.3.</span> <span class="toc-text">2. 创建 GPG 签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-bintray-项目"><span class="toc-number">5.4.</span> <span class="toc-text">3. 创建 bintray 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置插件"><span class="toc-number">5.5.</span> <span class="toc-text">4. 配置插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传-jar-包"><span class="toc-number">5.6.</span> <span class="toc-text">5. 上传 Jar 包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通过私有仓库的方式引用"><span class="toc-number">5.7.</span> <span class="toc-text">6. 通过私有仓库的方式引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推送到-jcenter"><span class="toc-number">5.8.</span> <span class="toc-text">7. 推送到 jcenter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#推送到-mavencentral"><span class="toc-number">5.9.</span> <span class="toc-text">8. 推送到 mavenCentral</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#发布包到-sonatype-mavencentral-远程仓库"><span class="toc-number">6.</span> <span class="toc-text">发布包到 Sonatype MavenCentral 远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#注册-sonatye-账户"><span class="toc-number">6.1.</span> <span class="toc-text">1. 注册 sonatye 账户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建-issue"><span class="toc-number">6.2.</span> <span class="toc-text">2. 创建 issue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传包"><span class="toc-number">6.3.</span> <span class="toc-text">3. 上传包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布包"><span class="toc-number">6.4.</span> <span class="toc-text">4. 发布包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查包"><span class="toc-number">6.5.</span> <span class="toc-text">5. 检查包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为何如此简略"><span class="toc-number">6.6.</span> <span class="toc-text">6. 为何如此简略</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建私服"><span class="toc-number">7.</span> <span class="toc-text">搭建私服</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建私有-sonatype-仓库"><span class="toc-number">8.</span> <span class="toc-text">搭建私有 Sonatype 仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建私有-artifactory-仓库"><span class="toc-number">9.</span> <span class="toc-text">搭建私有 Artifactory 仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#kevinhogradle-maven-complete"><span class="toc-number">10.</span> <span class="toc-text">kevinho/gradle-maven-complete</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">11.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">12.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系列导读"><span class="toc-number">13.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#番外"><span class="toc-number">14.</span> <span class="toc-text">番外</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+                        
+                            
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/web3-nft-overviews.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
+                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/sparse-merkle-tree.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
+                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/smart-wallet.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
+                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/0x-intro.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="0x协议-介绍" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/0x-intro.html" class="title">0x协议-介绍</a></p>
+                            <p class="item-date"><time datetime="2021-01-01T02:49:05.000Z" itemprop="datePublished">2021-01-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/reading-emotion-coaching.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-7-7/93234566.jpg)" alt="《你就是孩子最好的玩具》读书笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/reading/">reading</a></p>
+                            <p class="item-title"><a href="/reading-emotion-coaching.html" class="title">《你就是孩子最好的玩具》读书笔记</a></p>
+                            <p class="item-date"><time datetime="2020-10-05T10:05:12.000Z" itemprop="datePublished">2020-10-05</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+        </div>
+    </div>
+
+
+                        
+                            
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+                        
+                    
+                </div>
+            </section>
+
+            </div>
+        </div>
+
+
+
+    
+    <div id="totop" title="to_top">
+    <canvas id="totop-canvas" width="48" height="48"></canvas>
+    <div id="totop-percent"></div>
+</div>
+
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 kvh</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <script src='https://unpkg.com/mermaid@8.4.2/dist/mermaid.min.js'></script>
+    <script>
+      if (window.mermaid) {
+        mermaid.initialize({theme:'default', startOnLoad:true, flowchart:{ useMaxWidth:false }, htmlLabels: true});
+      }
+    </script>
+
+
+
+        
+
+
+    
+    
+    
+
+
+
+<script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+<script src="/libs/bootstrap/bootstrap.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+
+        <script src="libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="libs/weixin/jweixin-1.2.0.js"></script>
+        <script>
+          window.onload = function () {
+            if(isWeChat()){
+
+              wxShare({
+                title: document.title,
+                desc: document.title,
+                logo: "https://mmbiz.qlogo.cn/mmbiz_jpg/5GOQQXbnSDHKtsNOKOTicUAztQ4nA4nWVl0L6UMYIgZniaAxf5yzicc9TL5AlaWRIstn1WP5IxF2EwdhAuicVCDNNw/300?wx_fmt=jpeg&wxfrom=1"
+              });
+            }
+          };
+        </script>
+    </div>
+</body>
+</html>
