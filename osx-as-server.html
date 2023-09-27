@@ -12,12 +12,12 @@
     
         <meta name="keywords" content="macOS" />
     
-    <meta name="description" content="因为业务需要，我司有若干台服务器 Mac 作为服务器。下面总结一下注意事项，作为记录。 取消系统休眠曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra 之后，发现之前能够正常运行的程序出现问题。 具体表现是：  ssh 登出之后不久，线上就开始报警 登陆进去查看 log，发现程序又是正常的 socket 连接提示传输错误 程序并没有 exit  一开始怀疑是后台程序的权限问">
+    <meta name="description" content="因为业务需要，我司有若干台服务器 Mac 作为服务器。下面总结一下注意事项，作为记录。 取消系统休眠 曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra 之后，发现之前能够正常运行的程序出现问题。 具体表现是：  ssh 登出之后不久，线上就开始报警 登陆进去查看 log，发现程序又是正常的 socket 连接提示传输错误 程序并没有 exit  一开始怀疑是后台程序的权限">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macOS 作为服务器">
 <meta property="og:url" content="https://0xkevinhe.xyz/osx-as-server.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website">
-<meta property="og:description" content="因为业务需要，我司有若干台服务器 Mac 作为服务器。下面总结一下注意事项，作为记录。 取消系统休眠曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra 之后，发现之前能够正常运行的程序出现问题。 具体表现是：  ssh 登出之后不久，线上就开始报警 登陆进去查看 log，发现程序又是正常的 socket 连接提示传输错误 程序并没有 exit  一开始怀疑是后台程序的权限问">
+<meta property="og:description" content="因为业务需要，我司有若干台服务器 Mac 作为服务器。下面总结一下注意事项，作为记录。 取消系统休眠 曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra 之后，发现之前能够正常运行的程序出现问题。 具体表现是：  ssh 登出之后不久，线上就开始报警 登陆进去查看 log，发现程序又是正常的 socket 连接提示传输错误 程序并没有 exit  一开始怀疑是后台程序的权限">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/17-12-4/4783593.jpg">
 <meta property="article:published_time" content="2017-12-04T03:21:55.000Z">
@@ -201,82 +201,109 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <p>因为业务需要，我司有若干台服务器 Mac 作为服务器。下面总结一下注意事项，作为记录。</p>
-<h1 id="取消系统休眠"><a href="#取消系统休眠" class="headerlink" title="取消系统休眠"></a>取消系统休眠</h1><p>曾经在这个问题上困扰很长时间。在升级了 <code>macOS High Sierra</code> 之后，发现之前能够正常运行的程序出现问题。</p>
+            <p>因为业务需要，我司有若干台服务器 Mac
+作为服务器。下面总结一下注意事项，作为记录。</p>
+<h1 id="取消系统休眠">取消系统休眠</h1>
+<p>曾经在这个问题上困扰很长时间。在升级了 <code>macOS High Sierra</code>
+之后，发现之前能够正常运行的程序出现问题。</p>
 <p>具体表现是：</p>
-<ol>
+<ol type="1">
 <li>ssh 登出之后不久，线上就开始报警</li>
 <li>登陆进去查看 log，发现程序又是正常的</li>
 <li>socket 连接提示传输错误</li>
 <li>程序并没有 exit</li>
 </ol>
-<p>一开始怀疑是后台程序的权限问题，于是更新了后台程序的 launchd 配置，确保了使用 root 用户运行，没有效果。</p>
-<p>后来灵机一动，去具体分析程序的 log，发现只要用户登出，输出就会停止，看起来是程序被挂起了。</p>
+<p>一开始怀疑是后台程序的权限问题，于是更新了后台程序的 launchd
+配置，确保了使用 root 用户运行，没有效果。</p>
+<p>后来灵机一动，去具体分析程序的
+log，发现只要用户登出，输出就会停止，看起来是程序被挂起了。</p>
 <p>分析可能被挂起的原因，只可能是系统休眠了。</p>
 <p>直接登陆 GUI 系统，在系统设置中将节能设置改成：</p>
-<p><img src="https://raw.githubusercontent.com/changbinhe/images/master/17-12-4/97778894.jpg" alt="节能设置"></p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/17-12-4/97778894.jpg" alt="节能设置">
+<figcaption aria-hidden="true">节能设置</figcaption>
+</figure>
 <p>生效了！</p>
-<h1 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h1><p>作为服务器，大多是需要运行守护进程。这就需要用到 <code>launchd</code>，它能确保这是确保设备重启之后，守护能够自动运行。</p>
+<h1 id="守护进程">守护进程</h1>
+<p>作为服务器，大多是需要运行守护进程。这就需要用到
+<code>launchd</code>，它能确保这是确保设备重启之后，守护能够自动运行。</p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Launchd">launchd</a> 是一个开源框架，用于控制守护进程、程序、或者脚本，在 Mac OS X Tiger 中引入。</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Launchd">launchd</a>
+是一个开源框架，用于控制守护进程、程序、或者脚本，在 Mac OS X Tiger
+中引入。</p>
 </blockquote>
 <p>使用 launchd，主要需要注意下面几点：</p>
 <ul>
 <li>正确区分系统全局的守护和用户相关的守护进程</li>
 </ul>
 <table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>类型</th>
 <th>路径</th>
 <th>运行用户</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>全局的守护进程</td>
 <td>/Library/LaunchDaemons</td>
 <td>root 用户或者使用 UserName key 对应的用户</td>
 </tr>
-<tr>
+<tr class="even">
 <td>系统的守护进程</td>
 <td>/System/Library/LaunchDaemons</td>
 <td>root 用户或者使用</td>
 </tr>
-</tbody></table>
-<p>一般而言，把 plist 文件放到 <code>/Library/LaunchDaemons</code> 即可。</p>
+</tbody>
+</table>
+<p>一般而言，把 plist 文件放到 <code>/Library/LaunchDaemons</code>
+即可。</p>
 <ul>
 <li>正确设置 plist 文件的权限</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r--  1 wheel  947 12  1 14:51 name_of_the_config.plist</span><br></pre></td></tr></table></figure>
-<p>也即是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户：root</span><br><span class="line">组：wheel</span><br><span class="line">权限： 0644</span><br></pre></td></tr></table></figure>
-
+<p>也即是： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户：root</span><br><span class="line">组：wheel</span><br><span class="line">权限： 0644</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>被运行的程序，需要是处于前台运行，否则 launchd 会认为程序已经退出</li>
+<li>被运行的程序，需要是处于前台运行，否则 launchd
+会认为程序已经退出</li>
 <li>如果需要全局性的守护进程，需要使用 sudo 运行</li>
 </ul>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a target="_blank" rel="noopener" href="http://www.launchd.info/">http://www.launchd.info/</a></p>
+<h2 id="参考文档">参考文档</h2>
+<p><a target="_blank" rel="noopener" href="http://www.launchd.info/">http://www.launchd.info/</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man5/launchd.plist.5.html#//apple_ref/doc/man/5/launchd.plist">launchd.plist</a></p>
 <p><a target="_blank" rel="noopener" href="https://developer.apple.com/legacy/library/documentation/Darwin/Reference/ManPages/man1/launchctl.1.html#//apple_ref/doc/man/1/launchctl">launchctl</a></p>
-<h1 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h1><p>很多时候，macOS 服务器并不是托管在机房，而是在某个比较方便管理的地方——例如办公室。</p>
-<p>办公室的网络环境又千奇百怪，往往没有固定的外网 ip，往往是处于 NAT 的网络环境或者是防火墙内，如果服务出现了问题，总不能直接跑去办公室吧。</p>
+<h1 id="内网穿透">内网穿透</h1>
+<p>很多时候，macOS
+服务器并不是托管在机房，而是在某个比较方便管理的地方——例如办公室。</p>
+<p>办公室的网络环境又千奇百怪，往往没有固定的外网 ip，往往是处于 NAT
+的网络环境或者是防火墙内，如果服务出现了问题，总不能直接跑去办公室吧。</p>
 <p>尝试过各种 VPN 方案，动静太大，不稳定，放弃。下面介绍一下 <a target="_blank" rel="noopener" href="https://github.com/inconshreveable/ngrok">Ngrok</a>。</p>
 <p>官网简介：</p>
 <blockquote>
-<p>Secure tunnels to localhost ”I want to expose a local server behind a NAT or firewall to the internet.”</p>
+<p>Secure tunnels to localhost ”I want to expose a local server behind a
+NAT or firewall to the internet.”</p>
 </blockquote>
 <p>基本的构架图如下：</p>
-<p><img src="https://raw.githubusercontent.com/changbinhe/images/master/17-12-4/55782772.jpg" alt="Ngrok"></p>
-<p>这款软件是 C/S 结构，使用服务器作为中转，只需要设置好服务器和客户端，不需要在路由器做任何处理。<code>软件的2.x 不开源，github 上只有 1.x 版本</code>，已经足够。</p>
-<p>使用方式，参考<a target="_blank" rel="noopener" href="https://imququ.com/post/self-hosted-ngrokd.html"> imququ 的博客</a>。</p>
-<p>基本流程是：</p>
-<ol>
-<li>clone 源码</li>
-<li>生成证书，拷贝 <code>base.pem</code> 到 <code>assets/client/tls/ngrokroot.crt</code>  下</li>
-<li>运行 <code>make release-server release-client</code></li>
-<li><code>bin</code> 的 ngrokd 和 ngrok 分别是服务器端和客户端</li>
-</ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上是对于 <code>macOS</code> 作为服务器的一些注意事项。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/changbinhe/images/master/17-12-4/55782772.jpg" alt="Ngrok">
+<figcaption aria-hidden="true">Ngrok</figcaption>
+</figure>
+<p>这款软件是 C/S
+结构，使用服务器作为中转，只需要设置好服务器和客户端，不需要在路由器做任何处理。<code>软件的2.x 不开源，github 上只有 1.x 版本</code>，已经足够。</p>
+<p>使用方式，参考<a target="_blank" rel="noopener" href="https://imququ.com/post/self-hosted-ngrokd.html">imququ
+的博客</a>。</p>
+<p>基本流程是： 1. clone 源码 2. 生成证书，拷贝 <code>base.pem</code> 到
+<code>assets/client/tls/ngrokroot.crt</code> 下 3. 运行
+<code>make release-server release-client</code> 4. <code>bin</code> 的
+ngrokd 和 ngrok 分别是服务器端和客户端</p>
+<h1 id="总结">总结</h1>
+<p>以上是对于 <code>macOS</code> 作为服务器的一些注意事项。</p>
 
 
             <div class="toc-title"> 相关文章推荐</div>
