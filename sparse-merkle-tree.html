@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+<head>
+    <meta charset="utf-8" />
 
     
 
     
-    <title>zksync 存储：sparse-merkle-tree 存储 | Changbin He&#39;s Website</title>
+    <title>zksync 存储：sparse-merkle-tree 存储 | Kevin He&#39;s Website</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="zkp">
+        <meta name="keywords" content="zkp" />
     
-    <meta name="description" content="简介 本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle tree merkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  merkle-tree  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验">
-<meta name="keywords" content="zkp">
+    <meta name="description" content="简介本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle treemerkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验 merkle 证明。 计算">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zksync 存储：sparse-merkle-tree 存储">
-<meta property="og:url" content="https://changbin.xyz/sparse-merkle-tree.html">
-<meta property="og:site_name" content="Changbin He&#39;s Website">
-<meta property="og:description" content="简介 本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle tree merkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  merkle-tree  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:url" content="https://0xkevinhe.xyz/sparse-merkle-tree.html">
+<meta property="og:site_name" content="Kevin He&#39;s Website">
+<meta property="og:description" content="简介本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle treemerkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验 merkle 证明。 计算">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg">
-<meta property="og:updated_time" content="2022-07-02T07:16:07.117Z">
+<meta property="article:published_time" content="2021-02-09T12:02:00.000Z">
+<meta property="article:modified_time" content="2023-09-27T07:01:22.196Z">
+<meta property="article:author" content="Kevin He">
+<meta property="article:tag" content="zkp">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zksync 存储：sparse-merkle-tree 存储">
-<meta name="twitter:description" content="简介 本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。 merkle tree merkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。  merkle-tree  对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Changbin He&#39;s Website" type="application/atom+xml">
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml" />
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     
     
@@ -63,8 +73,8 @@ var _hmt = _hmt || [];
     
 
 
-</head>
-</html>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -124,7 +134,9 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -174,14 +186,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/zkp/">zkp</a>
+        <a class="tag-link-link" href="/tags/zkp/" rel="tag">zkp</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2022-07-02T07:16:07.117Z" itemprop="dateModified">2022-07-02</time>
+                    <time datetime="2023-09-27T07:01:22.196Z" itemprop="dateModified">2023-09-27</time>
                 </span>
             
             </div>
@@ -189,34 +201,26 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <html><head></head><body><h1 id="简介">简介</h1>
-<p>本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。</p>
-<h1 id="merkle-tree">merkle tree</h1>
-<p><a href="https://en.wikipedia.org/wiki/Merkle_tree" target="_blank" rel="noopener">merkle tree</a> 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。</p>
-<figure>
-<img src="./sparse-merkle-tree/merkle-tree.png" alt="merkle-tree"><figcaption aria-hidden="true">merkle-tree</figcaption>
-</figure>
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。</p>
+<h1 id="merkle-tree"><a href="#merkle-tree" class="headerlink" title="merkle tree"></a>merkle tree</h1><p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Merkle_tree">merkle tree</a> 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。</p>
+<p><img src="/./sparse-merkle-tree/merkle-tree.png" alt="merkle-tree"></p>
 <p>对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验 merkle 证明。</p>
 <p>计算 merkle 证明包含：</p>
 <p>1）计算存在证明</p>
 <p>2）计算不存在证明</p>
 <p>在原始的 merkle tree 上，很容易生成存在性证明，但是难以生成不存在证明。</p>
-<h1 id="sparse-merkle-tree">sparse merkle tree</h1>
-<p>为了解决这个问题，同时零知识证明也要求账号在树上的位置具有确定性，因此引入 sparse merkle tree，有如下特点：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一棵满二叉树</span><br><span class="line">数据是索引的，每个数据会放到对应的索引的叶子上</span><br><span class="line">存在性证明，merkle path</span><br><span class="line">不存在性证明，需要证明是 null</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="优化">优化</h1>
-<p>1）预计算空值哈希</p>
+<h1 id="sparse-merkle-tree"><a href="#sparse-merkle-tree" class="headerlink" title="sparse merkle tree"></a>sparse merkle tree</h1><p>为了解决这个问题，同时零知识证明也要求账号在树上的位置具有确定性，因此引入 sparse merkle tree，有如下特点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">一棵满二叉树</span><br><span class="line">数据是索引的，每个数据会放到对应的索引的叶子上</span><br><span class="line">存在性证明，merkle path</span><br><span class="line">不存在性证明，需要证明是 null</span><br></pre></td></tr></table></figure>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>1）预计算空值哈希</p>
 <p>由于大部分情况下，树并不会真的满，而是非常的稀疏。可以预计算H(null)、H(H(null)|H(null))、H(H(H(null)|H(null))|H(H(null)|H(null)))等层级上的值，达到加速的效果。</p>
 <p>2）并行计算左右子树哈希</p>
 <p>H(H(left)|H(right)) 这类操作要求 快速计算左右子树的哈希值，并行计算可以计算。</p>
-<h1 id="实现">实现</h1>
-<p><a href="https://github.com/matter-labs/zksync/blob/master/core/lib/crypto/src/merkle_tree/parallel_smt.rs" target="_blank" rel="noopener">rust-matter-labs</a></p>
-<p><a href="https://github.com/iden3/iden3js/blob/master/src/sparse-merkle-tree/sparse-merkle-tree.js" target="_blank" rel="noopener">js-iden3</a></p>
-<p><a href="https://github.com/iden3/go-iden3-core/blob/master/merkletree/merkletree.go" target="_blank" rel="noopener">golang-iden3</a></p>
-<h1 id="文献参考">文献参考</h1>
-<p><a href="https://medium.com/@kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837" target="_blank" rel="noopener">whats-a-sparse-merkle-tree</a></p>
-<p><a href="https://blog.iden3.io/sparse-merkle-trees-visual-introduction.html" target="_blank" rel="noopener">sparse-merkle-trees-visual-introduction</a></p>
-</body></html>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p><a target="_blank" rel="noopener" href="https://github.com/matter-labs/zksync/blob/master/core/lib/crypto/src/merkle_tree/parallel_smt.rs">rust-matter-labs</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/iden3/iden3js/blob/master/src/sparse-merkle-tree/sparse-merkle-tree.js">js-iden3</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/iden3/go-iden3-core/blob/master/merkletree/merkletree.go">golang-iden3</a></p>
+<h1 id="文献参考"><a href="#文献参考" class="headerlink" title="文献参考"></a>文献参考</h1><p><a target="_blank" rel="noopener" href="https://medium.com/@kelvinfichter/whats-a-sparse-merkle-tree-acda70aeb837">whats-a-sparse-merkle-tree</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.iden3.io/sparse-merkle-trees-visual-introduction.html">sparse-merkle-trees-visual-introduction</a></p>
+
 
             <div class="toc-title"> 相关文章推荐</div>
             <p class="related-posts-none">No related post.</p>
@@ -271,7 +275,7 @@ var _hmt = _hmt || [];
             
                 
                 <li>
-                    <a class="social-tooltip" title="twitter" href="https://twitter.com/ChangbinHe" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/0xkevinhe" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
                 </li>
@@ -342,7 +346,7 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#merkle-tree"><span class="nav-text">merkle tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sparse-merkle-tree"><span class="nav-text">sparse merkle tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#优化"><span class="nav-text">优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文献参考"><span class="nav-text">文献参考</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#merkle-tree"><span class="nav-text">merkle tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sparse-merkle-tree"><span class="nav-text">sparse merkle tree</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BC%98%E5%8C%96"><span class="nav-text">优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E7%8C%AE%E5%8F%82%E8%80%83"><span class="nav-text">文献参考</span></a></li></ol>
                         
 
                         
@@ -362,7 +366,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#merkle-tree"><span class="toc-number">2.</span> <span class="toc-text">merkle tree</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sparse-merkle-tree"><span class="toc-number">3.</span> <span class="toc-text">sparse merkle tree</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优化"><span class="toc-number">4.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">5.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文献参考"><span class="toc-number">6.</span> <span class="toc-text">文献参考</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#merkle-tree"><span class="toc-number">2.</span> <span class="toc-text">merkle tree</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#sparse-merkle-tree"><span class="toc-number">3.</span> <span class="toc-text">sparse merkle tree</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">优化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%8C%AE%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">文献参考</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -504,7 +508,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -514,7 +518,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blockchain/" style="font-size: 12.5px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blockchain/" style="font-size: 12.5px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 15px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 15px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -560,7 +564,7 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2022 kvh</p>
+                <p>&copy; 2023 Kevin He</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -596,7 +600,9 @@ var _hmt = _hmt || [];
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>

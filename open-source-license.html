@@ -1,49 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+<head>
+    <meta charset="utf-8" />
 
     
 
     
-    <title>开源许可证介绍与项目实战 | Changbin He&#39;s Website</title>
+    <title>开源许可证介绍与项目实战 | Kevin He&#39;s Website</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content>
+        <meta name="keywords" content="" />
     
-    <meta name="description" content="介绍 在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：  使用和修改的条件是什么？ 商用和分发的条件是什么？ 本项目开源后使用什么许可证？  本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。 许可证介绍 许可证的内容，其实是博大精深。 首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。 下面主要是介绍若干主流且具有代表性的许可证。  主要参">
+    <meta name="description" content="介绍在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：  使用和修改的条件是什么？ 商用和分发的条件是什么？ 本项目开源后使用什么许可证？  本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。 许可证介绍许可证的内容，其实是博大精深。 首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。 下面主要是介绍若干主流且具有代表性的许可证。  主要参考了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开源许可证介绍与项目实战">
-<meta property="og:url" content="https://changbin.xyz/open-source-license.html">
-<meta property="og:site_name" content="Changbin He&#39;s Website">
-<meta property="og:description" content="介绍 在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：  使用和修改的条件是什么？ 商用和分发的条件是什么？ 本项目开源后使用什么许可证？  本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。 许可证介绍 许可证的内容，其实是博大精深。 首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。 下面主要是介绍若干主流且具有代表性的许可证。  主要参">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:url" content="https://0xkevinhe.xyz/open-source-license.html">
+<meta property="og:site_name" content="Kevin He&#39;s Website">
+<meta property="og:description" content="介绍在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：  使用和修改的条件是什么？ 商用和分发的条件是什么？ 本项目开源后使用什么许可证？  本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。 许可证介绍许可证的内容，其实是博大精深。 首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。 下面主要是介绍若干主流且具有代表性的许可证。  主要参考了">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/26151545.jpg">
-<meta property="og:updated_time" content="2022-07-02T07:16:07.116Z">
+<meta property="article:published_time" content="2020-04-28T03:18:16.000Z">
+<meta property="article:modified_time" content="2023-09-27T07:01:22.160Z">
+<meta property="article:author" content="Kevin He">
+<meta property="article:tag" content="Web3, AI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="开源许可证介绍与项目实战">
-<meta name="twitter:description" content="介绍 在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：  使用和修改的条件是什么？ 商用和分发的条件是什么？ 本项目开源后使用什么许可证？  本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。 许可证介绍 许可证的内容，其实是博大精深。 首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。 下面主要是介绍若干主流且具有代表性的许可证。  主要参">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/26151545.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Changbin He&#39;s Website" type="application/atom+xml">
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml" />
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     
     
@@ -62,8 +73,8 @@ var _hmt = _hmt || [];
     
 
 
-</head>
-</html>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -123,7 +134,9 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -175,7 +188,7 @@ var _hmt = _hmt || [];
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2022-07-02T07:16:07.116Z" itemprop="dateModified">2022-07-02</time>
+                    <time datetime="2023-09-27T07:01:22.160Z" itemprop="dateModified">2023-09-27</time>
                 </span>
             
             </div>
@@ -183,36 +196,36 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <html><head></head><body><h1 id="介绍">介绍</h1>
-<p>在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：</p>
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：</p>
 <ul>
 <li>使用和修改的条件是什么？</li>
 <li>商用和分发的条件是什么？</li>
 <li>本项目开源后使用什么许可证？</li>
 </ul>
 <p>本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。</p>
-<h1 id="许可证介绍">许可证介绍</h1>
-<p>许可证的内容，其实是博大精深。</p>
+<h1 id="许可证介绍"><a href="#许可证介绍" class="headerlink" title="许可证介绍"></a>许可证介绍</h1><p>许可证的内容，其实是博大精深。</p>
 <p>首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。</p>
 <p>下面主要是介绍若干<code>主流且具有代表性</code>的许可证。</p>
 <blockquote>
-<p>主要参考了<a href="https://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html" target="_blank" rel="noopener">开源许可证教程-阮一峰的网络日志</a></p>
+<p>主要参考了<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html">开源许可证教程-阮一峰的网络日志</a></p>
 </blockquote>
-<h2 id="名词解释">名词解释</h2>
-<ul>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
 <li><p>分发</p>
-<p>将版权作品从一个人转移到另外一个人；例如提供给别人；如果是本公司使用，不算分发。</p></li>
+<p>将版权作品从一个人转移到另外一个人；例如提供给别人；如果是本公司使用，不算分发。</p>
+</li>
 <li><p>传染</p>
-<p>一个项目用到了某个许可证的代码，在某些条件下（例如分发），这个项目本身也需要使用这种许可证</p></li>
+<p>一个项目用到了某个许可证的代码，在某些条件下（例如分发），这个项目本身也需要使用这种许可证</p>
+</li>
 <li><p>许可证版本</p>
-<p>同一个许可证，有版本号之间的区别，例如 GPL 有 v1/v2/v3。</p></li>
+<p>同一个许可证，有版本号之间的区别，例如 GPL 有 v1/v2/v3。</p>
+</li>
 </ul>
-<h2 id="宽松的许可证">宽松的许可证</h2>
-<p>包含 MIT/ISC/BSD/Apache等，基本上这类许可证，是可以放心使用。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">（1）BSD（二条款版）</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明。</span><br><span class="line"></span><br><span class="line">（2） BSD（三条款版）</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明。不得使用原始作者的名字为软件促销。</span><br><span class="line"></span><br><span class="line">（3）MIT</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明，与 BSD（二条款版）基本一致。</span><br><span class="line"></span><br><span class="line">（4）Apache 2</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明。凡是修改过的文件，必须向用户说明该文件修改过；没有修改过的文件，必须保持许可证不变。</span><br></pre></td></tr></tbody></table></figure>
-<h3 id="copyleft-许可证">Copyleft 许可证</h3>
-<p>代码可以随意复制，有如下前提：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 如果分发二进制格式，必须提供源码</span><br><span class="line">- 修改后的源码，必须与修改前保持许可证一致</span><br><span class="line">- 不得在原始许可证以外，附加其他限制</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="宽松的许可证"><a href="#宽松的许可证" class="headerlink" title="宽松的许可证"></a>宽松的许可证</h2><p>包含 MIT/ISC/BSD/Apache等，基本上这类许可证，是可以放心使用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">（1）BSD（二条款版）</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明。</span><br><span class="line"></span><br><span class="line">（2） BSD（三条款版）</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明。不得使用原始作者的名字为软件促销。</span><br><span class="line"></span><br><span class="line">（3）MIT</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明，与 BSD（二条款版）基本一致。</span><br><span class="line"></span><br><span class="line">（4）Apache 2</span><br><span class="line"></span><br><span class="line">分发软件时，必须保留原始的许可证声明。凡是修改过的文件，必须向用户说明该文件修改过；没有修改过的文件，必须保持许可证不变。</span><br></pre></td></tr></table></figure>
+
+<h3 id="Copyleft-许可证"><a href="#Copyleft-许可证" class="headerlink" title="Copyleft 许可证"></a>Copyleft 许可证</h3><p>代码可以随意复制，有如下前提：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 如果分发二进制格式，必须提供源码</span><br><span class="line">- 修改后的源码，必须与修改前保持许可证一致</span><br><span class="line">- 不得在原始许可证以外，附加其他限制</span><br></pre></td></tr></table></figure>
+
 <p>核心在于，修改后的代码，不得闭源。</p>
 <ul>
 <li>AGPL</li>
@@ -234,80 +247,74 @@ var _hmt = _hmt || [];
 </ul>
 <p>分发时，只要该许可证的代码在单独的文件中，新增的其他文件可以不用开源。</p>
 <blockquote>
-<p>无论是商业应用，还是开源项目，在采用 AGPL/GPL/LGPL/MPL都要特别的小心。</p>
+<p> 无论是商业应用，还是开源项目，在采用 AGPL/GPL/LGPL/MPL都要特别的小心。</p>
 </blockquote>
-<h1 id="许可证检测">许可证检测</h1>
-<p>介绍两个工具，分别检测代码文件和依赖的 license。</p>
-<h2 id="检测代码">检测代码</h2>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/google/addlicense</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="许可证检测"><a href="#许可证检测" class="headerlink" title="许可证检测"></a>许可证检测</h1><p>介绍两个工具，分别检测代码文件和依赖的 license。</p>
+<h2 id="检测代码"><a href="#检测代码" class="headerlink" title="检测代码"></a>检测代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/google/addlicense</span><br></pre></td></tr></table></figure>
+
 <p>可以递归检测当前目录下的所有代码文件，许可证声明的情况，例如：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addlicense -check ./ |sort &gt; lc.txt</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addlicense -check ./ |sort > lc.txt </span><br></pre></td></tr></table></figure>
+
 <p>可以把未添加许可证的文件都输出到lc.txt 文件中，方便后续进行检查。</p>
-<h2 id="检测依赖库">检测依赖库</h2>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/google/go-licenses</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="检测依赖库"><a href="#检测依赖库" class="headerlink" title="检测依赖库"></a>检测依赖库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get -u github.com/google/go-licenses</span><br></pre></td></tr></table></figure>
+
 <p>查看一个依赖库所使用的版权信息：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go-licenses csv repo</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go-licenses csv repo</span><br></pre></td></tr></table></figure>
+
 <p>可以通过一个这个脚本项目进行批量测试：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat dep.txt |while read line</span><br><span class="line">do </span><br><span class="line">echo "start checking package $line"</span><br><span class="line">go-licenses csv $line</span><br><span class="line">echo ""</span><br><span class="line">done</span><br></pre></td></tr></tbody></table></figure>
-<h2 id="许可证添加">许可证添加</h2>
-<p>笔者主要使用 idea 的 IDE 进行程序开发，它有管理版权信息的功能：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preference-&gt;editor-&gt;Copyright</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat dep.txt |while read line</span><br><span class="line">do </span><br><span class="line">echo "start checking package $line"</span><br><span class="line">go-licenses csv $line</span><br><span class="line">echo ""</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h2 id="许可证添加"><a href="#许可证添加" class="headerlink" title="许可证添加"></a>许可证添加</h2><p>笔者主要使用 idea 的 IDE 进行程序开发，它有管理版权信息的功能：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Preference->editor->Copyright</span><br></pre></td></tr></table></figure>
+
 <p>可以添加不同的 Profiles，然后使用 IDE的功能进行自动添加和更新。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1）设置默认 copyright</span><br><span class="line">preference-&gt;editor-&gt;Copyright</span><br><span class="line">设置 default project copyright，选中一种配置，这个可能会根据不同的文件需要切换</span><br><span class="line"></span><br><span class="line">2）选中代码文件或者文件夹</span><br><span class="line"></span><br><span class="line">3）菜单栏-&gt;Code-&gt;Update Copyright</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="项目实战">项目实战</h1>
-<p>下文介绍对于一个实际项目进行许可证声明。</p>
-<h2 id="项目背景">项目背景</h2>
-<p>该项目主语言是 golang，采用了自某 LGPL 的项目的一部分类库作为基础代码。</p>
-<h2 id="版权主体">版权主体</h2>
-<p>也就是版权声明的第一行的关键信息，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1）设置默认 copyright</span><br><span class="line">preference->editor->Copyright</span><br><span class="line">设置 default project copyright，选中一种配置，这个可能会根据不同的文件需要切换</span><br><span class="line"></span><br><span class="line">2）选中代码文件或者文件夹</span><br><span class="line"></span><br><span class="line">3）菜单栏->Code->Update Copyright</span><br></pre></td></tr></table></figure>
+
+<h1 id="项目实战"><a href="#项目实战" class="headerlink" title="项目实战"></a>项目实战</h1><p>下文介绍对于一个实际项目进行许可证声明。</p>
+<h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>该项目主语言是 golang，采用了自某 LGPL 的项目的一部分类库作为基础代码。</p>
+<h2 id="版权主体"><a href="#版权主体" class="headerlink" title="版权主体"></a>版权主体</h2><p>也就是版权声明的第一行的关键信息，例如：</p>
 <ul>
 <li>go-ethereum</li>
 </ul>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copyright 2016 The go-ethereum Authors</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copyright 2016 The go-ethereum Authors</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>go-algorand</li>
 </ul>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copyright (C) 2019-2020 Algorand, Inc.</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copyright (C) 2019-2020 Algorand, Inc.</span><br></pre></td></tr></table></figure>
+
 <p>可以选择是作者主体，或者公司主体。</p>
-<h2 id="项目-license">项目 license</h2>
-<p>由于该项目的代码，部分使用了修改了 LGPL 项目代码作为基础工具。</p>
+<h2 id="项目-license"><a href="#项目-license" class="headerlink" title="项目 license"></a>项目 license</h2><p>由于该项目的代码，部分使用了修改了 LGPL 项目代码作为基础工具。</p>
 <p>根据 LGPL 的规定，本项目也需要使用 LGPL 作为 license。</p>
-<h2 id="版权声明">版权声明</h2>
-<p>声明版权，一般两部分：</p>
-<h4 id="项目级别的-license-文件">1）项目级别的 LICENSE 文件</h4>
-<p>由于大部分的许可证都是控制包级别的许可，所以这种方式也足够</p>
-<h4 id="代码级别的-copyright-文件头">2）代码级别的 copyright 文件头</h4>
-<p>每一个原创的文件都设置了版权信息</p>
-<h2 id="项目级别的-license">项目级别的 license</h2>
-<p>一般而言，是找到你的 license 的文本，将文件放置于项目根目录。</p>
+<h2 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h2><p>声明版权，一般两部分：</p>
+<h4 id="1）项目级别的-LICENSE-文件"><a href="#1）项目级别的-LICENSE-文件" class="headerlink" title="1）项目级别的  LICENSE 文件"></a>1）项目级别的  LICENSE 文件</h4><p>由于大部分的许可证都是控制包级别的许可，所以这种方式也足够</p>
+<h4 id="2）代码级别的-copyright-文件头"><a href="#2）代码级别的-copyright-文件头" class="headerlink" title="2）代码级别的 copyright 文件头"></a>2）代码级别的 copyright 文件头</h4><p>每一个原创的文件都设置了版权信息</p>
+<h2 id="项目级别的-license"><a href="#项目级别的-license" class="headerlink" title="项目级别的 license"></a>项目级别的 license</h2><p>一般而言，是找到你的 license 的文本，将文件放置于项目根目录。</p>
 <blockquote>
-<p>不同许可证可能有点不一样</p>
+<p> 不同许可证可能有点不一样</p>
 </blockquote>
 <p>一般而言，在 github 建立公开项目的时候，会提示选择一个 license。</p>
 <p>如果初始化忘记了，也可以web 界面上，新建一个名字是<code>LICENSE</code>的文件，来显式触发选择 license。</p>
-<h2 id="代码级别的-copyright-文件头-1">代码级别的 copyright 文件头</h2>
-<p>使用第三方代码，主要分为，<code>fork 引用</code> 和 <code>library 依赖</code>。</p>
+<h2 id="代码级别的-copyright-文件头"><a href="#代码级别的-copyright-文件头" class="headerlink" title="代码级别的 copyright 文件头"></a>代码级别的 copyright 文件头</h2><p>使用第三方代码，主要分为，<code>fork 引用</code> 和 <code>library 依赖</code>。</p>
 <p>fork 是指把代码直接放到了代码库中，修改或者不修改。</p>
 <p>library 是库依赖，例如通过 go.mod 的方式进行依赖。</p>
-<h3 id="fork-引用">fork 引用</h3>
-<p>代码分类 </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1）项目原创文件</span><br><span class="line"></span><br><span class="line">2）项目修改第三方库的文件</span><br><span class="line"></span><br><span class="line">3）项目直接引用第三方库的文件</span><br><span class="line"></span><br><span class="line">4）fork 过来的开源库</span><br><span class="line">可能存在包内 license，单文件可能没有copyright</span><br><span class="line"></span><br><span class="line">5）忽略 license 文件的内容</span><br><span class="line"></span><br><span class="line">非 golang 文件</span><br><span class="line">gencode 生成的以 gen_开头的文件</span><br><span class="line">其他自动生成的文件</span><br></pre></td></tr></tbody></table></figure><p></p>
+<h3 id="fork-引用"><a href="#fork-引用" class="headerlink" title="fork 引用"></a>fork 引用</h3><p>代码分类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1）项目原创文件</span><br><span class="line"></span><br><span class="line">2）项目修改第三方库的文件</span><br><span class="line"></span><br><span class="line">3）项目直接引用第三方库的文件</span><br><span class="line"></span><br><span class="line">4）fork 过来的开源库</span><br><span class="line">可能存在包内 license，单文件可能没有copyright</span><br><span class="line"></span><br><span class="line">5）忽略 license 文件的内容</span><br><span class="line"></span><br><span class="line">非 golang 文件</span><br><span class="line">gencode 生成的以 gen_开头的文件</span><br><span class="line">其他自动生成的文件</span><br></pre></td></tr></table></figure>
+
 <p>有了如上的分类，你就可以使用 IDE 创建多个不同的 Copyright Profiles 来处理不同的文件了。</p>
 <p>结合 addlicense 工具，相信这部分工作将可以顺利完成。</p>
-<h4 id="library-依赖">library 依赖</h4>
-<p>使用上述的依赖检测工具，查看是否有不合适的许可证。</p>
+<h4 id="library-依赖"><a href="#library-依赖" class="headerlink" title="library 依赖"></a>library 依赖</h4><p>使用上述的依赖检测工具，查看是否有不合适的许可证。</p>
 <blockquote>
 <p>如果一个依赖库，license 不是MIT/ISC/BSD/Apache 其中的一种，那就要小心了！</p>
 </blockquote>
-<h1 id="tbd-topics">TBD-Topics</h1>
-<p>有一些话题需要进一步讨论：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1）如果项目源码计划商用，如何处理？</span><br></pre></td></tr></tbody></table></figure>
-<h1 id="总结">总结</h1>
-<p>本文简要介绍了license 的原理，着重介绍了项目实战，希望对读者有启发，欢迎讨论！</p>
-<h1 id="参考">参考</h1>
-<p>https://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html</p>
-<p>https://www.gnu.org/licenses/gpl-faq.html</p>
-<p>https://choosealicense.com/</p>
-</body></html>
+<h1 id="TBD-Topics"><a href="#TBD-Topics" class="headerlink" title="TBD-Topics"></a>TBD-Topics</h1><p>有一些话题需要进一步讨论：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1）如果项目源码计划商用，如何处理？</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文简要介绍了license 的原理，着重介绍了项目实战，希望对读者有启发，欢迎讨论！</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html">https://www.ruanyifeng.com/blog/2017/10/open-source-license-tutorial.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.gnu.org/licenses/gpl-faq.html">https://www.gnu.org/licenses/gpl-faq.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://choosealicense.com/">https://choosealicense.com/</a></p>
+
 
             <div class="toc-title"> 相关文章推荐</div>
             <p class="related-posts-none">No related post.</p>
@@ -362,7 +369,7 @@ var _hmt = _hmt || [];
             
                 
                 <li>
-                    <a class="social-tooltip" title="twitter" href="https://twitter.com/ChangbinHe" target="_blank" rel="noopener">
+                    <a class="social-tooltip" title="twitter" href="https://twitter.com/0xkevinhe" target="_blank" rel="noopener">
                         <i class="icon fa fa-twitter"></i>
                     </a>
                 </li>
@@ -433,7 +440,7 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#许可证介绍"><span class="nav-text">许可证介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#名词解释"><span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宽松的许可证"><span class="nav-text">宽松的许可证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#copyleft-许可证"><span class="nav-text">Copyleft 许可证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#许可证检测"><span class="nav-text">许可证检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#检测代码"><span class="nav-text">检测代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测依赖库"><span class="nav-text">检测依赖库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#许可证添加"><span class="nav-text">许可证添加</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目实战"><span class="nav-text">项目实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目背景"><span class="nav-text">项目背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权主体"><span class="nav-text">版权主体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目-license"><span class="nav-text">项目 license</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版权声明"><span class="nav-text">版权声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#项目级别的-license-文件"><span class="nav-text">1）项目级别的 LICENSE 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码级别的-copyright-文件头"><span class="nav-text">2）代码级别的 copyright 文件头</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目级别的-license"><span class="nav-text">项目级别的 license</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码级别的-copyright-文件头-1"><span class="nav-text">代码级别的 copyright 文件头</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork-引用"><span class="nav-text">fork 引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#library-依赖"><span class="nav-text">library 依赖</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tbd-topics"><span class="nav-text">TBD-Topics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E4%BB%8B%E7%BB%8D"><span class="nav-text">许可证介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%BD%E6%9D%BE%E7%9A%84%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-text">宽松的许可证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Copyleft-%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="nav-text">Copyleft 许可证</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E6%A3%80%E6%B5%8B"><span class="nav-text">许可证检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81"><span class="nav-text">检测代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="nav-text">检测依赖库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E6%B7%BB%E5%8A%A0"><span class="nav-text">许可证添加</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98"><span class="nav-text">项目实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="nav-text">项目背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9D%83%E4%B8%BB%E4%BD%93"><span class="nav-text">版权主体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE-license"><span class="nav-text">项目 license</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E"><span class="nav-text">版权声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%EF%BC%89%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E7%9A%84-LICENSE-%E6%96%87%E4%BB%B6"><span class="nav-text">1）项目级别的  LICENSE 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%EF%BC%89%E4%BB%A3%E7%A0%81%E7%BA%A7%E5%88%AB%E7%9A%84-copyright-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="nav-text">2）代码级别的 copyright 文件头</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E7%9A%84-license"><span class="nav-text">项目级别的 license</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BA%A7%E5%88%AB%E7%9A%84-copyright-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="nav-text">代码级别的 copyright 文件头</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fork-%E5%BC%95%E7%94%A8"><span class="nav-text">fork 引用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#library-%E4%BE%9D%E8%B5%96"><span class="nav-text">library 依赖</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TBD-Topics"><span class="nav-text">TBD-Topics</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
                         
 
                         
@@ -453,7 +460,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#许可证介绍"><span class="toc-number">2.</span> <span class="toc-text">许可证介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#名词解释"><span class="toc-number">2.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宽松的许可证"><span class="toc-number">2.2.</span> <span class="toc-text">宽松的许可证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#copyleft-许可证"><span class="toc-number">2.2.1.</span> <span class="toc-text">Copyleft 许可证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#许可证检测"><span class="toc-number">3.</span> <span class="toc-text">许可证检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#检测代码"><span class="toc-number">3.1.</span> <span class="toc-text">检测代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测依赖库"><span class="toc-number">3.2.</span> <span class="toc-text">检测依赖库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#许可证添加"><span class="toc-number">3.3.</span> <span class="toc-text">许可证添加</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目实战"><span class="toc-number">4.</span> <span class="toc-text">项目实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目背景"><span class="toc-number">4.1.</span> <span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版权主体"><span class="toc-number">4.2.</span> <span class="toc-text">版权主体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目-license"><span class="toc-number">4.3.</span> <span class="toc-text">项目 license</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#版权声明"><span class="toc-number">4.4.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#项目级别的-license-文件"><span class="toc-number">4.4.0.1.</span> <span class="toc-text">1）项目级别的 LICENSE 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码级别的-copyright-文件头"><span class="toc-number">4.4.0.2.</span> <span class="toc-text">2）代码级别的 copyright 文件头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目级别的-license"><span class="toc-number">4.5.</span> <span class="toc-text">项目级别的 license</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码级别的-copyright-文件头-1"><span class="toc-number">4.6.</span> <span class="toc-text">代码级别的 copyright 文件头</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fork-引用"><span class="toc-number">4.6.1.</span> <span class="toc-text">fork 引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#library-依赖"><span class="toc-number">4.6.1.1.</span> <span class="toc-text">library 依赖</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tbd-topics"><span class="toc-number">5.</span> <span class="toc-text">TBD-Topics</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">许可证介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">2.1.</span> <span class="toc-text">名词解释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%BD%E6%9D%BE%E7%9A%84%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="toc-number">2.2.</span> <span class="toc-text">宽松的许可证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Copyleft-%E8%AE%B8%E5%8F%AF%E8%AF%81"><span class="toc-number">2.2.1.</span> <span class="toc-text">Copyleft 许可证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E6%A3%80%E6%B5%8B"><span class="toc-number">3.</span> <span class="toc-text">许可证检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text">检测代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A3%80%E6%B5%8B%E4%BE%9D%E8%B5%96%E5%BA%93"><span class="toc-number">3.2.</span> <span class="toc-text">检测依赖库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B8%E5%8F%AF%E8%AF%81%E6%B7%BB%E5%8A%A0"><span class="toc-number">3.3.</span> <span class="toc-text">许可证添加</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98"><span class="toc-number">4.</span> <span class="toc-text">项目实战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="toc-number">4.1.</span> <span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9D%83%E4%B8%BB%E4%BD%93"><span class="toc-number">4.2.</span> <span class="toc-text">版权主体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE-license"><span class="toc-number">4.3.</span> <span class="toc-text">项目 license</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E"><span class="toc-number">4.4.</span> <span class="toc-text">版权声明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E7%9A%84-LICENSE-%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.0.1.</span> <span class="toc-text">1）项目级别的  LICENSE 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E4%BB%A3%E7%A0%81%E7%BA%A7%E5%88%AB%E7%9A%84-copyright-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">4.4.0.2.</span> <span class="toc-text">2）代码级别的 copyright 文件头</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BA%A7%E5%88%AB%E7%9A%84-license"><span class="toc-number">4.5.</span> <span class="toc-text">项目级别的 license</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BA%A7%E5%88%AB%E7%9A%84-copyright-%E6%96%87%E4%BB%B6%E5%A4%B4"><span class="toc-number">4.6.</span> <span class="toc-text">代码级别的 copyright 文件头</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#fork-%E5%BC%95%E7%94%A8"><span class="toc-number">4.6.1.</span> <span class="toc-text">fork 引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#library-%E4%BE%9D%E8%B5%96"><span class="toc-number">4.6.1.1.</span> <span class="toc-text">library 依赖</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TBD-Topics"><span class="toc-number">5.</span> <span class="toc-text">TBD-Topics</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -595,7 +602,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -605,7 +612,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blockchain/" style="font-size: 12.5px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/blockchain/" style="font-size: 12.5px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 15px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 15px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -651,7 +658,7 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2022 kvh</p>
+                <p>&copy; 2023 Kevin He</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -687,7 +694,9 @@ var _hmt = _hmt || [];
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>

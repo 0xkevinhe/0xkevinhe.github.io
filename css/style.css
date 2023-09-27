@@ -286,8 +286,6 @@ code {
   background-image: url("https://raw.githubusercontent.com/changbinhe/images/master/16-6-8/6641404.jpg");
   background-position: 0px 0px;
   background-repeat: no-repeat;
-  -webkit-background-size: 215px 35px;
-  -moz-background-size: 215px 35px;
   background-size: 215px 35px;
 }
 .main-body {
@@ -859,15 +857,11 @@ code {
 }
 #recent-post li .item-thumbnail .thumbnail .thumbnail-image {
   position: absolute;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
   background-position: center;
 }
 #recent-post li .item-thumbnail .thumbnail .thumbnail-none {
   background-image: url("images/thumb-default-small.png");
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
   background-size: 100% 100%;
 }
 #recent-post li .item-inner a,
@@ -1220,8 +1214,6 @@ code {
   width: 100%;
   height: 100%;
   opacity: 1;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
   background-size: cover;
   background-position: center;
   -webkit-transition: opacity 0.3s ease-in;
@@ -1232,8 +1224,6 @@ code {
 .article-summary .article-summary-inner .thumbnail .thumbnail-none {
   width: 100%;
   height: 100%;
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
   background-size: 100% 100%;
   background-image: url("images/thumb-default.png");
 }
@@ -1898,8 +1888,6 @@ a.article-title:hover {
 #footer .logo {
   width: 172px;
   height: 68px;
-  -webkit-background-size: 172px 28px;
-  -moz-background-size: 172px 28px;
   background-size: 172px 28px;
 }
 #totop {
@@ -2207,8 +2195,6 @@ i.icon:before {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   .article-entry .img-wrap:before {
     background: url("preloader-2x") center center no-repeat, rgba(0,0,0,0.9);
-    -webkit-background-size: 24px 24px;
-    -moz-background-size: 24px 24px;
     background-size: 24px 24px;
   }
 }
