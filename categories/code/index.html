@@ -193,18 +193,11 @@ var _hmt = _hmt || [];
 
         <p class="article-excerpt">
             
-                简介
-本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。
-merkle tree
-merkle tree
-常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash
-进行标记，中间节点使用所有子节点的 hash进行标记。
+                简介本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。
+merkle treemerkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。
 
-
-merkle-tree
-
-对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle
-证明、检
+对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验 merkle 证明。
+计算 
             
         </p>
     </div>
@@ -255,11 +248,8 @@ merkle-tree
 
         <p class="article-excerpt">
             
-                因为业务需要，我司有若干台服务器 Mac
-作为服务器。下面总结一下注意事项，作为记录。
-取消系统休眠
-曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra
-之后，发现之前能够正常运行的程序出现问题。
+                因为业务需要，我司有若干台服务器 Mac 作为服务器。下面总结一下注意事项，作为记录。
+取消系统休眠曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra 之后，发现之前能够正常运行的程序出现问题。
 具体表现是：
 
 ssh 登出之后不久，线上就开始报警
@@ -267,7 +257,7 @@ ssh 登出之后不久，线上就开始报警
 socket 连接提示传输错误
 程序并没有 exit
 
-一开始怀疑是后台程序的权限
+一开始怀疑是后台程序的权限问
             
         </p>
     </div>
@@ -306,8 +296,7 @@ socket 连接提示传输错误
 
         <p class="article-excerpt">
             
-                闲话配置
-老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。
+                闲话配置老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。
 
 配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。
 
@@ -316,7 +305,7 @@ socket 连接提示传输错误
 系统配置：包括线程池大小、数据库连接等，变化频率较低
 业务配置：功能开关，功能参数等，变化较为频繁
 
-程序的配置一般而言，分为几个环境
+程序的配置一般而言，分为几个环境：
             
         </p>
     </div>
@@ -359,14 +348,10 @@ socket 连接提示传输错误
 
         <p class="article-excerpt">
             
-                家有设计师
-我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。
+                家有设计师我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。
 看了她导了好几次，实在不能忍。得发挥程序员的能动性，做个小工具。
-调研
-imagemagick
-是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。
-设计师们大多在 MacOS
-下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：
+调研imagemagick 是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。
+设计师们大多在 MacOS 下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：si
             
         </p>
     </div>
@@ -418,16 +403,15 @@ imagemagick
         <p class="article-excerpt">
             
                 
-笔者在开发和维护 Bugtags SDK
-的一年多时间里面，趟过了不少坑，走了不少弯路，也积累了不少经验。这个 SDK
-开发最佳实践系列，就是分享经验教训，帮助读者打造一款跟 Bugtags
-这样快速成长的 SDK。
+笔者在开发和维护 Bugtags SDK 的一年多时间里面，趟过了不少坑，走了不少弯路，也积累了不少经验。这个 SDK 开发最佳实践系列，就是分享经验教训，帮助读者打造一款跟 Bugtags 这样快速成长的 SDK。
 
-SDK 的使用场景
-站在用户的角度来看，引入一个 SDK 可能会带来几方面的问题： - 包增大 -
-可能不稳定 - 安全性问题
-对于一些
-SDK，产品形态是允许在测试阶段开启，上
+SDK 的使用场景站在用户的角度来看，引入一个 SDK 可能会带来几方面的问题：
+
+包增大
+可能不稳定
+安全性问题
+
+对于一些 SDK，产品形态是允许在测试阶段开启，上线移除的，
             
         </p>
     </div>
@@ -466,11 +450,9 @@ SDK，产品形态是允许在测试阶段开启，上
 
         <p class="article-excerpt">
             
-                8月7号，应北京
-GDG 邀请，我做了一个题为《Android Gradle 构建系统·初探》的分享。
+                8月7号，应北京 GDG 邀请，我做了一个题为《Android Gradle 构建系统·初探》的分享。
 主要内容是构建系统背景知识，源码库，代码亮点，写插件。
-很明显这是一个很大的话题，有超过 2.5GB
-的核心代码和超过50个子项目。
+很明显这是一个很大的话题，有超过 2.5GB 的核心代码和超过50个子项目。
 第一步，我进行了宏观的介绍。下一步，我会继续深入子项目，尝试发现更多有意思的点。
 对这个话题感兴趣的，请加入技术交流 qq 群：583688711。
 Slides
@@ -517,15 +499,9 @@ Slides
         <p class="article-excerpt">
             
                 如果你习惯了命令行，你会爱上它的，因为它简单、直接，深入。
-命令行
-很多做 Android
-开发不久的同学，习惯于使用图形界面，对命令行操作很陌生甚至恐惧。遇到 AS
-运行错误，束手无策。
-AS 为了确保易用性，也在 UI
-界面上屏蔽了很多命令行运行的细节，导致很多人觉得 AS 难用。
-这种情况，我在解决用户集成使用 Bugtags SDK
-的问题的时候，经常能遇到。其实 GUI
-界面的操作，绝大
+命令行很多做 Android 开发不久的同学，习惯于使用图形界面，对命令行操作很陌生甚至恐惧。遇到 AS 运行错误，束手无策。
+AS 为了确保易用性，也在 UI 界面上屏蔽了很多命令行运行的细节，导致很多人觉得 AS 难用。
+这种情况，我在解决用户集成使用 Bugtags SDK 的问题的时候，经常能遇到。其实 GUI 界面的操作，绝大部
             
         </p>
     </div>
@@ -564,12 +540,11 @@ AS 为了确保易用性，也在 UI
 
         <p class="article-excerpt">
             
-                Build Variant
-android gradle 插件，允许对最终的包以多个维度进行组合。
+                Build Variantandroid gradle 插件，允许对最终的包以多个维度进行组合。
 1BuildVariant = ProductFlavor x BuildType
-两个维度
-最常见的就是这样：
-1234567891011121314151617productFlavors {    pro {    }    fre {    }}lintOptions {    abortO
+
+两个维度最常见的就是这样：
+1234567891011121314151617productFlavors {    pro {    }    fre {    }}lintOptions {    abortOn
             
         </p>
     </div>
@@ -612,14 +587,8 @@ android gradle 插件，允许对最终的包以多个维度进行组合。
 
         <p class="article-excerpt">
             
-                官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了
-github
-项目中。
-需求
-默认的 Android 打包插件会把 apk 命名成
-module-productFlavor-buildType.apk，例如
-app-official-debug.apk，并且会把包文件发布到固定的位置：
-module/build/outpu
+                官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了 github 项目中。
+需求默认的 Android 打包插件会把 apk 命名成 module-productFlavor-buildType.apk，例如 app-official-debug.apk，并且会把包文件发布到固定的位置： module/build/output
             
         </p>
     </div>
@@ -658,13 +627,10 @@ module/build/outpu
 
         <p class="article-excerpt">
             
-                下面咱们就来聊聊技术人的素养：如何更好的提出技术问题。 笔者从事 Bugtags.com
-开发运营以来，除了开发任务以外，最重要的工作就是在 qq
-群里面回答用户的问题。
+                下面咱们就来聊聊技术人的素养：如何更好的提出技术问题。笔者从事 Bugtags.com 开发运营以来，除了开发任务以外，最重要的工作就是在 qq 群里面回答用户的问题。 
 这半年来，少说也接待了上千个用户了。笔者发现，有相当一部分的用户，提问方式和技巧都有问题，这样导致了我们额外的客服量，也使得自己的问题得不到及时满意的回答。
 下面咱们就来聊聊技术人的素养：如何更好的提出技术问题。
-直接了当
-有的
+直接了当有的用
             
         </p>
     </div>
@@ -738,7 +704,7 @@ module/build/outpu
                             <a href="/bitcoin-ecosystem-overviews.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="比特币生态-overviews" class="thumbnail-image"></span>
+        <span style="background-image:url(https://github.com/0xkevinhe/images/blob/master/blog/bitcoin-ecosystem-overview/bitcoin-ecosystem.png?raw=true)" alt="比特币生态-overviews" class="thumbnail-image"></span>
     
     
 </a>
