@@ -12,12 +12,12 @@
     
         <meta name="keywords" content="Spring" />
     
-    <meta name="description" content="闲话配置老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境：">
+    <meta name="description" content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud 配置中心">
 <meta property="og:url" content="https://0xkevinhe.xyz/spring-cloud-config.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="闲话配置老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境：">
+<meta property="og:description" content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg">
 <meta property="article:published_time" content="2017-10-13T15:18:16.000Z">
@@ -201,17 +201,18 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="闲话配置"><a href="#闲话配置" class="headerlink" title="闲话配置"></a>闲话配置</h1><p>老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。</p>
+            <h1 id="闲话配置">闲话配置</h1>
+<p>老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。</p>
 <blockquote>
 <p>配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。</p>
 </blockquote>
 <p>简单来讲，配置可以分成两类：</p>
-<ol>
+<ol type="1">
 <li>系统配置：包括线程池大小、数据库连接等，变化频率较低</li>
 <li>业务配置：功能开关，功能参数等，变化较为频繁</li>
 </ol>
 <p>程序的配置一般而言，分为几个环境：</p>
-<ol>
+<ol type="1">
 <li>开发环境</li>
 <li>测试环境</li>
 <li>生产环境</li>
@@ -219,120 +220,129 @@ var _hmt = _hmt || [];
 <p>这几个环境的配置是有差异的，所以配置管理功能应当能够根据当前环境读取对应的配置。</p>
 <p>前面提到的不修改代码，只是最低要求，相当多的情况下，程序是不能停机的，这就提出了热更新的需求。</p>
 <p>另外，配置的修改应该是有记录可追溯的。</p>
-<h1 id="Spring-Boot-的配置管理"><a href="#Spring-Boot-的配置管理" class="headerlink" title="Spring Boot 的配置管理"></a>Spring Boot 的配置管理</h1><p>Spring 实现了非常友好的配置读取方式，</p>
+<h1 id="spring-boot-的配置管理">Spring Boot 的配置管理</h1>
+<p>Spring 实现了非常友好的配置读取方式，</p>
 <p>Spring Boot 程序默认使用 application.properties 进行配置。</p>
 <p>例如一个参数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=0</span><br></pre></td></tr></table></figure>
-
 <p>在程序中可以通过：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Value("${flag})</span><br><span class="line">int flag;</span><br></pre></td></tr></table></figure>
-
 <p>来读取。</p>
 <p>也可以通过设置多个配置文件：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">application.properties</span><br><span class="line">application-dev.properties</span><br><span class="line">application-test.properties</span><br><span class="line">application-prod.properties</span><br></pre></td></tr></table></figure>
-
-<p>application-dev.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=1</span><br></pre></td></tr></table></figure>
-<p>application-test.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=2</span><br></pre></td></tr></table></figure>
-
-<p>application-prod.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=3</span><br></pre></td></tr></table></figure>
-
+<p>application-dev.properties <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=1</span><br></pre></td></tr></table></figure> application-test.properties
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=2</span><br></pre></td></tr></table></figure></p>
+<p>application-prod.properties <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=3</span><br></pre></td></tr></table></figure></p>
 <p>和在 application.properties 中声明当前的活跃的 profile：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active=dev</span><br></pre></td></tr></table></figure>
-
 <p>来实现根据运行环境切换配置信息。</p>
 <p>以上只是 Spring 强大的配置能力的冰山一角，有兴趣可以参考<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">外部配置文档</a>。</p>
-<h2 id="这还不够"><a href="#这还不够" class="headerlink" title="这还不够"></a>这还不够</h2><p>其实以上描述的 Spring Boot 的配置能力已经很强了，但是有个很致命的问题——无法热更新。</p>
-<p>如果非得实现热更新，那可以把配置做成 JSON 文件，再实现一个 endpoint，重新读取一次配置。</p>
+<h2 id="这还不够">这还不够</h2>
+<p>其实以上描述的 Spring Boot
+的配置能力已经很强了，但是有个很致命的问题——无法热更新。</p>
+<p>如果非得实现热更新，那可以把配置做成 JSON 文件，再实现一个
+endpoint，重新读取一次配置。</p>
 <p>假设有一千个实例呢？</p>
-<h1 id="Spring-Cloud-Config"><a href="#Spring-Cloud-Config" class="headerlink" title="Spring Cloud Config"></a>Spring Cloud Config</h1><p>项目 github：<a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config">https://github.com/spring-cloud/spring-cloud-config</a></p>
+<h1 id="spring-cloud-config">Spring Cloud Config</h1>
+<p>项目 github：<a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config">https://github.com/spring-cloud/spring-cloud-config</a></p>
 <p>简介：External configuration (server and client) for Spring Cloud</p>
 <p>这个项目包含两部分：</p>
 <ul>
 <li>Server</li>
 </ul>
-<p>负责从 git/svn 等版本管理系统中读取配置，并以 http 的方式提供服务。</p>
+<p>负责从 git/svn 等版本管理系统中读取配置，并以 http
+的方式提供服务。</p>
 <ul>
 <li>Client</li>
 </ul>
-<p>根据客户端配置，从指定的 Server 中读取对应配置，并且与 Spring 本身的 PropertyResource 和 Environment 无缝结合。同时，提供了统一的方式进行配置热更新。</p>
+<p>根据客户端配置，从指定的 Server 中读取对应配置，并且与 Spring 本身的
+PropertyResource 和 Environment
+无缝结合。同时，提供了统一的方式进行配置热更新。</p>
 <p>对于这个系统的基础配置和运行，可以参阅下面两个 url：</p>
 <p><a target="_blank" rel="noopener" href="https://spring.io/guides/gs/centralized-configuration/">https://spring.io/guides/gs/centralized-configuration/</a></p>
 <p><a target="_blank" rel="noopener" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
-<h2 id="实操进阶"><a href="#实操进阶" class="headerlink" title="实操进阶"></a>实操进阶</h2><h3 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h3><p>Spring Cloud Config 实现了非常优雅的热更新。</p>
+<h2 id="实操进阶">实操进阶</h2>
+<h3 id="热更新">热更新</h3>
+<p>Spring Cloud Config 实现了非常优雅的热更新。</p>
 <ul>
-<li>客户端的配置 Bean 添加 @RefreshScope</li>
+<li>客户端的配置 Bean 添加 <span class="citation" data-cites="RefreshScope">@RefreshScope</span></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@RefreshScope</span><br><span class="line">public class ConsumeConfig {</span><br><span class="line"></span><br><span class="line">    @Value("${consume.desc}")</span><br><span class="line">    private String consumeDesc;</span><br><span class="line">    </span><br><span class="line">    @Value("#{'${api.server.round.card}'.split(',')}")</span><br><span class="line">    private List<String> cardList;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<p>在配置这个注解之后，调用客户端的 /refresh endpoint，这个 Bean 就会刷新，同时个 Bean 的依赖方下次方法调用时也会更新 Bean 引用。</p>
-<p>有些时候，你需要监听这个更新事件，把拿到的最新配置，重新初始化一些部件。那你可以添加：<br>    <code>@EventListener(EnvironmentChangeEvent.class)</code> 这个 annotation。</p>
+<p>在配置这个注解之后，调用客户端的 /refresh endpoint，这个 Bean
+就会刷新，同时个 Bean 的依赖方下次方法调用时也会更新 Bean 引用。</p>
+<p>有些时候，你需要监听这个更新事件，把拿到的最新配置，重新初始化一些部件。那你可以添加：
+<code>@EventListener(EnvironmentChangeEvent.class)</code> 这个
+annotation。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class ConsumeService {</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    ConsumeConfig consumeConfig;</span><br><span class="line"></span><br><span class="line">    @EventListener(EnvironmentChangeEvent.class)</span><br><span class="line">    void onEnvChange() {</span><br><span class="line">        //do re-init stuff</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加权限"><a href="#添加权限" class="headerlink" title="添加权限"></a>添加权限</h3><p>Config Server 任何人都可以通过 http 访问配置，这个不大好，建议加上认证，最简单是使用 Spring-Security 添加一个 basic authentication。</p>
+<h3 id="添加权限">添加权限</h3>
+<p>Config Server 任何人都可以通过 http
+访问配置，这个不大好，建议加上认证，最简单是使用 Spring-Security
+添加一个 basic authentication。</p>
 <ul>
 <li>服务器端配置</li>
 </ul>
-<p>build.gradle 添加依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile('org.springframework.boot:spring-boot-starter-security')</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-
-<p>application.properties 添加密码（用户名默认是 user）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">security.user.password=xxx</span><br></pre></td></tr></table></figure>
-
+<p>build.gradle 添加依赖： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile('org.springframework.boot:spring-boot-starter-security')</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>application.properties 添加密码（用户名默认是 user）：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">security.user.password=xxx</span><br></pre></td></tr></table></figure></p>
 <p>重启服务器，再次通过 http 访问配置的时候需要验证。</p>
 <ul>
 <li>客户端配置</li>
 </ul>
 <p>服务器端做了验证，那客户端也需要添加相应的配置：</p>
-<p>bootstrap.yml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application</span><br><span class="line"> cloud:</span><br><span class="line">  config:</span><br><span class="line">   uri: http://yourhost.com</span><br><span class="line">   profile: dev</span><br><span class="line">   username: user</span><br><span class="line">   password: xxx</span><br></pre></td></tr></table></figure>
-
-<h3 id="加载多组配置文件"><a href="#加载多组配置文件" class="headerlink" title="加载多组配置文件"></a>加载多组配置文件</h3><p>很多时候，为了避免 application.properties 过于臃肿，你可能需要把一些配置文件拆出来，例如专门负责邀请奖励的配置：</p>
+<p>bootstrap.yml <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application</span><br><span class="line"> cloud:</span><br><span class="line">  config:</span><br><span class="line">   uri: http://yourhost.com</span><br><span class="line">   profile: dev</span><br><span class="line">   username: user</span><br><span class="line">   password: xxx</span><br></pre></td></tr></table></figure></p>
+<h3 id="加载多组配置文件">加载多组配置文件</h3>
+<p>很多时候，为了避免 application.properties
+过于臃肿，你可能需要把一些配置文件拆出来，例如专门负责邀请奖励的配置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">invite.properties</span><br><span class="line">invite-dev.properties</span><br><span class="line">invite-test.properties</span><br><span class="line">invite-prod.properties</span><br></pre></td></tr></table></figure>
-
 <p>同样，也区分了多个环境。</p>
 <p>那在使用 Spring Cloud 的时候如何读取这个文件呢？</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application,invite</span><br></pre></td></tr></table></figure>
-
 <p>注意上面的 application.name 是以逗号分隔的两组配置名称。</p>
-<h1 id="一些问题"><a href="#一些问题" class="headerlink" title="一些问题"></a>一些问题</h1><h2 id="EventListener-与-SpEL"><a href="#EventListener-与-SpEL" class="headerlink" title="@EventListener 与 SpEL"></a>@EventListener 与 SpEL</h2><p>我在实际使用中发现，在事件监听函数中，使用更新后的配置的时候：</p>
+<h1 id="一些问题">一些问题</h1>
+<h2 id="eventlistener-与-spel"><span class="citation" data-cites="EventListener">@EventListener</span> 与 SpEL</h2>
+<p>我在实际使用中发现，在事件监听函数中，使用更新后的配置的时候：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Value("${consume.desc}")</span><br><span class="line">private String consumeDesc;</span><br><span class="line"></span><br><span class="line">@Value("#{'${api.server.round.card}'.split(',')}")</span><br><span class="line">private List<String> cardList;</span><br></pre></td></tr></table></figure>
-
-<p>第一个配置是使用 @Value 绑定一个字符串类型，第二个配置是使用 @Value 中的 SpEL 去将配置中的字符串，切割成 List。</p>
-<p>我发现第二个，无法切割成功。试验了多次，还没有找到答案。我已经在 Spring Cloud Config 的 github 上提交了 <a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config/issues/821">issue</a>。</p>
+<p>第一个配置是使用 <span class="citation" data-cites="Value">@Value</span> 绑定一个字符串类型，第二个配置是使用
+<span class="citation" data-cites="Value">@Value</span> 中的 SpEL
+去将配置中的字符串，切割成 List。</p>
+<p>我发现第二个，无法切割成功。试验了多次，还没有找到答案。我已经在
+Spring Cloud Config 的 github 上提交了 <a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config/issues/821">issue</a>。</p>
 <p>如果有了解这个的，请不吝赐教。</p>
 <blockquote>
-<p>update 2017-10-26</p>
+<p>update 2017-10-26 * 我在 github 上提交了 issue：
+https://github.com/spring-cloud/spring-cloud-config/issues/821
+得到回复：<code>We have only ever documented that placeholders ${} work, not SpEL.</code></p>
 </blockquote>
+<h2 id="权限管理">权限管理</h2>
+<p>在不做二次开发的情况下，这个配置中心的数据是对所有的 client
+开放的。某些情况下，这种设定并不合适。</p>
+<h2 id="json-文件的读取和解析">JSON 文件的读取和解析</h2>
+<p>Spring Cloud Config 本身是可以通过 http 来提供 JSON
+文件的访问的，但是Spring Boot 原生并不支持 JSON 配置的读取和解析。</p>
+<h1 id="相关选择">相关选择</h1>
+<p>其实配置管理工具，选择还是不少的，下面列举一下。</p>
 <ul>
-<li>我在 github 上提交了 issue： <a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config/issues/821">https://github.com/spring-cloud/spring-cloud-config/issues/821</a> 得到回复：<code>We have only ever documented that placeholders ${} work, not SpEL.</code></li>
-</ul>
-<h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p>在不做二次开发的情况下，这个配置中心的数据是对所有的 client 开放的。某些情况下，这种设定并不合适。</p>
-<h2 id="JSON-文件的读取和解析"><a href="#JSON-文件的读取和解析" class="headerlink" title="JSON 文件的读取和解析"></a>JSON 文件的读取和解析</h2><p>Spring Cloud Config 本身是可以通过 http 来提供 JSON 文件的访问的，但是Spring Boot 原生并不支持 JSON 配置的读取和解析。</p>
-<h1 id="相关选择"><a href="#相关选择" class="headerlink" title="相关选择"></a>相关选择</h1><p>其实配置管理工具，选择还是不少的，下面列举一下。</p>
-<ul>
-<li>owner <a target="_blank" rel="noopener" href="http://owner.aeonbits.org/">http://owner.aeonbits.org/</a></li>
+<li>owner http://owner.aeonbits.org/</li>
 </ul>
 <p>配置文件管理，可以热更新，跟 Spring 没有绑定。</p>
 <ul>
-<li>cfg4j <a target="_blank" rel="noopener" href="http://www.cfg4j.org/">http://www.cfg4j.org/</a></li>
+<li>cfg4j http://www.cfg4j.org/</li>
 </ul>
 <p>专注管理配置文件，也可以实现热更，跟 Spring 没有绑定。</p>
 <ul>
-<li>applolo <a target="_blank" rel="noopener" href="https://github.com/ctripcorp/apollo">https://github.com/ctripcorp/apollo</a></li>
+<li>applolo https://github.com/ctripcorp/apollo</li>
 </ul>
 <p>携程开源的，功能很全</p>
 <ul>
-<li>disconf <a target="_blank" rel="noopener" href="https://github.com/knightliao/disconf">https://github.com/knightliao/disconf</a></li>
+<li>disconf https://github.com/knightliao/disconf</li>
 </ul>
 <p>百度的一位工程师的开源项目，功能也很全</p>
 <ul>
-<li>diamond <a target="_blank" rel="noopener" href="https://github.com/takeseem/diamond">https://github.com/takeseem/diamond</a></li>
+<li>diamond https://github.com/takeseem/diamond</li>
 </ul>
 <p>来自阿里的开源，有些日子了</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a target="_blank" rel="noopener" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
+<h1 id="参考文献">参考文献</h1>
+<p><a target="_blank" rel="noopener" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
 <p><a target="_blank" rel="noopener" href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html">http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html</a></p>
 <p><a target="_blank" rel="noopener" href="http://jm.taobao.org/2016/09/28/an-article-about-config-center/">http://jm.taobao.org/2016/09/28/an-article-about-config-center/</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.coding.net/blog/spring-cloud-config">https://blog.coding.net/blog/spring-cloud-config</a></p>
@@ -462,7 +472,7 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%B2%E8%AF%9D%E9%85%8D%E7%BD%AE"><span class="nav-text">闲话配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Boot-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="nav-text">Spring Boot 的配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E8%BF%98%E4%B8%8D%E5%A4%9F"><span class="nav-text">这还不够</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-Cloud-Config"><span class="nav-text">Spring Cloud Config</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D%E8%BF%9B%E9%98%B6"><span class="nav-text">实操进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="nav-text">热更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="nav-text">添加权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%9A%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#EventListener-%E4%B8%8E-SpEL"><span class="nav-text">@EventListener 与 SpEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E8%A7%A3%E6%9E%90"><span class="nav-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%80%89%E6%8B%A9"><span class="nav-text">相关选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%B2%E8%AF%9D%E9%85%8D%E7%BD%AE"><span class="nav-text">闲话配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-boot-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="nav-text">Spring Boot 的配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E8%BF%98%E4%B8%8D%E5%A4%9F"><span class="nav-text">这还不够</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-cloud-config"><span class="nav-text">Spring Cloud Config</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D%E8%BF%9B%E9%98%B6"><span class="nav-text">实操进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="nav-text">热更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="nav-text">添加权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%9A%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#eventlistener-%E4%B8%8E-spel"><span class="nav-text">@EventListener 与 SpEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E8%A7%A3%E6%9E%90"><span class="nav-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%80%89%E6%8B%A9"><span class="nav-text">相关选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
                         
 
                         
@@ -482,7 +492,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%B2%E8%AF%9D%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">闲话配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Boot-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot 的配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E8%BF%98%E4%B8%8D%E5%A4%9F"><span class="toc-number">2.1.</span> <span class="toc-text">这还不够</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Cloud-Config"><span class="toc-number">3.</span> <span class="toc-text">Spring Cloud Config</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%93%8D%E8%BF%9B%E9%98%B6"><span class="toc-number">3.1.</span> <span class="toc-text">实操进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-number">3.1.2.</span> <span class="toc-text">添加权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%9A%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.3.</span> <span class="toc-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">一些问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EventListener-%E4%B8%8E-SpEL"><span class="toc-number">4.1.</span> <span class="toc-text">@EventListener 与 SpEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JSON-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E8%A7%A3%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%80%89%E6%8B%A9"><span class="toc-number">5.</span> <span class="toc-text">相关选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%B2%E8%AF%9D%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">闲话配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot 的配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E8%BF%98%E4%B8%8D%E5%A4%9F"><span class="toc-number">2.1.</span> <span class="toc-text">这还不够</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-cloud-config"><span class="toc-number">3.</span> <span class="toc-text">Spring Cloud Config</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%93%8D%E8%BF%9B%E9%98%B6"><span class="toc-number">3.1.</span> <span class="toc-text">实操进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-number">3.1.2.</span> <span class="toc-text">添加权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%9A%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.3.</span> <span class="toc-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">一些问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#eventlistener-%E4%B8%8E-spel"><span class="toc-number">4.1.</span> <span class="toc-text">@EventListener 与 SpEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E8%A7%A3%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%80%89%E6%8B%A9"><span class="toc-number">5.</span> <span class="toc-text">相关选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -501,7 +511,7 @@ var _hmt = _hmt || [];
                             <a href="/bitcoin-ecosystem-overviews.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://github.com/0xkevinhe/images/blob/master/blog/bitcoin-ecosystem-overview/bitcoin-ecosystem.png?raw=true)" alt="比特币生态-Overview" class="thumbnail-image"></span>
+        <span style="background-image:url(https://github.com/0xkevinhe/images/blob/master/blog/bitcoin-ecosystem-overview/bitcoin-ecosystem.png?raw=true)" alt="比特币生态分析-建立框架" class="thumbnail-image"></span>
     
     
 </a>
@@ -510,7 +520,7 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/bitcoin-ecosystem-overviews.html" class="title">比特币生态-Overview</a></p>
+                            <p class="item-title"><a href="/bitcoin-ecosystem-overviews.html" class="title">比特币生态分析-建立框架</a></p>
                             <p class="item-date"><time datetime="2023-12-11T03:18:16.000Z" itemprop="datePublished">2023-12-11</time></p>
                         </div>
                     </li>
