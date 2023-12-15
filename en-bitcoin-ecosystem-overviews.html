@@ -6,26 +6,26 @@
     
 
     
-    <title>SDK 开发最佳实践之一：为你的 SDK 增加 No-Op 版本 | Kevin He&#39;s Website | e/acc</title>
+    <title>Bitcoin Ecosystem Analysis - Establishing a Framework | Kevin He&#39;s Website | e/acc</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="SDK" />
+        <meta name="keywords" content="bitcoin" />
     
-    <meta name="description" content="笔者在开发和维护 Bugtags SDK 的一年多时间里面，趟过了不少坑，走了不少弯路，也积累了不少经验。这个 SDK 开发最佳实践系列，就是分享经验教训，帮助读者打造一款跟 Bugtags 这样快速成长的 SDK。  SDK 的使用场景站在用户的角度来看，引入一个 SDK 可能会带来几方面的问题：  包增大 可能不稳定 安全性问题  对于一些 SDK，产品形态是允许在测试阶段开启，上线移除的，">
+    <meta name="description" content="PrefaceLooking back at the end of 2023, the rise of the Bitcoin ecosystem can definitely be considered part of the Cryptocurrency chronicles.  From the inscription concept that arose in the first half">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SDK 开发最佳实践之一：为你的 SDK 增加 No-Op 版本">
-<meta property="og:url" content="https://0xkevinhe.xyz/sdk-noop.html">
+<meta property="og:title" content="Bitcoin Ecosystem Analysis - Establishing a Framework">
+<meta property="og:url" content="https://0xkevinhe.xyz/en-bitcoin-ecosystem-overviews.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="笔者在开发和维护 Bugtags SDK 的一年多时间里面，趟过了不少坑，走了不少弯路，也积累了不少经验。这个 SDK 开发最佳实践系列，就是分享经验教训，帮助读者打造一款跟 Bugtags 这样快速成长的 SDK。  SDK 的使用场景站在用户的角度来看，引入一个 SDK 可能会带来几方面的问题：  包增大 可能不稳定 安全性问题  对于一些 SDK，产品形态是允许在测试阶段开启，上线移除的，">
+<meta property="og:description" content="PrefaceLooking back at the end of 2023, the rise of the Bitcoin ecosystem can definitely be considered part of the Cryptocurrency chronicles.  From the inscription concept that arose in the first half">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/24636638.jpg">
-<meta property="article:published_time" content="2016-09-29T03:20:30.000Z">
-<meta property="article:modified_time" content="2023-09-27T07:01:22.191Z">
+<meta property="og:image" content="https://github.com/0xkevinhe/images/blob/master/blog/bitcoin-ecosystem-overview/bitcoin-ecosystem.png?raw=true">
+<meta property="article:published_time" content="2023-12-11T03:18:16.000Z">
+<meta property="article:modified_time" content="2023-12-15T13:12:59.211Z">
 <meta property="article:author" content="0xkevinhe">
-<meta property="article:tag" content="SDK">
+<meta property="article:tag" content="bitcoin">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/24636638.jpg">
+<meta name="twitter:image" content="https://github.com/0xkevinhe/images/blob/master/blog/bitcoin-ecosystem-overview/bitcoin-ecosystem.png?raw=true">
     
 
     
@@ -153,19 +153,19 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/code/">code</a>
+    <a class="page-title-link" href="/categories/web3/">web3</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-sdk-noop" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-en-bitcoin-ecosystem-overviews" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        SDK 开发最佳实践之一：为你的 SDK 增加 No-Op 版本
+        Bitcoin Ecosystem Analysis - Establishing a Framework
         </h1>
     
 
@@ -175,8 +175,8 @@ var _hmt = _hmt || [];
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/sdk-noop.html" class="article-date">
-            <time datetime="2016-09-29T03:20:30.000Z" itemprop="datePublished">2016-09-29</time>
+        <a href="/en-bitcoin-ecosystem-overviews.html" class="article-date">
+            <time datetime="2023-12-11T03:18:16.000Z" itemprop="datePublished">2023-12-11</time>
         </a>
     </div>
 
@@ -186,14 +186,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/SDK/" rel="tag">SDK</a>
+        <a class="tag-link-link" href="/tags/bitcoin/" rel="tag">bitcoin</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2023-09-27T07:01:22.191Z" itemprop="dateModified">2023-09-27</time>
+                    <time datetime="2023-12-15T13:12:59.211Z" itemprop="dateModified">2023-12-15</time>
                 </span>
             
             </div>
@@ -201,41 +201,120 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <blockquote>
-<p>笔者在开发和维护 Bugtags SDK 的一年多时间里面，趟过了不少坑，走了不少弯路，也积累了不少经验。这个 SDK 开发最佳实践系列，就是分享经验教训，帮助读者打造一款跟 Bugtags 这样快速成长的 SDK。</p>
-</blockquote>
-<h1 id="SDK-的使用场景"><a href="#SDK-的使用场景" class="headerlink" title="SDK 的使用场景"></a>SDK 的使用场景</h1><p>站在用户的角度来看，引入一个 SDK 可能会带来几方面的问题：</p>
-<ul>
-<li>包增大</li>
-<li>可能不稳定</li>
-<li>安全性问题</li>
+            <h1 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h1><p>Looking back at the end of 2023, the rise of the Bitcoin ecosystem can definitely be considered part of the Cryptocurrency chronicles. </p>
+<p>From the inscription concept that arose in the first half of the year to the large number of Bitcoin Layer2 that emerged in the second half of the year, it can be said that all flowers bloomed together and all schools of thought contended.</p>
+<p>Facing the ever-changing Bitcoin ecosystem projects and related technologies, many friends (including the author) have experienced the process of: can’t see - look down on - don’t understand - can’t keep up.</p>
+<p>This series of research reports aims to peel off the superficial concepts of projects and start from the technical essence to give the origins of this wave of prosperity, and then divide the framework for these projects from a technical dimension. It is hoped that through mastering information and establishing frameworks, readers will be able to quickly analyze and judge new projects technically when they encounter them.</p>
+<h1 id="Where-does-the-new-come-from"><a href="#Where-does-the-new-come-from" class="headerlink" title="Where does the new come from"></a>Where does the new come from</h1><p>Readers must be familiar with the topic of Bitcoin scalability, so I won’t repeat it here. If interested, you can <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bitcoin_scalability_problem">visit here</a> to fill in the background knowledge.</p>
+<p>From the overall ecological development law, asset issuance protocols will first appear, people will use issuance protocols to issue a large number of assets, and then applications (exchange/lending/payment, etc.) will be generated, and a large number of applications will gather together. It will form a prosperous Layer2.</p>
+<p>Therefore, assets (protocols/cases)/Layer2 (protocols/applications) will be the core theme for the author’s analysis, of which <strong>Asset protocols</strong> and <strong>Layer2 protocols</strong> are the focus.</p>
+<p>In the many years of Bitcoin ecosystem development, the Bitcoin ecosystem mentioned in various classic books and authoritative analysis articles can be summarized as the following figure:</p>
+<p><img src="/./bitcoin-ecosystem-overviews/Bitcoin-Ecosystem-Original.png" alt="Bitcoin-Ecosystem-Classic"></p>
+<p>The development of the Bitcoin ecosystem is changing with each passing day. The above content can no longer cover the latest developments. However, everything has a reason. The author summarizes as follows.</p>
+<h2 id="Where-is-the-new-momentum"><a href="#Where-is-the-new-momentum" class="headerlink" title="Where is the new momentum"></a>Where is the new momentum</h2><ul>
+<li>Internal reasons</li>
 </ul>
-<p>对于一些 SDK，产品形态是允许在测试阶段开启，上线移除的，例如性能调试工具，测试工具等。</p>
-<h1 id="区分版本方案"><a href="#区分版本方案" class="headerlink" title="区分版本方案"></a>区分版本方案</h1><p>最简单的，就是手动注释代码，应用中如果只使用了这个 SDK 的一个 API，那还好，如果用到了多个，分布在不同的文件中，<br>这事儿就麻烦了。很不优雅。</p>
-<h1 id="最优雅的方案"><a href="#最优雅的方案" class="headerlink" title="最优雅的方案"></a>最优雅的方案</h1><p>思考一下这个需求</p>
+<p>Economic motivation:</p>
+<ol>
+<li><p>As a valuable and liquid asset, BTC naturally should have financial attributes, but for various reasons, the ratio of BTC@DeFi is very low, and BTC holders have the appeal to participate in DeFi.</p>
+</li>
+<li><p>In 2024, Bitcoin will enter the halving cycle, and miners’ coinbase income will decrease. Mining groups have the appeal to obtain more income through a more prosperous ecosystem.</p>
+</li>
+</ol>
+<p>Technical motivation:</p>
+<ol>
+<li><p>Bitcoin’s last two major upgrades (SegWit and Taproot) combined together make the on-chain processing capabilities and off-chain expression space of the bitcoin chain itself greater, which also promotes the emergence of new assets and new Layer2.</p>
+</li>
+<li><p>The popularity of client verification and other technical concepts has brought new directions.</p>
+</li>
+</ol>
 <ul>
-<li>应用分为 debug/release 版本</li>
-<li>无痛切换，最好能够实现自动化</li>
+<li>External reasons</li>
 </ul>
-<p>大部分的编译系统，例如 Gradle/Maven 都可以区分版本，引入不同的包。利用这个特性，我们可以实现一个 No-Op SDK。</p>
-<p>这个 SDK 具有如下特点：</p>
-<ul>
-<li>具有正式 SDK 的所有可以被外部引用的类</li>
-<li>具有正式 SDK 的所有对外 API</li>
-<li>足够的精简</li>
-<li>提示正在使用 No-Op SDK</li>
-</ul>
-<h1 id="最后的结果"><a href="#最后的结果" class="headerlink" title="最后的结果"></a>最后的结果</h1><p>以 bugtags 为例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">debugCompile 'com.bugtags.library:bugtags-lib:2.0.0'</span><br><span class="line">releaseCompile 'com.bugtags.library:bugtags-noop:2.0.0'</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>The prosperity of the Ethereum ecosystem in the DeFi summer and the practice on Layer2 have objectively affected the development of other public chains.</p>
+</li>
+<li><p>The concept of modular blockchains (DA, etc.) and the implementation of zero-knowledge proof technology have brought new ideas for Bitcoin expansion.</p>
+</li>
+</ol>
+<p>Driven by the above motivations, we can update the above framework content to the latest version.</p>
+<h1 id="Classification-Overview-DEC-2023"><a href="#Classification-Overview-DEC-2023" class="headerlink" title="Classification Overview [DEC. 2023]"></a>Classification Overview [DEC. 2023]</h1><p><img src="/./bitcoin-ecosystem-overviews/Bitcoin-Ecosystem-New.png" alt="Bitcoin-Ecosystem-New"></p>
+<p>In this article, the author will try to make some technical descriptions for each sub-category and protocol within the scope of knowledge. If time permits in the future, I will do technical analysis on specific protocols.</p>
+<h2 id="Asset-Protocol"><a href="#Asset-Protocol" class="headerlink" title="Asset Protocol"></a>Asset Protocol</h2><p>The Bitcoin white paper defines it as a P2P payment system, so it adopts a UTXO model similar to <strong>cash payment and change</strong>.</p>
+<p><img src="/./bitcoin-ecosystem-overviews/Bitcoin-TX.png" alt="Bitcoin-TX"></p>
+<p>In this transaction, Alice wants to pay Bob 1 BTC. Alice constructs a transaction: the input is the 10 BTC UTXO controlled by Alice, and the output is 1 BTC to Bob and 8.99 BTC change, with the remaining 0.01 BTC as the transaction fee.</p>
+<p>The UTXOs in the output can carry some additional information, for example, someone once registered <a target="_blank" rel="noopener" href="https://blockstream.info/tx/e81f708ca09fc93337c3950158c4a4f8a9bcf57176fcee6e2869bc6ac4dc5db5">wedding information</a> on the bitcoin chain:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">OP_RETURN</span><br><span class="line">0.00000000 BTC</span><br><span class="line">TYPE	OP_RETURN</span><br><span class="line">SCRIPTPUBKEY (ASM)	OP_RETURN OP_PUSHBYTES_27 416c657820616e6420446172696120676f74206d61727269656421</span><br><span class="line">SCRIPTPUBKEY (HEX)	6a1b416c657820616e6420446172696120676f74206d61727269656421</span><br><span class="line">OP_RETURN DATA	Alex and Daria got married!</span><br></pre></td></tr></table></figure>
 
-<p>以 leakcanary 为例：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'</span><br><span class="line">releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'</span><br></pre></td></tr></table></figure>
+<p>With the upgrade of Bitcoin, there are also multiple ways to carry information in UTXO, commonly used are OP_RETURE, SegWit, Taproot, etc.</p>
+<p>The code consensus of the Bitcoin network only recognizes one asset called BTC. If you want to issue other assets by leveraging Bitcoin, the ideas people have come up with so far are to add information in the UTXO, and then use an off-chain program to parse the additional information in the UTXO. </p>
+<p>An example is to establish a “rare” US dollar collection protocol on top of the US dollar supremacy, described as follows:</p>
+<p><img src="/./bitcoin-ecosystem-overviews/us-dollar.jpeg" alt="us-dollor-collection"></p>
+<p>Unfold the narrative with US dollar numbers and establish the following Rare-USD protocol:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">B__03__54__27__54__F </span><br><span class="line">||</span><br><span class="line">H__C1__C2__C3__C4__T</span><br><span class="line"></span><br><span class="line">Set the more numbers with 8 in C1, C2, C3, C4, the rarer. </span><br><span class="line">Typical operations for this protocol are minting/transferring. Where minting is making some special marks on the banknote (may have legal issues, just a simple example).</span><br></pre></td></tr></table></figure>
 
-<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>如果你是一个 SDK 的使用者，即便官方没有提供 No-Op 版本，你完全可以自己写一个。</p>
+<p>It can be seen that some characteristics of the Rare-USD protocol:</p>
+<ol>
+<li>Layer1 (Federal Reserve) is not aware of the existence of this collectible protocol  </li>
+<li>An off-chain consensus needs to be formed (collectors) to ensure its normal operation</li>
+</ol>
+<p>The asset protocol Rare-USD protocol described above has no essential difference from the framework, and it is also closely related to the separation of DA (data availability layer) in modular blockchains.</p>
+<p>Client-side-verification is a more official term, while inscription is a term coined by the community.</p>
+<h2 id="Layer2-Protocol"><a href="#Layer2-Protocol" class="headerlink" title="Layer2 Protocol"></a>Layer2 Protocol</h2><p>The existence value of Layer2 depends on the asset protocol and corresponding asset instances.  </p>
+<h3 id="The-three-core-issues"><a href="#The-three-core-issues" class="headerlink" title="The three core issues"></a>The three core issues</h3><p>The author believes that the core of Bitcoin’s Layer2 needs to answer three questions:</p>
+<ul>
+<li>Assets</li>
+</ul>
+<p>Whether the assets are abundant, whether they can achieve decentralized cross-chain, and whether they have escape capabilities.</p>
+<ul>
+<li>Execution</li>
+</ul>
+<p>The state transition of Layer2, whether it has a Turing-complete virtual machine, and whether it is user and developer friendly.</p>
+<ul>
+<li>Validation</li>
+</ul>
+<p>How Layer2’s execution state can prove innocence, verification costs, etc.</p>
+<h3 id="Layer2-Analysis-Framework"><a href="#Layer2-Analysis-Framework" class="headerlink" title="Layer2 Analysis Framework"></a>Layer2 Analysis Framework</h3><p>This article establishes the following analysis framework for Layer2 protocols. For example:</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Project</strong></th>
+<th align="left">Technical Route</th>
+<th align="left"><strong>Asset Security Cross-chain</strong></th>
+<th><strong>Asset Escape</strong></th>
+<th><strong>Turing Complete</strong></th>
+<th align="left"><strong>L1 Verify State</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Lighting Network</td>
+<td align="left">State Channel</td>
+<td align="left">YES</td>
+<td>YES</td>
+<td>NO</td>
+<td align="left">YES</td>
+</tr>
+<tr>
+<td align="left">Stacks</td>
+<td align="left">Side Chain</td>
+<td align="left">-</td>
+<td>NO</td>
+<td>YES</td>
+<td align="left">NO</td>
+</tr>
+</tbody></table>
+<p>It is worth noting in particular that the emergence of Rollup types of Layer2 is a highlight. Strictly speaking, Rollup contains validity and sovereign types, the former can achieve on-chain verification. </p>
+<p>As a technical solution that can potentially implement validity rollups, <strong>BitVM</strong> will be expected to truly open a new chapter in Bitcoin’s Layer2 ecosystem.</p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>The article reviews the history of the Bitcoin ecosystem and the driving forces behind innovation and new developments, starting from the two major categories of asset/Layer2 protocols, and attempts to establish an analysis framework for the Bitcoin ecosystem for readers.</p>
+<p>Whether it is an asset protocol or a Layer2 protocol, the best way to understand the technical essence is to look at their interaction with Bitcoin’s first layer, more specifically, the construction of UTXO inputs and outputs. Subsequent articles will be written to analyze ecosystem protocols from a Bitcoin transaction perspective.</p>
+<h1 id="About-SigWeb3-Organization"><a href="#About-SigWeb3-Organization" class="headerlink" title="About SigWeb3 Organization"></a>About SigWeb3 Organization</h1><p>A special interest group focused on Web3, we pay attention to the forefront of Web3 technology and go down to build.</p>
+<p>Students with theoretical foundation and engineering capabilities are welcome to join!  </p>
+<p>Add telegram group:  <a target="_blank" rel="noopener" href="https://t.me/sigweb3">https://t.me/sigweb3</a></p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a target="_blank" rel="noopener" href="https://www.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/">https://www.oreilly.com/library/view/mastering-bitcoin-3rd/9781098150082/</a><br><a target="_blank" rel="noopener" href="https://bitvm.org/bitvm.pdf">https://bitvm.org/bitvm.pdf</a><br><a target="_blank" rel="noopener" href="https://rgb.tech/">https://rgb.tech/</a><br><a target="_blank" rel="noopener" href="https://www.drivechain.info/">https://www.drivechain.info/</a><br><a target="_blank" rel="noopener" href="https://www.dlc.link/">https://www.dlc.link/</a><br><a target="_blank" rel="noopener" href="https://domo-2.gitbook.io/brc-20-experiment/">https://domo-2.gitbook.io/brc-20-experiment/</a><br><a target="_blank" rel="noopener" href="https://research.web3caff.com/zh/archives/6501">https://research.web3caff.com/zh/archives/6501</a></p>
 
 
             <div class="toc-title"> 相关文章推荐</div>
-            <p class="related-posts-none">No related post.</p>
+            <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/en-sigweb3-btc-exp-programme.html">SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP</a></li><li class="related-posts-item"><a class="related-posts-link" href="/sigweb3-btc-exp-programme.html">SIGWeb3 发布BTC 生态探索项目——BTC-EXP</a></li><li class="related-posts-item"><a class="related-posts-link" href="/bitcoin-ecosystem-overviews.html">比特币生态分析-建立框架</a></li></ul>
 
         </div>
         <footer class="article-footer">
@@ -315,20 +394,20 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/on-children.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/bitcoin-ecosystem-overviews.html" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            读一首诗——纪伯伦《孩子》
+            比特币生态分析-建立框架
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/gradle-build-system-overview.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/blockchain-governance.html" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">Android Gradle 构建系统·初探</p>
+        <p class="article-nav-title">blockchain-governance</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -358,7 +437,7 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SDK-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-text">SDK 的使用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BA%E5%88%86%E7%89%88%E6%9C%AC%E6%96%B9%E6%A1%88"><span class="nav-text">区分版本方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E9%9B%85%E7%9A%84%E6%96%B9%E6%A1%88"><span class="nav-text">最优雅的方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="nav-text">最后的结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%A9%E5%B1%95"><span class="nav-text">扩展</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preface"><span class="nav-text">Preface</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Where-does-the-new-come-from"><span class="nav-text">Where does the new come from</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Where-is-the-new-momentum"><span class="nav-text">Where is the new momentum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Classification-Overview-DEC-2023"><span class="nav-text">Classification Overview [DEC. 2023]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Asset-Protocol"><span class="nav-text">Asset Protocol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layer2-Protocol"><span class="nav-text">Layer2 Protocol</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-three-core-issues"><span class="nav-text">The three core issues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Layer2-Analysis-Framework"><span class="nav-text">Layer2 Analysis Framework</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#About-SigWeb3-Organization"><span class="nav-text">About SigWeb3 Organization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-text">References</span></a></li></ol>
                         
 
                         
@@ -378,7 +457,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SDK-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">SDK 的使用场景</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8C%BA%E5%88%86%E7%89%88%E6%9C%AC%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">区分版本方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E4%BC%98%E9%9B%85%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">最优雅的方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">最后的结果</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-number">5.</span> <span class="toc-text">扩展</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Preface"><span class="toc-number">1.</span> <span class="toc-text">Preface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Where-does-the-new-come-from"><span class="toc-number">2.</span> <span class="toc-text">Where does the new come from</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-is-the-new-momentum"><span class="toc-number">2.1.</span> <span class="toc-text">Where is the new momentum</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Classification-Overview-DEC-2023"><span class="toc-number">3.</span> <span class="toc-text">Classification Overview [DEC. 2023]</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Asset-Protocol"><span class="toc-number">3.1.</span> <span class="toc-text">Asset Protocol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Layer2-Protocol"><span class="toc-number">3.2.</span> <span class="toc-text">Layer2 Protocol</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-three-core-issues"><span class="toc-number">3.2.1.</span> <span class="toc-text">The three core issues</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Layer2-Analysis-Framework"><span class="toc-number">3.2.2.</span> <span class="toc-text">Layer2 Analysis Framework</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary"><span class="toc-number">4.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#About-SigWeb3-Organization"><span class="toc-number">5.</span> <span class="toc-text">About SigWeb3 Organization</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol>
         </div>
     </div>
 </div>
