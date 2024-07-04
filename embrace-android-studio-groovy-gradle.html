@@ -12,12 +12,12 @@
     
         <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio" />
     
-    <meta name="description" content="关于学习方式续 回忆起大学那个白衣飘飘的年代，开始金工实习却发现基础学的不牢靠，越来越胆小，越来越糊涂。所幸得到一位高年级学姐指导，赶紧找当时的书或者笔记，快速把基础知识温习一遍，再结合实践中思考，终于豁然开朗。 相信看过前一篇 《Android Studio 与 Gradle 深入》的同学，有一部分就会遇到我初识 Gradle 时的困惑：代码我也依稀看得懂，但就是不知道还能这样写，为什么这样写。">
+    <meta name="description" content="关于学习方式续回忆起大学那个白衣飘飘的年代，开始金工实习却发现基础学的不牢靠，越来越胆小，越来越糊涂。所幸得到一位高年级学姐指导，赶紧找当时的书或者笔记，快速把基础知识温习一遍，再结合实践中思考，终于豁然开朗。 相信看过前一篇 《Android Studio 与 Gradle 深入》的同学，有一部分就会遇到我初识 Gradle 时的困惑：代码我也依稀看得懂，但就是不知道还能这样写，为什么这样写。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础">
 <meta property="og:url" content="https://0xkevinhe.xyz/embrace-android-studio-groovy-gradle.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="关于学习方式续 回忆起大学那个白衣飘飘的年代，开始金工实习却发现基础学的不牢靠，越来越胆小，越来越糊涂。所幸得到一位高年级学姐指导，赶紧找当时的书或者笔记，快速把基础知识温习一遍，再结合实践中思考，终于豁然开朗。 相信看过前一篇 《Android Studio 与 Gradle 深入》的同学，有一部分就会遇到我初识 Gradle 时的困惑：代码我也依稀看得懂，但就是不知道还能这样写，为什么这样写。">
+<meta property="og:description" content="关于学习方式续回忆起大学那个白衣飘飘的年代，开始金工实习却发现基础学的不牢靠，越来越胆小，越来越糊涂。所幸得到一位高年级学姐指导，赶紧找当时的书或者笔记，快速把基础知识温习一遍，再结合实践中思考，终于豁然开朗。 相信看过前一篇 《Android Studio 与 Gradle 深入》的同学，有一部分就会遇到我初识 Gradle 时的困惑：代码我也依稀看得懂，但就是不知道还能这样写，为什么这样写。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/41705460.jpg">
 <meta property="article:published_time" content="2016-01-04T03:20:30.000Z">
@@ -203,66 +203,57 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="关于学习方式续">关于学习方式续</h1>
-<p>回忆起大学那个白衣飘飘的年代，开始金工实习却发现基础学的不牢靠，越来越胆小，越来越糊涂。所幸得到一位高年级学姐指导，赶紧找当时的书或者笔记，快速把基础知识温习一遍，再结合实践中思考，终于豁然开朗。</p>
-<p>相信看过前一篇 <a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">《Android
-Studio 与 Gradle 深入》</a>的同学，有一部分就会遇到我初识 Gradle
-时的困惑：代码我也依稀看得懂，但就是不知道还能这样写，为什么这样写。</p>
-<h1 id="问题与解决方案">问题与解决方案</h1>
-<p>回想我在 Gradle
-的学习过程中遇到的问题与及其解决方案，总结出下面三点：</p>
+            <h1 id="关于学习方式续"><a href="#关于学习方式续" class="headerlink" title="关于学习方式续"></a>关于学习方式续</h1><p>回忆起大学那个白衣飘飘的年代，开始金工实习却发现基础学的不牢靠，越来越胆小，越来越糊涂。所幸得到一位高年级学姐指导，赶紧找当时的书或者笔记，快速把基础知识温习一遍，再结合实践中思考，终于豁然开朗。</p>
+<p>相信看过前一篇 <a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">《Android Studio 与 Gradle 深入》</a>的同学，有一部分就会遇到我初识 Gradle 时的困惑：代码我也依稀看得懂，但就是不知道还能这样写，为什么这样写。</p>
+<h1 id="问题与解决方案"><a href="#问题与解决方案" class="headerlink" title="问题与解决方案"></a>问题与解决方案</h1><p>回想我在 Gradle 的学习过程中遇到的问题与及其解决方案，总结出下面三点：</p>
 <ul>
 <li>原理不懂：学习 Groovy 与 Gradle 的基础原理</li>
 <li>Gradle 实践不懂：学会找示例，学习开源例子</li>
 <li>方法和属性不懂：学会查文档</li>
 </ul>
 <p>下面的我将以解决三个问题为线索，介绍 Groovy 和 Gradle。</p>
-<h1 id="学习-groovy">学习 Groovy</h1>
-<h2 id="groovy-概述">Groovy 概述</h2>
-<p>Gradle 采用了 Groovy 语言作为主要的脚本语言。一个 build.gradle
-文件，其实是一个 Groovy 类。</p>
-<p>Groovy 是一个基于 JVM 的语言，代码最终编译成字节码（bytecode）在 JVM
-上运行。它具有类似于 Java 的语法风格，但是语法又比 Java
-要灵活和方便，同时具有动态语言（如 ruby 和 Python）的一些特性。</p>
-<p>Groovy 的诸多特定，很适合用来定义 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>（Domain
-Specific Language）。</p>
+<h1 id="学习-Groovy"><a href="#学习-Groovy" class="headerlink" title="学习 Groovy"></a>学习 Groovy</h1><h2 id="Groovy-概述"><a href="#Groovy-概述" class="headerlink" title="Groovy 概述"></a>Groovy 概述</h2><p>Gradle 采用了 Groovy 语言作为主要的脚本语言。一个 build.gradle 文件，其实是一个 Groovy 类。</p>
+<p>Groovy 是一个基于 JVM 的语言，代码最终编译成字节码（bytecode）在 JVM 上运行。它具有类似于 Java 的语法风格，但是语法又比 Java 要灵活和方便，同时具有动态语言（如 ruby 和 Python）的一些特性。</p>
+<p>Groovy 的诸多特定，很适合用来定义 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>（Domain Specific Language）。</p>
 <blockquote>
-<p>简单的来讲 DSL 是一个面向特定小领域的语言，如常见的 HTML、CSS 都是
-DSL，它通常是以配置的方式进行编程，与之相对的是通用语言（General Purpose
-Language），如 Java 等。</p>
+<p>简单的来讲 DSL 是一个面向特定小领域的语言，如常见的 HTML、CSS 都是 DSL，它通常是以配置的方式进行编程，与之相对的是通用语言（General Purpose Language），如 Java 等。</p>
 </blockquote>
-<p>既然是一门语言，就肯定有自己的特性。我们要从下面几个步骤来介绍
-Groovy： * 环境安装 * 语言基础 * 语言特性及其本质</p>
-<h2 id="环境安装">环境安装</h2>
-<p>Groovy 官方<a target="_blank" rel="noopener" href="http://www.groovy-lang.org/install.html">安装文档</a>提供多种方式进行安装，确保你不会在<strong>跪在环境配置的路上
-<sup>-</sup> </strong>：</p>
+<p>既然是一门语言，就肯定有自己的特性。我们要从下面几个步骤来介绍 Groovy：</p>
+<ul>
+<li>环境安装</li>
+<li>语言基础</li>
+<li>语言特性及其本质</li>
+</ul>
+<h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><p>Groovy 官方<a target="_blank" rel="noopener" href="http://www.groovy-lang.org/install.html">安装文档</a>提供多种方式进行安装，确保你不会在**跪在环境配置的路上 ^-^ **：</p>
 <ul>
 <li>Windows 下推荐 binary 包配置环境变量</li>
 <li>Mac 下推荐使用 sdkman 或者 Brew 进行安装</li>
 <li>Linux 下推荐 sdkman</li>
 <li>嵌入在程序中，则推荐使用 Maven 远程依赖</li>
 </ul>
-<p>初学者也没有必要使用IDE，平添障碍，后期用 Intellij IDEA Community
-版本足矣。</p>
+<p>初学者也没有必要使用IDE，平添障碍，后期用 Intellij IDEA Community 版本足矣。</p>
 <p>下面只介绍 Mac 下使用 sdkman 的安装方式。</p>
 <ul>
 <li>下载安装 sdkman，执行下面命令，按照提示安装即可</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -s http://get.sdkman.io | bash</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>使环境变量生效</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ source "$HOME/.sdkman/bin/sdkman-init.sh"</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>安装 Groovy</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sdk install groovy</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>查看当前版本，如果能否运行且输出对应版本，就是成功了</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ groovy -version</span><br><span class="line">Groovy Version: 2.4.4 JVM: 1.8.0_25 Vendor: Oracle Corporation OS: Mac OS X</span><br></pre></td></tr></table></figure>
-<h2 id="初探">初探</h2>
-<p>安装好环境之后，先来一个 hello, world！</p>
+
+<h2 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h2><p>安装好环境之后，先来一个 hello, world！</p>
 <ul>
 <li>新建文件</li>
 </ul>
@@ -271,153 +262,154 @@ Groovy： * 环境安装 * 语言基础 * 语言特性及其本质</p>
 <li>在其中写上内容</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println "hello, world!"</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>保存退出，执行</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ groovy test.groovy</span><br><span class="line">hello, world!</span><br></pre></td></tr></table></figure>
+
 <p>Wow, So easy!</p>
-<h2 id="语言基础">语言基础</h2>
-<p>下面将会用一些实际的例子，介绍一些最重要的点， > 例子都已经传到
-github 的 <a target="_blank" rel="noopener" href="https://github.com/kevinho/Embrace-Android-Studio-Demo/tree/master/s3-GroovyGradle">demo</a>
-项目中。 > 第一次使用 demo 项目的时候，需要等待自动下载几个远程包。
-> 笔者一个 Java 程序员，可以你能够看到很多 Java
-的习性还是留在代码中。</p>
-<h3 id="文件与类变量与函数">文件与类，变量与函数</h3>
-<p>Groovy 代码文件，支持不显式声明类： > ScriptClass.groovy</p>
+<h2 id="语言基础"><a href="#语言基础" class="headerlink" title="语言基础"></a>语言基础</h2><p>下面将会用一些实际的例子，介绍一些最重要的点，</p>
+<blockquote>
+<p>例子都已经传到 github 的 <a target="_blank" rel="noopener" href="https://github.com/kevinho/Embrace-Android-Studio-Demo/tree/master/s3-GroovyGradle">demo</a> 项目中。<br>第一次使用 demo 项目的时候，需要等待自动下载几个远程包。<br>笔者一个 Java 程序员，可以你能够看到很多 Java 的习性还是留在代码中。</p>
+</blockquote>
+<h3 id="文件与类，变量与函数"><a href="#文件与类，变量与函数" class="headerlink" title="文件与类，变量与函数"></a>文件与类，变量与函数</h3><p>Groovy 代码文件，支持不显式声明类：</p>
+<blockquote>
+<p>ScriptClass.groovy</p>
+</blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println 'hello,world'</span><br></pre></td></tr></table></figure>
-<p>这样一个 Groovy 脚本，经过编译之后，会产生一个继承自
-groovy.lang.Script 类的子类：</p>
+
+<p>这样一个 Groovy 脚本，经过编译之后，会产生一个继承自 groovy.lang.Script 类的子类：</p>
 <p>是不是能看出点什么？</p>
 <blockquote>
 <p>groovy/build/classes/main/io/kvh/as/groovy/ScriptClass.class</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class ScriptClass extends Script {</span><br><span class="line">    public ScriptClass() {</span><br><span class="line">        CallSite[] var1 = $getCallSiteArray();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public ScriptClass(Binding context) {</span><br><span class="line">        CallSite[] var2 = $getCallSiteArray();</span><br><span class="line">        super(context);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public static void main(String... args) {</span><br><span class="line">        CallSite[] var1 = $getCallSiteArray();</span><br><span class="line">        var1[0].call(InvokerHelper.class, ScriptClass.class, args);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public Object run() {//关键方法</span><br><span class="line">        CallSite[] var1 = $getCallSiteArray();</span><br><span class="line">        return var1[1].callCurrent(this, "hello,world");// got it?</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>Groovy 支持如下的方式来定义变量和函数： > VarAndMethod.groovy</p>
+
+<p>Groovy 支持如下的方式来定义变量和函数：</p>
+<blockquote>
+<p>VarAndMethod.groovy</p>
+</blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def varAndMethod() {</span><br><span class="line">    def a = 1//不显式声明变量类型</span><br><span class="line">    a = "abc"//运行时改变类型</span><br><span class="line"></span><br><span class="line">    println a//无需；结束一行代码</span><br><span class="line">    a = 4//最后一行作为返回值</span><br><span class="line">}</span><br><span class="line">def ret = varAndMethod()//文件内运行方法</span><br><span class="line"></span><br><span class="line">println ret//输出4</span><br></pre></td></tr></table></figure>
-<h3 id="字符串">字符串</h3>
-<p>Groovy 支持单引号，双引号，三单引号声明一个字符串；</p>
+
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p>Groovy 支持单引号，双引号，三单引号声明一个字符串；</p>
 <blockquote>
 <p>Quoted.groovy</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def quoted() {</span><br><span class="line">        def singleQ = 'hello, single quot'// 声明为java.lang.String</span><br><span class="line">        def doubleQ = "hello, double quot ${singleQ}"// 如果有${},则为groovy.lang.GString，支持变量替换;否则为java.lang.String</span><br><span class="line">        def tripleQ = '''hello,</span><br><span class="line">triple quot'''// 允许多行，而不需要+号</span><br><span class="line"></span><br><span class="line">        println singleQ</span><br><span class="line">        println doubleQ</span><br><span class="line">        println tripleQ</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>Groovy 还支持以：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">"""..."""</span><br><span class="line">/.../</span><br><span class="line">$/.../$</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>来声明字符串，详情参见参考文档。</p>
-<h3 id="listarray-和-map">List，Array 和 Map</h3>
-<p>Groovy 默认使用 java.util.ArrayList 来提供 List
-服务，但提供了更加灵活易用的操作方式： > Collections.groovy</p>
+<h3 id="List，Array-和-Map"><a href="#List，Array-和-Map" class="headerlink" title="List，Array 和 Map"></a>List，Array 和 Map</h3><p>Groovy 默认使用 java.util.ArrayList 来提供 List 服务，但提供了更加灵活易用的操作方式：</p>
+<blockquote>
+<p>Collections.groovy</p>
+</blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def playList() {</span><br><span class="line">    def lst = ["a",2,true]//支持不同类型元素</span><br><span class="line"></span><br><span class="line">    println(lst)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">playList()</span><br></pre></td></tr></table></figure>
+
 <p>要使用 Array，需要显式声明：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def playArray() {</span><br><span class="line">    def intArr = [1, 2, 3] as int[]//显示声明</span><br><span class="line">    String[] strArr = ["a", "b"]//另外一种方式</span><br><span class="line"></span><br><span class="line">    println(intArr)</span><br><span class="line">    println(strArr)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">playArray()</span><br></pre></td></tr></table></figure>
+
 <p>使用 key:value 的方式定义 Map，注意 key 的正确使用方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">def playMap() {</span><br><span class="line">    def map = [a: "a", b: "b"]</span><br><span class="line">    </span><br><span class="line">    println(map)</span><br><span class="line">    </span><br><span class="line">    def key = "name"</span><br><span class="line">    def map2 = [key: 'a']//未使用</span><br><span class="line">    def map3 = [(key): 'a']//使用</span><br><span class="line"></span><br><span class="line">    println(map2)</span><br><span class="line">    println(map3)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">playMap()</span><br></pre></td></tr></table></figure>
-<h3 id="import">import</h3>
-<p>Groovy 提供了更强大的 import</p>
+
+<h3 id="import"><a href="#import" class="headerlink" title="import"></a>import</h3><p>Groovy 提供了更强大的 import</p>
 <ul>
 <li>默认 import，这些类都是被默认 import 到代码中的，可以直接使用</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.*</span><br><span class="line">import java.util.*</span><br><span class="line">import java.io.*</span><br><span class="line">import java.net.*</span><br><span class="line">import groovy.lang.*</span><br><span class="line">import groovy.util.*</span><br><span class="line">import java.math.BigInteger</span><br><span class="line">import java.math.BigDecimal</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>import alias</li>
 </ul>
-<p>引入一个类，通过 as 关键字赋予一个别名，有点 JavaScript
-的意思么？</p>
+<p>引入一个类，通过 as 关键字赋予一个别名，有点 JavaScript 的意思么？</p>
 <blockquote>
 <p>Import.groovy</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import java.lang.String as KString</span><br><span class="line"></span><br><span class="line">println(new KString("aaa"))</span><br></pre></td></tr></table></figure>
-<h2 id="语言特性及其本质">语言特性及其本质</h2>
-<h3 id="closure闭包">Closure（闭包）</h3>
-<p>闭包的概念不再赘述，大概就是可以将函数作为参数传递和使用，详情参见
-[wikipedia](https://zh.wikipedia.org/zh/%E9%97%AD%E5%8C%85_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6)。</p>
+
+<h2 id="语言特性及其本质"><a href="#语言特性及其本质" class="headerlink" title="语言特性及其本质"></a>语言特性及其本质</h2><h3 id="Closure（闭包）"><a href="#Closure（闭包）" class="headerlink" title="Closure（闭包）"></a>Closure（闭包）</h3><p>闭包的概念不再赘述，大概就是可以将函数作为参数传递和使用，详情参见 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/%E9%97%AD%E5%8C%85_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6">wikipedia</a>。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{ [closureParameters -> ] statements }</span><br></pre></td></tr></table></figure>
+
 <p>可以省略方括号内的内容，也就是说，可以没有参数列表。</p>
 <blockquote>
 <p>Closure.groovy</p>
 </blockquote>
-<p>当闭包不声明参数列表，默认参数是 it；闭包被定义之后，是一个 Closure
-对象，可以对其调用 call 方法使其执行。</p>
+<p>当闭包不声明参数列表，默认参数是 it；闭包被定义之后，是一个 Closure 对象，可以对其调用 call 方法使其执行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def defaultIt() {</span><br><span class="line">    3.times {</span><br><span class="line">        println it //默认参数 it</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">defaultIt()</span><br><span class="line">def closureObj() {</span><br><span class="line">    def obj = { a -></span><br><span class="line">        ++a</span><br><span class="line">    }</span><br><span class="line">    println obj.call(1)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">closureObj()</span><br></pre></td></tr></table></figure>
-<h3 id="面向对象特性">面向对象特性</h3>
-<ul>
+
+<h3 id="面向对象特性"><a href="#面向对象特性" class="headerlink" title="面向对象特性"></a>面向对象特性</h3><ul>
 <li>定义和实例化一个类</li>
 </ul>
 <blockquote>
 <p>GroovyCLass.groovy</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class People{</span><br><span class="line">    String name</span><br><span class="line">    int age</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">People p1 = new People();</span><br><span class="line">People p2 = new People(name:"Luis",age: 29)//通过类似 map 的方式赋值参数</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>方法的默认参数</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def foo(String p1, int p2 = 1) {</span><br><span class="line">    println(p1)</span><br><span class="line">    println(p2)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">foo("hello")</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>Field 和 Property</li>
 </ul>
-<p>Field 是以各种修饰符修饰的变量。Property是私有变量和自带的
-gettters/setters，</p>
-<p>下面的类具有私有变量 name、age，并自带这两个变量的 getter 和
-setter：</p>
+<p>Field 是以各种修饰符修饰的变量。Property是私有变量和自带的 gettters/setters，</p>
+<p>下面的类具有私有变量 name、age，并自带这两个变量的 getter 和 setter：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class People{</span><br><span class="line">    String name</span><br><span class="line">    int age</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>当变量声明为 final 的时候，默认就没有 setter</p>
 <ul>
 <li>Trait</li>
 </ul>
-<p>Groovy 提供了一个叫做 Trait
-特性实现了多继承，还有很多强大的功能，读者可以自己探索。</p>
+<p>Groovy 提供了一个叫做 Trait 特性实现了多继承，还有很多强大的功能，读者可以自己探索。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">trait Fly {</span><br><span class="line">    void fly() {</span><br><span class="line">        println("fly")</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">trait Walk {</span><br><span class="line">    void walk() {</span><br><span class="line">        println("walk")</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">class Duck implements Fly, Walk {</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">Duck duck = new Duck()</span><br><span class="line">duck.fly()</span><br><span class="line">duck.walk()</span><br></pre></td></tr></table></figure>
-<h2 id="groovy-基础小结">Groovy 基础小结</h2>
-<p>至此，我们已经熟悉了 Groovy 的基本语法和特性，相信你也能够使用 Groovy
-写一些基础程序了。Groovy 还有很多深入的内容，请用到的时候，参考这本这个
-pdf： <a target="_blank" rel="noopener" href="https://pragprog.com/book/vslg2/programming-groovy-2">《Programming
-Groovy 2》</a>。</p>
-<p>下面开始介绍使用 Groovy 写 Gradle 程序，主要的内容来自 <a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/userguide.html">《Gradle
-Sser Guide》</a>。</p>
-<h1 id="学习-gradle">学习 Gradle</h1>
-<h2 id="gradle-安装">Gradle 安装</h2>
-<p>三种方式安装 Gradle：</p>
+
+<h2 id="Groovy-基础小结"><a href="#Groovy-基础小结" class="headerlink" title="Groovy 基础小结"></a>Groovy 基础小结</h2><p>至此，我们已经熟悉了 Groovy 的基本语法和特性，相信你也能够使用 Groovy 写一些基础程序了。Groovy 还有很多深入的内容，请用到的时候，参考这本这个 pdf： <a target="_blank" rel="noopener" href="https://pragprog.com/book/vslg2/programming-groovy-2">《Programming Groovy 2》</a>。</p>
+<p>下面开始介绍使用 Groovy 写 Gradle 程序，主要的内容来自 <a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/userguide.html">《Gradle Sser Guide》</a>。</p>
+<h1 id="学习-Gradle"><a href="#学习-Gradle" class="headerlink" title="学习 Gradle"></a>学习 Gradle</h1><h2 id="Gradle-安装"><a href="#Gradle-安装" class="headerlink" title="Gradle 安装"></a>Gradle 安装</h2><p>三种方式安装 Gradle：</p>
 <ul>
-<li><p><a target="_blank" rel="noopener" href="https://gradle.org/gradle-download/">下载 zip</a>
-安装包</p></li>
-<li><p>Mac 下使用 home brew</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://gradle.org/gradle-download/">下载 zip</a> 安装包</p>
+</li>
+<li><p>Mac 下使用 home brew</p>
+</li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gradle</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li><strong><em>推荐</em></strong>：使用 IntelliJ IDEA（Android
-Studio）自带的 wrapper 结构来下载 Gradle</li>
+<li><em><strong>推荐</strong></em>：使用 IntelliJ IDEA（Android Studio）自带的 wrapper 结构来下载 Gradle</li>
 </ul>
 <blockquote>
-<p>Wrapper 是为了让不同版本的插件能够使用其对应版本的 Gradle
-的一个机制</p>
+<p>Wrapper 是为了让不同版本的插件能够使用其对应版本的 Gradle 的一个机制</p>
 </blockquote>
 <blockquote>
 <p>Gradle Wrapper 会把不同的版本 Gradle 安装在：</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$USER_HOME/.gradle/wrapper/dists</span><br></pre></td></tr></table></figure>
-<h2 id="gradle-build-的生命周期">Gradle Build 的生命周期</h2>
-<p>回忆一下<a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">《Android
-Studio 与 Gradle 深入》</a>中的 Android Studio 项目文件结构：</p>
+
+<h2 id="Gradle-Build-的生命周期"><a href="#Gradle-Build-的生命周期" class="headerlink" title="Gradle Build 的生命周期"></a>Gradle Build 的生命周期</h2><p>回忆一下<a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">《Android Studio 与 Gradle 深入》</a>中的 Android Studio 项目文件结构：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── app						//app module</span><br><span class="line">│   ├── build.gradle		//app module 的 build.gradle</span><br><span class="line">├── build.gradle			//项目 build.gradle，通常配置项目全局配置，如 repositories 和 dependencies</span><br><span class="line">├── gradle.properties		//项目属性文件，通常可以放置一些常量</span><br><span class="line">├── lib						//lib module</span><br><span class="line">│   ├── build.gradle		//lib module 的 build.gradle</span><br><span class="line">└── settings.gradle			//项目总体设置，通常是配置项目中所有的 module</span><br></pre></td></tr></table></figure>
-<h3 id="gradle-构建三个阶段">Gradle 构建三个阶段：</h3>
-<ul>
-<li><p>初始化：Gradle 支持单 module 构建和多 module 构建（Android Studio
-创建的项目默认是多 module）。初始化阶段，Gradle 会为每一个 module 中的
-build.gradle 文件创建一个 Project 实例。</p></li>
-<li><p>配置：项目根目录的 build.gradle 会首先被执行</p></li>
-<li><p>执行：执行所选取的 task</p></li>
+
+<h3 id="Gradle-构建三个阶段："><a href="#Gradle-构建三个阶段：" class="headerlink" title="Gradle 构建三个阶段："></a>Gradle 构建三个阶段：</h3><ul>
+<li><p>初始化：Gradle 支持单 module 构建和多 module 构建（Android Studio 创建的项目默认是多 module）。初始化阶段，Gradle 会为每一个 module 中的 build.gradle 文件创建一个 Project 实例。</p>
+</li>
+<li><p>配置：项目根目录的 build.gradle 会首先被执行</p>
+</li>
+<li><p>执行：执行所选取的 task</p>
+</li>
 </ul>
-<h3 id="settings.gradle">Settings.gradle</h3>
-<p>多 module 构建要求在项目根目录下有一个 settings.gradle，用来指定哪些
-module 参与构建，如：</p>
+<h3 id="Settings-gradle"><a href="#Settings-gradle" class="headerlink" title="Settings.gradle"></a>Settings.gradle</h3><p>多 module 构建要求在项目根目录下有一个 settings.gradle，用来指定哪些 module 参与构建，如：</p>
 <blockquote>
 <p>settings.gradle</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">include ':app', ':groovy'</span><br><span class="line"></span><br><span class="line">println 'print in settings.gradle'</span><br></pre></td></tr></table></figure>
-<p>在 settings.gradle
-文件中，添加一行打印语句，在控制台中，切换到当前项目根目录下执行：</p>
+
+<p>在 settings.gradle 文件中，添加一行打印语句，在控制台中，切换到当前项目根目录下执行：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew -p groovy build</span><br></pre></td></tr></table></figure>
+
 <p>可以在看出 settings.gradle 的代码每次都会率先执行。</p>
-<h3 id="task">Task</h3>
-<p>接下来，我们开始学习 Gradle 的核心 Task。</p>
+<h3 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h3><p>接下来，我们开始学习 Gradle 的核心 Task。</p>
 <blockquote>
 <p>groovy/build.gradle</p>
 </blockquote>
@@ -425,102 +417,71 @@ module 参与构建，如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">task hello {</span><br><span class="line">    doLast {</span><br><span class="line">        println 'Hello,'</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>执行命令，查看输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew hello</span><br><span class="line">Hello,</span><br></pre></td></tr></table></figure>
+
 <p>Task 也可以这样定义：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">task World << {</span><br><span class="line">    println 'World!'</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>注意，如果定义成这样：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">task hi {</span><br><span class="line">    println 'description hi'</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
 <p>在进行初始化和配置的时候，下面语句就会运行。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println 'hi'</span><br></pre></td></tr></table></figure>
+
 <p>这种语法通常是用来定义 task 的描述信息。</p>
 <p>Task 可设置 dependsOn 和 finalizedBy：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">task hello {</span><br><span class="line">    doLast {</span><br><span class="line">        println 'Hello,'</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">task intro(dependsOn: hello) << {</span><br><span class="line">    println 'intro'</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">World.finalizedBy hello</span><br></pre></td></tr></table></figure>
-<p>执行 intro 之前，会先执行 hello；执行 World 之后，会自动执行
-hello。</p>
-<h3 id="plugin">Plugin</h3>
-<p>Gradle 的核心代码，只提供了一个框架，具体的功能（如构建 Android
-工程）是通过插件机制来实现的。</p>
-<p>Gradle 提供了大量官方的插件，如
-Maven、Groovy、Java、Publishing、Signing等，也有大量第三方的插件（Android），甚至每个人都可以自己实现一个插件(如
-笔者开发的 Bugtags 插件，这个将在最后一篇讲述)。</p>
-<p>这些 plugin 定义了一系列的 task、DSL 和约定，在build.gradle
-文件使用这些 plugin：</p>
+
+<p>执行 intro 之前，会先执行 hello；执行 World 之后，会自动执行 hello。</p>
+<h3 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h3><p>Gradle 的核心代码，只提供了一个框架，具体的功能（如构建 Android 工程）是通过插件机制来实现的。</p>
+<p>Gradle 提供了大量官方的插件，如 Maven、Groovy、Java、Publishing、Signing等，也有大量第三方的插件（Android），甚至每个人都可以自己实现一个插件(如 笔者开发的 Bugtags 插件，这个将在最后一篇讲述)。</p>
+<p>这些 plugin 定义了一系列的 task、DSL 和约定，在build.gradle 文件使用这些 plugin：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: java</span><br></pre></td></tr></table></figure>
+
 <p>当你写了一个独立的 file_uri.gradle 文件，你可以通过：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply from: 'file_uri.gradle'</span><br></pre></td></tr></table></figure>
+
 <p>来引入你的 gradle 文件，这个文件甚至可以在某个服务器上。</p>
-<h1 id="gradle-实践参考">Gradle 实践参考</h1>
-<p>学习了基础理论之后，如果你还是不知道如何开始写，那就先来实现一个自定义
-apk 名称的功能吧！</p>
+<h1 id="Gradle-实践参考"><a href="#Gradle-实践参考" class="headerlink" title="Gradle 实践参考"></a>Gradle 实践参考</h1><p>学习了基础理论之后，如果你还是不知道如何开始写，那就先来实现一个自定义 apk 名称的功能吧！</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">android.applicationVariants.all { variant ->//获取 variant 参数，就是 productFlavor x buildType</span><br><span class="line">    variant.outputs.each { output ->//获取输出文件</span><br><span class="line">        def file = output.outputFile//修改实例</span><br><span class="line">        output.outputFile = new File(</span><br><span class="line">                (String) file.parent,</span><br><span class="line">                (String) file.name.replace(</span><br><span class="line">                        file.name,</span><br><span class="line">                        // alter this string to change output file name</span><br><span class="line">                        "Your_Apk_Name_" + variant.name + "_" + variant.versionName + ".apk"</span><br><span class="line">                )</span><br><span class="line">        )</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<p>你问我怎么知道 android 下有个
-applicationVariants？其实我也不知道的，也得找文档。</p>
-<p>因为使用的是 Android 的插件，那就得在谷歌搜 “android gradle plugin
-dsl”，果然有个 <a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/">Android
-Plugin DSL Reference</a>。</p>
-<p>点进去找找，里面有关于 build variant 的文档： <a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.AppExtension.html#com.android.build.gradle.AppExtension:applicationVariants">applicationVariants</a>，既然是一个
-Set，那就可以调用 all 方法。</p>
+
+<p>你问我怎么知道 android 下有个 applicationVariants？其实我也不知道的，也得找文档。</p>
+<p>因为使用的是 Android 的插件，那就得在谷歌搜 “android gradle plugin dsl”，果然有个 <a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/">Android Plugin DSL Reference</a>。</p>
+<p>点进去找找，里面有关于 build variant 的文档： <a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.AppExtension.html#com.android.build.gradle.AppExtension:applicationVariants">applicationVariants</a>，既然是一个 Set，那就可以调用 all 方法。</p>
 <p>写代码调试，再配合文档，你就晓得该怎么写了。</p>
 <p>如果你还是不知道如何入手，那我提供几个开源参考：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/bintray/gradle-bintray-plugin">gradle-bintray-plugin</a>：bintray
-提供的开源插件</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/srs/gradle-node-plugin">gradle-node-plugin</a>：
-一个运行 NodeJS 脚本的插件</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/linkedin/gradle-plugins">linkedin-gradle-plugins</a>：
-linkedin的 Gradle 插件集合</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bintray/gradle-bintray-plugin">gradle-bintray-plugin</a>：bintray 提供的开源插件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/srs/gradle-node-plugin">gradle-node-plugin</a>： 一个运行 NodeJS 脚本的插件</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/linkedin/gradle-plugins">linkedin-gradle-plugins</a>： linkedin的 Gradle 插件集合</li>
 </ul>
-<h1 id="参考文档">参考文档</h1>
-<p>相信参照开源项目动手写了几个小程序之后，你已经小有感觉了，那就记得把文档地址备齐了，用到的时候，查一下：</p>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p>相信参照开源项目动手写了几个小程序之后，你已经小有感觉了，那就记得把文档地址备齐了，用到的时候，查一下：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="http://www.groovy-lang.org/documentation.html">Groovy
-Documentation</a>：Groovy 的详细介绍文档</li>
-<li><a target="_blank" rel="noopener" href="http://www.groovy-lang.org/api.html">Groovy API
-Reference</a>：Groovy 的 API 文档，必要的时候查阅</li>
-<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/userguide.html">Gradle
-User Guid</a>：Gradle 的详细介绍文档，很有必要过一遍</li>
-<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/dsl/">Gradle Build Language
-Reference</a>：Gradle DSL 参考，重点的几个 DSL
-过一下，其他的用到再查</li>
-<li><a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/index.html">Android
-Plugin DSL Reference</a>：使用 Android 插件必备</li>
+<li><a target="_blank" rel="noopener" href="http://www.groovy-lang.org/documentation.html">Groovy Documentation</a>：Groovy 的详细介绍文档</li>
+<li><a target="_blank" rel="noopener" href="http://www.groovy-lang.org/api.html">Groovy API Reference</a>：Groovy 的 API 文档，必要的时候查阅</li>
+<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/userguide.html">Gradle User Guid</a>：Gradle 的详细介绍文档，很有必要过一遍</li>
+<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/dsl/">Gradle Build Language Reference</a>：Gradle DSL 参考，重点的几个 DSL 过一下，其他的用到再查</li>
+<li><a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/index.html">Android Plugin DSL Reference</a>：使用 Android 插件必备</li>
 </ul>
 <p>另外，也有大量很好的中文文档，比如这几篇：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/innost/article/details/48228651">邓凡平老师的
-Gradle 介绍</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.gitbook.com/book/dongchuan/gradle-user-guide-/details">Gradle
-User Guide 中文版</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/innost/article/details/48228651">邓凡平老师的 Gradle 介绍</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.gitbook.com/book/dongchuan/gradle-user-guide-/details">Gradle User Guide 中文版</a></li>
 </ul>
-<h1 id="总结">总结</h1>
-<p>笔者从 Gradle
-入门到现在略懂，经历了大量懵懂的时光。最后狠下心去系统学习了 Groovy 和
-Gradle
-的基础之后，最终茅塞顿开。希望读者遇到类似的情况，一定要沉下心，多学多练。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>笔者从 Gradle 入门到现在略懂，经历了大量懵懂的时光。最后狠下心去系统学习了 Groovy 和 Gradle 的基础之后，最终茅塞顿开。希望读者遇到类似的情况，一定要沉下心，多学多练。</p>
 <p>在接下来的两篇，我将分别介绍将发布远程库和编写 Gradle 插件。</p>
-<h1 id="系列导读">系列导读</h1>
-<p>本文是笔者《拥抱 Android Studio》系列第三篇，其他篇请点击：</p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/01/embrace-android-studio-migration/">拥抱
-Android Studio 之一：从 ADT 到 Android Studio</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">拥抱
-Android Studio 之二：Android Studio 与 Gradle 深入</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/">拥抱
-Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱
-Android Studio 之四：Maven 公共仓库使用与私有仓库搭建</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/">拥抱
-Android Studio 之五：Gradle 插件使用与开发</a></p>
+<h1 id="系列导读"><a href="#系列导读" class="headerlink" title="系列导读"></a>系列导读</h1><p>本文是笔者《拥抱 Android Studio》系列第三篇，其他篇请点击：</p>
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/01/embrace-android-studio-migration/">拥抱 Android Studio 之一：从 ADT 到 Android Studio</a></p>
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">拥抱 Android Studio 之二：Android Studio 与 Gradle 深入</a></p>
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></p>
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱 Android Studio 之四：Maven 公共仓库使用与私有仓库搭建</a></p>
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/">拥抱 Android Studio 之五：Gradle 插件使用与开发</a></p>
 <blockquote>
 <p>有问题？在文章下留言或者加 qq 群：453503476，希望能帮到你。</p>
 </blockquote>
-<h1 id="番外">番外</h1>
-<p>笔者 <a target="_blank" rel="noopener" href="http://kvh.io">kvh</a> 在开发和运营 <a target="_blank" rel="noopener" href="https://bugtags.com">bugtags.com</a>，这是一款能够极大的提升 app
-开发者测试效率的 SDK 产品，欢迎使用、转发推荐。</p>
+<h1 id="番外"><a href="#番外" class="headerlink" title="番外"></a>番外</h1><p>笔者 <a target="_blank" rel="noopener" href="http://kvh.io/">kvh</a> 在开发和运营 <a target="_blank" rel="noopener" href="https://bugtags.com/">bugtags.com</a>，这是一款能够极大的提升 app 开发者测试效率的 SDK 产品，欢迎使用、转发推荐。</p>
 <p>笔者目前关注点在于移动 SDK 研发，后端服务设计和实现。</p>
 <p>我们团队长期求 PHP 后端研发，有兴趣请加下面公众号勾搭：</p>
-<figure>
-<img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-29/87155741.jpg" alt="bugtags">
-<figcaption aria-hidden="true">bugtags</figcaption>
-</figure>
+<p><img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-29/87155741.jpg" alt="bugtags"></p>
 
 
             <div class="toc-title"> 相关文章推荐</div>
@@ -647,7 +608,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F%E7%BB%AD"><span class="nav-text">关于学习方式续</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">问题与解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0-groovy"><span class="nav-text">学习 Groovy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#groovy-%E6%A6%82%E8%BF%B0"><span class="nav-text">Groovy 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%8E%A2"><span class="nav-text">初探</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-text">语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%B1%BB%E5%8F%98%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-text">文件与类，变量与函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#listarray-%E5%92%8C-map"><span class="nav-text">List，Array 和 Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import"><span class="nav-text">import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E5%8F%8A%E5%85%B6%E6%9C%AC%E8%B4%A8"><span class="nav-text">语言特性及其本质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#closure%E9%97%AD%E5%8C%85"><span class="nav-text">Closure（闭包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#groovy-%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%BB%93"><span class="nav-text">Groovy 基础小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0-gradle"><span class="nav-text">学习 Gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-%E5%AE%89%E8%A3%85"><span class="nav-text">Gradle 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-build-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">Gradle Build 的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gradle-%E6%9E%84%E5%BB%BA%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="nav-text">Gradle 构建三个阶段：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#settings.gradle"><span class="nav-text">Settings.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#task"><span class="nav-text">Task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#plugin"><span class="nav-text">Plugin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gradle-%E5%AE%9E%E8%B7%B5%E5%8F%82%E8%80%83"><span class="nav-text">Gradle 实践参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%AA%E5%A4%96"><span class="nav-text">番外</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F%E7%BB%AD"><span class="nav-text">关于学习方式续</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">问题与解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0-Groovy"><span class="nav-text">学习 Groovy</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Groovy-%E6%A6%82%E8%BF%B0"><span class="nav-text">Groovy 概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9D%E6%8E%A2"><span class="nav-text">初探</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-text">语言基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%B1%BB%EF%BC%8C%E5%8F%98%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="nav-text">文件与类，变量与函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#List%EF%BC%8CArray-%E5%92%8C-Map"><span class="nav-text">List，Array 和 Map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#import"><span class="nav-text">import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E5%8F%8A%E5%85%B6%E6%9C%AC%E8%B4%A8"><span class="nav-text">语言特性及其本质</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Closure%EF%BC%88%E9%97%AD%E5%8C%85%EF%BC%89"><span class="nav-text">Closure（闭包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E6%80%A7"><span class="nav-text">面向对象特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Groovy-%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%BB%93"><span class="nav-text">Groovy 基础小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0-Gradle"><span class="nav-text">学习 Gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-%E5%AE%89%E8%A3%85"><span class="nav-text">Gradle 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle-Build-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">Gradle Build 的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle-%E6%9E%84%E5%BB%BA%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9A"><span class="nav-text">Gradle 构建三个阶段：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Settings-gradle"><span class="nav-text">Settings.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task"><span class="nav-text">Task</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugin"><span class="nav-text">Plugin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle-%E5%AE%9E%E8%B7%B5%E5%8F%82%E8%80%83"><span class="nav-text">Gradle 实践参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="nav-text">参考文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%AA%E5%A4%96"><span class="nav-text">番外</span></a></li></ol>
                         
 
                         
@@ -667,7 +628,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F%E7%BB%AD"><span class="toc-number">1.</span> <span class="toc-text">关于学习方式续</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">问题与解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0-groovy"><span class="toc-number">3.</span> <span class="toc-text">学习 Groovy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#groovy-%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">Groovy 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">3.2.</span> <span class="toc-text">环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E6%8E%A2"><span class="toc-number">3.3.</span> <span class="toc-text">初探</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-number">3.4.</span> <span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%B1%BB%E5%8F%98%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.1.</span> <span class="toc-text">文件与类，变量与函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">3.4.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#listarray-%E5%92%8C-map"><span class="toc-number">3.4.3.</span> <span class="toc-text">List，Array 和 Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-number">3.4.4.</span> <span class="toc-text">import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E5%8F%8A%E5%85%B6%E6%9C%AC%E8%B4%A8"><span class="toc-number">3.5.</span> <span class="toc-text">语言特性及其本质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#closure%E9%97%AD%E5%8C%85"><span class="toc-number">3.5.1.</span> <span class="toc-text">Closure（闭包）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E6%80%A7"><span class="toc-number">3.5.2.</span> <span class="toc-text">面向对象特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#groovy-%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%BB%93"><span class="toc-number">3.6.</span> <span class="toc-text">Groovy 基础小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0-gradle"><span class="toc-number">4.</span> <span class="toc-text">学习 Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-%E5%AE%89%E8%A3%85"><span class="toc-number">4.1.</span> <span class="toc-text">Gradle 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-build-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.2.</span> <span class="toc-text">Gradle Build 的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-%E6%9E%84%E5%BB%BA%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-number">4.2.1.</span> <span class="toc-text">Gradle 构建三个阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#settings.gradle"><span class="toc-number">4.2.2.</span> <span class="toc-text">Settings.gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#task"><span class="toc-number">4.2.3.</span> <span class="toc-text">Task</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plugin"><span class="toc-number">4.2.4.</span> <span class="toc-text">Plugin</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gradle-%E5%AE%9E%E8%B7%B5%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">Gradle 实践参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-number">6.</span> <span class="toc-text">参考文档</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="toc-number">8.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%95%AA%E5%A4%96"><span class="toc-number">9.</span> <span class="toc-text">番外</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F%E7%BB%AD"><span class="toc-number">1.</span> <span class="toc-text">关于学习方式续</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">问题与解决方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0-Groovy"><span class="toc-number">3.</span> <span class="toc-text">学习 Groovy</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Groovy-%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.</span> <span class="toc-text">Groovy 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-number">3.2.</span> <span class="toc-text">环境安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E6%8E%A2"><span class="toc-number">3.3.</span> <span class="toc-text">初探</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="toc-number">3.4.</span> <span class="toc-text">语言基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8E%E7%B1%BB%EF%BC%8C%E5%8F%98%E9%87%8F%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-number">3.4.1.</span> <span class="toc-text">文件与类，变量与函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">3.4.2.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#List%EF%BC%8CArray-%E5%92%8C-Map"><span class="toc-number">3.4.3.</span> <span class="toc-text">List，Array 和 Map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#import"><span class="toc-number">3.4.4.</span> <span class="toc-text">import</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7%E5%8F%8A%E5%85%B6%E6%9C%AC%E8%B4%A8"><span class="toc-number">3.5.</span> <span class="toc-text">语言特性及其本质</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Closure%EF%BC%88%E9%97%AD%E5%8C%85%EF%BC%89"><span class="toc-number">3.5.1.</span> <span class="toc-text">Closure（闭包）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%89%B9%E6%80%A7"><span class="toc-number">3.5.2.</span> <span class="toc-text">面向对象特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Groovy-%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%BB%93"><span class="toc-number">3.6.</span> <span class="toc-text">Groovy 基础小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0-Gradle"><span class="toc-number">4.</span> <span class="toc-text">学习 Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gradle-%E5%AE%89%E8%A3%85"><span class="toc-number">4.1.</span> <span class="toc-text">Gradle 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gradle-Build-%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">4.2.</span> <span class="toc-text">Gradle Build 的生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle-%E6%9E%84%E5%BB%BA%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9A"><span class="toc-number">4.2.1.</span> <span class="toc-text">Gradle 构建三个阶段：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Settings-gradle"><span class="toc-number">4.2.2.</span> <span class="toc-text">Settings.gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Task"><span class="toc-number">4.2.3.</span> <span class="toc-text">Task</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plugin"><span class="toc-number">4.2.4.</span> <span class="toc-text">Plugin</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gradle-%E5%AE%9E%E8%B7%B5%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">Gradle 实践参考</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3"><span class="toc-number">6.</span> <span class="toc-text">参考文档</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="toc-number">8.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%95%AA%E5%A4%96"><span class="toc-number">9.</span> <span class="toc-text">番外</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -679,6 +640,26 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/action-and-blink.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/82350295.jpg)" alt="Action And Blink" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/action-and-blink.html" class="title">Action And Blink</a></p>
+                            <p class="item-date"><time datetime="2024-07-04T06:58:57.000Z" itemprop="datePublished">2024-07-04</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -760,26 +741,6 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/en-bitcoin-ecosystem-overviews.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://github.com/0xkevinhe/images/blob/master/blog/bitcoin-ecosystem-overview/bitcoin-ecosystem.png?raw=true)" alt="Bitcoin Ecosystem Analysis - Establishing a Framework" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/en-bitcoin-ecosystem-overviews.html" class="title">Bitcoin Ecosystem Analysis - Establishing a Framework</a></p>
-                            <p class="item-date"><time datetime="2023-12-11T03:18:16.000Z" itemprop="datePublished">2023-12-11</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -789,7 +750,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">5</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -799,7 +760,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -809,7 +770,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -819,7 +780,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 12px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 12px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
