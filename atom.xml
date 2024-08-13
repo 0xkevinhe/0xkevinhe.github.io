@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://0xkevinhe.xyz/"/>
-  <updated>2024-07-04T07:43:12.970Z</updated>
+  <updated>2024-08-13T05:08:46.183Z</updated>
   <id>https://0xkevinhe.xyz/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WBTC, It’s Time to Upgrade Your Technical Solutions!</title>
+    <link href="https://0xkevinhe.xyz/wbtc.html"/>
+    <id>https://0xkevinhe.xyz/wbtc.html</id>
+    <published>2024-08-13T01:58:57.000Z</published>
+    <updated>2024-08-13T05:08:46.183Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="background">Background</h1><p>Recently, there has been widespread community discussion and concernregarding the transfer of control over the WBTCproject(https://x.com/BitGo/status/1821927623494439130).</p><p>The author has extensive experience in building blockchaininfrastructure, having personally developed centralized wrapped tokensystems and MPC-based custody platforms, and is currently working onbuilding Bitcoin native validation capabilities.</p><p>In this article, the author will review the events, covering theactions and feedback from multiple parties to present the facts. Basedon practical experience in system development, the author has abstracteda simple architecture and security model for wrapped BTC products.</p><p>Subsequently, the author categorizes different technical solutionsaccording to their level of trustlessness, pointing out that thetechnical solutions based on Bitcoin's native validation capabilitiesrepresent the future direction.</p><h1 id="event-review">Event Review</h1><h2 id="involved-parties">Involved Parties</h2><ul><li>WBTC<br><a href="https://wbtc.network/">https://wbtc.network/</a><br>WBTC has wrapped over 150K BTC (worth over $9B USD) and displays proofof reserve on its website.</li><li>Bitgo (Controller of WBTC)<br><a href="https://x.com/BitGo/status/1821927623494439130">https://x.com/BitGo/status/1821927623494439130</a><br><a href="https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8">https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8</a><br>Announced that control of the WBTC project will be transferred fromBitGo to an institution related to Justin Sun's BiT Global within 60days.</li></ul><h2 id="related-parties">Related Parties</h2><ul><li>MakerDAO (DAI) Risk Management Team<br><a href="https://x.com/BlockAnalitica">https://x.com/BlockAnalitica</a><br><a href="https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo">https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo</a><br>Expressed concern about the transfer of control and indicated that WBTCposes a risk, leading them to reduce exposure in relevantprotocols.</li><li>Justin Sun (New Controller of WBTC)<br><a href="https://x.com/justinsuntron/status/1822370692014485937">https://x.com/justinsuntron/status/1822370692014485937</a><br>Promised not to touch BitGo's reserves.</li></ul><h2 id="third-parties">Third Parties</h2><ul><li>Weidai (VC)<br><a href="https://x.com/_weidai/status/1822338179640218081?s=46&t=d7GvsY4LzVKLbD34L3431w">https://x.com/_weidai/status/1822338179640218081?s=46&t=d7GvsY4LzVKLbD34L3431w</a><br>Suggested that validating bridges would be a better solution.</li><li>Liufeng (Media)<br><a href="https://x.com/fishkiller/status/1822455929247498459?s=46&t=h607g0TWNMlmAGBrzTVpyw">https://x.com/fishkiller/status/1822455929247498459?s=46&t=h607g0TWNMlmAGBrzTVpyw</a><br>Questioned the qualifications of BiT Global.</li></ul><h1 id="business-model-of-wrapped-btc">Business Model of WrappedBTC</h1><p>The business model of Wrapped BTC is quite simple, as shown below:<img src="./wbtc/wrap-model-model.png" alt="model"></p><ul><li><p>Wrap:<br>Represents the conversion from BTC to W-BTC.</p><p>Wrap-house:<br>Represents the operation mechanism of wrapping, ensuring that the BTCdeposited by users is minted as the corresponding W-BTC on a ledger(usually a blockchain, such as ETH), with no more, no less.</p></li><li><p>Unwrap:<br>Represents the conversion from W-BTC to BTC.</p><p>Unwrap-house:<br>Represents the operation mechanism of unwrapping, ensuring that afterthe user destroys W-BTC, there is a mechanism to allow them to obtainBTC on the Bitcoin network, with no more, no less.</p></li></ul><h1 id="comparison-of-trustless-levels">Comparison of TrustlessLevels</h1><p>There are many dimensions to compare the business and technicalmodels mentioned above. Below, the author will compare the levels oftrustlessness from the perspectives of wrapping and unwrapping.</p><h2 id="non-trustless">Non-Trustless</h2><p>A typical example is the current WBTC by BitGO, where the operationsof the wrap-house and unwrap-house are controlled by BitGo Custody. <img src="./wbtc/wrap-model-bitgo.png" alt="bitgo"></p><p>It is evident that users need to trust that the BitGo Custody serviceprovider will always operate correctly.</p><h2 id="single-way-trustless">Single Way Trustless</h2><p>Next, let’s look at two representative projects that emerged around2020: tBTC/renBTC.</p><figure><img src="./wbtc/wrap-model-tbtc.png" alt="tbtc"><figcaption aria-hidden="true">tbtc</figcaption></figure><p>We can see that on the X-chain (e.g., with complete validationcapability, such as having EVM), the wrap-house can more easily achievea high level of trustlessness.</p><p>However, due to the technical limitations at the time, theunwrap-house could only enhance security through threshold signatures,regardless of the extent of pre-signed signatures.</p><h2 id="dual-way-trustless">Dual Way Trustless</h2><p>Fast forward to 2024, thanks to groundbreaking attempts by teams likeBitVM/Starkware in Bitcoin native validation capabilities (includingfraud proof and validity proof) and the practical implementations bycommunity teams like BitlayerLabs, the unwrap-house is expected toachieve trustlessness.</p><figure><img src="./wbtc/wrap-model-validating.png" alt="validating"><figcaption aria-hidden="true">validating</figcaption></figure><p>Among them, fraud proof is represented by BitVM and its derivativeprojects, which achieve optimistic validation without OP_CAT. Themainstream implementation is the process of commitment and challengeusing ZK validation.</p><p>Validity proof, on the other hand, assumes the existence of OP_CATopcode and directly implements ZK validation. With OP_CAT, locked BTCwill be controlled by so-called covenants (contract-likestructures).</p><h2 id="summary-of-solution-comparisons">Summary of SolutionComparisons</h2><p>A horizontal comparison of the various technical solutions mentionedabove reveals that solutions based on Bitcoin validation capabilities(validation) perform better in terms of trustlessness in bothdirections.</p><table><colgroup><col style="width: 15%"><col style="width: 25%"><col style="width: 28%"><col style="width: 30%"></colgroup><thead><tr class="header"><th>Product</th><th>Wrap-house Trustless</th><th>Unwrap-house Trustless</th><th>Team</th></tr></thead><tbody><tr class="odd"><td>WBTC</td><td>NO</td><td>NO</td><td>BitGO</td></tr><tr class="even"><td>tBTC/renBTC</td><td>High</td><td>Low</td><td>tBTC/renBTC</td></tr><tr class="odd"><td>BitVM/OP_CAT</td><td>High</td><td>High</td><td>BitVM/Starkware/Bitlayer</td></tr></tbody></table><h1 id="conclusion">Conclusion</h1><p>The emergence of WBTC in 2018 marked the beginning of bringing BTCliquidity into the DeFi world. Subsequent projects like tBTC in 2020made some optimizations and improvements. Validation technicalsolutions, represented by Bitcoin's native validation capabilities(fraud proof and validity proof), will perform better in terms ofbidirectional trustlessness.</p><p>WBTC, it’s time to upgrade your technical solutions!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
+&lt;p&gt;Recently, there has been widespread community discussion and concern
+regarding the transfer of contro
+      
+    
+    </summary>
+    
+      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+    
+    
+      <category term="crypto" scheme="https://0xkevinhe.xyz/tags/crypto/"/>
+    
+  </entry>
   
   <entry>
     <title>Action And Blink</title>
@@ -558,29 +585,6 @@ the audience was a group of Tesla owners.&lt;/p&gt;
       <category term="产品" scheme="https://0xkevinhe.xyz/tags/%E4%BA%A7%E5%93%81/"/>
     
       <category term="用户体验" scheme="https://0xkevinhe.xyz/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>读一首诗——纪伯伦《孩子》</title>
-    <link href="https://0xkevinhe.xyz/on-children.html"/>
-    <id>https://0xkevinhe.xyz/on-children.html</id>
-    <published>2016-10-07T03:18:16.000Z</published>
-    <updated>2023-09-27T07:01:22.159Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天在最喜欢的陈老师的《待字闺中》那里读到一首诗，纪伯伦（KahlilGibran）的《孩子》，很有感触。将冰心的译文和原文奉上。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">孩　　子</span><br><span class="line"> </span><br><span class="line">你们的孩子，都不是你们的孩子。</span><br><span class="line">乃是生命为自己所渴望的儿女。</span><br><span class="line">他们是凭借你们而来，却不是从你们而来，</span><br><span class="line">他们虽和你们同在，却不属于你们。</span><br><span class="line"></span><br><span class="line">你们可以给他们以爱，却不可给他们以思想。</span><br><span class="line">因为他们有自己的思想。</span><br><span class="line">你们可以荫庇他们的身体，却不能荫庇他们的灵魂。</span><br><span class="line">因为他们的灵魂，是住在明日的宅中，那是你们在梦中也不能想见的。</span><br><span class="line">你们可以努力去模仿他们，却不能使他们来象你们。</span><br><span class="line">因为生命是不倒行的，也不与昨日一同停留。</span><br><span class="line">你们是弓，你们的孩子是从弦上发出的生命的箭矢。</span><br><span class="line">那射者在无穷之中看定了目标，也用神力将你们引满，使他的箭矢迅速而遥远地射了出去。</span><br><span class="line">让你们在射者手中的弯曲成为喜乐罢；</span><br><span class="line">因为他爱那飞出的箭，也爱了那静止的弓。</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">On Children</span><br><span class="line"></span><br><span class="line">Your children are not your children.</span><br><span class="line">They are the sons and daughters of Life's longing for itself.</span><br><span class="line">They come through you but not from you,</span><br><span class="line">And though they are with you yet they belong not to you.</span><br><span class="line"></span><br><span class="line">You may give them your love but not your thoughts, </span><br><span class="line">For they have their own thoughts.</span><br><span class="line">You may house their bodies but not their souls,</span><br><span class="line">For their souls dwell in the house of tomorrow, </span><br><span class="line">which you cannot visit, not even in your dreams.</span><br><span class="line">You may strive to be like them, </span><br><span class="line">but seek not to make them like you.</span><br><span class="line">For life goes not backward nor tarries with yesterday.</span><br><span class="line"></span><br><span class="line">You are the bows from which your children</span><br><span class="line">as living arrows are sent forth.</span><br><span class="line">The archer sees the mark upon the path of the infinite, </span><br><span class="line">and He bends you with His might </span><br><span class="line">that His arrows may go swift and far.</span><br><span class="line">Let your bending in the archer's hand be for gladness;</span><br><span class="line">For even as He loves the arrow that flies, </span><br><span class="line">so He loves also the bow that is stable.</span><br></pre></td></tr></table></figure><p>这首诗，来自纪伯伦的名作《先知》。</p><p>相信每一个人，在不同的阶段，读到这首诗的感受，是不一样的。</p><p>年少的时候，觉得父母老师管束自己，想要自由，可能会以此诗句来抗争——看，纪伯伦说了……。</p><p>长大了，离开父母上学，父母还是希望给更多的意见，你却总觉得父母的意见不合时宜。</p><p>工作了，经济自由了，在享受自由的那一瞬间，却开始想父母了。你慢慢的发现，自己身上的思想与习惯，很多都是源自来自父母。</p><p>若干年后，父母在你该找谁结婚这事儿上，干预未果，你想，抗争终于成功了。</p><p>不久，你也终于为人父母，才感叹，当父母真不容易。既当弓，又为箭。</p><p>再过若干年，自己的孩子也到了叛逆期，你还是希望像当年自己的父母一样，把自己曾经犯过的错，提前告诉孩子。</p><p>你却发现，每个人该犯的错误，该趟的坑，一个都少不了。你，却只能在旁边看着，就像当年你的父母一样。</p><p>孩子终于活出了自己的世界，你发现，原来每一个人都有自己的命运，只要努力，还是有机会。</p><p>每个人的每个阶段，都有自己的局限和使命。努力，活在当下就好。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;今天在最喜欢的陈老师的《待字闺中》那里读到一首诗，纪伯伦（Kahlil
-Gibran）的《孩子》，很有感触。将冰心的译文和原文奉上。&lt;/p&gt;
-&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;
-      
-    
-    </summary>
-    
     
   </entry>
   
