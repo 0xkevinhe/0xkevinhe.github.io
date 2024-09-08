@@ -88,7 +88,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -193,18 +193,11 @@ var _hmt = _hmt || [];
 
         <p class="article-excerpt">
             
-                简介
-本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。
-merkle tree
-merkle tree
-常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash
-进行标记，中间节点使用所有子节点的 hash进行标记。
+                简介本文先介绍了 sparse merkle tree，接下来介绍 zksync 中数据持久化。
+merkle treemerkle tree 常用于区块链存储数据和快速校验数据。其构造特点是叶节点使用数据的 hash 进行标记，中间节点使用所有子节点的 hash进行标记。
 
-
-merkle-tree
-
-对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle
-证明、检
+对于 merke tree 的操作，包含：插入节点、获取树根、计算 merkle 证明、检验 merkle 证明。
+计算 
             
         </p>
     </div>
@@ -243,15 +236,11 @@ merkle-tree
 
         <p class="article-excerpt">
             
-                Vitalik 在 1-11
-在博客上发表了关于智能钱包的综述。文中介绍了硬件钱包、多签钱包，着重介绍了社交恢复智能钱包，针对社交恢复钱包面临的各方面问题，提出了对应的策略。
+                Vitalik 在 1-11 在博客上发表了关于智能钱包的综述。文中介绍了硬件钱包、多签钱包，着重介绍了社交恢复智能钱包，针对社交恢复钱包面临的各方面问题，提出了对应的策略。
 原文不赘述，下文将主要记录要点和思考。
-原文
-英文
+原文英文
 中文
-要点
-guardian 的选择
-抵抗 guardian 联合作恶：
+要点guardian 的选择抵抗 guardian 联合作恶：
 1）不公开
 
 对 list 进行哈希
@@ -260,8 +249,7 @@ guardian 的选择
 fulllist，如何获得？
 
 
-guardian
-确定
+guardian 确定性的生
             
         </p>
     </div>
@@ -304,16 +292,14 @@ guardian
 
         <p class="article-excerpt">
             
-                核心
-链下撮合（订单簿在链下）、链上结算（资金划转）
-角色
-maker 挂单者
+                核心链下撮合（订单簿在链下）、链上结算（资金划转）
+角色maker 挂单者
 taker 吃单者
 实现
+maker 创建订单信息，签名1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希
 
-maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希
 
-
+注意：
             
         </p>
     </div>
@@ -364,12 +350,11 @@ maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAsse
 
         <p class="article-excerpt">
             
-                前言
-随着年纪越大，对自己的认识深入，发现自己很多习惯或者性格的形成，都可以追溯到最早的生活经历。
+                前言随着年纪越大，对自己的认识深入，发现自己很多习惯或者性格的形成，都可以追溯到最早的生活经历。
 人生来就是一张白纸，父母是第一位老师，家庭教育对于塑造一个人的品格，有关键作用。
 在教育这个事情上，说实话，也是战战兢兢，一不留神，就可能把原先的不那么正确的观念带给了孩子。
 这个时候，不能盲目，不能下意识，只能多阅读、多思考、多观察、多实践，或许能减少一些内心的焦虑。
-这是一本儿童教育的书，核心观
+这是一本儿童教育的书，核心观点
             
         </p>
     </div>
@@ -409,10 +394,7 @@ maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAsse
         <p class="article-excerpt">
             
                 本文主要介绍的是中心化交易所币安（binance.com）在区块链上的一些工作，主要是介绍币安链（BC）和币安智能链（BSC），除了综述官方文档之外，也会加入一些个人的看法。
-出发点
-总所周知，币安基于Cosmos-SDk 搭建了币安链（Binance Chain，下称
-BC），并于 2019 年上线了主网。那为什么还要有另外一个智能链（Binance
-Smart Chain，下称 BSC）呢。白
+出发点总所周知，币安基于Cosmos-SDk 搭建了币安链（Binance Chain，下称 BC），并于 2019 年上线了主网。那为什么还要有另外一个智能链（Binance Smart  Chain，下称 BSC）呢。白
             
         </p>
     </div>
@@ -455,11 +437,9 @@ Smart Chain，下称 BSC）呢。白
 
         <p class="article-excerpt">
             
-                前言
-这是一本关于影响力和顺从的书，作者使用了大量的案例来说明影响力来源。
+                前言这是一本关于影响力和顺从的书，作者使用了大量的案例来说明影响力来源。
 通过阅读这本书，可以为运营活动或者销售技巧寻找理论根据，做到知其所以然。
-🏷信息卡片
-123456789101112131415作者:[美] 罗伯特·西奥迪尼出版社: 中国人民大学出版社出品方: 湛庐文化原作名: Influence: The Psychology of Persuasion译者: 陈叙出版年: 2006
+🏷信息卡片123456789101112131415作者:[美] 罗伯特·西奥迪尼出版社: 中国人民大学出版社出品方: 湛庐文化原作名: Influence: The Psychology of Persuasion译者: 陈叙出版年: 2006-5
             
         </p>
     </div>
@@ -498,20 +478,18 @@ Smart Chain，下称 BSC）呢。白
 
         <p class="article-excerpt">
             
-                介绍
-在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：
+                介绍在项目中第三方代码的时候，要注意源码许可证问题，因为这涉及到：
 
 使用和修改的条件是什么？
 商用和分发的条件是什么？
 本项目开源后使用什么许可证？
 
 本文将简要介绍对许可证（license）的理解，着重介绍一个实战项目处理方式。
-许可证介绍
-许可证的内容，其实是博大精深。
+许可证介绍许可证的内容，其实是博大精深。
 首先许可证的种类特别的多，其次不同的许可的条款和细节也特别的多。
 下面主要是介绍若干主流且具有代表性的许可证。
 
-主要参
+主要参考了
             
         </p>
     </div>
@@ -540,57 +518,6 @@ Smart Chain，下称 BSC）呢。白
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/osx-as-server.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-12-4/4783593.jpg)" alt="macOS 作为服务器" class="thumbnail-image"></span>
-    
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/code/">code</a>
-            </div>
-            <div class="date"><time datetime="2017-12-04T03:21:55.000Z" itemprop="datePublished">2017-12-04</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/osx-as-server.html">macOS 作为服务器</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            
-                因为业务需要，我司有若干台服务器 Mac
-作为服务器。下面总结一下注意事项，作为记录。
-取消系统休眠
-曾经在这个问题上困扰很长时间。在升级了 macOS High Sierra
-之后，发现之前能够正常运行的程序出现问题。
-具体表现是：
-
-ssh 登出之后不久，线上就开始报警
-登陆进去查看 log，发现程序又是正常的
-socket 连接提示传输错误
-程序并没有 exit
-
-一开始怀疑是后台程序的权限
-            
-        </p>
-    </div>
-</article>
-
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
         <a href="/spring-cloud-config.html" class="thumbnail">
     
     
@@ -615,8 +542,7 @@ socket 连接提示传输错误
 
         <p class="article-excerpt">
             
-                闲话配置
-老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。
+                闲话配置老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。
 
 配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。
 
@@ -625,7 +551,50 @@ socket 连接提示传输错误
 系统配置：包括线程池大小、数据库连接等，变化频率较低
 业务配置：功能开关，功能参数等，变化较为频繁
 
-程序的配置一般而言，分为几个环境
+程序的配置一般而言，分为几个环境：
+            
+        </p>
+    </div>
+</article>
+
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/play-alexa-1.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-3-21/48024746-file_1490064542098_3b3a.jpg)" alt="亚马逊 Alexa Echo Dot——入门" class="thumbnail-image"></span>
+    
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/product/">product</a>
+            </div>
+            <div class="date"><time datetime="2017-03-21T03:18:16.000Z" itemprop="datePublished">2017-03-21</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/play-alexa-1.html">亚马逊 Alexa Echo Dot——入门</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+                智能家居大约20年前，在报纸上看到关于比尔盖茨智能豪宅的报道，心生向往。我等平民在20年后，终于迎来了智能家居浪潮普及的浪潮。
+亚马逊的 Alexa Echo 无疑是这个浪潮中的当红明星。
+它是一个蓝牙音箱，是一个智能语音助手，是一个智能家居管理中心，它还提供了开放平台，允许第三方添加 Skills 来扩充功能。
+本篇介绍一些购买和基本使用经验。
+购买在经过几代的发展之后，目前这个产品主要包含 E
             
         </p>
     </div>
@@ -637,6 +606,16 @@ socket 连接提示传输错误
 
     
     
+        
+            </div></section>
+        
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2016" class="archive-year"><i class="icon fa fa-calendar-o"></i>2016</a>
+            </div>
+            <div class="archives">
+    
     
     
         <div class="article-row">
@@ -644,10 +623,10 @@ socket 连接提示传输错误
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/utility-sips.html" class="thumbnail">
+        <a href="/a-good-question.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-5-16/81991562-file_1494919020294_e69d.jpg)" alt="小工具-sips-图片批量转大小" class="thumbnail-image"></span>
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/8719913.jpg)" alt="如何更好的提出技术问题" class="thumbnail-image"></span>
     
     
 </a>
@@ -657,25 +636,21 @@ socket 连接提示传输错误
             <div class="category">
             <a class="article-category-link" href="/categories/code/">code</a>
             </div>
-            <div class="date"><time datetime="2017-05-16T03:18:16.000Z" itemprop="datePublished">2017-05-16</time></div>
+            <div class="date"><time datetime="2016-02-03T03:18:16.000Z" itemprop="datePublished">2016-02-03</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/utility-sips.html">小工具-sips-图片批量转大小</a>
+        <a href="/a-good-question.html">如何更好的提出技术问题</a>
         </h1>
     
 
         <p class="article-excerpt">
             
-                家有设计师
-我家夫人是一位设计师，平时少不了将一张大图导出成多种规格的小图的脏活累活。
-看了她导了好几次，实在不能忍。得发挥程序员的能动性，做个小工具。
-调研
-imagemagick
-是一个很好的工具，支持多个平台，功能丰富强大。考虑了一下，如果这个小工具还需要用户安装依赖的话，显然提高了使用门槛。
-设计师们大多在 MacOS
-下工作，最好是运用这个平台下现成的工具包。搜索了一下，发现今天的主角：
+                下面咱们就来聊聊技术人的素养：如何更好的提出技术问题。笔者从事 Bugtags.com 开发运营以来，除了开发任务以外，最重要的工作就是在 qq 群里面回答用户的问题。 
+这半年来，少说也接待了上千个用户了。笔者发现，有相当一部分的用户，提问方式和技巧都有问题，这样导致了我们额外的客服量，也使得自己的问题得不到及时满意的回答。
+下面咱们就来聊聊技术人的素养：如何更好的提出技术问题。
+直接了当有的用
             
         </p>
     </div>
@@ -688,8 +663,8 @@ imagemagick
 
 
     <nav id="page-nav">
-        <span class="pages">第 2 页，共 4 页</span>
-        <a class="extend prev" rel="prev" href="/archives/">&lt;</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/3/">&gt;</a>
+        <span class="pages">第 2 页，共 3 页</span>
+        <a class="extend prev" rel="prev" href="/archives/">&lt;</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/3/">&gt;</a>
     </nav>
 
 
@@ -849,7 +824,7 @@ imagemagick
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -859,7 +834,7 @@ imagemagick
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -869,7 +844,7 @@ imagemagick
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -879,7 +854,7 @@ imagemagick
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 20px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 16.67px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 13.33px;">产品</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 13.33px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
