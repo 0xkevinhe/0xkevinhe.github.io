@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg">
 <meta property="article:published_time" content="2024-08-13T01:58:57.000Z">
-<meta property="article:modified_time" content="2024-08-13T05:12:53.902Z">
+<meta property="article:modified_time" content="2024-09-16T07:23:01.721Z">
 <meta property="article:author" content="0xkevinhe">
 <meta property="article:tag" content="crypto">
 <meta name="twitter:card" content="summary">
@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2024-08-13T05:12:53.902Z" itemprop="dateModified">2024-08-13</time>
+                    <time datetime="2024-09-16T07:23:01.721Z" itemprop="dateModified">2024-09-16</time>
                 </span>
             
             </div>
@@ -232,7 +232,11 @@ var _hmt = _hmt || [];
 <h1 id="Comparison-of-Trustless-Levels"><a href="#Comparison-of-Trustless-Levels" class="headerlink" title="Comparison of Trustless Levels"></a>Comparison of Trustless Levels</h1><p>There are many dimensions to compare the business and technical models mentioned above. Below, the author will compare the levels of trustlessness from the perspectives of wrapping and unwrapping.</p>
 <h2 id="Non-Trustless"><a href="#Non-Trustless" class="headerlink" title="Non-Trustless"></a>Non-Trustless</h2><p>A typical example is the current WBTC by BitGO, where the operations of the wrap-house and unwrap-house are controlled by BitGo Custody.<br><img src="/./wbtc/wrap-model-bitgo.png" alt="bitgo"></p>
 <p>It is evident that users need to trust that the BitGo Custody service provider will always operate correctly.</p>
-<h2 id="Single-Way-Trustless"><a href="#Single-Way-Trustless" class="headerlink" title="Single Way Trustless"></a>Single Way Trustless</h2><p>Next, let’s look at two representative projects that emerged around 2020: tBTC/renBTC.</p>
+<blockquote>
+<p>Update: 2024-09-16</p>
+<p>cbbtc use the similar model: <a target="_blank" rel="noopener" href="https://www.coinbase.com/en-sg/campaigns/cbbtc">https://www.coinbase.com/en-sg/campaigns/cbbtc</a></p>
+</blockquote>
+<h2 id="Single-Way-Trustless"><a href="#Single-Way-Trustless" class="headerlink" title="Single Way Trustless"></a>Single Way Trustless</h2><p>Next, let’s look at two representative projects that emerged around 2020: tBTC.</p>
 <p><img src="/./wbtc/wrap-model-tbtc.png" alt="tbtc"></p>
 <p>We can see that on the X-chain (e.g., with complete validation capability, such as having EVM), the wrap-house can more easily achieve a high level of trustlessness. </p>
 <p>However, due to the technical limitations at the time, the unwrap-house could only enhance security through threshold signatures, regardless of the extent of pre-signed signatures.</p>
@@ -251,16 +255,16 @@ var _hmt = _hmt || [];
 </tr>
 </thead>
 <tbody><tr>
-<td>WBTC</td>
+<td>WBTC/cbBTC</td>
 <td>NO</td>
 <td>NO</td>
 <td>BitGO</td>
 </tr>
 <tr>
-<td>tBTC/renBTC</td>
+<td>tBTC</td>
 <td>High</td>
 <td>Low</td>
-<td>tBTC/renBTC</td>
+<td>tBTC</td>
 </tr>
 <tr>
 <td>BitVM/OP_CAT</td>
@@ -271,6 +275,12 @@ var _hmt = _hmt || [];
 </tbody></table>
 <h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>The emergence of WBTC in 2018 marked the beginning of bringing BTC liquidity into the DeFi world. Subsequent projects like tBTC in 2020 made some optimizations and improvements. Validation technical solutions, represented by Bitcoin’s native validation capabilities (fraud proof and validity proof), will perform better in terms of bidirectional trustlessness.  </p>
 <p>WBTC, it’s time to upgrade your technical solutions!</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://wbtc.network/">https://wbtc.network/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live">https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live</a></p>
+<p><a target="_blank" rel="noopener" href="https://tbtc.network/developers/tbtc-security-model/">https://tbtc.network/developers/tbtc-security-model/</a></p>
+<p><a target="_blank" rel="noopener" href="https://bitvm.org/bitvm_bridge.pdf">https://bitvm.org/bitvm_bridge.pdf</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/">https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bitlayer.org/">https://www.bitlayer.org/</a></p>
 
 
             <div class="toc-title"> 相关文章推荐</div>
@@ -397,7 +407,7 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Background"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Event-Review"><span class="nav-text">Event Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Involved-Parties"><span class="nav-text">Involved Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Parties"><span class="nav-text">Related Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Third-Parties"><span class="nav-text">Third Parties</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Business-Model-of-Wrapped-BTC"><span class="nav-text">Business Model of Wrapped BTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Comparison-of-Trustless-Levels"><span class="nav-text">Comparison of Trustless Levels</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Trustless"><span class="nav-text">Non-Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Way-Trustless"><span class="nav-text">Single Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dual-Way-Trustless"><span class="nav-text">Dual Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-Solution-Comparisons"><span class="nav-text">Summary of Solution Comparisons</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Background"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Event-Review"><span class="nav-text">Event Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Involved-Parties"><span class="nav-text">Involved Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Parties"><span class="nav-text">Related Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Third-Parties"><span class="nav-text">Third Parties</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Business-Model-of-Wrapped-BTC"><span class="nav-text">Business Model of Wrapped BTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Comparison-of-Trustless-Levels"><span class="nav-text">Comparison of Trustless Levels</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Trustless"><span class="nav-text">Non-Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Way-Trustless"><span class="nav-text">Single Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dual-Way-Trustless"><span class="nav-text">Dual Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-Solution-Comparisons"><span class="nav-text">Summary of Solution Comparisons</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
                         
 
                         
@@ -417,7 +427,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Event-Review"><span class="toc-number">2.</span> <span class="toc-text">Event Review</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Involved-Parties"><span class="toc-number">2.1.</span> <span class="toc-text">Involved Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Related-Parties"><span class="toc-number">2.2.</span> <span class="toc-text">Related Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Third-Parties"><span class="toc-number">2.3.</span> <span class="toc-text">Third Parties</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Business-Model-of-Wrapped-BTC"><span class="toc-number">3.</span> <span class="toc-text">Business Model of Wrapped BTC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparison-of-Trustless-Levels"><span class="toc-number">4.</span> <span class="toc-text">Comparison of Trustless Levels</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Trustless"><span class="toc-number">4.1.</span> <span class="toc-text">Non-Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Single-Way-Trustless"><span class="toc-number">4.2.</span> <span class="toc-text">Single Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dual-Way-Trustless"><span class="toc-number">4.3.</span> <span class="toc-text">Dual Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary-of-Solution-Comparisons"><span class="toc-number">4.4.</span> <span class="toc-text">Summary of Solution Comparisons</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Event-Review"><span class="toc-number">2.</span> <span class="toc-text">Event Review</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Involved-Parties"><span class="toc-number">2.1.</span> <span class="toc-text">Involved Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Related-Parties"><span class="toc-number">2.2.</span> <span class="toc-text">Related Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Third-Parties"><span class="toc-number">2.3.</span> <span class="toc-text">Third Parties</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Business-Model-of-Wrapped-BTC"><span class="toc-number">3.</span> <span class="toc-text">Business Model of Wrapped BTC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparison-of-Trustless-Levels"><span class="toc-number">4.</span> <span class="toc-text">Comparison of Trustless Levels</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Trustless"><span class="toc-number">4.1.</span> <span class="toc-text">Non-Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Single-Way-Trustless"><span class="toc-number">4.2.</span> <span class="toc-text">Single Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dual-Way-Trustless"><span class="toc-number">4.3.</span> <span class="toc-text">Dual Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary-of-Solution-Comparisons"><span class="toc-number">4.4.</span> <span class="toc-text">Summary of Solution Comparisons</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
         </div>
     </div>
 </div>
