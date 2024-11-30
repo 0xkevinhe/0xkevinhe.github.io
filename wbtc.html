@@ -12,12 +12,12 @@
     
         <meta name="keywords" content="crypto" />
     
-    <meta name="description" content="BackgroundRecently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project.  The author has extensive experience in building blockchain infr">
+    <meta name="description" content="Background Recently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project. The author has extensive experience in building blockchain infr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WBTC, It’s Time to Upgrade Your Technical Solutions!">
 <meta property="og:url" content="https://0xkevinhe.xyz/wbtc.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="BackgroundRecently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project.  The author has extensive experience in building blockchain infr">
+<meta property="og:description" content="Background Recently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project. The author has extensive experience in building blockchain infr">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg">
 <meta property="article:published_time" content="2024-08-13T01:58:57.000Z">
@@ -201,86 +201,170 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><p>Recently, there has been widespread community discussion and concern regarding the transfer of control over the <a target="_blank" rel="noopener" href="https://x.com/BitGo/status/1821927623494439130">WBTC project</a>. </p>
-<p>The author has extensive experience in building blockchain infrastructure, having personally developed centralized wrapped token systems and MPC-based custody platforms, and is currently working on building Bitcoin native validation capabilities.</p>
-<p>In this article, the author will review the events, covering the actions and feedback from multiple parties to present the facts. Based on practical experience in system development, the author has abstracted a simple architecture and security model for wrapped BTC products. </p>
-<p>Subsequently, the author categorizes different technical solutions according to their level of trustlessness, pointing out that the technical solutions based on Bitcoin’s native validation capabilities represent the future direction.</p>
-<h1 id="Event-Review"><a href="#Event-Review" class="headerlink" title="Event Review"></a>Event Review</h1><h2 id="Involved-Parties"><a href="#Involved-Parties" class="headerlink" title="Involved Parties"></a>Involved Parties</h2><ul>
-<li>WBTC <a target="_blank" rel="noopener" href="https://wbtc.network/">https://wbtc.network/</a><br>WBTC has wrapped over 150K BTC (worth over $9B USD) and displays proof of reserve on its website.</li>
-<li>Bitgo (Controller of WBTC)<br><a target="_blank" rel="noopener" href="https://x.com/BitGo/status/1821927623494439130">https://x.com/BitGo/status/1821927623494439130</a><br><a target="_blank" rel="noopener" href="https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8">https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8</a><br>Announced that control of the WBTC project will be transferred from BitGo to an institution related to Justin Sun’s BiT Global within 60 days.</li>
-</ul>
-<h2 id="Related-Parties"><a href="#Related-Parties" class="headerlink" title="Related Parties"></a>Related Parties</h2><ul>
-<li><p>MakerDAO (DAI) Risk Management Team <a target="_blank" rel="noopener" href="https://x.com/BlockAnalitica">https://x.com/BlockAnalitica</a> </p>
-<p><a target="_blank" rel="noopener" href="https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo">https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo</a><br>Expressed concern about the transfer of control and indicated that WBTC poses a risk, leading them to reduce exposure in relevant protocols.</p>
-</li>
-<li><p>Justin Sun (New Controller of WBTC)<br><a target="_blank" rel="noopener" href="https://x.com/justinsuntron/status/1822370692014485937">https://x.com/justinsuntron/status/1822370692014485937</a><br>Promised not to touch BitGo’s reserves.</p>
-</li>
-</ul>
-<h2 id="Third-Parties"><a href="#Third-Parties" class="headerlink" title="Third Parties"></a>Third Parties</h2><ul>
-<li>Weidai (VC)<br><a target="_blank" rel="noopener" href="https://x.com/_weidai/status/1822338179640218081?s=46&t=d7GvsY4LzVKLbD34L3431w">https://x.com/_weidai/status/1822338179640218081?s=46&t=d7GvsY4LzVKLbD34L3431w</a><br>Suggested that validating bridges would be a better solution.</li>
-<li>Liufeng (Media)<br><a target="_blank" rel="noopener" href="https://x.com/fishkiller/status/1822455929247498459?s=46&t=h607g0TWNMlmAGBrzTVpyw">https://x.com/fishkiller/status/1822455929247498459?s=46&t=h607g0TWNMlmAGBrzTVpyw</a><br>Questioned the qualifications of BiT Global.</li>
-</ul>
-<h1 id="Business-Model-of-Wrapped-BTC"><a href="#Business-Model-of-Wrapped-BTC" class="headerlink" title="Business Model of Wrapped BTC"></a>Business Model of Wrapped BTC</h1><p>The business model of Wrapped BTC is quite simple, as shown below:<br><img src="/./wbtc/wrap-model-model.png" alt="model"></p>
+            <h1 id="background">Background</h1>
+<p>Recently, there has been widespread community discussion and concern
+regarding the transfer of control over the <a target="_blank" rel="noopener" href="https://x.com/BitGo/status/1821927623494439130">WBTC
+project</a>.</p>
+<p>The author has extensive experience in building blockchain
+infrastructure, having personally developed centralized wrapped token
+systems and MPC-based custody platforms, and is currently working on
+building Bitcoin native validation capabilities.</p>
+<p>In this article, the author will review the events, covering the
+actions and feedback from multiple parties to present the facts. Based
+on practical experience in system development, the author has abstracted
+a simple architecture and security model for wrapped BTC products.</p>
+<p>Subsequently, the author categorizes different technical solutions
+according to their level of trustlessness, pointing out that the
+technical solutions based on Bitcoin's native validation capabilities
+represent the future direction.</p>
+<h1 id="event-review">Event Review</h1>
+<h2 id="involved-parties">Involved Parties</h2>
 <ul>
-<li><p>Wrap:<br>Represents the conversion from BTC to W-BTC.  </p>
-<p>Wrap-house:<br>Represents the operation mechanism of wrapping, ensuring that the BTC deposited by users is minted as the corresponding W-BTC on a ledger (usually a blockchain, such as ETH), with no more, no less.</p>
-</li>
-<li><p>Unwrap:<br>Represents the conversion from W-BTC to BTC.  </p>
-<p>Unwrap-house:<br>Represents the operation mechanism of unwrapping, ensuring that after the user destroys W-BTC, there is a mechanism to allow them to obtain BTC on the Bitcoin network, with no more, no less.</p>
-</li>
+<li>WBTC <a target="_blank" rel="noopener" href="https://wbtc.network/">https://wbtc.network/</a> WBTC
+has wrapped over 150K BTC (worth over $9B USD) and displays proof of
+reserve on its website.</li>
+<li>Bitgo (Controller of WBTC) <a target="_blank" rel="noopener" href="https://x.com/BitGo/status/1821927623494439130">https://x.com/BitGo/status/1821927623494439130</a>
+<a target="_blank" rel="noopener" href="https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8">https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8</a>
+Announced that control of the WBTC project will be transferred from
+BitGo to an institution related to Justin Sun's BiT Global within 60
+days.</li>
 </ul>
-<h1 id="Comparison-of-Trustless-Levels"><a href="#Comparison-of-Trustless-Levels" class="headerlink" title="Comparison of Trustless Levels"></a>Comparison of Trustless Levels</h1><p>There are many dimensions to compare the business and technical models mentioned above. Below, the author will compare the levels of trustlessness from the perspectives of wrapping and unwrapping.</p>
-<h2 id="Non-Trustless"><a href="#Non-Trustless" class="headerlink" title="Non-Trustless"></a>Non-Trustless</h2><p>A typical example is the current WBTC by BitGO, where the operations of the wrap-house and unwrap-house are controlled by BitGo Custody.<br><img src="/./wbtc/wrap-model-bitgo.png" alt="bitgo"></p>
-<p>It is evident that users need to trust that the BitGo Custody service provider will always operate correctly.</p>
+<h2 id="related-parties">Related Parties</h2>
+<ul>
+<li><p>MakerDAO (DAI) Risk Management Team <a target="_blank" rel="noopener" href="https://x.com/BlockAnalitica">https://x.com/BlockAnalitica</a></p>
+<p><a target="_blank" rel="noopener" href="https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo">https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo</a>
+Expressed concern about the transfer of control and indicated that WBTC
+poses a risk, leading them to reduce exposure in relevant
+protocols.</p></li>
+<li><p>Justin Sun (New Controller of WBTC) <a target="_blank" rel="noopener" href="https://x.com/justinsuntron/status/1822370692014485937">https://x.com/justinsuntron/status/1822370692014485937</a>
+Promised not to touch BitGo's reserves.</p></li>
+</ul>
+<h2 id="third-parties">Third Parties</h2>
+<ul>
+<li>Weidai (VC) <a target="_blank" rel="noopener" href="https://x.com/_weidai/status/1822338179640218081?s=46&t=d7GvsY4LzVKLbD34L3431w">https://x.com/_weidai/status/1822338179640218081?s=46&t=d7GvsY4LzVKLbD34L3431w</a>
+Suggested that validating bridges would be a better solution.</li>
+<li>Liufeng (Media) <a target="_blank" rel="noopener" href="https://x.com/fishkiller/status/1822455929247498459?s=46&t=h607g0TWNMlmAGBrzTVpyw">https://x.com/fishkiller/status/1822455929247498459?s=46&t=h607g0TWNMlmAGBrzTVpyw</a>
+Questioned the qualifications of BiT Global.</li>
+</ul>
+<h1 id="business-model-of-wrapped-btc">Business Model of Wrapped
+BTC</h1>
+<p>The business model of Wrapped BTC is quite simple, as shown below:
+<img src="./wbtc/wrap-model-model.png" alt="model"></p>
+<ul>
+<li><p>Wrap: Represents the conversion from BTC to W-BTC.</p>
+<p>Wrap-house: Represents the operation mechanism of wrapping, ensuring
+that the BTC deposited by users is minted as the corresponding W-BTC on
+a ledger (usually a blockchain, such as ETH), with no more, no
+less.</p></li>
+<li><p>Unwrap: Represents the conversion from W-BTC to BTC.</p>
+<p>Unwrap-house: Represents the operation mechanism of unwrapping,
+ensuring that after the user destroys W-BTC, there is a mechanism to
+allow them to obtain BTC on the Bitcoin network, with no more, no
+less.</p></li>
+</ul>
+<h1 id="comparison-of-trustless-levels">Comparison of Trustless
+Levels</h1>
+<p>There are many dimensions to compare the business and technical
+models mentioned above. Below, the author will compare the levels of
+trustlessness from the perspectives of wrapping and unwrapping.</p>
+<h2 id="non-trustless">Non-Trustless</h2>
+<p>A typical example is the current WBTC by BitGO, where the operations
+of the wrap-house and unwrap-house are controlled by BitGo Custody. <img src="./wbtc/wrap-model-bitgo.png" alt="bitgo"></p>
+<p>It is evident that users need to trust that the BitGo Custody service
+provider will always operate correctly.</p>
 <blockquote>
 <p>Update: 2024-09-16</p>
-<p>cbbtc use the similar model: <a target="_blank" rel="noopener" href="https://www.coinbase.com/en-sg/campaigns/cbbtc">https://www.coinbase.com/en-sg/campaigns/cbbtc</a></p>
+<p>cbbtc use the similar model:
+https://www.coinbase.com/en-sg/campaigns/cbbtc</p>
 </blockquote>
-<h2 id="Single-Way-Trustless"><a href="#Single-Way-Trustless" class="headerlink" title="Single Way Trustless"></a>Single Way Trustless</h2><p>Next, let’s look at two representative projects that emerged around 2020: tBTC.</p>
-<p><img src="/./wbtc/wrap-model-tbtc.png" alt="tbtc"></p>
-<p>We can see that on the X-chain (e.g., with complete validation capability, such as having EVM), the wrap-house can more easily achieve a high level of trustlessness. </p>
-<p>However, due to the technical limitations at the time, the unwrap-house could only enhance security through threshold signatures, regardless of the extent of pre-signed signatures.</p>
-<h2 id="Dual-Way-Trustless"><a href="#Dual-Way-Trustless" class="headerlink" title="Dual Way Trustless"></a>Dual Way Trustless</h2><p>Fast forward to 2024, thanks to groundbreaking attempts by teams like BitVM/Starkware in Bitcoin native validation capabilities (including fraud proof and validity proof) and the practical implementations by community teams like BitlayerLabs, the unwrap-house is expected to achieve trustlessness.</p>
-<p><img src="/./wbtc/wrap-model-validating.png" alt="validating"></p>
-<p>Among them, fraud proof is represented by BitVM and its derivative projects, which achieve optimistic validation without OP_CAT. The mainstream implementation is the process of commitment and challenge using ZK validation. </p>
-<p>Validity proof, on the other hand, assumes the existence of OP_CAT opcode and directly implements ZK validation. With OP_CAT, locked BTC will be controlled by so-called covenants (contract-like structures).</p>
-<h2 id="Summary-of-Solution-Comparisons"><a href="#Summary-of-Solution-Comparisons" class="headerlink" title="Summary of Solution Comparisons"></a>Summary of Solution Comparisons</h2><p>A horizontal comparison of the various technical solutions mentioned above reveals that solutions based on Bitcoin validation capabilities (validation) perform better in terms of trustlessness in both directions.</p>
+<h2 id="single-way-trustless">Single Way Trustless</h2>
+<p>Next, let’s look at two representative projects that emerged around
+2020: tBTC.</p>
+<figure>
+<img src="./wbtc/wrap-model-tbtc.png" alt="tbtc">
+<figcaption aria-hidden="true">tbtc</figcaption>
+</figure>
+<p>We can see that on the X-chain (e.g., with complete validation
+capability, such as having EVM), the wrap-house can more easily achieve
+a high level of trustlessness.</p>
+<p>However, due to the technical limitations at the time, the
+unwrap-house could only enhance security through threshold signatures,
+regardless of the extent of pre-signed signatures.</p>
+<h2 id="dual-way-trustless">Dual Way Trustless</h2>
+<p>Fast forward to 2024, thanks to groundbreaking attempts by teams like
+BitVM/Starkware in Bitcoin native validation capabilities (including
+fraud proof and validity proof) and the practical implementations by
+community teams like BitlayerLabs, the unwrap-house is expected to
+achieve trustlessness.</p>
+<figure>
+<img src="./wbtc/wrap-model-validating.png" alt="validating">
+<figcaption aria-hidden="true">validating</figcaption>
+</figure>
+<p>Among them, fraud proof is represented by BitVM and its derivative
+projects, which achieve optimistic validation without OP_CAT. The
+mainstream implementation is the process of commitment and challenge
+using ZK validation.</p>
+<p>Validity proof, on the other hand, assumes the existence of OP_CAT
+opcode and directly implements ZK validation. With OP_CAT, locked BTC
+will be controlled by so-called covenants (contract-like
+structures).</p>
+<h2 id="summary-of-solution-comparisons">Summary of Solution
+Comparisons</h2>
+<p>A horizontal comparison of the various technical solutions mentioned
+above reveals that solutions based on Bitcoin validation capabilities
+(validation) perform better in terms of trustlessness in both
+directions.</p>
 <table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 25%">
+<col style="width: 28%">
+<col style="width: 30%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Product</th>
 <th>Wrap-house Trustless</th>
 <th>Unwrap-house Trustless</th>
 <th>Team</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>WBTC/cbBTC</td>
 <td>NO</td>
 <td>NO</td>
 <td>BitGO</td>
 </tr>
-<tr>
+<tr class="even">
 <td>tBTC</td>
 <td>High</td>
 <td>Low</td>
 <td>tBTC</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>BitVM/OP_CAT</td>
 <td>High</td>
 <td>High</td>
 <td>BitVM/Starkware/Bitlayer</td>
 </tr>
-</tbody></table>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>The emergence of WBTC in 2018 marked the beginning of bringing BTC liquidity into the DeFi world. Subsequent projects like tBTC in 2020 made some optimizations and improvements. Validation technical solutions, represented by Bitcoin’s native validation capabilities (fraud proof and validity proof), will perform better in terms of bidirectional trustlessness.  </p>
+</tbody>
+</table>
+<h1 id="conclusion">Conclusion</h1>
+<p>The emergence of WBTC in 2018 marked the beginning of bringing BTC
+liquidity into the DeFi world. Subsequent projects like tBTC in 2020
+made some optimizations and improvements. Validation technical
+solutions, represented by Bitcoin's native validation capabilities
+(fraud proof and validity proof), will perform better in terms of
+bidirectional trustlessness.</p>
 <p>WBTC, it’s time to upgrade your technical solutions!</p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://wbtc.network/">https://wbtc.network/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live">https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live</a></p>
-<p><a target="_blank" rel="noopener" href="https://tbtc.network/developers/tbtc-security-model/">https://tbtc.network/developers/tbtc-security-model/</a></p>
-<p><a target="_blank" rel="noopener" href="https://bitvm.org/bitvm_bridge.pdf">https://bitvm.org/bitvm_bridge.pdf</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/">https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bitlayer.org/">https://www.bitlayer.org/</a></p>
+<h1 id="reference">Reference</h1>
+<p>https://wbtc.network/</p>
+<p>https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live</p>
+<p>https://tbtc.network/developers/tbtc-security-model/</p>
+<p>https://bitvm.org/bitvm_bridge.pdf</p>
+<p>https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/</p>
+<p>https://www.bitlayer.org/</p>
 
 
             <div class="toc-title"> 相关文章推荐</div>
@@ -407,7 +491,10 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Background"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Event-Review"><span class="nav-text">Event Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Involved-Parties"><span class="nav-text">Involved Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Related-Parties"><span class="nav-text">Related Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Third-Parties"><span class="nav-text">Third Parties</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Business-Model-of-Wrapped-BTC"><span class="nav-text">Business Model of Wrapped BTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Comparison-of-Trustless-Levels"><span class="nav-text">Comparison of Trustless Levels</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-Trustless"><span class="nav-text">Non-Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Way-Trustless"><span class="nav-text">Single Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dual-Way-Trustless"><span class="nav-text">Dual Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary-of-Solution-Comparisons"><span class="nav-text">Summary of Solution Comparisons</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#background"><span class="nav-text">Background</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#event-review"><span class="nav-text">Event Review</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#involved-parties"><span class="nav-text">Involved Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#related-parties"><span class="nav-text">Related Parties</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#third-parties"><span class="nav-text">Third Parties</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#business-model-of-wrapped-btc"><span class="nav-text">Business Model of Wrapped
+BTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#comparison-of-trustless-levels"><span class="nav-text">Comparison of Trustless
+Levels</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#non-trustless"><span class="nav-text">Non-Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#single-way-trustless"><span class="nav-text">Single Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dual-way-trustless"><span class="nav-text">Dual Way Trustless</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#summary-of-solution-comparisons"><span class="nav-text">Summary of Solution
+Comparisons</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion"><span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol>
                         
 
                         
@@ -427,7 +514,10 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Background"><span class="toc-number">1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Event-Review"><span class="toc-number">2.</span> <span class="toc-text">Event Review</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Involved-Parties"><span class="toc-number">2.1.</span> <span class="toc-text">Involved Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Related-Parties"><span class="toc-number">2.2.</span> <span class="toc-text">Related Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Third-Parties"><span class="toc-number">2.3.</span> <span class="toc-text">Third Parties</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Business-Model-of-Wrapped-BTC"><span class="toc-number">3.</span> <span class="toc-text">Business Model of Wrapped BTC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparison-of-Trustless-Levels"><span class="toc-number">4.</span> <span class="toc-text">Comparison of Trustless Levels</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Non-Trustless"><span class="toc-number">4.1.</span> <span class="toc-text">Non-Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Single-Way-Trustless"><span class="toc-number">4.2.</span> <span class="toc-text">Single Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dual-Way-Trustless"><span class="toc-number">4.3.</span> <span class="toc-text">Dual Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary-of-Solution-Comparisons"><span class="toc-number">4.4.</span> <span class="toc-text">Summary of Solution Comparisons</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#background"><span class="toc-number">1.</span> <span class="toc-text">Background</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#event-review"><span class="toc-number">2.</span> <span class="toc-text">Event Review</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#involved-parties"><span class="toc-number">2.1.</span> <span class="toc-text">Involved Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#related-parties"><span class="toc-number">2.2.</span> <span class="toc-text">Related Parties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#third-parties"><span class="toc-number">2.3.</span> <span class="toc-text">Third Parties</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#business-model-of-wrapped-btc"><span class="toc-number">3.</span> <span class="toc-text">Business Model of Wrapped
+BTC</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#comparison-of-trustless-levels"><span class="toc-number">4.</span> <span class="toc-text">Comparison of Trustless
+Levels</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#non-trustless"><span class="toc-number">4.1.</span> <span class="toc-text">Non-Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#single-way-trustless"><span class="toc-number">4.2.</span> <span class="toc-text">Single Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dual-way-trustless"><span class="toc-number">4.3.</span> <span class="toc-text">Dual Way Trustless</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#summary-of-solution-comparisons"><span class="toc-number">4.4.</span> <span class="toc-text">Summary of Solution
+Comparisons</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-number">6.</span> <span class="toc-text">Reference</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -466,7 +556,7 @@ var _hmt = _hmt || [];
                             <a href="/bitcoin-next-upgrade.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report On Bitcoin&#39;s Next Upgrade For All" class="thumbnail-image"></span>
+        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report on Bitcoin&#39;s Next Upgrade for All" class="thumbnail-image"></span>
     
     
 </a>
@@ -475,7 +565,7 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/bitcoin-next-upgrade.html" class="title">A Brief Report On Bitcoin&#39;s Next Upgrade For All</a></p>
+                            <p class="item-title"><a href="/bitcoin-next-upgrade.html" class="title">A Brief Report on Bitcoin&#39;s Next Upgrade for All</a></p>
                             <p class="item-date"><time datetime="2024-11-30T16:45:55.000Z" itemprop="datePublished">2024-12-01</time></p>
                         </div>
                     </li>

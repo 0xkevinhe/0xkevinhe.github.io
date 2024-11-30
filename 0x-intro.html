@@ -12,12 +12,12 @@
     
         <meta name="keywords" content="defi" />
     
-    <meta name="description" content="核心链下撮合（订单簿在链下）、链上结算（资金划转） 角色maker 挂单者 taker 吃单者 实现 maker 创建订单信息，签名1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希   注意：">
+    <meta name="description" content="核心 链下撮合（订单簿在链下）、链上结算（资金划转） 角色 maker 挂单者 taker 吃单者 实现  maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希">
 <meta property="og:type" content="article">
 <meta property="og:title" content="0x协议-介绍">
 <meta property="og:url" content="https://0xkevinhe.xyz/0x-intro.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="核心链下撮合（订单簿在链下）、链上结算（资金划转） 角色maker 挂单者 taker 吃单者 实现 maker 创建订单信息，签名1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希   注意：">
+<meta property="og:description" content="核心 链下撮合（订单簿在链下）、链上结算（资金划转） 角色 maker 挂单者 taker 吃单者 实现  maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg">
 <meta property="article:published_time" content="2021-01-01T02:49:05.000Z">
@@ -201,33 +201,39 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h1><p>链下撮合（订单簿在链下）、链上结算（资金划转）</p>
-<h1 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h1><p>maker 挂单者</p>
+            <h1 id="核心">核心</h1>
+<p>链下撮合（订单簿在链下）、链上结算（资金划转）</p>
+<h1 id="角色">角色</h1>
+<p>maker 挂单者</p>
 <p>taker 吃单者</p>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><ul>
-<li>maker 创建订单信息，签名<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">makerAddress</span><br><span class="line">takerAddress</span><br><span class="line">makerAssetData</span><br><span class="line">takerAssetData</span><br><span class="line">makerAssetAmount</span><br><span class="line">takerAssetAmount</span><br><span class="line">expirationTimeSeconds</span><br><span class="line">fee</span><br><span class="line">...</span><br><span class="line">签名</span><br><span class="line">哈希</span><br></pre></td></tr></table></figure></li>
+<h1 id="实现">实现</h1>
+<ul>
+<li>maker 创建订单信息，签名 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">makerAddress</span><br><span class="line">takerAddress</span><br><span class="line">makerAssetData</span><br><span class="line">takerAssetData</span><br><span class="line">makerAssetAmount</span><br><span class="line">takerAssetAmount</span><br><span class="line">expirationTimeSeconds</span><br><span class="line">fee</span><br><span class="line">...</span><br><span class="line">签名</span><br><span class="line">哈希</span><br></pre></td></tr></table></figure></li>
 </ul>
 <blockquote>
 <p>注意：</p>
 </blockquote>
 <p>takerAddress 是空——直到taker接单</p>
 <ul>
-<li><p>relayer 链下撮合<br>taker 接受 maker 的订单，签名，提交到智能合约</p>
-</li>
-<li><p>链上结算<br>合约实现资金划转</p>
-</li>
+<li><p>relayer 链下撮合 taker 接受 maker
+的订单，签名，提交到智能合约</p></li>
+<li><p>链上结算 合约实现资金划转</p></li>
 </ul>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>1）maker 如何取消交易</p>
+<h1 id="问题">问题</h1>
+<p>1）maker 如何取消交易</p>
 <p>订单过期</p>
 <p>2）交易效率</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">预先检查</span><br><span class="line">链上成交</span><br></pre></td></tr></table></figure>
-
-<h1 id="与-uniswap-对比"><a href="#与-uniswap-对比" class="headerlink" title="与 uniswap 对比"></a>与 uniswap 对比</h1><p>1）uni 有流动性提供者，一个 pair 的两个 token 都需要提供</p>
+<h1 id="与-uniswap-对比">与 uniswap 对比</h1>
+<p>1）uni 有流动性提供者，一个 pair 的两个 token 都需要提供</p>
 <p>2）uni 的价格是链上发现的</p>
 <p>3）0x 只是交易意愿撮合，用户的资产不需要抵押</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>0x 协议核心是定义了一个「链下撮合，链下成交」的结构，但正式由于分离了链上和链下，其成交效率有一定折扣。</p>
+<h1 id="总结">总结</h1>
+<p>0x
+协议核心是定义了一个「链下撮合，链下成交」的结构，但正式由于分离了链上和链下，其成交效率有一定折扣。</p>
 <p>其后继者 uniswap 是一个整体闭环。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="https://0x.org/docs/core-concepts">0x-protocol</a></p>
+<h1 id="参考">参考</h1>
+<p><a target="_blank" rel="noopener" href="https://0x.org/docs/core-concepts">0x-protocol</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jinse.com/blockchain/247474.html">0x-intro-jnse</a></p>
 
 
@@ -414,7 +420,7 @@ var _hmt = _hmt || [];
                             <a href="/bitcoin-next-upgrade.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report On Bitcoin&#39;s Next Upgrade For All" class="thumbnail-image"></span>
+        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report on Bitcoin&#39;s Next Upgrade for All" class="thumbnail-image"></span>
     
     
 </a>
@@ -423,7 +429,7 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/bitcoin-next-upgrade.html" class="title">A Brief Report On Bitcoin&#39;s Next Upgrade For All</a></p>
+                            <p class="item-title"><a href="/bitcoin-next-upgrade.html" class="title">A Brief Report on Bitcoin&#39;s Next Upgrade for All</a></p>
                             <p class="item-date"><time datetime="2024-11-30T16:45:55.000Z" itemprop="datePublished">2024-12-01</time></p>
                         </div>
                     </li>
