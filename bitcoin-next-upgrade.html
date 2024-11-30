@@ -12,20 +12,20 @@
     
         <meta name="keywords" content="blockchain" />
     
-    <meta name="description" content="Introduction Discussions about Bitcoin’s next upgrade have been ongoing, yet as of December 2024, the community remains divided on whether to upgrade, the issues an upgrade should address, and the fun">
+    <meta name="description" content="IntroductionDiscussions about Bitcoin’s next upgrade have been ongoing, yet as of December 2024, the community remains divided on whether to upgrade, the issues an upgrade should address, and the func">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Brief Report On Bitcoin&#39;s Next Upgrade For All">
 <meta property="og:url" content="https://0xkevinhe.xyz/bitcoin-next-upgrade.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="Introduction Discussions about Bitcoin’s next upgrade have been ongoing, yet as of December 2024, the community remains divided on whether to upgrade, the issues an upgrade should address, and the fun">
+<meta property="og:description" content="IntroductionDiscussions about Bitcoin’s next upgrade have been ongoing, yet as of December 2024, the community remains divided on whether to upgrade, the issues an upgrade should address, and the func">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover">
+<meta property="og:image" content="https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png">
 <meta property="article:published_time" content="2024-11-30T16:45:55.000Z">
-<meta property="article:modified_time" content="2024-11-30T18:28:47.855Z">
+<meta property="article:modified_time" content="2024-11-30T18:34:48.774Z">
 <meta property="article:author" content="0xkevinhe">
 <meta property="article:tag" content="blockchain">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover">
+<meta name="twitter:image" content="https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png">
     
 
     
@@ -193,7 +193,7 @@ var _hmt = _hmt || [];
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2024-11-30T18:28:47.855Z" itemprop="dateModified">2024-12-01</time>
+                    <time datetime="2024-11-30T18:34:48.774Z" itemprop="dateModified">2024-12-01</time>
                 </span>
             
             </div>
@@ -201,382 +201,202 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="introduction">Introduction</h1>
-<p>Discussions about Bitcoin’s next upgrade have been ongoing, yet as of
-<strong>December 2024</strong>, the community remains divided on whether
-to upgrade, the issues an upgrade should address, and the
-functionalities it should bring. The debate often resembles a political
-deadlock, with stakeholders entrenched in their positions.</p>
+            <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Discussions about Bitcoin’s next upgrade have been ongoing, yet as of <strong>December 2024</strong>, the community remains divided on whether to upgrade, the issues an upgrade should address, and the functionalities it should bring. The debate often resembles a political deadlock, with stakeholders entrenched in their positions.</p>
 <p>This stalemate has revealed several intriguing phenomena:</p>
-<ol type="1">
-<li><p>Certain community members often reference specific opcodes,
-motivated either by information asymmetry or commercial
-interests.</p></li>
-<li><p>Some projects rely on opcodes that "might" be
-introduced.</p></li>
+<ol>
+<li><p>Certain community members often reference specific opcodes, motivated either by information asymmetry or commercial interests.</p>
+</li>
+<li><p>Some projects rely on opcodes that “might” be introduced.</p>
+</li>
 </ol>
-<p>Considering Bitcoin’s FDV (Fully Diluted Value) is nearing <strong>$2
-trillion</strong> and its influence extends across various societal
-sectors, its upgrades can no longer be decided by a select group of
-professionals in a single roundtable meeting.</p>
-<p><strong>Equal access to information</strong> is essential for
-meaningful discussions. This article aims to provide readers with
-critical insights into Bitcoin’s upgrade processes, define what Bitcoin
-upgrades entail, analyze historical patterns, evaluate current
-proposals, and present key takeaways. Through this, the article seeks to
-establish a foundation for further discussions on Bitcoin upgrades.
-Additionally, the author shares reflections on Bitcoin’s governance
-mechanisms that arose during the research process.</p>
-<h1 id="upgrade-overview-what-and-why"><strong>Upgrade Overview: What
-and Why</strong></h1>
-<h2 id="what-is-a-bitcoin-upgrade"><strong>What is a Bitcoin
-Upgrade?</strong></h2>
-<p>Bitcoin’s whitepaper (https://bitcoin.org/bitcoin.pdf) defines a
-protocol that operates a blockchain network composed of thousands of
-nodes following the Bitcoin protocol.</p>
-<p>These implementations, or clients, come in various versions, with
-<strong>Bitcoin Core</strong> (https://github.com/bitcoin/bitcoin) being
-the most widely used client, as shown by data from
-https://bitnodes.io/nodes/.</p>
-<p>Thus, the Bitcoin Core maintainers (referred to as
-<strong>Core-Devs</strong> or <strong>Protocol Developers</strong>) have
-significant influence over Bitcoin’s development.</p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/what-why-1.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<p>Bitcoin node software consists of multiple modules, and upgrades are
-defined through <strong>Bitcoin Improvement Proposals (BIPs)</strong>
-(https://github.com/bitcoin/bips). When discussing Bitcoin upgrades, it
-usually refers to <strong>consensus protocol
-upgrades</strong>—modifications requiring agreement among the majority
-of the network’s nodes to avoid forks.</p>
-<p>As illustrated below, Bitcoin’s consensus protocol modules and
-related BIP proposals are of particular interest in upgrade
-discussions.</p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/what-why-2.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<p>According to statistics from the Bitcoin GitHub repository
-(https://github.com/bitcoin/bitcoin/pulse/monthly), development activity
-is vibrant. However, most changes are unrelated to the consensus
-protocol and thus do not attract widespread attention.</p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Bitcoin-core-github-stats.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<h2 id="types-of-consensus-upgrades"><strong>Types of Consensus
-Upgrades</strong></h2>
-<p>Per <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki">BIP-123</a>,
-consensus protocol upgrades are classified into <strong>Soft
-Forks</strong> and <strong>Hard Forks</strong>:</p>
+<p>Considering Bitcoin’s FDV (Fully Diluted Value) is nearing <strong>$2 trillion</strong> and its influence extends across various societal sectors, its upgrades can no longer be decided by a select group of professionals in a single roundtable meeting.</p>
+<p><strong>Equal access to information</strong> is essential for meaningful discussions. This article aims to provide readers with critical insights into Bitcoin’s upgrade processes, define what Bitcoin upgrades entail, analyze historical patterns, evaluate current proposals, and present key takeaways. Through this, the article seeks to establish a foundation for further discussions on Bitcoin upgrades. Additionally, the author shares reflections on Bitcoin’s governance mechanisms that arose during the research process.</p>
+<h1 id="Upgrade-Overview-What-and-Why"><a href="#Upgrade-Overview-What-and-Why" class="headerlink" title="Upgrade Overview: What and Why"></a><strong>Upgrade Overview: What and Why</strong></h1><h2 id="What-is-a-Bitcoin-Upgrade"><a href="#What-is-a-Bitcoin-Upgrade" class="headerlink" title="What is a Bitcoin Upgrade?"></a><strong>What is a Bitcoin Upgrade?</strong></h2><p>Bitcoin’s whitepaper (<a target="_blank" rel="noopener" href="https://bitcoin.org/bitcoin.pdf">https://bitcoin.org/bitcoin.pdf</a>) defines a protocol that operates a blockchain network composed of thousands of nodes following the Bitcoin protocol. </p>
+<p>These implementations, or clients, come in various versions, with <strong>Bitcoin Core</strong> (<a target="_blank" rel="noopener" href="https://github.com/bitcoin/bitcoin">https://github.com/bitcoin/bitcoin</a>) being the most widely used client, as shown by data from <a target="_blank" rel="noopener" href="https://bitnodes.io/nodes/">https://bitnodes.io/nodes/</a>.</p>
+<p>Thus, the Bitcoin Core maintainers (referred to as <strong>Core-Devs</strong> or <strong>Protocol Developers</strong>) have significant influence over Bitcoin’s development.</p>
+<p><img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/what-why-1.png" alt="img"></p>
+<p>Bitcoin node software consists of multiple modules, and upgrades are defined through <strong>Bitcoin Improvement Proposals (BIPs)</strong> (<a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips">https://github.com/bitcoin/bips</a>). When discussing Bitcoin upgrades, it usually refers to <strong>consensus protocol upgrades</strong>—modifications requiring agreement among the majority of the network’s nodes to avoid forks.</p>
+<p>As illustrated below, Bitcoin’s consensus protocol modules and related BIP proposals are of particular interest in upgrade discussions.</p>
+<p><img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/what-why-2.png" alt="img"></p>
+<p>According to statistics from the Bitcoin GitHub repository (<a target="_blank" rel="noopener" href="https://github.com/bitcoin/bitcoin/pulse/monthly">https://github.com/bitcoin/bitcoin/pulse/monthly</a>), development activity is vibrant. However, most changes are unrelated to the consensus protocol and thus do not attract widespread attention.</p>
+<p><img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Bitcoin-core-github-stats.png" alt="img"></p>
+<h2 id="Types-of-Consensus-Upgrades"><a href="#Types-of-Consensus-Upgrades" class="headerlink" title="Types of Consensus Upgrades"></a><strong>Types of Consensus Upgrades</strong></h2><p>Per <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki">BIP-123</a>, consensus protocol upgrades are classified into <strong>Soft Forks</strong> and <strong>Hard Forks</strong>:</p>
 <table>
-<colgroup>
-<col style="width: 27%">
-<col style="width: 34%">
-<col style="width: 37%">
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th>Feature</th>
 <th>Soft Fork</th>
 <th>Hard Fork</th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
+<tbody><tr>
 <td>Compatibility</td>
 <td>Compatible with old nodes</td>
 <td>Incompatible with old nodes</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Network-wide Update</td>
 <td>Not always required</td>
 <td>Required</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>Risk of Chain Splits</td>
 <td>Low</td>
 <td>High</td>
 </tr>
-<tr class="even">
+<tr>
 <td>Examples</td>
 <td>SegWit/Taproot</td>
 <td>Bitcoin XT/Bitcoin Cash</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>Another intuitive way to interpret these is as follows:</p>
 <ul>
-<li><strong>Soft Fork</strong>: Adds or strengthens rules (e.g.,
-introducing new functionalities like Taproot addresses).</li>
-<li><strong>Hard Fork</strong>: Removes or loosens rules (e.g., removing
-block reward limitations).</li>
+<li><strong>Soft Fork</strong>: Adds or strengthens rules (e.g., introducing new functionalities like Taproot addresses).</li>
+<li><strong>Hard Fork</strong>: Removes or loosens rules (e.g., removing block reward limitations).</li>
 </ul>
-<h2 id="soft-fork-process-bip-workflows"><strong>Soft Fork Process (BIP
-Workflows)</strong></h2>
-<p>The previous two successful consensus upgrades (SegWit and Taproot)
-both utilized soft forks, avoiding significant community splits. Thus,
-this article focuses on soft forks, which enable upgrades while
-maintaining compatibility with older software.</p>
-<p>The typical workflow of a BIP proposal leading to a soft fork is
-illustrated below:</p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/bip-state.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<p>Source:
-https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</p>
-<p>Soft forks often combine multiple BIPs into a single proposal. For
-example, <strong>Taproot</strong> incorporated three BIPs:</p>
-<ol type="1">
-<li><strong>Schnorr Signature (BIP-340)</strong>:
-https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki</li>
-<li><strong>Taproot (BIP-341)</strong>:
-https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki</li>
-<li><strong>Tapscript (BIP-342)</strong>:
-https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki</li>
+<h2 id="Soft-Fork-Process-BIP-Workflows"><a href="#Soft-Fork-Process-BIP-Workflows" class="headerlink" title="Soft Fork Process (BIP Workflows)"></a><strong>Soft Fork Process (BIP Workflows)</strong></h2><p>The previous two successful consensus upgrades (SegWit and Taproot) both utilized soft forks, avoiding significant community splits. Thus, this article focuses on soft forks, which enable upgrades while maintaining compatibility with older software.</p>
+<p>The typical workflow of a BIP proposal leading to a soft fork is illustrated below:</p>
+<p><img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/bip-state.png" alt="img"></p>
+<p>Source: <a target="_blank" rel="noopener" href="https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/">https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</a></p>
+<p>Soft forks often combine multiple BIPs into a single proposal. For example, <strong>Taproot</strong> incorporated three BIPs:</p>
+<ol>
+<li><strong>Schnorr Signature (BIP-340)</strong>: <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki</a></li>
+<li><strong>Taproot (BIP-341)</strong>: <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki</a></li>
+<li><strong>Tapscript (BIP-342)</strong>: <a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki</a></li>
 </ol>
 <p><strong>Timeline of the Taproot Upgrade</strong></p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Taproot-timeline.jpg" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Taproot-timeline.jpg" alt="img"></p>
 <p><strong>Key milestones in a typical soft fork</strong>:</p>
-<ol type="1">
+<ol>
 <li>Corresponding BIPs proposed and reviewed.</li>
 <li>Core developers submit a GitHub pull request.</li>
 <li>Code is reviewed, merged, and activation methods determined.</li>
-<li>Miners signal via on-chain voting to decide activation block
-height.</li>
+<li>Miners signal via on-chain voting to decide activation block height.</li>
 <li>The new Bitcoin-core client version was released.</li>
 <li>Block height reached, completing the upgrade.</li>
 </ol>
-<h2 id="why-upgrade"><strong>Why Upgrade?</strong></h2>
-<p>Upgrades involve a lengthy process. Readers may wonder, is upgrading
-necessary? The table below analyzes the pros and cons of consensus
-changes.</p>
+<h2 id="Why-Upgrade"><a href="#Why-Upgrade" class="headerlink" title="Why Upgrade?"></a><strong>Why Upgrade?</strong></h2><p>Upgrades involve a lengthy process. Readers may wonder, is upgrading necessary? The table below analyzes the pros and cons of consensus changes.</p>
 <table>
-<colgroup>
-<col style="width: 14%">
-<col style="width: 43%">
-<col style="width: 41%">
-</colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th><strong>Consensus Change</strong></th>
 <th><strong>Pros</strong></th>
 <th><strong>Cons</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
+<tbody><tr>
 <td><strong>Change</strong></td>
 <td>Technological AdvancementEnhanced SecurityExpanded Use Cases</td>
 <td>Risk of ForkingIncreased Complexity</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Unchanged</strong></td>
 <td>Stability and TrustAvoids Split RisksMinimizes Attack Surface</td>
 <td>Technological StagnationLacks Flexibility for New Demands</td>
 </tr>
-</tbody>
-</table>
-<p>In general, continuous upgrades, as needed, are preferable from the
-perspectives of <strong>sustainability</strong> and
-<strong>adaptability</strong>.</p>
-<h1 id="in-depth-analysis-of-upgrades"><strong>In-Depth Analysis of
-Upgrades</strong></h1>
-<h2 id="stakeholders-in-bitcoin-upgrades"><strong>Stakeholders in
-Bitcoin Upgrades</strong></h2>
-<p>In Bitcoin’s history, the <strong>Hong Kong Consensus</strong>
-(signed during the Bitcoin Roundtable in February 2016,
-https://medium.com/<span class="citation" data-cites="bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff">@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff</span>)
-identified three primary stakeholder groups:</p>
-<ol type="1">
+</tbody></table>
+<p>In general, continuous upgrades, as needed, are preferable from the perspectives of <strong>sustainability</strong> and <strong>adaptability</strong>.</p>
+<h1 id="In-Depth-Analysis-of-Upgrades"><a href="#In-Depth-Analysis-of-Upgrades" class="headerlink" title="In-Depth Analysis of Upgrades"></a><strong>In-Depth Analysis of Upgrades</strong></h1><h2 id="Stakeholders-in-Bitcoin-Upgrades"><a href="#Stakeholders-in-Bitcoin-Upgrades" class="headerlink" title="Stakeholders in Bitcoin Upgrades"></a><strong>Stakeholders in Bitcoin Upgrades</strong></h2><p>In Bitcoin’s history, the <strong>Hong Kong Consensus</strong> (signed during the Bitcoin Roundtable in February 2016, <a target="_blank" rel="noopener" href="https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff">https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff</a>) identified three primary stakeholder groups:</p>
+<ol>
 <li><strong>Core Developers (Core-Devs)</strong></li>
 <li><strong>Mining Pools</strong></li>
-<li><strong>Users and Ecosystem Developers</strong> (primarily
-exchanges, chip manufacturers, etc.)</li>
+<li><strong>Users and Ecosystem Developers</strong> (primarily exchanges, chip manufacturers, etc.)</li>
 </ol>
-<p>As Bitcoin adoption has grown rapidly, the stakeholder landscape has
-evolved from this simple triad into a more fragmented and competitive
-environment. This is illustrated in the report from <a target="_blank" rel="noopener" href="https://github.com/bitcoin-cap/bcap">Bitcoin-Cap</a>.</p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/stakeholders.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<p>Among these stakeholders, several key roles are worth
-highlighting:</p>
-<ol type="1">
-<li><strong>Economic Nodes</strong>: These include major centralized
-exchanges (CEX), payment processors, and custodial service providers.
-Their stance on soft forks heavily influences what is considered
-"legitimate" Bitcoin and impacts adoption rates.</li>
-<li><strong>Investors</strong>: With Bitcoin ETFs, institutional
-reserves, and even sovereign reserves becoming mainstream, this group
-has grown increasingly complex.</li>
-<li><strong>Users & Ecosystem Developers</strong>: Following the
-Taproot upgrade, Bitcoin's ecosystem has flourished, giving rise to
-protocols like Ordinals and numerous native applications and scaling
-solutions.</li>
+<p>As Bitcoin adoption has grown rapidly, the stakeholder landscape has evolved from this simple triad into a more fragmented and competitive environment. This is illustrated in the report from <a target="_blank" rel="noopener" href="https://github.com/bitcoin-cap/bcap">Bitcoin-Cap</a>.</p>
+<p><img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/stakeholders.png" alt="img"></p>
+<p>Among these stakeholders, several key roles are worth highlighting:</p>
+<ol>
+<li><strong>Economic Nodes</strong>: These include major centralized exchanges (CEX), payment processors, and custodial service providers. Their stance on soft forks heavily influences what is considered “legitimate” Bitcoin and impacts adoption rates.</li>
+<li><strong>Investors</strong>: With Bitcoin ETFs, institutional reserves, and even sovereign reserves becoming mainstream, this group has grown increasingly complex.</li>
+<li><strong>Users & Ecosystem Developers</strong>: Following the Taproot upgrade, Bitcoin’s ecosystem has flourished, giving rise to protocols like Ordinals and numerous native applications and scaling solutions.</li>
 </ol>
-<p><strong>Key Observations on Stakeholders</strong>:</p>
-<ol type="1">
-<li><strong>Different roles at different stages</strong>: For instance,
-Ecosystem Developers actively push proposals, Core-Devs exercise their
-authority over BIP reviews, while mining pools and economic nodes wield
-significant influence during activation.</li>
-<li><strong>Commercial interests drive proposals</strong>: Ecosystem
-Developers often propose and support upgrades aligned with their
-business interests. For example, proponents of Validity Rollup are
-inclined to support <code>OP_CAT</code>.</li>
-<li><strong>Protocol Developers (Core-Devs)</strong>: This group
-currently tends to veto certain proposals rather than actively
-championing them.</li>
+<p><strong>Key Observations on Stakeholders</strong>: </p>
+<ol>
+<li><strong>Different roles at different stages</strong>: For instance, Ecosystem Developers actively push proposals, Core-Devs exercise their authority over BIP reviews, while mining pools and economic nodes wield significant influence during activation.</li>
+<li><strong>Commercial interests drive proposals</strong>: Ecosystem Developers often propose and support upgrades aligned with their business interests. For example, proponents of Validity Rollup are inclined to support <code>OP_CAT</code>.</li>
+<li><strong>Protocol Developers (Core-Devs)</strong>: This group currently tends to veto certain proposals rather than actively championing them.</li>
 </ol>
-<h2 id="history-and-summary-of-bitcoin-upgrades"><strong>History and
-Summary of Bitcoin Upgrades</strong></h2>
-<p>Public data reveals multiple <strong>soft fork upgrades</strong>
-since Bitcoin’s inception.</p>
-<figure>
-<img src="./bitcoin-next-upgrade/Bitcoin-soft-forks.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
+<h2 id="History-and-Summary-of-Bitcoin-Upgrades"><a href="#History-and-Summary-of-Bitcoin-Upgrades" class="headerlink" title="History and Summary of Bitcoin Upgrades"></a><strong>History and Summary of Bitcoin Upgrades</strong></h2><p>Public data reveals multiple <strong>soft fork upgrades</strong> since Bitcoin’s inception.</p>
+<p><img src="/./bitcoin-next-upgrade/Bitcoin-soft-forks.png" alt="img"></p>
 <p>Data Sources:</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://blog.bitmex.com/a-complete-history-of-bitcoins-consensus-forks-2022-update/">Complete
-History of Bitcoin Consensus Forks - BitMEX Blog</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.drivechain.info/media/slides/mit-2023.pdf">Drivechain
-Info - MIT 2023</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.bitmex.com/a-complete-history-of-bitcoins-consensus-forks-2022-update/">Complete History of Bitcoin Consensus Forks - BitMEX Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.drivechain.info/media/slides/mit-2023.pdf">Drivechain Info - MIT 2023</a></li>
 </ul>
 <p>From the chart, 2 conclusions can be drawn:</p>
-<ol type="1">
-<li>Bitcoin’s protocol has become increasingly rigid, with the frequency
-of soft forks declining over time.</li>
+<ol>
+<li>Bitcoin’s protocol has become increasingly rigid, with the frequency of soft forks declining over time.</li>
 <li>Reaching consensus on upgrades now takes significantly longer.</li>
 </ol>
-<h2 id="focus-areas-of-soft-forks"><strong>Focus Areas of Soft
-Forks</strong></h2>
-<p>Analyzing past soft forks and their associated BIPs, the following
-focus areas emerge:</p>
+<h2 id="Focus-Areas-of-Soft-Forks"><a href="#Focus-Areas-of-Soft-Forks" class="headerlink" title="Focus Areas of Soft Forks"></a><strong>Focus Areas of Soft Forks</strong></h2><p>Analyzing past soft forks and their associated BIPs, the following focus areas emerge:</p>
 <table>
 <thead>
-<tr class="header">
+<tr>
 <th><strong>Focus Area</strong></th>
 <th><strong>Examples</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr class="odd">
+<tbody><tr>
 <td><strong>Scalability</strong></td>
 <td>SegWit/Schnorr</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Privacy</strong></td>
 <td>Taproot/MAST</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>Programmability</strong></td>
 <td>CLTV/Tapscript</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Security</strong></td>
 <td>Disable Opcodes</td>
 </tr>
-</tbody>
-</table>
-<h2 id="what-makes-a-good-upgrade-proposal"><strong>What Makes a Good
-Upgrade Proposal?</strong></h2>
-<p>Based on the analysis above, a good upgrade proposal should:</p>
-<ol type="1">
-<li><strong>Uphold Bitcoin’s Core Role as a Payment System</strong>: Any
-upgrade must align with Bitcoin’s unique positioning.</li>
-<li><strong>Strike a Balance Between Potential Benefits and
-Risks</strong>: It should be broadly acceptable and not polarizing.</li>
-<li><strong>Have an Appropriate Scope</strong>: Proposals should neither
-be too trivial nor overly complex to implement.</li>
-<li><strong>Timing</strong>: Upgrades should address pressing needs,
-such as SegWit addressing the scalability demand during its time.</li>
+</tbody></table>
+<h2 id="What-Makes-a-Good-Upgrade-Proposal"><a href="#What-Makes-a-Good-Upgrade-Proposal" class="headerlink" title="What Makes a Good Upgrade Proposal?"></a><strong>What Makes a Good Upgrade Proposal?</strong></h2><p>Based on the analysis above, a good upgrade proposal should:</p>
+<ol>
+<li><strong>Uphold Bitcoin’s Core Role as a Payment System</strong>: Any upgrade must align with Bitcoin’s unique positioning.</li>
+<li><strong>Strike a Balance Between Potential Benefits and Risks</strong>: It should be broadly acceptable and not polarizing.</li>
+<li><strong>Have an Appropriate Scope</strong>: Proposals should neither be too trivial nor overly complex to implement.</li>
+<li><strong>Timing</strong>: Upgrades should address pressing needs, such as SegWit addressing the scalability demand during its time.</li>
 </ol>
-<h1 id="future-outlook"><strong>Future Outlook</strong></h1>
-<h2 id="proposal-classification"><strong>Proposal
-Classification</strong></h2>
-<p>The author has categorized the most active proposals into four focus
-quadrants for visual clarity and understanding.</p>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Soft%20Fork%20Proposals-2.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<figure>
-<img src="/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Soft%20Fork%20Proposals-1.png" alt="img">
-<figcaption aria-hidden="true">img</figcaption>
-</figure>
-<h2 id="community-sentiment"><strong>Community Sentiment</strong></h2>
-<p>From the chart above, the community appears to have reached some
-consensus on the problems upgrades should address, particularly in two
-areas:</p>
-<ol type="1">
-<li><strong>Programmability</strong>: Enhancing UTXO programmability for
-use cases like covenants, vaults, transaction introspection, conditional
-payments, and script enhancements (e.g., <code>CTV</code>).</li>
-<li><strong>Scalability</strong>: Improving Layer 2 scaling, with
-proposals divided into on-chain and off-chain verification solutions
-(e.g., <code>CAT</code>).</li>
+<h1 id="Future-Outlook"><a href="#Future-Outlook" class="headerlink" title="Future Outlook"></a><strong>Future Outlook</strong></h1><h2 id="Proposal-Classification"><a href="#Proposal-Classification" class="headerlink" title="Proposal Classification"></a><strong>Proposal Classification</strong></h2><p>The author has categorized the most active proposals into four focus quadrants for visual clarity and understanding.</p>
+<p>![img](/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Soft Fork Proposals-2.png)</p>
+<p>![img](/Users/hechangbin/SD-Archived/Documents/blogs/blogsource-v1/source/_posts/bitcoin-next-upgrade/Soft Fork Proposals-1.png)</p>
+<h2 id="Community-Sentiment"><a href="#Community-Sentiment" class="headerlink" title="Community Sentiment"></a><strong>Community Sentiment</strong></h2><p>From the chart above, the community appears to have reached some consensus on the problems upgrades should address, particularly in two areas:</p>
+<ol>
+<li><strong>Programmability</strong>: Enhancing UTXO programmability for use cases like covenants, vaults, transaction introspection, conditional payments, and script enhancements (e.g., <code>CTV</code>).</li>
+<li><strong>Scalability</strong>: Improving Layer 2 scaling, with proposals divided into on-chain and off-chain verification solutions (e.g., <code>CAT</code>).</li>
 </ol>
-<h1 id="the-puzzle-of-consensus"><strong>The Puzzle of
-Consensus</strong></h1>
-<p>Bitcoin’s community appears trapped in a "consensus maze" for the
-next upgrade due to the following reasons:</p>
-<ol type="1">
-<li><strong>Too Big to Change</strong>: With a fully diluted value (FDV)
-nearing <strong>$2 trillion</strong>, stakeholders lean towards
-stability, as no one wants to bear responsibility for potential
-mishaps.</li>
-<li><strong>Fragmented Stakeholders</strong>: Diverse interests and
-varying levels of influence at different stages make consensus elusive;
-even governments have emerged as stakeholders.</li>
-<li><strong>Lack of Governance Mechanisms</strong>: As the first
-blockchain, Bitcoin lacks on-chain governance systems. The community
-struggles to agree on soft fork activation methods.</li>
-<li><strong>Role of Core-Devs</strong>: Core developers are increasingly
-inclined to veto proposals rather than proactively driving them
-forward.</li>
-<li><strong>Lack of Urgency</strong>: With maturing blockchain
-infrastructure, there’s no overwhelming demand for immediate Bitcoin
-upgrades.</li>
+<h1 id="The-Puzzle-of-Consensus"><a href="#The-Puzzle-of-Consensus" class="headerlink" title="The Puzzle of Consensus"></a><strong>The Puzzle of Consensus</strong></h1><p>Bitcoin’s community appears trapped in a “consensus maze” for the next upgrade due to the following reasons:</p>
+<ol>
+<li><strong>Too Big to Change</strong>: With a fully diluted value (FDV) nearing <strong>$2 trillion</strong>, stakeholders lean towards stability, as no one wants to bear responsibility for potential mishaps.</li>
+<li><strong>Fragmented Stakeholders</strong>: Diverse interests and varying levels of influence at different stages make consensus elusive; even governments have emerged as stakeholders.</li>
+<li><strong>Lack of Governance Mechanisms</strong>: As the first blockchain, Bitcoin lacks on-chain governance systems. The community struggles to agree on soft fork activation methods.</li>
+<li><strong>Role of Core-Devs</strong>: Core developers are increasingly inclined to veto proposals rather than proactively driving them forward.</li>
+<li><strong>Lack of Urgency</strong>: With maturing blockchain infrastructure, there’s no overwhelming demand for immediate Bitcoin upgrades.</li>
 </ol>
-<h1 id="conclusion-takeaways"><strong>Conclusion &
-Takeaways</strong></h1>
-<p>This article introduced the fundamental concepts of Bitcoin upgrades,
-provided an in-depth analysis of historical upgrades, and reviewed
-active proposals for the next upgrade. The causes of the current
-"consensus puzzle" were also identified.</p>
+<h1 id="Conclusion-Takeaways"><a href="#Conclusion-Takeaways" class="headerlink" title="Conclusion & Takeaways"></a><strong>Conclusion & Takeaways</strong></h1><p>This article introduced the fundamental concepts of Bitcoin upgrades, provided an in-depth analysis of historical upgrades, and reviewed active proposals for the next upgrade. The causes of the current “consensus puzzle” were also identified.</p>
 <p><strong>Key takeaways:</strong></p>
-<ol type="1">
-<li>Upgrades are essential, with soft forks being the preferred
-approach.</li>
-<li>Stakeholders are highly fragmented, leading to a conservative stance
-from the community.</li>
-<li>Discussions about upgrades must adhere to Bitcoin’s core value
-proposition.</li>
+<ol>
+<li>Upgrades are essential, with soft forks being the preferred approach.</li>
+<li>Stakeholders are highly fragmented, leading to a conservative stance from the community.</li>
+<li>Discussions about upgrades must adhere to Bitcoin’s core value proposition.</li>
 <li>Scalability is just one of many focus areas for upgrades.</li>
-<li>Timing is critical—strong proposals will gain consensus more
-quickly.</li>
+<li>Timing is critical—strong proposals will gain consensus more quickly.</li>
 <li>The community must explore improved governance mechanisms.</li>
 </ol>
-<h1 id="reference">Reference</h1>
-<p>https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki</p>
-<p>https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</p>
-<p>https://bitnodes.io/nodes/</p>
-<p>https://github.com/bitcoin/bitcoin/pulse/monthly</p>
-<p>https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</p>
-<p>https://trustmachines.co/learn/bitcoin-taproot-upgrade-basic-breakdown/</p>
-<p>https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained</p>
-<p>https://medium.com/<span class="citation" data-cites="bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff">@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff</span></p>
-<p>https://github.com/bitcoin-cap/bcap</p>
-<p>https://kevinhe.io/bitcoin-next-upgrade/A-Brief-Report-On-Bitcoin-Next-Upgrade-For-All.pdf</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a target="_blank" rel="noopener" href="https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki">https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki</a></p>
+<p><a target="_blank" rel="noopener" href="https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/">https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</a></p>
+<p><a target="_blank" rel="noopener" href="https://bitnodes.io/nodes/">https://bitnodes.io/nodes/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bitcoin/bitcoin/pulse/monthly">https://github.com/bitcoin/bitcoin/pulse/monthly</a></p>
+<p><a target="_blank" rel="noopener" href="https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/">https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</a></p>
+<p><a target="_blank" rel="noopener" href="https://trustmachines.co/learn/bitcoin-taproot-upgrade-basic-breakdown/">https://trustmachines.co/learn/bitcoin-taproot-upgrade-basic-breakdown/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained">https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff">https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/bitcoin-cap/bcap">https://github.com/bitcoin-cap/bcap</a></p>
+<p><a target="_blank" rel="noopener" href="https://kevinhe.io/bitcoin-next-upgrade/A-Brief-Report-On-Bitcoin-Next-Upgrade-For-All.pdf">https://kevinhe.io/bitcoin-next-upgrade/A-Brief-Report-On-Bitcoin-Next-Upgrade-For-All.pdf</a></p>
 
 
             <div class="toc-title"> 相关文章推荐</div>
@@ -703,19 +523,7 @@ quickly.</li>
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#upgrade-overview-what-and-why"><span class="nav-text">Upgrade Overview: What
-and Why</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#what-is-a-bitcoin-upgrade"><span class="nav-text">What is a Bitcoin
-Upgrade?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#types-of-consensus-upgrades"><span class="nav-text">Types of Consensus
-Upgrades</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#soft-fork-process-bip-workflows"><span class="nav-text">Soft Fork Process (BIP
-Workflows)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why-upgrade"><span class="nav-text">Why Upgrade?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in-depth-analysis-of-upgrades"><span class="nav-text">In-Depth Analysis of
-Upgrades</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stakeholders-in-bitcoin-upgrades"><span class="nav-text">Stakeholders in
-Bitcoin Upgrades</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#history-and-summary-of-bitcoin-upgrades"><span class="nav-text">History and
-Summary of Bitcoin Upgrades</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#focus-areas-of-soft-forks"><span class="nav-text">Focus Areas of Soft
-Forks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#what-makes-a-good-upgrade-proposal"><span class="nav-text">What Makes a Good
-Upgrade Proposal?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#future-outlook"><span class="nav-text">Future Outlook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#proposal-classification"><span class="nav-text">Proposal
-Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#community-sentiment"><span class="nav-text">Community Sentiment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the-puzzle-of-consensus"><span class="nav-text">The Puzzle of
-Consensus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conclusion-takeaways"><span class="nav-text">Conclusion &amp;
-Takeaways</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-text">Reference</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Upgrade-Overview-What-and-Why"><span class="nav-text">Upgrade Overview: What and Why</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-a-Bitcoin-Upgrade"><span class="nav-text">What is a Bitcoin Upgrade?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Types-of-Consensus-Upgrades"><span class="nav-text">Types of Consensus Upgrades</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Soft-Fork-Process-BIP-Workflows"><span class="nav-text">Soft Fork Process (BIP Workflows)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-Upgrade"><span class="nav-text">Why Upgrade?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#In-Depth-Analysis-of-Upgrades"><span class="nav-text">In-Depth Analysis of Upgrades</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Stakeholders-in-Bitcoin-Upgrades"><span class="nav-text">Stakeholders in Bitcoin Upgrades</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#History-and-Summary-of-Bitcoin-Upgrades"><span class="nav-text">History and Summary of Bitcoin Upgrades</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Focus-Areas-of-Soft-Forks"><span class="nav-text">Focus Areas of Soft Forks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Makes-a-Good-Upgrade-Proposal"><span class="nav-text">What Makes a Good Upgrade Proposal?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Future-Outlook"><span class="nav-text">Future Outlook</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Proposal-Classification"><span class="nav-text">Proposal Classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Community-Sentiment"><span class="nav-text">Community Sentiment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Puzzle-of-Consensus"><span class="nav-text">The Puzzle of Consensus</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion-Takeaways"><span class="nav-text">Conclusion &amp; Takeaways</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol>
                         
 
                         
@@ -735,19 +543,7 @@ Takeaways</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" hr
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#upgrade-overview-what-and-why"><span class="toc-number">2.</span> <span class="toc-text">Upgrade Overview: What
-and Why</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-a-bitcoin-upgrade"><span class="toc-number">2.1.</span> <span class="toc-text">What is a Bitcoin
-Upgrade?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#types-of-consensus-upgrades"><span class="toc-number">2.2.</span> <span class="toc-text">Types of Consensus
-Upgrades</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#soft-fork-process-bip-workflows"><span class="toc-number">2.3.</span> <span class="toc-text">Soft Fork Process (BIP
-Workflows)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#why-upgrade"><span class="toc-number">2.4.</span> <span class="toc-text">Why Upgrade?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#in-depth-analysis-of-upgrades"><span class="toc-number">3.</span> <span class="toc-text">In-Depth Analysis of
-Upgrades</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#stakeholders-in-bitcoin-upgrades"><span class="toc-number">3.1.</span> <span class="toc-text">Stakeholders in
-Bitcoin Upgrades</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#history-and-summary-of-bitcoin-upgrades"><span class="toc-number">3.2.</span> <span class="toc-text">History and
-Summary of Bitcoin Upgrades</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#focus-areas-of-soft-forks"><span class="toc-number">3.3.</span> <span class="toc-text">Focus Areas of Soft
-Forks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#what-makes-a-good-upgrade-proposal"><span class="toc-number">3.4.</span> <span class="toc-text">What Makes a Good
-Upgrade Proposal?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#future-outlook"><span class="toc-number">4.</span> <span class="toc-text">Future Outlook</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#proposal-classification"><span class="toc-number">4.1.</span> <span class="toc-text">Proposal
-Classification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#community-sentiment"><span class="toc-number">4.2.</span> <span class="toc-text">Community Sentiment</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#the-puzzle-of-consensus"><span class="toc-number">5.</span> <span class="toc-text">The Puzzle of
-Consensus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#conclusion-takeaways"><span class="toc-number">6.</span> <span class="toc-text">Conclusion &amp;
-Takeaways</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reference"><span class="toc-number">7.</span> <span class="toc-text">Reference</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Upgrade-Overview-What-and-Why"><span class="toc-number">2.</span> <span class="toc-text">Upgrade Overview: What and Why</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-a-Bitcoin-Upgrade"><span class="toc-number">2.1.</span> <span class="toc-text">What is a Bitcoin Upgrade?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Types-of-Consensus-Upgrades"><span class="toc-number">2.2.</span> <span class="toc-text">Types of Consensus Upgrades</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Soft-Fork-Process-BIP-Workflows"><span class="toc-number">2.3.</span> <span class="toc-text">Soft Fork Process (BIP Workflows)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Upgrade"><span class="toc-number">2.4.</span> <span class="toc-text">Why Upgrade?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#In-Depth-Analysis-of-Upgrades"><span class="toc-number">3.</span> <span class="toc-text">In-Depth Analysis of Upgrades</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stakeholders-in-Bitcoin-Upgrades"><span class="toc-number">3.1.</span> <span class="toc-text">Stakeholders in Bitcoin Upgrades</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#History-and-Summary-of-Bitcoin-Upgrades"><span class="toc-number">3.2.</span> <span class="toc-text">History and Summary of Bitcoin Upgrades</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Focus-Areas-of-Soft-Forks"><span class="toc-number">3.3.</span> <span class="toc-text">Focus Areas of Soft Forks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Makes-a-Good-Upgrade-Proposal"><span class="toc-number">3.4.</span> <span class="toc-text">What Makes a Good Upgrade Proposal?</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Future-Outlook"><span class="toc-number">4.</span> <span class="toc-text">Future Outlook</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Proposal-Classification"><span class="toc-number">4.1.</span> <span class="toc-text">Proposal Classification</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Community-Sentiment"><span class="toc-number">4.2.</span> <span class="toc-text">Community Sentiment</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Puzzle-of-Consensus"><span class="toc-number">5.</span> <span class="toc-text">The Puzzle of Consensus</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion-Takeaways"><span class="toc-number">6.</span> <span class="toc-text">Conclusion &amp; Takeaways</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-number">7.</span> <span class="toc-text">Reference</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -766,7 +562,7 @@ Takeaways</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" hr
                             <a href="/bitcoin-next-upgrade-cn.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover)" alt="共识之迷：一文读懂比特币升级社区进展" class="thumbnail-image"></span>
+        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="共识之迷：一文读懂比特币升级社区进展" class="thumbnail-image"></span>
     
     
 </a>
@@ -786,7 +582,7 @@ Takeaways</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" hr
                             <a href="/bitcoin-next-upgrade.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover)" alt="A Brief Report On Bitcoin&#39;s Next Upgrade For All" class="thumbnail-image"></span>
+        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report On Bitcoin&#39;s Next Upgrade For All" class="thumbnail-image"></span>
     
     
 </a>
