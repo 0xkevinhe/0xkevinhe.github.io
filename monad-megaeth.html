@@ -12,12 +12,12 @@
     
         <meta name="keywords" content="blockchain" />
     
-    <meta name="description" content="Overview Recently a bankless spotify epsode about high performant evm blockchain is popular, let&#39;s discorver: Spotify Episode Twitter Thread Takeaways General  High performance can be achieved in vari">
+    <meta name="description" content="OverviewRecently a bankless spotify epsode about high performant evm blockchain is popular, let’s discorver:  Spotify Episode Twitter Thread TakeawaysGeneral High performance can be achieved in variou">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Monad VS MegaETH-Bankless Episode and Debate">
 <meta property="og:url" content="https://0xkevinhe.xyz/monad-megaeth.html">
 <meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
-<meta property="og:description" content="Overview Recently a bankless spotify epsode about high performant evm blockchain is popular, let&#39;s discorver: Spotify Episode Twitter Thread Takeaways General  High performance can be achieved in vari">
+<meta property="og:description" content="OverviewRecently a bankless spotify epsode about high performant evm blockchain is popular, let’s discorver:  Spotify Episode Twitter Thread TakeawaysGeneral High performance can be achieved in variou">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png">
 <meta property="article:published_time" content="2024-08-24T16:45:55.000Z">
@@ -201,91 +201,57 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="overview">Overview</h1>
-<p>Recently a bankless spotify epsode about high performant evm
-blockchain is popular, let's discorver:</p>
-<p><a target="_blank" rel="noopener" href="https://open.spotify.com/episode/0jsjx0GqkSQzRvP8qsqD1E?si=37228542c8504962">Spotify
-Episode</a></p>
-<p><a target="_blank" rel="noopener" href="https://x.com/BanklessHQ/status/1826244170379301103">Twitter
-Thread</a></p>
-<h1 id="takeaways">Takeaways</h1>
-<h2 id="general">General</h2>
-<ol type="1">
-<li>High performance can be achieved in various ways: single-thread
-optimization / parallel computing; with different expressions.</li>
-<li>Monad's monolithic approach vs. MegaETH's modularity.</li>
+            <h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>Recently a bankless spotify epsode about high performant evm blockchain is popular, let’s discorver: </p>
+<p><a target="_blank" rel="noopener" href="https://open.spotify.com/episode/0jsjx0GqkSQzRvP8qsqD1E?si=37228542c8504962">Spotify Episode</a></p>
+<p><a target="_blank" rel="noopener" href="https://x.com/BanklessHQ/status/1826244170379301103">Twitter Thread</a></p>
+<h1 id="Takeaways"><a href="#Takeaways" class="headerlink" title="Takeaways"></a>Takeaways</h1><h2 id="General"><a href="#General" class="headerlink" title="General"></a>General</h2><ol>
+<li>High performance can be achieved in various ways: single-thread optimization / parallel computing; with different expressions.</li>
+<li>Monad’s monolithic approach vs. MegaETH’s modularity.</li>
 <li>Ethereum settlement + 3rd party data availability (DA) works.</li>
-<li>Crypto should be fun; limited edition strategies for peripheral
-products.</li>
+<li>Crypto should be fun; limited edition strategies for peripheral products.</li>
 </ol>
-<h2 id="debate-on-full-nodes">Debate on Full Nodes</h2>
-<p>https://x.com/keoneHD/status/1826488867152605320</p>
-<p>In an interview, Keone@Monad and Lei@MegaETH had a disagreement on
-the definition of a full node. The core issue is whether trusting the
-sequencer when syncing the state from the sequencer during full node
-startup constitutes a trust assumption. Keone later expanded on this
-debate on Twitter.</p>
+<h2 id="Debate-on-Full-Nodes"><a href="#Debate-on-Full-Nodes" class="headerlink" title="Debate on Full Nodes"></a>Debate on Full Nodes</h2><p><a target="_blank" rel="noopener" href="https://x.com/keoneHD/status/1826488867152605320">https://x.com/keoneHD/status/1826488867152605320</a></p>
+<p>In an interview, Keone@Monad and Lei@MegaETH had a disagreement on the definition of a full node. The core issue is whether trusting the sequencer when syncing the state from the sequencer during full node startup constitutes a trust assumption. Keone later expanded on this debate on Twitter.</p>
 <ul>
-<li><p>Keone Hon@Monad In the context of an exchange or merchant
-scenario, under megaeth architecture, how long should the transaction
-confirmation period be when using the so-called full node?</p></li>
-<li><p>Vitalik@Ethereum The main focus is not on the definition of a
-full node. There are two levels of confirmation for transactions based
-on Ethereum L2:</p>
-<ol type="1">
-<li>Pre-confirmation at the sequencer level, using a sequencer slashing
-mechanism to prevent malicious behavior.</li>
+<li><p>Keone Hon@Monad<br>In the context of an exchange or merchant scenario, under megaeth architecture, how long should the transaction confirmation period be when using the so-called full node?</p>
+</li>
+<li><p>Vitalik@Ethereum<br>The main focus is not on the definition of a full node. There are two levels of confirmation for transactions based on Ethereum L2: </p>
+<ol>
+<li>Pre-confirmation at the sequencer level, using a sequencer slashing mechanism to prevent malicious behavior. </li>
 <li>L1 confirmation for a deeper level of security.</li>
-</ol></li>
-<li><p>Keone Hon@Monad In a fraud-proof system, should a transaction be
-re-executed to ensure it is not being cheated?</p></li>
-<li><p>Vitalik@Ethereum Introducing stakesure: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2401.05797">https://arxiv.org/pdf/2401.05797</a>
-will provide instant feedback (either success or compensation). ZK and
-validity proofs will solve this issue.</p></li>
-<li><p>Keone Hon@Monad Replaying transactions is obviously very costly,
-and megaeth will not implement zk validity proofs for now. I still
-believe that in real production environments, being able to run a full
-node (to execute all transactions) is very important for the payment
-process.</p></li>
+</ol>
+</li>
+<li><p>Keone Hon@Monad<br>In a fraud-proof system, should a transaction be re-executed to ensure it is not being cheated?</p>
+</li>
+<li><p>Vitalik@Ethereum<br>Introducing stakesure: <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2401.05797">https://arxiv.org/pdf/2401.05797</a> will provide instant feedback (either success or compensation).<br>ZK and validity proofs will solve this issue.</p>
+</li>
+<li><p>Keone Hon@Monad<br>Replaying transactions is obviously very costly, and megaeth will not implement zk validity proofs for now. I still believe that in real production environments, being able to run a full node (to execute all transactions) is very important for the payment process.</p>
+</li>
 </ul>
-<h2 id="monad">Monad</h2>
-<ol type="1">
-<li>Monad DB / Monad BFT / parallel (async) execution; 100-200
-validators distributed globally.</li>
+<h2 id="Monad"><a href="#Monad" class="headerlink" title="Monad"></a>Monad</h2><ol>
+<li>Monad DB / Monad BFT / parallel (async) execution; 100-200 validators distributed globally.</li>
 <li>The biggest execution bottleneck is state access.</li>
-<li>Monad emphasizes decentralization, characterized by low-cost
-hardware / validator count / full node count.</li>
+<li>Monad emphasizes decentralization, characterized by low-cost hardware / validator count / full node count.</li>
 <li>Monad DB is a core innovation, with Merkle tree optimizations.</li>
 <li>Monad uses async execution; decoupled from consensus.</li>
 <li>Monad has community-driven design mascots.</li>
-<li>Currently there is a devnet; mainnet will be fully open-source
-before launch.</li>
+<li>Currently there is a devnet; mainnet will be fully open-source before launch.</li>
 <li>Mainnet is expected early next year.</li>
 </ol>
-<figure>
-<img src="./monad-megaeth/monad-mascot.png" alt="monad-mascot">
-<figcaption aria-hidden="true">monad-mascot</figcaption>
-</figure>
-<h2 id="megaeth">MegaETH</h2>
-<ol type="1">
-<li>MegaETH is an ETH Layer 2: sequencer / full node / verifier
-node.</li>
+<p><img src="/./monad-megaeth/monad-mascot.png" alt="monad-mascot"></p>
+<h2 id="MegaETH"><a href="#MegaETH" class="headerlink" title="MegaETH"></a>MegaETH</h2><ol>
+<li>MegaETH is an ETH Layer 2: sequencer / full node / verifier node.</li>
 <li>MegaETH uses fraud proofs / eigen data availability (DA).</li>
-<li>MegaETH's verifier uses a stateless client.</li>
+<li>MegaETH’s verifier uses a stateless client.</li>
 <li>MegaETH is based on Ethereum for decentralization.</li>
 <li>Emphasizes low latency: e.g., real-time games.</li>
 <li>Incubation program: Mega Mafia.</li>
 <li>MegaETH uses Bunny as its mascot.</li>
 <li>Mainnet is expected early next year.</li>
 </ol>
-<figure>
-<img src="./monad-megaeth/megaeth-mascot.png" alt="megaeth-mascot">
-<figcaption aria-hidden="true">megaeth-mascot</figcaption>
-</figure>
-<h2 id="evm">EVM</h2>
-<ol type="1">
-<li>It has a 256-bit width issue, but fundamentally it is sound, with
-strong ecosystem and network effects, and it is evolving.</li>
+<p><img src="/./monad-megaeth/megaeth-mascot.png" alt="megaeth-mascot"></p>
+<h2 id="EVM"><a href="#EVM" class="headerlink" title="EVM"></a>EVM</h2><ol>
+<li>It has a 256-bit width issue, but fundamentally it is sound, with strong ecosystem and network effects, and it is evolving.</li>
 <li>Vitalik mentioned 3 regrets, including precompiled contracts?</li>
 </ol>
 
@@ -414,7 +380,7 @@ strong ecosystem and network effects, and it is evolving.</li>
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#overview"><span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#takeaways"><span class="nav-text">Takeaways</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#general"><span class="nav-text">General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debate-on-full-nodes"><span class="nav-text">Debate on Full Nodes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monad"><span class="nav-text">Monad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#megaeth"><span class="nav-text">MegaETH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#evm"><span class="nav-text">EVM</span></a></li></ol></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Overview"><span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Takeaways"><span class="nav-text">Takeaways</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#General"><span class="nav-text">General</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Debate-on-Full-Nodes"><span class="nav-text">Debate on Full Nodes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monad"><span class="nav-text">Monad</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MegaETH"><span class="nav-text">MegaETH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EVM"><span class="nav-text">EVM</span></a></li></ol></li></ol>
                         
 
                         
@@ -434,7 +400,7 @@ strong ecosystem and network effects, and it is evolving.</li>
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#takeaways"><span class="toc-number">2.</span> <span class="toc-text">Takeaways</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#general"><span class="toc-number">2.1.</span> <span class="toc-text">General</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#debate-on-full-nodes"><span class="toc-number">2.2.</span> <span class="toc-text">Debate on Full Nodes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#monad"><span class="toc-number">2.3.</span> <span class="toc-text">Monad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#megaeth"><span class="toc-number">2.4.</span> <span class="toc-text">MegaETH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#evm"><span class="toc-number">2.5.</span> <span class="toc-text">EVM</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Takeaways"><span class="toc-number">2.</span> <span class="toc-text">Takeaways</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#General"><span class="toc-number">2.1.</span> <span class="toc-text">General</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debate-on-Full-Nodes"><span class="toc-number">2.2.</span> <span class="toc-text">Debate on Full Nodes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Monad"><span class="toc-number">2.3.</span> <span class="toc-text">Monad</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MegaETH"><span class="toc-number">2.4.</span> <span class="toc-text">MegaETH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EVM"><span class="toc-number">2.5.</span> <span class="toc-text">EVM</span></a></li></ol></li></ol>
         </div>
     </div>
 </div>
