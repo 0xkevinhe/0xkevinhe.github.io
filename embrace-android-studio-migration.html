@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+<head>
+    <meta charset="utf-8" />
 
     
 
     
-    <title>拥抱 Android Studio 之一：从 ADT 到 Android Studio | Kevin He&#39;s Website</title>
+    <title>拥抱 Android Studio 之一：从 ADT 到 Android Studio | Kevin He&#39;s Website | e/acc</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
+        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio" />
     
-    <meta name="description" content="拥抱变化，拥抱新事物 多年前央视有一套电视系列片：大国崛起，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。 Android 开发因为涉及到代码编辑、UI 布局、打包等工序，最好使用一款 IDE。Google 最早提供了基于 Eclipse 的 ADT 作为开发工具，后于2013年 Google I/O 大会发布基于 IntelliJ IDEA 开发 A">
-<meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
+    <meta name="description" content="拥抱变化，拥抱新事物 多年前央视有一套电视系列片：大国崛起，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。 Android 开发因为涉及到代码编辑、UI 布局、打包等工序，最好使用一款 IDE。Google 最早提供了基于 Eclipse 的 ADT 作为开发工具，后于2013年 Google I&#x2F;O 大会发布基于 IntelliJ IDEA 开发 A">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拥抱 Android Studio 之一：从 ADT 到 Android Studio">
 <meta property="og:url" content="https://0xkevinhe.xyz/embrace-android-studio-migration.html">
-<meta property="og:site_name" content="Kevin He&#39;s Website">
-<meta property="og:description" content="拥抱变化，拥抱新事物 多年前央视有一套电视系列片：大国崛起，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。 Android 开发因为涉及到代码编辑、UI 布局、打包等工序，最好使用一款 IDE。Google 最早提供了基于 Eclipse 的 ADT 作为开发工具，后于2013年 Google I/O 大会发布基于 IntelliJ IDEA 开发 A">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
+<meta property="og:description" content="拥抱变化，拥抱新事物 多年前央视有一套电视系列片：大国崛起，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。 Android 开发因为涉及到代码编辑、UI 布局、打包等工序，最好使用一款 IDE。Google 最早提供了基于 Eclipse 的 ADT 作为开发工具，后于2013年 Google I&#x2F;O 大会发布基于 IntelliJ IDEA 开发 A">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg">
-<meta property="og:updated_time" content="2026-02-20T01:50:55.106Z">
+<meta property="article:published_time" content="2015-12-01T03:20:30.000Z">
+<meta property="article:modified_time" content="2023-09-27T07:01:22.155Z">
+<meta property="article:author" content="0xkevinhe">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="EmbraceAndroidStudio">
+<meta property="article:tag" content="拥抱 Android Studio">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="拥抱 Android Studio 之一：从 ADT 到 Android Studio">
-<meta name="twitter:description" content="拥抱变化，拥抱新事物 多年前央视有一套电视系列片：大国崛起，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。 Android 开发因为涉及到代码编辑、UI 布局、打包等工序，最好使用一款 IDE。Google 最早提供了基于 Eclipse 的 ADT 作为开发工具，后于2013年 Google I/O 大会发布基于 IntelliJ IDEA 开发 A">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml">
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website | e/acc" type="application/atom+xml" />
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     
     
@@ -63,8 +75,8 @@ var _hmt = _hmt || [];
     
 
 
-</head>
-</html>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -86,7 +98,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -124,7 +136,9 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -174,14 +188,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a>, <a class="tag-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a>
+        <a class="tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-link-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a>, <a class="tag-link-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2026-02-20T01:50:55.106Z" itemprop="dateModified">2026-02-20</time>
+                    <time datetime="2023-09-27T07:01:22.155Z" itemprop="dateModified">2023-09-27</time>
                 </span>
             
             </div>
@@ -189,14 +203,14 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <html><head></head><body><h2 id="拥抱变化拥抱新事物">拥抱变化，拥抱新事物</h2>
-<p>多年前央视有一套电视系列片：<a href="http://baike.baidu.com/subview/634340/5376026.htm" target="_blank" rel="noopener">大国崛起</a>，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。</p>
+            <h2 id="拥抱变化拥抱新事物">拥抱变化，拥抱新事物</h2>
+<p>多年前央视有一套电视系列片：<a target="_blank" rel="noopener" href="http://baike.baidu.com/subview/634340/5376026.htm">大国崛起</a>，主要讲述那些曾经在站在世界舞台中央的国家的兴衰历程。纵观历史，正是创新使得一个国家得以崛起。</p>
 <p>Android 开发因为涉及到代码编辑、UI 布局、打包等工序，最好使用一款
 IDE。Google 最早提供了基于 Eclipse 的 ADT 作为开发工具，后于2013年
-Google I/O 大会发布基于 IntelliJ IDEA 开发 <a href="https://zh.wikipedia.org/wiki/Android_Studio" target="_blank" rel="noopener">Android
+Google I/O 大会发布基于 IntelliJ IDEA 开发 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Android_Studio">Android
 Studio</a>。后者正式版发布之后，Google 宣布不再持续支持 ADT。Android
 Studio 有更快的速度，更好的代码完成等特性。</p>
-<p>时至今日（2015-11-30），在我们运营 <a href="https://bugtags.com" target="_blank" rel="noopener">bugtags.com</a> 这一款高效的 app
+<p>时至今日（2015-11-30），在我们运营 <a target="_blank" rel="noopener" href="https://bugtags.com">bugtags.com</a> 这一款高效的 app
 测试服务的时候，在帮助用户集成 Android SDK
 的过程中，我们发现很多遗留项目依旧没有从 ADT 迁移过来，依然有很多用户对
 Android Studio
@@ -238,17 +252,17 @@ IDE，并且即将由奢入俭难，再也回不去了。</p>
 Google 搜索，第一条来自 stackoverflow 的答案就是你想要的。</p>
 </blockquote>
 <ul>
-<li><a href="http://developer.android.com/sdk/index.html" target="_blank" rel="noopener">Android Studio
+<li><a target="_blank" rel="noopener" href="http://developer.android.com/sdk/index.html">Android Studio
 下载页</a></li>
-<li><a href="http://developer.android.com/tools/studio/index.html" target="_blank" rel="noopener">Android
+<li><a target="_blank" rel="noopener" href="http://developer.android.com/tools/studio/index.html">Android
 Studio</a>：Android Developer 上 Android Studio 的介绍</li>
-<li><a href="http://tools.android.com/" target="_blank" rel="noopener">Android Tools</a>：Android
+<li><a target="_blank" rel="noopener" href="http://tools.android.com/">Android Tools</a>：Android
 工具首页，有大量的深度的技术文档</li>
-<li><a href="http://tools.android.com/tech-docs/new-build-system" target="_blank" rel="noopener">Android Build
+<li><a target="_blank" rel="noopener" href="http://tools.android.com/tech-docs/new-build-system">Android Build
 Sytem</a>：基于 gradle 的 Android 构建系统，最为关键的一篇文章</li>
-<li><a href="http://developer.android.com/sdk/installing/migrate.html" target="_blank" rel="noopener">从 ADT
+<li><a target="_blank" rel="noopener" href="http://developer.android.com/sdk/installing/migrate.html">从 ADT
 迁移指南</a>：官方提供的迁移手册</li>
-<li><a href="http://androiddevtools.cn/" target="_blank" rel="noopener">Android Studio
+<li><a target="_blank" rel="noopener" href="http://androiddevtools.cn/">Android Studio
 国内下载渠道</a>：良心网站，你懂的，但是笔者不对 Xcode
 Ghost之类的事情负责</li>
 </ul>
@@ -282,7 +296,7 @@ module。结构如下。</p>
 build.gradle 中通过jniLibs.srcDirs 值来修改所在位置</p>
 <p>project/app/libs：放置 .jar 库</p>
 <h2 id="从-adt-迁移">从 ADT 迁移</h2>
-<p>本文主要参考这篇<a href="http://developer.android.com/sdk/installing/migrate.html" target="_blank" rel="noopener">迁移指南</a>。Android
+<p>本文主要参考这篇<a target="_blank" rel="noopener" href="http://developer.android.com/sdk/installing/migrate.html">迁移指南</a>。Android
 Studio 提供了非常友好的导入向导。</p>
 <h3 id="在-android-studio-导入">在 Android Studio 导入</h3>
 <p>File->New->Import Project，找到你的 ADT 的 workspace
@@ -336,22 +350,22 @@ Studio。确保你已经科学上网，并且耐心等待，又或者点击取�
 ADT 而言全新的概念。</p>
 <h3 id="build.gradle">build.gradle</h3>
 <p>在项目的 build.gradle 文件中，有如下内容：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()//这是构建插件所使用的远程库，后续会有一篇介绍库的含义</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:2.0.0-alpha1'//这是项目所使用的 Android gradle 版本</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">allprojects {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()//这是使用远程库依赖的时候，的远程库</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()//这是构建插件所使用的远程库，后续会有一篇介绍库的含义</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:2.0.0-alpha1'//这是项目所使用的 Android gradle 版本</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">allprojects {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()//这是使用远程库依赖的时候，的远程库</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在每个模块的 build.gradle 文件中，初始会有如下内容：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'com.android.library'</span><br><span class="line">//com.android.library标示是一个库模块；</span><br><span class="line">//com.android.application标示这是一个应用模块</span><br><span class="line"></span><br><span class="line">android {</span><br><span class="line">    compileSdkVersion 19//编译 sdk 版本</span><br><span class="line">    buildToolsVersion "23.0.2"//构建工具版本</span><br><span class="line"></span><br><span class="line">    defaultConfig {</span><br><span class="line">        minSdkVersion 9</span><br><span class="line">        targetSdkVersion 19</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    buildTypes {//打包类型</span><br><span class="line">        release {</span><br><span class="line">            minifyEnabled false//是否混淆</span><br><span class="line">            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">dependencies {//依赖管理</span><br><span class="line">    compile 'com.bugtags.library:bugtags-lib:1.0.8'//远程</span><br><span class="line">    compile fileTree(dir: 'libs', include: ['*.jar'])//本地 jar 依赖</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'com.android.library'</span><br><span class="line">//com.android.library标示是一个库模块；</span><br><span class="line">//com.android.application标示这是一个应用模块</span><br><span class="line"></span><br><span class="line">android {</span><br><span class="line">    compileSdkVersion 19//编译 sdk 版本</span><br><span class="line">    buildToolsVersion "23.0.2"//构建工具版本</span><br><span class="line"></span><br><span class="line">    defaultConfig {</span><br><span class="line">        minSdkVersion 9</span><br><span class="line">        targetSdkVersion 19</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    buildTypes {//打包类型</span><br><span class="line">        release {</span><br><span class="line">            minifyEnabled false//是否混淆</span><br><span class="line">            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">dependencies {//依赖管理</span><br><span class="line">    compile 'com.bugtags.library:bugtags-lib:1.0.8'//远程</span><br><span class="line">    compile fileTree(dir: 'libs', include: ['*.jar'])//本地 jar 依赖</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="依赖管理">依赖管理</h3>
 <h4 id="远程依赖">远程依赖：</h4>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line"> 	compile 'com.bugtags.library:bugtags-lib:1.0.8'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line"> 	compile 'com.bugtags.library:bugtags-lib:1.0.8'</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>Android Studio 使用 gradle 进行依赖管理，兼容了 maven
 的库，一个经典的 maven 库的配置如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><dependency></span><br><span class="line">    <groupId>com.bugtags.library</groupId></span><br><span class="line">    <artifactId>bugtags-lib</artifactId></span><br><span class="line">    <version>1.0.8</version></span><br><span class="line"></dependency></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><dependency></span><br><span class="line">    <groupId>com.bugtags.library</groupId></span><br><span class="line">    <artifactId>bugtags-lib</artifactId></span><br><span class="line">    <version>1.0.8</version></span><br><span class="line"></dependency></span><br></pre></td></tr></table></figure>
 <p>对比之后，你会发现 compile 的内容中，分为三部分
 groupdId:artifactId:version</p>
 <p>com.bugtags.library对应groupId</p>
 <p>bugtags-lib对应 artifactId</p>
 <p>1.0.8对应 version</p>
 <h4 id="本地依赖">本地依赖</h4>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile fileTree(dir: 'libs', include: ['*.jar'])//本地 jar 依赖</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile fileTree(dir: 'libs', include: ['*.jar'])//本地 jar 依赖</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>Android Studio 工程创建的时候，默认会有如上依赖，意义是把放在与该
 build.gradle 文件同一层的 libs 文件夹中所有的 jar 文件都作为库依赖。</p>
 <h4 id="同步依赖">同步依赖</h4>
@@ -362,7 +376,7 @@ build.gradle 文件同一层的 libs 文件夹中所有的 jar 文件都作为�
 <figcaption aria-hidden="true">sync</figcaption>
 </figure>
 <p>如果长时间未成功，则可以在控制台使用：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build --info</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build --info</span><br></pre></td></tr></table></figure>
 <p>以上命令来看控制台输出。</p>
 <h3 id="build-variant">build variant</h3>
 <p>Android Studio 内置了多渠打包功能，就是所谓的 build
@@ -382,33 +396,33 @@ flavor 放置那些有区别的代码和文件。一次打包，即可完成。
 instant build，将会极大提升构建速度。后文将会详细介绍。</p>
 <p>一个工程从 ADT 迁移到 Android Studio
 只需要很短的时间，连带熟悉基本概念，半天基本可以完成。如果还没有进行迁移的同学，要抓紧了，不要被世界抛弃了。</p>
-<p>笔者<a href="http://kvh.io" target="_blank" rel="noopener">kvh</a>先在这里挖一个系列坑，希望这个系列能够让读者快速掌握
+<p>笔者<a target="_blank" rel="noopener" href="http://kvh.io">kvh</a>先在这里挖一个系列坑，希望这个系列能够让读者快速掌握
 Android Studio 与 gradle，请持续关注。</p>
 <h1 id="系列导读">系列导读</h1>
 <p>本文是笔者《拥抱 Android Studio》系列第一篇，其他篇请点击：</p>
-<p><a href="http://kvh.io/2015/12/01/embrace-android-studio-migration/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/01/embrace-android-studio-migration/">拥抱
 Android Studio 之一：从 ADT 到 Android Studio</a></p>
-<p><a href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">拥抱
 Android Studio 之二：Android Studio 与 Gradle 深入</a></p>
-<p><a href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/">拥抱
 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></p>
-<p><a href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱
 Android Studio 之四：Maven 公共仓库使用与私有仓库搭建</a></p>
-<p><a href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/">拥抱
 Android Studio 之五：Gradle 插件使用与开发</a></p>
 <blockquote>
 <p>有问题？在文章下留言或者加 qq 群：453503476，希望能帮到你。</p>
 </blockquote>
 <h1 id="番外">番外</h1>
 <p>笔者目前关注点在于移动 SDK 研发，后端服务设计和实现。</p>
-<p>笔者在开发和运营<a href="https://bugtags.com" target="_blank" rel="noopener">bugtags.com</a>，这是一款能够极大的提升 app
+<p>笔者在开发和运营<a target="_blank" rel="noopener" href="https://bugtags.com">bugtags.com</a>，这是一款能够极大的提升 app
 开发者测试效率的 SDK 产品，欢迎使用、转发推荐。</p>
 <p>我们团队长期求 PHP 后端，有兴趣请加下面公众号勾搭：</p>
 <figure>
 <img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-29/87155741.jpg" alt="bugtags">
 <figcaption aria-hidden="true">bugtags</figcaption>
 </figure>
-</body></html>
+
 
             <div class="toc-title"> 相关文章推荐</div>
             <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-gradle-plugin.html">拥抱 Android Studio 之五：Gradle 插件开发</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-maven-deploy.html">拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-groovy-gradle.html">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></li></ul>
@@ -534,10 +548,10 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#拥抱变化拥抱新事物"><span class="nav-text">拥抱变化，拥抱新事物</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#android-studiointellij-ideavs.-adteclipse"><span class="nav-text">Android
-Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从-adt-迁移到-android-studio"><span class="nav-text">从 ADT 迁移到 Android Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用网站"><span class="nav-text">常用网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adt-与-android-studio-目录结构对比"><span class="nav-text">ADT 与 Android Studio
-目录结构对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adt-项目结构"><span class="nav-text">ADT 项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-studio-项目结构"><span class="nav-text">Android Studio 项目结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从-adt-迁移"><span class="nav-text">从 ADT 迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在-android-studio-导入"><span class="nav-text">在 Android Studio 导入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-text">问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-studio-的几个关键概念"><span class="nav-text">Android Studio
-的几个关键概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#build.gradle"><span class="nav-text">build.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖管理"><span class="nav-text">依赖管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#远程依赖"><span class="nav-text">远程依赖：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地依赖"><span class="nav-text">本地依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步依赖"><span class="nav-text">同步依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#build-variant"><span class="nav-text">build variant</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系列导读"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#番外"><span class="nav-text">番外</span></a>
+                            <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%A5%E6%8A%B1%E5%8F%98%E5%8C%96%E6%8B%A5%E6%8A%B1%E6%96%B0%E4%BA%8B%E7%89%A9"><span class="nav-text">拥抱变化，拥抱新事物</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#android-studiointellij-ideavs.-adteclipse"><span class="nav-text">Android
+Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E-adt-%E8%BF%81%E7%A7%BB%E5%88%B0-android-studio"><span class="nav-text">从 ADT 迁移到 Android Studio</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99"><span class="nav-text">常用网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adt-%E4%B8%8E-android-studio-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94"><span class="nav-text">ADT 与 Android Studio
+目录结构对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#adt-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-text">ADT 项目结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-studio-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-text">Android Studio 项目结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E-adt-%E8%BF%81%E7%A7%BB"><span class="nav-text">从 ADT 迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-android-studio-%E5%AF%BC%E5%85%A5"><span class="nav-text">在 Android Studio 导入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-studio-%E7%9A%84%E5%87%A0%E4%B8%AA%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5"><span class="nav-text">Android Studio
+的几个关键概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#build.gradle"><span class="nav-text">build.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="nav-text">依赖管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E4%BE%9D%E8%B5%96"><span class="nav-text">远程依赖：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96"><span class="nav-text">本地依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%BE%9D%E8%B5%96"><span class="nav-text">同步依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#build-variant"><span class="nav-text">build variant</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%AA%E5%A4%96"><span class="nav-text">番外</span></a>
                         
 
                         
@@ -557,10 +571,10 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="nav-item
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#拥抱变化拥抱新事物"><span class="toc-number">1.</span> <span class="toc-text">拥抱变化，拥抱新事物</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#android-studiointellij-ideavs.-adteclipse"><span class="toc-number"></span> <span class="toc-text">Android
-Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#从-adt-迁移到-android-studio"><span class="toc-number"></span> <span class="toc-text">从 ADT 迁移到 Android Studio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用网站"><span class="toc-number">1.</span> <span class="toc-text">常用网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adt-与-android-studio-目录结构对比"><span class="toc-number">2.</span> <span class="toc-text">ADT 与 Android Studio
-目录结构对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#adt-项目结构"><span class="toc-number">2.1.</span> <span class="toc-text">ADT 项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-studio-项目结构"><span class="toc-number">2.2.</span> <span class="toc-text">Android Studio 项目结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从-adt-迁移"><span class="toc-number">3.</span> <span class="toc-text">从 ADT 迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在-android-studio-导入"><span class="toc-number">3.1.</span> <span class="toc-text">在 Android Studio 导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-number">3.1.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-studio-的几个关键概念"><span class="toc-number">4.</span> <span class="toc-text">Android Studio
-的几个关键概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#build.gradle"><span class="toc-number">4.1.</span> <span class="toc-text">build.gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖管理"><span class="toc-number">4.2.</span> <span class="toc-text">依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#远程依赖"><span class="toc-number">4.2.1.</span> <span class="toc-text">远程依赖：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地依赖"><span class="toc-number">4.2.2.</span> <span class="toc-text">本地依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同步依赖"><span class="toc-number">4.2.3.</span> <span class="toc-text">同步依赖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#build-variant"><span class="toc-number">4.3.</span> <span class="toc-text">build variant</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系列导读"><span class="toc-number"></span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#番外"><span class="toc-number"></span> <span class="toc-text">番外</span></a>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%A5%E6%8A%B1%E5%8F%98%E5%8C%96%E6%8B%A5%E6%8A%B1%E6%96%B0%E4%BA%8B%E7%89%A9"><span class="toc-number">1.</span> <span class="toc-text">拥抱变化，拥抱新事物</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#android-studiointellij-ideavs.-adteclipse"><span class="toc-number"></span> <span class="toc-text">Android
+Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E-adt-%E8%BF%81%E7%A7%BB%E5%88%B0-android-studio"><span class="toc-number"></span> <span class="toc-text">从 ADT 迁移到 Android Studio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99"><span class="toc-number">1.</span> <span class="toc-text">常用网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#adt-%E4%B8%8E-android-studio-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%AF%B9%E6%AF%94"><span class="toc-number">2.</span> <span class="toc-text">ADT 与 Android Studio
+目录结构对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#adt-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">ADT 项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-studio-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">Android Studio 项目结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E-adt-%E8%BF%81%E7%A7%BB"><span class="toc-number">3.</span> <span class="toc-text">从 ADT 迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-android-studio-%E5%AF%BC%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">在 Android Studio 导入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.1.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-studio-%E7%9A%84%E5%87%A0%E4%B8%AA%E5%85%B3%E9%94%AE%E6%A6%82%E5%BF%B5"><span class="toc-number">4.</span> <span class="toc-text">Android Studio
+的几个关键概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#build.gradle"><span class="toc-number">4.1.</span> <span class="toc-text">build.gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">依赖管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E4%BE%9D%E8%B5%96"><span class="toc-number">4.2.1.</span> <span class="toc-text">远程依赖：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96"><span class="toc-number">4.2.2.</span> <span class="toc-text">本地依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">4.2.3.</span> <span class="toc-text">同步依赖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#build-variant"><span class="toc-number">4.3.</span> <span class="toc-text">build variant</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number"></span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="toc-number"></span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%95%AA%E5%A4%96"><span class="toc-number"></span> <span class="toc-text">番外</span></a>
         </div>
     </div>
 </div>
@@ -576,90 +590,10 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/en-your-next-coworker-isnt-human.html" class="thumbnail">
+                            <a href="/monad-megaeth.html" class="thumbnail">
     
     
-        <span style="background-image:url(/en-your-next-coworker-isnt-human/cover.png)" alt="Your Next Coworker Isn&#39;t Human" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/en-your-next-coworker-isnt-human.html" class="title">Your Next Coworker Isn&#39;t Human</a></p>
-                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/your-next-coworker-isnt-human.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/your-next-coworker-isnt-human/cover.png)" alt="你的下一个同事不是人" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/your-next-coworker-isnt-human.html" class="title">你的下一个同事不是人</a></p>
-                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/web3-nft-overviews.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
-                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/sparse-merkle-tree.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
-                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
-                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/smart-wallet.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
+        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png)" alt="Monad VS MegaETH-Bankless Episode and Debate" class="thumbnail-image"></span>
     
     
 </a>
@@ -668,8 +602,88 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
-                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
+                            <p class="item-title"><a href="/monad-megaeth.html" class="title">Monad VS MegaETH-Bankless Episode and Debate</a></p>
+                            <p class="item-date"><time datetime="2024-08-24T16:45:55.000Z" itemprop="datePublished">2024-08-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/wbtc.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="WBTC, It’s Time to Upgrade Your Technical Solutions!" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/wbtc.html" class="title">WBTC, It’s Time to Upgrade Your Technical Solutions!</a></p>
+                            <p class="item-date"><time datetime="2024-08-13T01:58:57.000Z" itemprop="datePublished">2024-08-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/action-and-blink.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/82350295.jpg)" alt="Action And Blink" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/action-and-blink.html" class="title">Action And Blink</a></p>
+                            <p class="item-date"><time datetime="2024-07-04T06:58:57.000Z" itemprop="datePublished">2024-07-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/sigweb3-training-primer.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="sigweb3-training" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/sigweb3-training-primer.html" class="title">sigweb3-training</a></p>
+                            <p class="item-date"><time datetime="2024-02-14T15:20:59.000Z" itemprop="datePublished">2024-02-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/en-sigweb3-btc-exp-programme.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/sigweb3-btc-exp-programme/sigweb3-btc-exp-programme-title.png)" alt="SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/en-sigweb3-btc-exp-programme.html" class="title">SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP</a></p>
+                            <p class="item-date"><time datetime="2023-12-15T06:58:57.000Z" itemprop="datePublished">2023-12-15</time></p>
                         </div>
                     </li>
                 
@@ -682,7 +696,7 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -692,7 +706,7 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -702,7 +716,7 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/">Agent</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COCO/">COCO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Teamwork/">Teamwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/团队协作/">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -712,7 +726,7 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/AI/" style="font-size: 12.5px;">AI</a> <a href="/tags/Agent/" style="font-size: 12.5px;">Agent</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/COCO/" style="font-size: 12.5px;">COCO</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Teamwork/" style="font-size: 10px;">Teamwork</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/团队协作/" style="font-size: 10px;">团队协作</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -758,7 +772,7 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2026 Kevin He</p>
+                <p>&copy; 2024 0xkevinhe</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -794,7 +808,9 @@ Studio（IntelliJ IDEA）vs. ADT（Eclipse）</span></a></li><li class="toc-item
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>

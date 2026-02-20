@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+<head>
+    <meta charset="utf-8" />
 
     
 
     
-    <title>拥抱 Android Studio 之五：Gradle 插件开发 | Kevin He&#39;s Website</title>
+    <title>拥抱 Android Studio 之五：Gradle 插件开发 | Kevin He&#39;s Website | e/acc</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
+        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio" />
     
-    <meta name="description" content="官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了 github 项目中。 需求 默认的 Android 打包插件会把 apk 命名成 module-productFlavor-buildType.apk，例如 app-official-debug.apk，并且会把包文件发布到固定的位置： module/build/outpu">
-<meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
+    <meta name="description" content="官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了 github 项目中。 需求 默认的 Android 打包插件会把 apk 命名成 module-productFlavor-buildType.apk，例如 app-official-debug.apk，并且会把包文件发布到固定的位置： module&#x2F;build&#x2F;outpu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拥抱 Android Studio 之五：Gradle 插件开发">
 <meta property="og:url" content="https://0xkevinhe.xyz/embrace-android-studio-gradle-plugin.html">
-<meta property="og:site_name" content="Kevin He&#39;s Website">
-<meta property="og:description" content="官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了 github 项目中。 需求 默认的 Android 打包插件会把 apk 命名成 module-productFlavor-buildType.apk，例如 app-official-debug.apk，并且会把包文件发布到固定的位置： module/build/outpu">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
+<meta property="og:description" content="官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了 github 项目中。 需求 默认的 Android 打包插件会把 apk 命名成 module-productFlavor-buildType.apk，例如 app-official-debug.apk，并且会把包文件发布到固定的位置： module&#x2F;build&#x2F;outpu">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/50868553.jpg">
-<meta property="og:updated_time" content="2026-02-20T01:50:55.105Z">
+<meta property="article:published_time" content="2016-03-28T03:20:30.000Z">
+<meta property="article:modified_time" content="2023-09-27T07:01:22.150Z">
+<meta property="article:author" content="0xkevinhe">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="EmbraceAndroidStudio">
+<meta property="article:tag" content="拥抱 Android Studio">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="拥抱 Android Studio 之五：Gradle 插件开发">
-<meta name="twitter:description" content="官方文档给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了 github 项目中。 需求 默认的 Android 打包插件会把 apk 命名成 module-productFlavor-buildType.apk，例如 app-official-debug.apk，并且会把包文件发布到固定的位置： module/build/outpu">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/50868553.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml">
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website | e/acc" type="application/atom+xml" />
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     
     
@@ -63,8 +75,8 @@ var _hmt = _hmt || [];
     
 
 
-</head>
-</html>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -86,7 +98,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -124,7 +136,9 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -174,14 +188,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a>, <a class="tag-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a>
+        <a class="tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-link-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a>, <a class="tag-link-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2026-02-20T01:50:55.105Z" itemprop="dateModified">2026-02-20</time>
+                    <time datetime="2023-09-27T07:01:22.150Z" itemprop="dateModified">2023-09-27</time>
                 </span>
             
             </div>
@@ -189,8 +203,8 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <html><head></head><body><p><a href="https://docs.gradle.org/current/userguide/custom_plugins.html" target="_blank" rel="noopener">官方文档</a>给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了
-<a href="https://github.com/kevinho/Embrace-Android-Studio-Demo" target="_blank" rel="noopener">github
+            <p><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/custom_plugins.html">官方文档</a>给出了比较详细的实现步骤，本文的脉络会跟官方文档差不了太多，额外增补实际例子和一些实践经验。文中的代码已经托管到了
+<a target="_blank" rel="noopener" href="https://github.com/kevinho/Embrace-Android-Studio-Demo">github
 项目</a>中。</p>
 <h1 id="需求">需求</h1>
 <p>默认的 Android 打包插件会把 apk 命名成
@@ -220,15 +234,15 @@ Build script 把插件写在 build.gradle 文件中，一般用于简单的逻�
 build.gradle 文件中可见，笔者常用来做原型调试，本文将简要介绍此类。 ###
 buildSrc 项目 将插件源代码放在
 <code>rootProjectDir/buildSrc/src/main/groovy</code>
-中，只对该项目中可见，适用于逻辑较为复杂，但又不需要外部可见的插件，本文不介绍，有兴趣可以参考<a href="https://docs.gradle.org/current/userguide/organizing_build_logic.html#sec:build_sources" target="_blank" rel="noopener">此处</a>。
+中，只对该项目中可见，适用于逻辑较为复杂，但又不需要外部可见的插件，本文不介绍，有兴趣可以参考<a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/organizing_build_logic.html#sec:build_sources">此处</a>。
 ### 独立项目 一个独立的 Groovy 和 Java 项目，可以把这个项目打包成 Jar
 文件包，一个 Jar
 文件包还可以包含多个插件入口，将文件包发布到托管平台上，供其他人使用。本文将着重介绍此类。</p>
 <h1 id="build-script-插件">Build script 插件</h1>
 <p>首先来直接在 build.gradle 中写一个 plugin：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistPlugin implements Plugin<Project> {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) {</span><br><span class="line">        project.task('apkdist') << {</span><br><span class="line">            println 'hello, world!'</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">apply plugin: ApkDistPlugin</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistPlugin implements Plugin<Project> {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) {</span><br><span class="line">        project.task('apkdist') << {</span><br><span class="line">            println 'hello, world!'</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">apply plugin: ApkDistPlugin</span><br></pre></td></tr></table></figure>
 <p>命令行运行</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p app/ apkdist</span><br><span class="line">:app:apkdist</span><br><span class="line">hello, world!</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p app/ apkdist</span><br><span class="line">:app:apkdist</span><br><span class="line">hello, world!</span><br></pre></td></tr></table></figure>
 <p>这个插件创建了一个名为 <code>apkdist</code> 的 task，并在 task
 中打印。</p>
 <p>插件是一个类，继承自 <code>org.gradle.api.Plugin</code> 接口，重写
@@ -238,29 +252,29 @@ context。</p>
 <h2 id="接受外部参数">接受外部参数</h2>
 <p>通常情况下，插件使用方需要传入一些配置参数，如 bugtags 的 SDK
 的插件需要接受两个参数:</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bugtags {</span><br><span class="line">    appKey "APP_KEY"  //这里是你的 appKey</span><br><span class="line">    appSecret "APP_SECRET"    //这里是你的 appSecret，管理员在设置页可以查看</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bugtags {</span><br><span class="line">    appKey "APP_KEY"  //这里是你的 appKey</span><br><span class="line">    appSecret "APP_SECRET"    //这里是你的 appSecret，管理员在设置页可以查看</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>同样，ApkDistPlugin 这个 plugin 也希望接受两个参数：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apkdistconf {</span><br><span class="line">    nameMap { name -></span><br><span class="line">        println 'hello,' + name</span><br><span class="line">        return name</span><br><span class="line">    }</span><br><span class="line">    destDir 'your-distribution-dir'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apkdistconf {</span><br><span class="line">    nameMap { name -></span><br><span class="line">        println 'hello,' + name</span><br><span class="line">        return name</span><br><span class="line">    }</span><br><span class="line">    destDir 'your-distribution-dir'</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>参数的内容后面继续完善。那这两个参数怎么传到插件内呢？</p>
 <p><code>org.gradle.api.Project</code> 有一个
 <code>ExtensionContainer getExtensions()</code>
 方法，可以用来实现这个传递。</p>
 <h3 id="声明参数类">声明参数类</h3>
 <p>声明一个 Groovy 类，有两个默认值为 null 的成员变量：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistExtension {</span><br><span class="line">    Closure nameMap = null;</span><br><span class="line">    String destDir = null;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistExtension {</span><br><span class="line">    Closure nameMap = null;</span><br><span class="line">    String destDir = null;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h3 id="接受参数">接受参数</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project.extensions.create('apkdistconf', ApkDistExtension);</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project.extensions.create('apkdistconf', ApkDistExtension);</span><br></pre></td></tr></table></figure>
 <p>要注意，<code>create</code> 方法的第一个参数就是你在 build.gradle
 文件中的进行参数配置的 dsl
 的名字，必须一致；第二个参数，就是参数类的名字。</p>
 <h3 id="获取和使用参数">获取和使用参数</h3>
 <p>在 create 了 extension 之后，如果传入了参数，则会携带在 project
 实例中，</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def closure = project['apkdistconf'].nameMap;</span><br><span class="line">closure('wow!');</span><br><span class="line"></span><br><span class="line">println project['apkdistconf'].destDir</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def closure = project['apkdistconf'].nameMap;</span><br><span class="line">closure('wow!');</span><br><span class="line"></span><br><span class="line">println project['apkdistconf'].destDir</span><br></pre></td></tr></table></figure>
 <h3 id="进化版本一参数">进化版本一：参数</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistExtension {</span><br><span class="line">    Closure nameMap = null;</span><br><span class="line">    String destDir = null;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">class ApkDistPlugin implements Plugin<Project> {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) {</span><br><span class="line"></span><br><span class="line">        project.extensions.create('apkdistconf', ApkDistExtension);</span><br><span class="line"></span><br><span class="line">        project.task('apkdist') << {</span><br><span class="line">            println 'hello, world!'</span><br><span class="line"></span><br><span class="line">            def closure = project['apkdistconf'].nameMap;</span><br><span class="line">            closure('wow!');</span><br><span class="line"></span><br><span class="line">            println project['apkdistconf'].destDir</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">apply plugin: ApkDistPlugin</span><br><span class="line"></span><br><span class="line">apkdistconf {</span><br><span class="line">    nameMap { name -></span><br><span class="line">        println 'hello, ' + name</span><br><span class="line">        return name</span><br><span class="line">    }</span><br><span class="line">    destDir 'your-distribution-directory'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistExtension {</span><br><span class="line">    Closure nameMap = null;</span><br><span class="line">    String destDir = null;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">class ApkDistPlugin implements Plugin<Project> {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) {</span><br><span class="line"></span><br><span class="line">        project.extensions.create('apkdistconf', ApkDistExtension);</span><br><span class="line"></span><br><span class="line">        project.task('apkdist') << {</span><br><span class="line">            println 'hello, world!'</span><br><span class="line"></span><br><span class="line">            def closure = project['apkdistconf'].nameMap;</span><br><span class="line">            closure('wow!');</span><br><span class="line"></span><br><span class="line">            println project['apkdistconf'].destDir</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">apply plugin: ApkDistPlugin</span><br><span class="line"></span><br><span class="line">apkdistconf {</span><br><span class="line">    nameMap { name -></span><br><span class="line">        println 'hello, ' + name</span><br><span class="line">        return name</span><br><span class="line">    }</span><br><span class="line">    destDir 'your-distribution-directory'</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p app/ apkdist</span><br><span class="line">:app:apkdist</span><br><span class="line">hello, world!</span><br><span class="line">hello, wow!</span><br><span class="line">your-distribution-directory</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p app/ apkdist</span><br><span class="line">:app:apkdist</span><br><span class="line">hello, world!</span><br><span class="line">hello, wow!</span><br><span class="line">your-distribution-directory</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h1 id="独立项目插件">独立项目插件</h1>
 <p>代码写到现在，已经不适合再放在一个 build.gradle
 文件里面了，那也不是我们的目的。建立一个独立项目，把代码搬到对应的地方。</p>
@@ -277,7 +291,7 @@ src 源码文件夹。</p>
 <code>Java Library</code> module <code>“plugin”</code>。</p>
 <h2 id="修改-build.gradle-文件">修改 build.gradle 文件</h2>
 <p>添加 Groovy 插件和对应的两个依赖。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//removed java plugin </span><br><span class="line">apply plugin: 'groovy'</span><br><span class="line"></span><br><span class="line">dependencies {</span><br><span class="line">    compile gradleApi()//gradle sdk</span><br><span class="line">    compile localGroovy()//groovy sdk</span><br><span class="line">    compile fileTree(dir: 'libs', include: ['*.jar'])</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//removed java plugin </span><br><span class="line">apply plugin: 'groovy'</span><br><span class="line"></span><br><span class="line">dependencies {</span><br><span class="line">    compile gradleApi()//gradle sdk</span><br><span class="line">    compile localGroovy()//groovy sdk</span><br><span class="line">    compile fileTree(dir: 'libs', include: ['*.jar'])</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="修改项目文件夹">修改项目文件夹</h2>
 <p>src/main 项目文件下：</p>
 <ul>
@@ -286,7 +300,7 @@ src 源码文件夹。</p>
 <li>添加 resources 文件夹，存放用于标识 gradle 插件的 meta-data</li>
 </ul>
 <h2 id="建立对应文件">建立对应文件</h2>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── build.gradle</span><br><span class="line">├── libs</span><br><span class="line">├── plugin.iml</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── groovy</span><br><span class="line">        │   └── com</span><br><span class="line">        │       └── asgradle</span><br><span class="line">        │           └── plugin</span><br><span class="line">        │               ├── ApkDistExtension.groovy</span><br><span class="line">        │               └── ApkDistPlugin.groovy</span><br><span class="line">        └── resources</span><br><span class="line">            └── META-INF</span><br><span class="line">                └── gradle-plugins</span><br><span class="line">                    └── com.asgradle.apkdist.properties</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── build.gradle</span><br><span class="line">├── libs</span><br><span class="line">├── plugin.iml</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── groovy</span><br><span class="line">        │   └── com</span><br><span class="line">        │       └── asgradle</span><br><span class="line">        │           └── plugin</span><br><span class="line">        │               ├── ApkDistExtension.groovy</span><br><span class="line">        │               └── ApkDistPlugin.groovy</span><br><span class="line">        └── resources</span><br><span class="line">            └── META-INF</span><br><span class="line">                └── gradle-plugins</span><br><span class="line">                    └── com.asgradle.apkdist.properties</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>注意：</p>
 <ul>
 <li>groovy 文件夹中的类，一定要修改成 <code>.groovy</code> 后缀，IDE
@@ -298,51 +312,50 @@ src 源码文件夹。</p>
 文件</h2>
 <p>如果写过 Java 的同学会知道，这是一个 Java 的 properties 文件，是
 <code>key=value</code> 的格式。这个文件内容如下：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-class=com.asgradle.plugin.ApkDistPlugin</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation-class=com.asgradle.plugin.ApkDistPlugin</span><br></pre></td></tr></table></figure>
 <p>按其语义推断，是指定这个插件的入口类。</p>
 <ul>
 <li><p>英文敏感的同学可能会问了，为什么这个文件的承载文件夹是叫做
 <code>gradle-plugins</code>，使用复数？没错，这里可以指定多个 properties
-文件，定义多个插件，扩展性一流，可以参考 <a href="https://github.com/linkedin/gradle-plugins/tree/master/buildSrc/src/main/resources/META-INF/gradle-plugins" target="_blank" rel="noopener">linkedin</a>
+文件，定义多个插件，扩展性一流，可以参考 <a target="_blank" rel="noopener" href="https://github.com/linkedin/gradle-plugins/tree/master/buildSrc/src/main/resources/META-INF/gradle-plugins">linkedin</a>
 的插件的组织方式。</p></li>
 <li><p>使用这个插件的时候，将会是这样：</p>
-<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin:'com.asgradle.apkdist'</span><br></pre></td></tr></tbody></table></figure><p></p></li>
-</ul>
-<p>因此，<code>com.asgradle.apkdist</code>
+<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin:'com.asgradle.apkdist'</span><br></pre></td></tr></table></figure> 因此，<code>com.asgradle.apkdist</code>
 这个字符串在这里，又称为这个插件的
-id，不允许跟别的插件重复，取你拥有的域名的反向就不会错。</p>
+id，不允许跟别的插件重复，取你拥有的域名的反向就不会错。</p></li>
+</ul>
 <h2 id="将-plugin-module-传到本地-maven-仓库">将 plugin module 传到本地
 maven 仓库</h2>
-<p>参考上一篇：<a href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/" target="_blank" rel="noopener">拥抱
-Android Studio 之四：Maven 仓库使用与私有仓库搭建</a>，和对应的 <a href="https://github.com/kevinho/Embrace-Android-Studio-Demo/tree/master/S4-MavenDeploy" target="_blank" rel="noopener">demo
+<p>参考上一篇：<a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱
+Android Studio 之四：Maven 仓库使用与私有仓库搭建</a>，和对应的 <a target="_blank" rel="noopener" href="https://github.com/kevinho/Embrace-Android-Studio-Demo/tree/master/S4-MavenDeploy">demo
 项目</a>，将包传到本地仓库中进行测试。</p>
 <h3 id="添加-gradle.properties">添加 gradle.properties</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PROJ_NAME=gradleplugin</span><br><span class="line">PROJ_ARTIFACTID=gradleplugin</span><br><span class="line">PROJ_POM_NAME=Local Repository</span><br><span class="line"></span><br><span class="line">LOCAL_REPO_URL=file:///Users/changbinhe/Documents/Android/repo/</span><br><span class="line"></span><br><span class="line">PROJ_GROUP=com.as-gradle.demo</span><br><span class="line"></span><br><span class="line">PROJ_VERSION=1.0.0</span><br><span class="line">PROJ_VERSION_CODE=1</span><br><span class="line"></span><br><span class="line">PROJ_WEBSITEURL=http://kvh.io</span><br><span class="line">PROJ_ISSUETRACKERURL=https://github.com/kevinho/Embrace-Android-Studio-Demo/issues</span><br><span class="line">PROJ_VCSURL=https://github.com/kevinho/Embrace-Android-Studio-Demo.git</span><br><span class="line">PROJ_DESCRIPTION=demo apps for embracing android studio</span><br><span class="line"></span><br><span class="line">PROJ_LICENCE_NAME=The Apache Software License, Version 2.0</span><br><span class="line">PROJ_LICENCE_URL=http://www.apache.org/licenses/LICENSE-2.0.txt</span><br><span class="line">PROJ_LICENCE_DEST=repo</span><br><span class="line"></span><br><span class="line">DEVELOPER_ID=your-dev-id</span><br><span class="line">DEVELOPER_NAME=your-dev-name</span><br><span class="line">DEVELOPER_EMAIL=your-email@your-mailbox.com</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">PROJ_NAME=gradleplugin</span><br><span class="line">PROJ_ARTIFACTID=gradleplugin</span><br><span class="line">PROJ_POM_NAME=Local Repository</span><br><span class="line"></span><br><span class="line">LOCAL_REPO_URL=file:///Users/changbinhe/Documents/Android/repo/</span><br><span class="line"></span><br><span class="line">PROJ_GROUP=com.as-gradle.demo</span><br><span class="line"></span><br><span class="line">PROJ_VERSION=1.0.0</span><br><span class="line">PROJ_VERSION_CODE=1</span><br><span class="line"></span><br><span class="line">PROJ_WEBSITEURL=http://kvh.io</span><br><span class="line">PROJ_ISSUETRACKERURL=https://github.com/kevinho/Embrace-Android-Studio-Demo/issues</span><br><span class="line">PROJ_VCSURL=https://github.com/kevinho/Embrace-Android-Studio-Demo.git</span><br><span class="line">PROJ_DESCRIPTION=demo apps for embracing android studio</span><br><span class="line"></span><br><span class="line">PROJ_LICENCE_NAME=The Apache Software License, Version 2.0</span><br><span class="line">PROJ_LICENCE_URL=http://www.apache.org/licenses/LICENSE-2.0.txt</span><br><span class="line">PROJ_LICENCE_DEST=repo</span><br><span class="line"></span><br><span class="line">DEVELOPER_ID=your-dev-id</span><br><span class="line">DEVELOPER_NAME=your-dev-name</span><br><span class="line">DEVELOPER_EMAIL=your-email@your-mailbox.com</span><br></pre></td></tr></table></figure>
 <h3 id="在-build.gradle-添加上传功能">在 build.gradle 添加上传功能</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'maven'</span><br><span class="line"></span><br><span class="line">uploadArchives {</span><br><span class="line">    repositories.mavenDeployer {</span><br><span class="line">        repository(url: LOCAL_REPO_URL)</span><br><span class="line">        pom.groupId = PROJ_GROUP</span><br><span class="line">        pom.artifactId = PROJ_ARTIFACTID</span><br><span class="line">        pom.version = PROJ_VERSION</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'maven'</span><br><span class="line"></span><br><span class="line">uploadArchives {</span><br><span class="line">    repositories.mavenDeployer {</span><br><span class="line">        repository(url: LOCAL_REPO_URL)</span><br><span class="line">        pom.groupId = PROJ_GROUP</span><br><span class="line">        pom.artifactId = PROJ_ARTIFACTID</span><br><span class="line">        pom.version = PROJ_VERSION</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>上传可以通过运行：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p plugin/ clean build uploadArchives</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p plugin/ clean build uploadArchives</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="在-app-module-中使用插件">在 app module 中使用插件</h2>
 <h3 id="在项目的-buildscript-添加插件作为-classpath">在项目的
 buildscript 添加插件作为 classpath</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        maven{</span><br><span class="line">            url 'file:///Users/your-user-name/Documents/Android/repo/'</span><br><span class="line">        }</span><br><span class="line">        jcenter()</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:2.1.0-alpha3'        </span><br><span class="line">        classpath 'com.as-gradle.demo:gradleplugin:1.0.0'</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        maven{</span><br><span class="line">            url 'file:///Users/your-user-name/Documents/Android/repo/'</span><br><span class="line">        }</span><br><span class="line">        jcenter()</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:2.1.0-alpha3'        </span><br><span class="line">        classpath 'com.as-gradle.demo:gradleplugin:1.0.0'</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h3 id="在-app-module-中使用插件-1">在 app module 中使用插件：</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'com.asgradle.apkdist'</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: 'com.asgradle.apkdist'</span><br></pre></td></tr></table></figure>
 <p>命令行运行：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p app apkdist</span><br><span class="line">:app:apkdist</span><br><span class="line">hello, world!</span><br><span class="line">hello, wow!</span><br><span class="line">your-distribution-directory</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ./gradlew -p app apkdist</span><br><span class="line">:app:apkdist</span><br><span class="line">hello, world!</span><br><span class="line">hello, wow!</span><br><span class="line">your-distribution-directory</span><br></pre></td></tr></table></figure>
 <h3 id="可能会遇到问题">可能会遇到问题</h3>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error:(46, 0) Cause: com/asgradle/plugin/ApkDistPlugin : Unsupported major.minor version 52.0</span><br><span class="line"><a href="openFile:/Users/your-user-name/Documents/git/opensource/embrace-android-studio-demo/s5-GradlePlugin/app/build.gradle">Open File</a></span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Error:(46, 0) Cause: com/asgradle/plugin/ApkDistPlugin : Unsupported major.minor version 52.0</span><br><span class="line"><a href="openFile:/Users/your-user-name/Documents/git/opensource/embrace-android-studio-demo/s5-GradlePlugin/app/build.gradle">Open File</a></span><br></pre></td></tr></table></figure>
 <p>应该是本机的 JDK 版本是1.8，默认将 plugin module 的 groovy
 源码编译成了1.8版本的 class 文件，放在 Android 项目中，无法兼容。需要对
 plugin module 的 build.gradle 文件添加两个参数：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sourceCompatibility = 1.6</span><br><span class="line">targetCompatibility = 1.6</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sourceCompatibility = 1.6</span><br><span class="line">targetCompatibility = 1.6</span><br></pre></td></tr></table></figure>
 <h1 id="真正的实现插件需求">真正的实现插件需求</h1>
 <p>读者可能会观察到，到目前为止，插件只是跑通了流程，并没有实现本文提出的两个需求，</p>
 <p>那接下来就具体实现一下。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistPlugin implements Plugin<Project> {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) {</span><br><span class="line"></span><br><span class="line">        project.extensions.create('apkdistconf', ApkDistExtension);</span><br><span class="line"></span><br><span class="line">        project.afterEvaluate {</span><br><span class="line"></span><br><span class="line">			//只可以在 android application 或者 android lib 项目中使用</span><br><span class="line">            if (!project.android) {</span><br><span class="line">                throw new IllegalStateException('Must apply \'com.android.application\' or \'com.android.library\' first!')</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">			//配置不能为空</span><br><span class="line">            if (project.apkdistconf.nameMap == null || project.apkdistconf.destDir == null) {</span><br><span class="line">                project.logger.info('Apkdist conf should be set!')</span><br><span class="line">                return</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            Closure nameMap = project['apkdistconf'].nameMap</span><br><span class="line">            String destDir = project['apkdistconf'].destDir</span><br><span class="line"></span><br><span class="line">			//枚举每一个 build variant</span><br><span class="line">            project.android.applicationVariants.all { variant -></span><br><span class="line">                variant.outputs.each { output -></span><br><span class="line">                    File file = output.outputFile</span><br><span class="line">                    output.outputFile = new File(destDir, nameMap(file.getName()))</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class ApkDistPlugin implements Plugin<Project> {</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void apply(Project project) {</span><br><span class="line"></span><br><span class="line">        project.extensions.create('apkdistconf', ApkDistExtension);</span><br><span class="line"></span><br><span class="line">        project.afterEvaluate {</span><br><span class="line"></span><br><span class="line">			//只可以在 android application 或者 android lib 项目中使用</span><br><span class="line">            if (!project.android) {</span><br><span class="line">                throw new IllegalStateException('Must apply \'com.android.application\' or \'com.android.library\' first!')</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">			//配置不能为空</span><br><span class="line">            if (project.apkdistconf.nameMap == null || project.apkdistconf.destDir == null) {</span><br><span class="line">                project.logger.info('Apkdist conf should be set!')</span><br><span class="line">                return</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            Closure nameMap = project['apkdistconf'].nameMap</span><br><span class="line">            String destDir = project['apkdistconf'].destDir</span><br><span class="line"></span><br><span class="line">			//枚举每一个 build variant</span><br><span class="line">            project.android.applicationVariants.all { variant -></span><br><span class="line">                variant.outputs.each { output -></span><br><span class="line">                    File file = output.outputFile</span><br><span class="line">                    output.outputFile = new File(destDir, nameMap(file.getName()))</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>必须指出，本文插件实现的需求，其实可以直接在 app module 的
 build.gradle 中写脚本就可以实现。这里做成插件，只是为了做示范。</p>
-<p>上传到 bintray 的过程，就不再赘述了，可以参考<a href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/" target="_blank" rel="noopener">拥抱
+<p>上传到 bintray 的过程，就不再赘述了，可以参考<a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱
 Android Studio 之四：Maven 仓库使用与私有仓库搭建</a>。</p>
 <h1 id="后记">后记</h1>
 <p>至此，这系列开篇的时候挖下的坑，终于填完了。很多人借助这系列的讲解，真正理解了
@@ -377,25 +390,25 @@ Node.js，并实现了一些后端服务。这个语言的活力很强，一些�
 <p>因为业务所需，笔者所经历的系统，正在处于像面向服务的演化过程中，我们期望建立统一的通讯平台和规范，抽象系统的资源，拆分业务，容器化。这是一个很有趣的过程，也是对我们的挑战。笔者也希望有机会与读者分享。</p>
 <p>一不小心又挖下了好多明坑和无数暗坑，只是为了激励自己不断往前。在探索事物本质的旅途中，必然十分艰险，又十分有趣，沿途一定风光绚丽，让我们共勉。</p>
 <h1 id="参考文献">参考文献</h1>
-<p><a href="https://docs.gradle.org/current/userguide/custom_plugins.html" target="_blank" rel="noopener">官方文档</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/custom_plugins.html">官方文档</a></p>
 <h1 id="系列导读">系列导读</h1>
 <p>本文是笔者《拥抱 Android Studio》系列第四篇，其他篇请点击：</p>
-<p><a href="http://kvh.io/2015/12/01/embrace-android-studio-migration/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/01/embrace-android-studio-migration/">拥抱
 Android Studio 之一：从 ADT 到 Android Studio</a></p>
-<p><a href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">拥抱
 Android Studio 之二：Android Studio 与 Gradle 深入</a></p>
-<p><a href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/">拥抱
 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></p>
-<p><a href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱
 Android Studio 之四：Maven 公共仓库使用与私有仓库搭建</a></p>
-<p><a href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/" target="_blank" rel="noopener">拥抱
+<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/">拥抱
 Android Studio 之五：Gradle 插件使用与开发</a></p>
 <blockquote>
 <p>有问题？在文章下留言或者加 qq 群：453503476，希望能帮到你。
 想要及时收到最新博客文章，请关注：</p>
 </blockquote>
 <h1 id="番外">番外</h1>
-<p>笔者 <a href="http://kvh.io" target="_blank" rel="noopener">kvh</a> 在开发和运营 <a href="https://bugtags.com" target="_blank" rel="noopener">bugtags.com</a>，这是一款移动时代首选的 bug
+<p>笔者 <a target="_blank" rel="noopener" href="http://kvh.io">kvh</a> 在开发和运营 <a target="_blank" rel="noopener" href="https://bugtags.com">bugtags.com</a>，这是一款移动时代首选的 bug
 管理系统，能够极大的提升 app 开发者的测试效率，欢迎使用、转发推荐。</p>
 <p>笔者目前关注点在于移动 SDK 研发，后端服务设计和实现。</p>
 <p>我们团队长期求 PHP 后端研发，有兴趣请加下面公众号勾搭：</p>
@@ -403,7 +416,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
 <img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-29/87155741.jpg" alt="bugtags">
 <figcaption aria-hidden="true">bugtags</figcaption>
 </figure>
-</body></html>
+
 
             <div class="toc-title"> 相关文章推荐</div>
             <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-maven-deploy.html">拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-groovy-gradle.html">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-indepth.html">拥抱 Android Studio 之二：Android Studio 与 Gradle 深入</a></li></ul>
@@ -529,10 +542,10 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#需求"><span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原理简述"><span class="nav-text">原理简述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插件之于-gradle"><span class="nav-text">插件之于 Gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插件打包方式"><span class="nav-text">插件打包方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#build-script-插件"><span class="nav-text">Build script 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#接受外部参数"><span class="nav-text">接受外部参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#声明参数类"><span class="nav-text">声明参数类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接受参数"><span class="nav-text">接受参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取和使用参数"><span class="nav-text">获取和使用参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进化版本一参数"><span class="nav-text">进化版本一：参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#独立项目插件"><span class="nav-text">独立项目插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-build.gradle-文件"><span class="nav-text">修改 build.gradle 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改项目文件夹"><span class="nav-text">修改项目文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立对应文件"><span class="nav-text">建立对应文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com.asgradle.apkdist.properties-文件"><span class="nav-text">com.asgradle.apkdist.properties
-文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#将-plugin-module-传到本地-maven-仓库"><span class="nav-text">将 plugin module 传到本地
-maven 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-gradle.properties"><span class="nav-text">添加 gradle.properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-build.gradle-添加上传功能"><span class="nav-text">在 build.gradle 添加上传功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在-app-module-中使用插件"><span class="nav-text">在 app module 中使用插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在项目的-buildscript-添加插件作为-classpath"><span class="nav-text">在项目的
-buildscript 添加插件作为 classpath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-app-module-中使用插件-1"><span class="nav-text">在 app module 中使用插件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可能会遇到问题"><span class="nav-text">可能会遇到问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#真正的实现插件需求"><span class="nav-text">真正的实现插件需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-text">后记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系列导读"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#番外"><span class="nav-text">番外</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0"><span class="nav-text">原理简述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E4%B9%8B%E4%BA%8E-gradle"><span class="nav-text">插件之于 Gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F"><span class="nav-text">插件打包方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#build-script-%E6%8F%92%E4%BB%B6"><span class="nav-text">Build script 插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%97%E5%A4%96%E9%83%A8%E5%8F%82%E6%95%B0"><span class="nav-text">接受外部参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%82%E6%95%B0%E7%B1%BB"><span class="nav-text">声明参数类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%97%E5%8F%82%E6%95%B0"><span class="nav-text">接受参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%92%8C%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0"><span class="nav-text">获取和使用参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E5%8C%96%E7%89%88%E6%9C%AC%E4%B8%80%E5%8F%82%E6%95%B0"><span class="nav-text">进化版本一：参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8B%AC%E7%AB%8B%E9%A1%B9%E7%9B%AE%E6%8F%92%E4%BB%B6"><span class="nav-text">独立项目插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-build.gradle-%E6%96%87%E4%BB%B6"><span class="nav-text">修改 build.gradle 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="nav-text">修改项目文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E5%AF%B9%E5%BA%94%E6%96%87%E4%BB%B6"><span class="nav-text">建立对应文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#com.asgradle.apkdist.properties-%E6%96%87%E4%BB%B6"><span class="nav-text">com.asgradle.apkdist.properties
+文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86-plugin-module-%E4%BC%A0%E5%88%B0%E6%9C%AC%E5%9C%B0-maven-%E4%BB%93%E5%BA%93"><span class="nav-text">将 plugin module 传到本地
+maven 仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-gradle.properties"><span class="nav-text">添加 gradle.properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-build.gradle-%E6%B7%BB%E5%8A%A0%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD"><span class="nav-text">在 build.gradle 添加上传功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-app-module-%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-text">在 app module 中使用插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E7%9A%84-buildscript-%E6%B7%BB%E5%8A%A0%E6%8F%92%E4%BB%B6%E4%BD%9C%E4%B8%BA-classpath"><span class="nav-text">在项目的
+buildscript 添加插件作为 classpath</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8-app-module-%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6-1"><span class="nav-text">在 app module 中使用插件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98"><span class="nav-text">可能会遇到问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%8F%92%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="nav-text">真正的实现插件需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%AA%E5%A4%96"><span class="nav-text">番外</span></a></li></ol>
                         
 
                         
@@ -552,10 +565,10 @@ buildscript 添加插件作为 classpath</span></a></li><li class="nav-item nav-
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#需求"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原理简述"><span class="toc-number">2.</span> <span class="toc-text">原理简述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#插件之于-gradle"><span class="toc-number">2.1.</span> <span class="toc-text">插件之于 Gradle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插件打包方式"><span class="toc-number">2.2.</span> <span class="toc-text">插件打包方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#build-script-插件"><span class="toc-number">3.</span> <span class="toc-text">Build script 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#接受外部参数"><span class="toc-number">3.1.</span> <span class="toc-text">接受外部参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#声明参数类"><span class="toc-number">3.1.1.</span> <span class="toc-text">声明参数类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#接受参数"><span class="toc-number">3.1.2.</span> <span class="toc-text">接受参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#获取和使用参数"><span class="toc-number">3.1.3.</span> <span class="toc-text">获取和使用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进化版本一参数"><span class="toc-number">3.1.4.</span> <span class="toc-text">进化版本一：参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#独立项目插件"><span class="toc-number">4.</span> <span class="toc-text">独立项目插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改-build.gradle-文件"><span class="toc-number">4.1.</span> <span class="toc-text">修改 build.gradle 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改项目文件夹"><span class="toc-number">4.2.</span> <span class="toc-text">修改项目文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立对应文件"><span class="toc-number">4.3.</span> <span class="toc-text">建立对应文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#com.asgradle.apkdist.properties-文件"><span class="toc-number">4.4.</span> <span class="toc-text">com.asgradle.apkdist.properties
-文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将-plugin-module-传到本地-maven-仓库"><span class="toc-number">4.5.</span> <span class="toc-text">将 plugin module 传到本地
-maven 仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加-gradle.properties"><span class="toc-number">4.5.1.</span> <span class="toc-text">添加 gradle.properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-build.gradle-添加上传功能"><span class="toc-number">4.5.2.</span> <span class="toc-text">在 build.gradle 添加上传功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在-app-module-中使用插件"><span class="toc-number">4.6.</span> <span class="toc-text">在 app module 中使用插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在项目的-buildscript-添加插件作为-classpath"><span class="toc-number">4.6.1.</span> <span class="toc-text">在项目的
-buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在-app-module-中使用插件-1"><span class="toc-number">4.6.2.</span> <span class="toc-text">在 app module 中使用插件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可能会遇到问题"><span class="toc-number">4.6.3.</span> <span class="toc-text">可能会遇到问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#真正的实现插件需求"><span class="toc-number">5.</span> <span class="toc-text">真正的实现插件需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-number">6.</span> <span class="toc-text">后记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系列导读"><span class="toc-number">8.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#番外"><span class="toc-number">9.</span> <span class="toc-text">番外</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9C%80%E6%B1%82"><span class="toc-number">1.</span> <span class="toc-text">需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E7%AE%80%E8%BF%B0"><span class="toc-number">2.</span> <span class="toc-text">原理简述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%B9%8B%E4%BA%8E-gradle"><span class="toc-number">2.1.</span> <span class="toc-text">插件之于 Gradle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E6%89%93%E5%8C%85%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">插件打包方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#build-script-%E6%8F%92%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">Build script 插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97%E5%A4%96%E9%83%A8%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.</span> <span class="toc-text">接受外部参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%8F%82%E6%95%B0%E7%B1%BB"><span class="toc-number">3.1.1.</span> <span class="toc-text">声明参数类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%97%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.2.</span> <span class="toc-text">接受参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%92%8C%E4%BD%BF%E7%94%A8%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.3.</span> <span class="toc-text">获取和使用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%8C%96%E7%89%88%E6%9C%AC%E4%B8%80%E5%8F%82%E6%95%B0"><span class="toc-number">3.1.4.</span> <span class="toc-text">进化版本一：参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8B%AC%E7%AB%8B%E9%A1%B9%E7%9B%AE%E6%8F%92%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">独立项目插件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-build.gradle-%E6%96%87%E4%BB%B6"><span class="toc-number">4.1.</span> <span class="toc-text">修改 build.gradle 文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">4.2.</span> <span class="toc-text">修改项目文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E5%AF%B9%E5%BA%94%E6%96%87%E4%BB%B6"><span class="toc-number">4.3.</span> <span class="toc-text">建立对应文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#com.asgradle.apkdist.properties-%E6%96%87%E4%BB%B6"><span class="toc-number">4.4.</span> <span class="toc-text">com.asgradle.apkdist.properties
+文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86-plugin-module-%E4%BC%A0%E5%88%B0%E6%9C%AC%E5%9C%B0-maven-%E4%BB%93%E5%BA%93"><span class="toc-number">4.5.</span> <span class="toc-text">将 plugin module 传到本地
+maven 仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0-gradle.properties"><span class="toc-number">4.5.1.</span> <span class="toc-text">添加 gradle.properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-build.gradle-%E6%B7%BB%E5%8A%A0%E4%B8%8A%E4%BC%A0%E5%8A%9F%E8%83%BD"><span class="toc-number">4.5.2.</span> <span class="toc-text">在 build.gradle 添加上传功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-app-module-%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="toc-number">4.6.</span> <span class="toc-text">在 app module 中使用插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E7%9A%84-buildscript-%E6%B7%BB%E5%8A%A0%E6%8F%92%E4%BB%B6%E4%BD%9C%E4%B8%BA-classpath"><span class="toc-number">4.6.1.</span> <span class="toc-text">在项目的
+buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-app-module-%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6-1"><span class="toc-number">4.6.2.</span> <span class="toc-text">在 app module 中使用插件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%83%BD%E4%BC%9A%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98"><span class="toc-number">4.6.3.</span> <span class="toc-text">可能会遇到问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%9F%E6%AD%A3%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%8F%92%E4%BB%B6%E9%9C%80%E6%B1%82"><span class="toc-number">5.</span> <span class="toc-text">真正的实现插件需求</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">6.</span> <span class="toc-text">后记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="toc-number">8.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%95%AA%E5%A4%96"><span class="toc-number">9.</span> <span class="toc-text">番外</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -571,90 +584,10 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/en-your-next-coworker-isnt-human.html" class="thumbnail">
+                            <a href="/monad-megaeth.html" class="thumbnail">
     
     
-        <span style="background-image:url(/en-your-next-coworker-isnt-human/cover.png)" alt="Your Next Coworker Isn&#39;t Human" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/en-your-next-coworker-isnt-human.html" class="title">Your Next Coworker Isn&#39;t Human</a></p>
-                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/your-next-coworker-isnt-human.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/your-next-coworker-isnt-human/cover.png)" alt="你的下一个同事不是人" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/your-next-coworker-isnt-human.html" class="title">你的下一个同事不是人</a></p>
-                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/web3-nft-overviews.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
-                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/sparse-merkle-tree.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
-                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
-                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/smart-wallet.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
+        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png)" alt="Monad VS MegaETH-Bankless Episode and Debate" class="thumbnail-image"></span>
     
     
 </a>
@@ -663,8 +596,88 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
-                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
+                            <p class="item-title"><a href="/monad-megaeth.html" class="title">Monad VS MegaETH-Bankless Episode and Debate</a></p>
+                            <p class="item-date"><time datetime="2024-08-24T16:45:55.000Z" itemprop="datePublished">2024-08-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/wbtc.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="WBTC, It’s Time to Upgrade Your Technical Solutions!" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/wbtc.html" class="title">WBTC, It’s Time to Upgrade Your Technical Solutions!</a></p>
+                            <p class="item-date"><time datetime="2024-08-13T01:58:57.000Z" itemprop="datePublished">2024-08-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/action-and-blink.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/82350295.jpg)" alt="Action And Blink" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/action-and-blink.html" class="title">Action And Blink</a></p>
+                            <p class="item-date"><time datetime="2024-07-04T06:58:57.000Z" itemprop="datePublished">2024-07-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/sigweb3-training-primer.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="sigweb3-training" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/sigweb3-training-primer.html" class="title">sigweb3-training</a></p>
+                            <p class="item-date"><time datetime="2024-02-14T15:20:59.000Z" itemprop="datePublished">2024-02-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/en-sigweb3-btc-exp-programme.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/sigweb3-btc-exp-programme/sigweb3-btc-exp-programme-title.png)" alt="SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/en-sigweb3-btc-exp-programme.html" class="title">SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP</a></p>
+                            <p class="item-date"><time datetime="2023-12-15T06:58:57.000Z" itemprop="datePublished">2023-12-15</time></p>
                         </div>
                     </li>
                 
@@ -677,7 +690,7 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -687,7 +700,7 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -697,7 +710,7 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/">Agent</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COCO/">COCO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Teamwork/">Teamwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/团队协作/">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -707,7 +720,7 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/AI/" style="font-size: 12.5px;">AI</a> <a href="/tags/Agent/" style="font-size: 12.5px;">Agent</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/COCO/" style="font-size: 12.5px;">COCO</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Teamwork/" style="font-size: 10px;">Teamwork</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/团队协作/" style="font-size: 10px;">团队协作</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -753,7 +766,7 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2026 Kevin He</p>
+                <p>&copy; 2024 0xkevinhe</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -789,7 +802,9 @@ buildscript 添加插件作为 classpath</span></a></li><li class="toc-item toc-
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
+<head>
+    <meta charset="utf-8" />
 
     
 
     
-    <title>Spring Cloud 配置中心 | Kevin He&#39;s Website</title>
+    <title>Spring Cloud 配置中心 | Kevin He&#39;s Website | e/acc</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Spring">
+        <meta name="keywords" content="Spring" />
     
     <meta name="description" content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境">
-<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud 配置中心">
 <meta property="og:url" content="https://0xkevinhe.xyz/spring-cloud-config.html">
-<meta property="og:site_name" content="Kevin He&#39;s Website">
+<meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
 <meta property="og:description" content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg">
-<meta property="og:updated_time" content="2026-02-20T01:50:55.112Z">
+<meta property="article:published_time" content="2017-10-13T15:18:16.000Z">
+<meta property="article:modified_time" content="2023-09-27T07:01:22.197Z">
+<meta property="article:author" content="0xkevinhe">
+<meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Cloud 配置中心">
-<meta name="twitter:description" content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。  配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。  简单来讲，配置可以分成两类：  系统配置：包括线程池大小、数据库连接等，变化频率较低 业务配置：功能开关，功能参数等，变化较为频繁  程序的配置一般而言，分为几个环境">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml">
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website | e/acc" type="application/atom+xml" />
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
     
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    <link rel="stylesheet" href="/css/style.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+
     
     
     
@@ -63,8 +73,8 @@ var _hmt = _hmt || [];
     
 
 
-</head>
-</html>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -86,7 +96,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -124,7 +134,9 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
+
 <script src="/js/insight.js"></script>
+
 
 </div>
                         </nav>
@@ -174,14 +186,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Spring/">Spring</a>
+        <a class="tag-link-link" href="/tags/Spring/" rel="tag">Spring</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2026-02-20T01:50:55.112Z" itemprop="dateModified">2026-02-20</time>
+                    <time datetime="2023-09-27T07:01:22.197Z" itemprop="dateModified">2023-09-27</time>
                 </span>
             
             </div>
@@ -189,7 +201,7 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <html><head></head><body><h1 id="闲话配置">闲话配置</h1>
+            <h1 id="闲话配置">闲话配置</h1>
 <p>老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。</p>
 <blockquote>
 <p>配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。</p>
@@ -212,19 +224,19 @@ var _hmt = _hmt || [];
 <p>Spring 实现了非常友好的配置读取方式，</p>
 <p>Spring Boot 程序默认使用 application.properties 进行配置。</p>
 <p>例如一个参数：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=0</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=0</span><br></pre></td></tr></table></figure>
 <p>在程序中可以通过：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Value("${flag})</span><br><span class="line">int flag;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Value("${flag})</span><br><span class="line">int flag;</span><br></pre></td></tr></table></figure>
 <p>来读取。</p>
 <p>也可以通过设置多个配置文件：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">application.properties</span><br><span class="line">application-dev.properties</span><br><span class="line">application-test.properties</span><br><span class="line">application-prod.properties</span><br></pre></td></tr></tbody></table></figure>
-<p>application-dev.properties </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=1</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>application-test.properties </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=2</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>application-prod.properties </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=3</span><br></pre></td></tr></tbody></table></figure><p></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">application.properties</span><br><span class="line">application-dev.properties</span><br><span class="line">application-test.properties</span><br><span class="line">application-prod.properties</span><br></pre></td></tr></table></figure>
+<p>application-dev.properties <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=1</span><br></pre></td></tr></table></figure> application-test.properties
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=2</span><br></pre></td></tr></table></figure></p>
+<p>application-prod.properties <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag=3</span><br></pre></td></tr></table></figure></p>
 <p>和在 application.properties 中声明当前的活跃的 profile：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active=dev</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.profiles.active=dev</span><br></pre></td></tr></table></figure>
 <p>来实现根据运行环境切换配置信息。</p>
-<p>以上只是 Spring 强大的配置能力的冰山一角，有兴趣可以参考<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html" target="_blank" rel="noopener">外部配置文档</a>。</p>
+<p>以上只是 Spring 强大的配置能力的冰山一角，有兴趣可以参考<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">外部配置文档</a>。</p>
 <h2 id="这还不够">这还不够</h2>
 <p>其实以上描述的 Spring Boot
 的配置能力已经很强了，但是有个很致命的问题——无法热更新。</p>
@@ -232,7 +244,7 @@ var _hmt = _hmt || [];
 endpoint，重新读取一次配置。</p>
 <p>假设有一千个实例呢？</p>
 <h1 id="spring-cloud-config">Spring Cloud Config</h1>
-<p>项目 github：<a href="https://github.com/spring-cloud/spring-cloud-config" target="_blank" rel="noopener">https://github.com/spring-cloud/spring-cloud-config</a></p>
+<p>项目 github：<a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config">https://github.com/spring-cloud/spring-cloud-config</a></p>
 <p>简介：External configuration (server and client) for Spring Cloud</p>
 <p>这个项目包含两部分：</p>
 <ul>
@@ -247,21 +259,21 @@ var _hmt = _hmt || [];
 PropertyResource 和 Environment
 无缝结合。同时，提供了统一的方式进行配置热更新。</p>
 <p>对于这个系统的基础配置和运行，可以参阅下面两个 url：</p>
-<p><a href="https://spring.io/guides/gs/centralized-configuration/" target="_blank" rel="noopener">https://spring.io/guides/gs/centralized-configuration/</a></p>
-<p><a href="http://blog.didispace.com/spring-cloud-starter-dalston-3/" target="_blank" rel="noopener">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
+<p><a target="_blank" rel="noopener" href="https://spring.io/guides/gs/centralized-configuration/">https://spring.io/guides/gs/centralized-configuration/</a></p>
+<p><a target="_blank" rel="noopener" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
 <h2 id="实操进阶">实操进阶</h2>
 <h3 id="热更新">热更新</h3>
 <p>Spring Cloud Config 实现了非常优雅的热更新。</p>
 <ul>
 <li>客户端的配置 Bean 添加 <span class="citation" data-cites="RefreshScope">@RefreshScope</span></li>
 </ul>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@RefreshScope</span><br><span class="line">public class ConsumeConfig {</span><br><span class="line"></span><br><span class="line">    @Value("${consume.desc}")</span><br><span class="line">    private String consumeDesc;</span><br><span class="line">    </span><br><span class="line">    @Value("#{'${api.server.round.card}'.split(',')}")</span><br><span class="line">    private List<String> cardList;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@RefreshScope</span><br><span class="line">public class ConsumeConfig {</span><br><span class="line"></span><br><span class="line">    @Value("${consume.desc}")</span><br><span class="line">    private String consumeDesc;</span><br><span class="line">    </span><br><span class="line">    @Value("#{'${api.server.round.card}'.split(',')}")</span><br><span class="line">    private List<String> cardList;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>在配置这个注解之后，调用客户端的 /refresh endpoint，这个 Bean
 就会刷新，同时个 Bean 的依赖方下次方法调用时也会更新 Bean 引用。</p>
 <p>有些时候，你需要监听这个更新事件，把拿到的最新配置，重新初始化一些部件。那你可以添加：
 <code>@EventListener(EnvironmentChangeEvent.class)</code> 这个
 annotation。</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class ConsumeService {</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    ConsumeConfig consumeConfig;</span><br><span class="line"></span><br><span class="line">    @EventListener(EnvironmentChangeEvent.class)</span><br><span class="line">    void onEnvChange() {</span><br><span class="line">        //do re-init stuff</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class ConsumeService {</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    ConsumeConfig consumeConfig;</span><br><span class="line"></span><br><span class="line">    @EventListener(EnvironmentChangeEvent.class)</span><br><span class="line">    void onEnvChange() {</span><br><span class="line">        //do re-init stuff</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h3 id="添加权限">添加权限</h3>
 <p>Config Server 任何人都可以通过 http
 访问配置，这个不大好，建议加上认证，最简单是使用 Spring-Security
@@ -269,31 +281,32 @@ annotation。</p>
 <ul>
 <li>服务器端配置</li>
 </ul>
-<p>build.gradle 添加依赖： </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile('org.springframework.boot:spring-boot-starter-security')</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p>
-<p>application.properties 添加密码（用户名默认是 user）： </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">security.user.password=xxx</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>build.gradle 添加依赖： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    compile('org.springframework.boot:spring-boot-starter-security')</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p>
+<p>application.properties 添加密码（用户名默认是 user）：
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">security.user.password=xxx</span><br></pre></td></tr></table></figure></p>
 <p>重启服务器，再次通过 http 访问配置的时候需要验证。</p>
 <ul>
 <li>客户端配置</li>
 </ul>
 <p>服务器端做了验证，那客户端也需要添加相应的配置：</p>
-<p>bootstrap.yml </p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application</span><br><span class="line"> cloud:</span><br><span class="line">  config:</span><br><span class="line">   uri: http://yourhost.com</span><br><span class="line">   profile: dev</span><br><span class="line">   username: user</span><br><span class="line">   password: xxx</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>bootstrap.yml <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application</span><br><span class="line"> cloud:</span><br><span class="line">  config:</span><br><span class="line">   uri: http://yourhost.com</span><br><span class="line">   profile: dev</span><br><span class="line">   username: user</span><br><span class="line">   password: xxx</span><br></pre></td></tr></table></figure></p>
 <h3 id="加载多组配置文件">加载多组配置文件</h3>
 <p>很多时候，为了避免 application.properties
 过于臃肿，你可能需要把一些配置文件拆出来，例如专门负责邀请奖励的配置：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">invite.properties</span><br><span class="line">invite-dev.properties</span><br><span class="line">invite-test.properties</span><br><span class="line">invite-prod.properties</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">invite.properties</span><br><span class="line">invite-dev.properties</span><br><span class="line">invite-test.properties</span><br><span class="line">invite-prod.properties</span><br></pre></td></tr></table></figure>
 <p>同样，也区分了多个环境。</p>
 <p>那在使用 Spring Cloud 的时候如何读取这个文件呢？</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application,invite</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line"> application:</span><br><span class="line">  name: application,invite</span><br></pre></td></tr></table></figure>
 <p>注意上面的 application.name 是以逗号分隔的两组配置名称。</p>
 <h1 id="一些问题">一些问题</h1>
 <h2 id="eventlistener-与-spel"><span class="citation" data-cites="EventListener">@EventListener</span> 与 SpEL</h2>
 <p>我在实际使用中发现，在事件监听函数中，使用更新后的配置的时候：</p>
-<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Value("${consume.desc}")</span><br><span class="line">private String consumeDesc;</span><br><span class="line"></span><br><span class="line">@Value("#{'${api.server.round.card}'.split(',')}")</span><br><span class="line">private List<String> cardList;</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Value("${consume.desc}")</span><br><span class="line">private String consumeDesc;</span><br><span class="line"></span><br><span class="line">@Value("#{'${api.server.round.card}'.split(',')}")</span><br><span class="line">private List<String> cardList;</span><br></pre></td></tr></table></figure>
 <p>第一个配置是使用 <span class="citation" data-cites="Value">@Value</span> 绑定一个字符串类型，第二个配置是使用
 <span class="citation" data-cites="Value">@Value</span> 中的 SpEL
 去将配置中的字符串，切割成 List。</p>
 <p>我发现第二个，无法切割成功。试验了多次，还没有找到答案。我已经在
-Spring Cloud Config 的 github 上提交了 <a href="https://github.com/spring-cloud/spring-cloud-config/issues/821" target="_blank" rel="noopener">issue</a>。</p>
+Spring Cloud Config 的 github 上提交了 <a target="_blank" rel="noopener" href="https://github.com/spring-cloud/spring-cloud-config/issues/821">issue</a>。</p>
 <p>如果有了解这个的，请不吝赐教。</p>
 <blockquote>
 <p>update 2017-10-26 * 我在 github 上提交了 issue：
@@ -329,11 +342,11 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
 </ul>
 <p>来自阿里的开源，有些日子了</p>
 <h1 id="参考文献">参考文献</h1>
-<p><a href="http://blog.didispace.com/spring-cloud-starter-dalston-3/" target="_blank" rel="noopener">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
-<p><a href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html" target="_blank" rel="noopener">http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html</a></p>
-<p><a href="http://jm.taobao.org/2016/09/28/an-article-about-config-center/" target="_blank" rel="noopener">http://jm.taobao.org/2016/09/28/an-article-about-config-center/</a></p>
-<p><a href="https://blog.coding.net/blog/spring-cloud-config" target="_blank" rel="noopener">https://blog.coding.net/blog/spring-cloud-config</a></p>
-</body></html>
+<p><a target="_blank" rel="noopener" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/">http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
+<p><a target="_blank" rel="noopener" href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html">http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://jm.taobao.org/2016/09/28/an-article-about-config-center/">http://jm.taobao.org/2016/09/28/an-article-about-config-center/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.coding.net/blog/spring-cloud-config">https://blog.coding.net/blog/spring-cloud-config</a></p>
+
 
             <div class="toc-title"> 相关文章推荐</div>
             <p class="related-posts-none">No related post.</p>
@@ -416,20 +429,20 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
         
 <nav id="article-nav">
     
-        <a href="/osx-as-server.html" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/open-source-license.html" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">下一篇</strong>
         <p class="article-nav-title">
         
-            macOS 作为服务器
+            开源许可证介绍与项目实战
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/utility-sips.html" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/play-alexa-1.html" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">小工具-sips-图片批量转大小</p>
+        <p class="article-nav-title">亚马逊 Alexa Echo Dot——入门</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -459,7 +472,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#闲话配置"><span class="nav-text">闲话配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-boot-的配置管理"><span class="nav-text">Spring Boot 的配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#这还不够"><span class="nav-text">这还不够</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-cloud-config"><span class="nav-text">Spring Cloud Config</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实操进阶"><span class="nav-text">实操进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#热更新"><span class="nav-text">热更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加权限"><span class="nav-text">添加权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载多组配置文件"><span class="nav-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些问题"><span class="nav-text">一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#eventlistener-与-spel"><span class="nav-text">@EventListener 与 SpEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限管理"><span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json-文件的读取和解析"><span class="nav-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关选择"><span class="nav-text">相关选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%B2%E8%AF%9D%E9%85%8D%E7%BD%AE"><span class="nav-text">闲话配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-boot-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="nav-text">Spring Boot 的配置管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%99%E8%BF%98%E4%B8%8D%E5%A4%9F"><span class="nav-text">这还不够</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-cloud-config"><span class="nav-text">Spring Cloud Config</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E6%93%8D%E8%BF%9B%E9%98%B6"><span class="nav-text">实操进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="nav-text">热更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="nav-text">添加权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%9A%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="nav-text">一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#eventlistener-%E4%B8%8E-spel"><span class="nav-text">@EventListener 与 SpEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#json-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E8%A7%A3%E6%9E%90"><span class="nav-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E9%80%89%E6%8B%A9"><span class="nav-text">相关选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol>
                         
 
                         
@@ -479,7 +492,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#闲话配置"><span class="toc-number">1.</span> <span class="toc-text">闲话配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-的配置管理"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot 的配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#这还不够"><span class="toc-number">2.1.</span> <span class="toc-text">这还不够</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-cloud-config"><span class="toc-number">3.</span> <span class="toc-text">Spring Cloud Config</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实操进阶"><span class="toc-number">3.1.</span> <span class="toc-text">实操进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#热更新"><span class="toc-number">3.1.1.</span> <span class="toc-text">热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加权限"><span class="toc-number">3.1.2.</span> <span class="toc-text">添加权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#加载多组配置文件"><span class="toc-number">3.1.3.</span> <span class="toc-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一些问题"><span class="toc-number">4.</span> <span class="toc-text">一些问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#eventlistener-与-spel"><span class="toc-number">4.1.</span> <span class="toc-text">@EventListener 与 SpEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#权限管理"><span class="toc-number">4.2.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json-文件的读取和解析"><span class="toc-number">4.3.</span> <span class="toc-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#相关选择"><span class="toc-number">5.</span> <span class="toc-text">相关选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%B2%E8%AF%9D%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">闲话配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-boot-%E7%9A%84%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot 的配置管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E8%BF%98%E4%B8%8D%E5%A4%9F"><span class="toc-number">2.1.</span> <span class="toc-text">这还不够</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#spring-cloud-config"><span class="toc-number">3.</span> <span class="toc-text">Spring Cloud Config</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%93%8D%E8%BF%9B%E9%98%B6"><span class="toc-number">3.1.</span> <span class="toc-text">实操进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">热更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%9D%83%E9%99%90"><span class="toc-number">3.1.2.</span> <span class="toc-text">添加权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%A4%9A%E7%BB%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.3.</span> <span class="toc-text">加载多组配置文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">一些问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#eventlistener-%E4%B8%8E-spel"><span class="toc-number">4.1.</span> <span class="toc-text">@EventListener 与 SpEL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">权限管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json-%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E5%92%8C%E8%A7%A3%E6%9E%90"><span class="toc-number">4.3.</span> <span class="toc-text">JSON 文件的读取和解析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%80%89%E6%8B%A9"><span class="toc-number">5.</span> <span class="toc-text">相关选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -495,30 +508,10 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/en-your-next-coworker-isnt-human.html" class="thumbnail">
+                            <a href="/coco-from-ai-recruiting-to-ai-cofounder.html" class="thumbnail">
     
     
-        <span style="background-image:url(/en-your-next-coworker-isnt-human/cover.png)" alt="Your Next Coworker Isn&#39;t Human" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/en-your-next-coworker-isnt-human.html" class="title">Your Next Coworker Isn&#39;t Human</a></p>
-                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/your-next-coworker-isnt-human.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/your-next-coworker-isnt-human/cover.png)" alt="你的下一个同事不是人" class="thumbnail-image"></span>
+        <span style="background-image:url(/coco-from-ai-recruiting-to-ai-cofounder/article-banner.png)" alt="15 年帮 600 人找工作后，我决定不再做招聘了" class="thumbnail-image"></span>
     
     
 </a>
@@ -527,18 +520,18 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/your-next-coworker-isnt-human.html" class="title">你的下一个同事不是人</a></p>
-                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
+                            <p class="item-title"><a href="/coco-from-ai-recruiting-to-ai-cofounder.html" class="title">15 年帮 600 人找工作后，我决定不再做招聘了</a></p>
+                            <p class="item-date"><time datetime="2026-01-27T10:00:00.000Z" itemprop="datePublished">2026-01-27</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/web3-nft-overviews.html" class="thumbnail">
+                            <a href="/en-coco-from-ai-recruiting-to-ai-cofounder.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
+        <span style="background-image:url(/en-coco-from-ai-recruiting-to-ai-cofounder/article-banner.png)" alt="After 15 Years Helping 600 People Find Jobs, I Decided to Stop Doing Recruiting" class="thumbnail-image"></span>
     
     
 </a>
@@ -546,39 +539,19 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
-                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
+                            <p class="item-title"><a href="/en-coco-from-ai-recruiting-to-ai-cofounder.html" class="title">After 15 Years Helping 600 People Find Jobs, I Decided to Stop Doing Recruiting</a></p>
+                            <p class="item-date"><time datetime="2026-01-27T10:00:00.000Z" itemprop="datePublished">2026-01-27</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/sparse-merkle-tree.html" class="thumbnail">
+                            <a href="/bitcoin-next-upgrade-cn.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
-                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
-                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/smart-wallet.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
+        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="共识之迷：一文读懂比特币升级社区进展" class="thumbnail-image"></span>
     
     
 </a>
@@ -587,8 +560,48 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
-                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
+                            <p class="item-title"><a href="/bitcoin-next-upgrade-cn.html" class="title">共识之迷：一文读懂比特币升级社区进展</a></p>
+                            <p class="item-date"><time datetime="2024-11-30T16:45:55.000Z" itemprop="datePublished">2024-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/bitcoin-next-upgrade.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report on Bitcoin&#39;s Next Upgrade for All" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/bitcoin-next-upgrade.html" class="title">A Brief Report on Bitcoin&#39;s Next Upgrade for All</a></p>
+                            <p class="item-date"><time datetime="2024-11-30T16:45:55.000Z" itemprop="datePublished">2024-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/monad-megaeth.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png)" alt="Monad VS MegaETH-Bankless Episode and Debate" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
+                            <p class="item-title"><a href="/monad-megaeth.html" class="title">Monad VS MegaETH-Bankless Episode and Debate</a></p>
+                            <p class="item-date"><time datetime="2024-08-24T16:45:55.000Z" itemprop="datePublished">2024-08-25</time></p>
                         </div>
                     </li>
                 
@@ -601,7 +614,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -611,7 +624,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -621,7 +634,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/">Agent</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COCO/">COCO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Teamwork/">Teamwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/团队协作/">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ai/" rel="tag">ai</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pivot/" rel="tag">pivot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startup/" rel="tag">startup</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -631,7 +644,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/AI/" style="font-size: 12.5px;">AI</a> <a href="/tags/Agent/" style="font-size: 12.5px;">Agent</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/COCO/" style="font-size: 12.5px;">COCO</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Teamwork/" style="font-size: 10px;">Teamwork</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/团队协作/" style="font-size: 10px;">团队协作</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/ai/" style="font-size: 13.33px;">ai</a> <a href="/tags/bitcoin/" style="font-size: 16.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 20px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/pivot/" style="font-size: 13.33px;">pivot</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/startup/" style="font-size: 13.33px;">startup</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 13.33px;">产品</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 13.33px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -677,7 +690,7 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2026 Kevin He</p>
+                <p>&copy; 2026 0xkevinhe</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -713,7 +726,9 @@ https://github.com/spring-cloud/spring-cloud-config/issues/821
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
+
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
