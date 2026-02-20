@@ -1,60 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
 
     
 
     
-    <title>0x协议-介绍 | Kevin He&#39;s Website | e/acc</title>
+    <title>0x协议-介绍 | Kevin He&#39;s Website</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="defi" />
+        <meta name="keywords" content="defi">
     
     <meta name="description" content="核心 链下撮合（订单簿在链下）、链上结算（资金划转） 角色 maker 挂单者 taker 吃单者 实现  maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希">
+<meta name="keywords" content="defi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="0x协议-介绍">
 <meta property="og:url" content="https://0xkevinhe.xyz/0x-intro.html">
-<meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
+<meta property="og:site_name" content="Kevin He&#39;s Website">
 <meta property="og:description" content="核心 链下撮合（订单簿在链下）、链上结算（资金划转） 角色 maker 挂单者 taker 吃单者 实现  maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg">
-<meta property="article:published_time" content="2021-01-01T02:49:05.000Z">
-<meta property="article:modified_time" content="2023-09-27T07:01:22.142Z">
-<meta property="article:author" content="0xkevinhe">
-<meta property="article:tag" content="defi">
+<meta property="og:updated_time" content="2026-02-20T01:50:55.103Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="0x协议-介绍">
+<meta name="twitter:description" content="核心 链下撮合（订单簿在链下）、链上结算（资金划转） 角色 maker 挂单者 taker 吃单者 实现  maker 创建订单信息，签名 1234567891011makerAddresstakerAddressmakerAssetDatatakerAssetDatamakerAssetAmounttakerAssetAmountexpirationTimeSecondsfee...签名哈希">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website | e/acc" type="application/atom+xml" />
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
     
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
-
-    
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
     
     
     
@@ -73,8 +63,8 @@ var _hmt = _hmt || [];
     
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
-
+</head>
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -96,7 +86,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -134,9 +124,7 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
-
 <script src="/js/insight.js"></script>
-
 
 </div>
                         </nav>
@@ -186,14 +174,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/defi/" rel="tag">defi</a>
+        <a class="tag-link" href="/tags/defi/">defi</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2023-09-27T07:01:22.142Z" itemprop="dateModified">2023-09-27</time>
+                    <time datetime="2026-02-20T01:50:55.103Z" itemprop="dateModified">2026-02-20</time>
                 </span>
             
             </div>
@@ -201,14 +189,14 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="核心">核心</h1>
+            <html><head></head><body><h1 id="核心">核心</h1>
 <p>链下撮合（订单簿在链下）、链上结算（资金划转）</p>
 <h1 id="角色">角色</h1>
 <p>maker 挂单者</p>
 <p>taker 吃单者</p>
 <h1 id="实现">实现</h1>
 <ul>
-<li>maker 创建订单信息，签名 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">makerAddress</span><br><span class="line">takerAddress</span><br><span class="line">makerAssetData</span><br><span class="line">takerAssetData</span><br><span class="line">makerAssetAmount</span><br><span class="line">takerAssetAmount</span><br><span class="line">expirationTimeSeconds</span><br><span class="line">fee</span><br><span class="line">...</span><br><span class="line">签名</span><br><span class="line">哈希</span><br></pre></td></tr></table></figure></li>
+<li>maker 创建订单信息，签名 <figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">makerAddress</span><br><span class="line">takerAddress</span><br><span class="line">makerAssetData</span><br><span class="line">takerAssetData</span><br><span class="line">makerAssetAmount</span><br><span class="line">takerAssetAmount</span><br><span class="line">expirationTimeSeconds</span><br><span class="line">fee</span><br><span class="line">...</span><br><span class="line">签名</span><br><span class="line">哈希</span><br></pre></td></tr></tbody></table></figure></li>
 </ul>
 <blockquote>
 <p>注意：</p>
@@ -223,7 +211,7 @@ var _hmt = _hmt || [];
 <p>1）maker 如何取消交易</p>
 <p>订单过期</p>
 <p>2）交易效率</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">预先检查</span><br><span class="line">链上成交</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">预先检查</span><br><span class="line">链上成交</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="与-uniswap-对比">与 uniswap 对比</h1>
 <p>1）uni 有流动性提供者，一个 pair 的两个 token 都需要提供</p>
 <p>2）uni 的价格是链上发现的</p>
@@ -233,9 +221,9 @@ var _hmt = _hmt || [];
 协议核心是定义了一个「链下撮合，链下成交」的结构，但正式由于分离了链上和链下，其成交效率有一定折扣。</p>
 <p>其后继者 uniswap 是一个整体闭环。</p>
 <h1 id="参考">参考</h1>
-<p><a target="_blank" rel="noopener" href="https://0x.org/docs/core-concepts">0x-protocol</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jinse.com/blockchain/247474.html">0x-intro-jnse</a></p>
-
+<p><a href="https://0x.org/docs/core-concepts" target="_blank" rel="noopener">0x-protocol</a></p>
+<p><a href="https://www.jinse.com/blockchain/247474.html" target="_blank" rel="noopener">0x-intro-jnse</a></p>
+</body></html>
 
             <div class="toc-title"> 相关文章推荐</div>
             <p class="related-posts-none">No related post.</p>
@@ -361,7 +349,7 @@ var _hmt = _hmt || [];
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83"><span class="nav-text">核心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%92%E8%89%B2"><span class="nav-text">角色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8E-uniswap-%E5%AF%B9%E6%AF%94"><span class="nav-text">与 uniswap 对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-text">参考</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#核心"><span class="nav-text">核心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#角色"><span class="nav-text">角色</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现"><span class="nav-text">实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#与-uniswap-对比"><span class="nav-text">与 uniswap 对比</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-text">参考</span></a></li></ol>
                         
 
                         
@@ -381,7 +369,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83"><span class="toc-number">1.</span> <span class="toc-text">核心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%92%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">角色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8E-uniswap-%E5%AF%B9%E6%AF%94"><span class="toc-number">5.</span> <span class="toc-text">与 uniswap 对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#核心"><span class="toc-number">1.</span> <span class="toc-text">核心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#角色"><span class="toc-number">2.</span> <span class="toc-text">角色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实现"><span class="toc-number">3.</span> <span class="toc-text">实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#与-uniswap-对比"><span class="toc-number">5.</span> <span class="toc-text">与 uniswap 对比</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -397,30 +385,10 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/coco-from-ai-recruiting-to-ai-cofounder.html" class="thumbnail">
+                            <a href="/en-your-next-coworker-isnt-human.html" class="thumbnail">
     
     
-        <span style="background-image:url(/coco-from-ai-recruiting-to-ai-cofounder/article-banner.png)" alt="15 年帮 600 人找工作后，我决定不再做招聘了" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/coco-from-ai-recruiting-to-ai-cofounder.html" class="title">15 年帮 600 人找工作后，我决定不再做招聘了</a></p>
-                            <p class="item-date"><time datetime="2026-01-27T10:00:00.000Z" itemprop="datePublished">2026-01-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/en-coco-from-ai-recruiting-to-ai-cofounder.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(/en-coco-from-ai-recruiting-to-ai-cofounder/article-banner.png)" alt="After 15 Years Helping 600 People Find Jobs, I Decided to Stop Doing Recruiting" class="thumbnail-image"></span>
+        <span style="background-image:url(/en-your-next-coworker-isnt-human/cover.png)" alt="Your Next Coworker Isn&#39;t Human" class="thumbnail-image"></span>
     
     
 </a>
@@ -429,18 +397,78 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
-                            <p class="item-title"><a href="/en-coco-from-ai-recruiting-to-ai-cofounder.html" class="title">After 15 Years Helping 600 People Find Jobs, I Decided to Stop Doing Recruiting</a></p>
-                            <p class="item-date"><time datetime="2026-01-27T10:00:00.000Z" itemprop="datePublished">2026-01-27</time></p>
+                            <p class="item-title"><a href="/en-your-next-coworker-isnt-human.html" class="title">Your Next Coworker Isn&#39;t Human</a></p>
+                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/bitcoin-next-upgrade-cn.html" class="thumbnail">
+                            <a href="/your-next-coworker-isnt-human.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="共识之迷：一文读懂比特币升级社区进展" class="thumbnail-image"></span>
+        <span style="background-image:url(/your-next-coworker-isnt-human/cover.png)" alt="你的下一个同事不是人" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
+                            <p class="item-title"><a href="/your-next-coworker-isnt-human.html" class="title">你的下一个同事不是人</a></p>
+                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/web3-nft-overviews.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
+                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
+                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/sparse-merkle-tree.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
+                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/smart-wallet.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
     
     
 </a>
@@ -449,48 +477,8 @@ var _hmt = _hmt || [];
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/bitcoin-next-upgrade-cn.html" class="title">共识之迷：一文读懂比特币升级社区进展</a></p>
-                            <p class="item-date"><time datetime="2024-11-30T16:45:55.000Z" itemprop="datePublished">2024-12-01</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/bitcoin-next-upgrade.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://kevinhe.io/bitcoin-next-upgrade/bitcoin-next-upgrade-cover.png)" alt="A Brief Report on Bitcoin&#39;s Next Upgrade for All" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/bitcoin-next-upgrade.html" class="title">A Brief Report on Bitcoin&#39;s Next Upgrade for All</a></p>
-                            <p class="item-date"><time datetime="2024-11-30T16:45:55.000Z" itemprop="datePublished">2024-12-01</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/monad-megaeth.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png)" alt="Monad VS MegaETH-Bankless Episode and Debate" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/monad-megaeth.html" class="title">Monad VS MegaETH-Bankless Episode and Debate</a></p>
-                            <p class="item-date"><time datetime="2024-08-24T16:45:55.000Z" itemprop="datePublished">2024-08-25</time></p>
+                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
+                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
                         </div>
                     </li>
                 
@@ -503,7 +491,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -513,7 +501,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">一月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">十二月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -523,7 +511,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ai/" rel="tag">ai</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pivot/" rel="tag">pivot</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/startup/" rel="tag">startup</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/">Agent</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COCO/">COCO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Teamwork/">Teamwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/团队协作/">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -533,7 +521,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/ai/" style="font-size: 13.33px;">ai</a> <a href="/tags/bitcoin/" style="font-size: 16.67px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 20px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/pivot/" style="font-size: 13.33px;">pivot</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/startup/" style="font-size: 13.33px;">startup</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 13.33px;">产品</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 13.33px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/AI/" style="font-size: 12.5px;">AI</a> <a href="/tags/Agent/" style="font-size: 12.5px;">Agent</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/COCO/" style="font-size: 12.5px;">COCO</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Teamwork/" style="font-size: 10px;">Teamwork</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/团队协作/" style="font-size: 10px;">团队协作</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -579,7 +567,7 @@ var _hmt = _hmt || [];
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2026 0xkevinhe</p>
+                <p>&copy; 2026 Kevin He</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -615,9 +603,7 @@ var _hmt = _hmt || [];
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
-
 <script src="/js/main.js"></script>
-
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>

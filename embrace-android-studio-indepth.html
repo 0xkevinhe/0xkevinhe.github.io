@@ -1,62 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
 
     
 
     
-    <title>拥抱 Android Studio 之二：Android Studio 与 Gradle 深入 | Kevin He&#39;s Website | e/acc</title>
+    <title>拥抱 Android Studio 之二：Android Studio 与 Gradle 深入 | Kevin He&#39;s Website</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio" />
+        <meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
     
     <meta name="description" content="关于学习方式 曾经跟朋友讨论过我们所接受过的大学工科教育，都是一上来先学基础理论，最后再来一个金工实习。一开始不知道为什么而学，学不进去，荒废了基础，等到金工实习的时候，又发现基础不牢，后悔不已。 考虑到传统教育方式的不足之处，笔者在组织本系列文章的时候是先讲入门实例，进而学习 Gradle 和 Groovy 基础原理，最后学习进阶实例。 上篇文章介绍了从 ADT 迁移到 Android Stud">
+<meta name="keywords" content="Android,EmbraceAndroidStudio,拥抱 Android Studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拥抱 Android Studio 之二：Android Studio 与 Gradle 深入">
 <meta property="og:url" content="https://0xkevinhe.xyz/embrace-android-studio-indepth.html">
-<meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
+<meta property="og:site_name" content="Kevin He&#39;s Website">
 <meta property="og:description" content="关于学习方式 曾经跟朋友讨论过我们所接受过的大学工科教育，都是一上来先学基础理论，最后再来一个金工实习。一开始不知道为什么而学，学不进去，荒废了基础，等到金工实习的时候，又发现基础不牢，后悔不已。 考虑到传统教育方式的不足之处，笔者在组织本系列文章的时候是先讲入门实例，进而学习 Gradle 和 Groovy 基础原理，最后学习进阶实例。 上篇文章介绍了从 ADT 迁移到 Android Stud">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/41555940.jpg">
-<meta property="article:published_time" content="2015-12-17T03:20:30.000Z">
-<meta property="article:modified_time" content="2023-09-27T07:01:22.153Z">
-<meta property="article:author" content="0xkevinhe">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="EmbraceAndroidStudio">
-<meta property="article:tag" content="拥抱 Android Studio">
+<meta property="og:updated_time" content="2026-02-20T01:50:55.106Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="拥抱 Android Studio 之二：Android Studio 与 Gradle 深入">
+<meta name="twitter:description" content="关于学习方式 曾经跟朋友讨论过我们所接受过的大学工科教育，都是一上来先学基础理论，最后再来一个金工实习。一开始不知道为什么而学，学不进去，荒废了基础，等到金工实习的时候，又发现基础不牢，后悔不已。 考虑到传统教育方式的不足之处，笔者在组织本系列文章的时候是先讲入门实例，进而学习 Gradle 和 Groovy 基础原理，最后学习进阶实例。 上篇文章介绍了从 ADT 迁移到 Android Stud">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/41555940.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website | e/acc" type="application/atom+xml" />
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
     
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
-
-    
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
     
     
     
@@ -75,8 +63,8 @@ var _hmt = _hmt || [];
     
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
-
+</head>
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -98,7 +86,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -136,9 +124,7 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
-
 <script src="/js/insight.js"></script>
-
 
 </div>
                         </nav>
@@ -188,14 +174,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-link-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a>, <a class="tag-link-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a>, <a class="tag-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2023-09-27T07:01:22.153Z" itemprop="dateModified">2023-09-27</time>
+                    <time datetime="2026-02-20T01:50:55.106Z" itemprop="dateModified">2026-02-20</time>
                 </span>
             
             </div>
@@ -203,7 +189,7 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <h1 id="关于学习方式">关于学习方式</h1>
+            <html><head></head><body><h1 id="关于学习方式">关于学习方式</h1>
 <p>曾经跟朋友讨论过我们所接受过的大学工科教育，都是一上来先学基础理论，最后再来一个金工实习。一开始不知道为什么而学，学不进去，荒废了基础，等到金工实习的时候，又发现基础不牢，后悔不已。
 考虑到传统教育方式的不足之处，笔者在组织本系列文章的时候是先讲入门实例，进而学习
 Gradle 和 Groovy 基础原理，最后学习进阶实例。</p>
@@ -221,7 +207,7 @@ Studio，相信经过很短时间的使用之后，已经开始熟悉和爱上 A
 </figure>
 <h2 id="gradle-相关文件结构">Gradle 相关文件结构</h2>
 <p>让我们来观察一下Android Studio 中 Gradle 相关的结构：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── gradle</span><br><span class="line">│   └── wrapper				//所使用的 Gradle 包装器配置</span><br><span class="line">├── .gradle					//所使用 Gradle 版本</span><br><span class="line">│   └── 2.8</span><br><span class="line">├── AsInDepth.iml</span><br><span class="line">├── app						//app module</span><br><span class="line">│   ├── app.iml</span><br><span class="line">│   ├── build</span><br><span class="line">│   ├── build.gradle		//app module 的 build.gradle</span><br><span class="line">│   ├── libs</span><br><span class="line">│   ├── proguard-rules.pro</span><br><span class="line">│   └── src</span><br><span class="line">├── build.gradle			//项目 build.gradle，通常配置项目全局配置，如 repositories 和 dependencies</span><br><span class="line">├── gradle.properties		//项目属性文件，通常可以放置一些常量</span><br><span class="line">├── gradlew					//Gradle 包装器可执行文件</span><br><span class="line">├── gradlew.bat				//Gradle 包装器可执行文件(Windows)</span><br><span class="line">├── lib						//lib module</span><br><span class="line">│   ├── build</span><br><span class="line">│   ├── build.gradle		//lib module 的 build.gradle</span><br><span class="line">│   ├── lib.iml</span><br><span class="line">│   ├── libs</span><br><span class="line">│   ├── proguard-rules.pro</span><br><span class="line">│   └── src</span><br><span class="line">├── local.properties		//项目的本地属性，通常是 sdk 所在位置</span><br><span class="line">└── settings.gradle			//项目总体设置，通常是配置项目中所有的 module</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── gradle</span><br><span class="line">│   └── wrapper				//所使用的 Gradle 包装器配置</span><br><span class="line">├── .gradle					//所使用 Gradle 版本</span><br><span class="line">│   └── 2.8</span><br><span class="line">├── AsInDepth.iml</span><br><span class="line">├── app						//app module</span><br><span class="line">│   ├── app.iml</span><br><span class="line">│   ├── build</span><br><span class="line">│   ├── build.gradle		//app module 的 build.gradle</span><br><span class="line">│   ├── libs</span><br><span class="line">│   ├── proguard-rules.pro</span><br><span class="line">│   └── src</span><br><span class="line">├── build.gradle			//项目 build.gradle，通常配置项目全局配置，如 repositories 和 dependencies</span><br><span class="line">├── gradle.properties		//项目属性文件，通常可以放置一些常量</span><br><span class="line">├── gradlew					//Gradle 包装器可执行文件</span><br><span class="line">├── gradlew.bat				//Gradle 包装器可执行文件(Windows)</span><br><span class="line">├── lib						//lib module</span><br><span class="line">│   ├── build</span><br><span class="line">│   ├── build.gradle		//lib module 的 build.gradle</span><br><span class="line">│   ├── lib.iml</span><br><span class="line">│   ├── libs</span><br><span class="line">│   ├── proguard-rules.pro</span><br><span class="line">│   └── src</span><br><span class="line">├── local.properties		//项目的本地属性，通常是 sdk 所在位置</span><br><span class="line">└── settings.gradle			//项目总体设置，通常是配置项目中所有的 module</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="invalidate-cache">Invalidate Cache</h2>
 <p>Android Studio 会出现索引的问题，那可以从删除 cache
 重建索引，File->Invalidate Caches/Restart</p>
@@ -241,16 +227,16 @@ Editor，可以同时进行编辑，但是我发现如果把 strings.xml
 <h2 id="命令行">命令行</h2>
 <p>工作区下方，有一个叫做 Terminal 的 tab，点击之后，会自动 cd 到当前
 project 根目录下，可以输入如下命令来尝试下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>Windows 下应该是 gradlew.bat build，下面均以 Mac 为例，不再赘述</p>
 </blockquote>
 <p>可使用 help 参数来查看有哪些选项：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew --help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew --help</span><br></pre></td></tr></tbody></table></figure>
 <p>下面介绍一些重要的选项： * 查看运行 log</p>
 <p>有些时候，一个任务运行失败，只给出一个错误，没有给具体原因，你就需要查看更多信息，可以使用参数
 --info 或者 --stacktrace：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build --info</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew build --info</span><br></pre></td></tr></tbody></table></figure>
 <ul>
 <li>指定 module 或者 build.gradle</li>
 </ul>
@@ -258,7 +244,7 @@ project 根目录下，可以输入如下命令来尝试下：</p>
 会使得整个 project 所有的 module 的 build
 任务都会运行，浪费不必要的时间，可以指定 module (-p) 或者 build.gradle
 (-b)文件以缩小作用范围：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew -p app build</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew -p app build</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="sync">Sync</h2>
 <p>正常情况下，修改了 build.gradle 文件，文件上方就会有一个 sync
 的按钮，点击之后会重新构建整个
@@ -280,7 +266,7 @@ release，这个概念容易懂 ### Product Flavor
 和免费
 free，逻辑上有一些小区别，又不想通过逻辑判断这种丑陋的方式。或者你要实现所谓多渠道打包。
 ### Build Variant = Build Type x Product Flavor 配置好了Build Type 和
-Product Flavor 之后，Gradle 会生成若干个包，分别为： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">payDebug</span><br><span class="line">payRelease</span><br><span class="line">freeDebug</span><br><span class="line">freeRelease</span><br></pre></td></tr></table></figure></p>
+Product Flavor 之后，Gradle 会生成若干个包，分别为： </p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">payDebug</span><br><span class="line">payRelease</span><br><span class="line">freeDebug</span><br><span class="line">freeRelease</span><br></pre></td></tr></tbody></table></figure><p></p>
 <h3 id="配置实例">配置实例</h3>
 <figure>
 <img src="https://raw.githubusercontent.com/changbinhe/images/master/15-12-15/59335964.jpg" alt="build variant">
@@ -290,7 +276,7 @@ Product Flavor 之后，Gradle 会生成若干个包，分别为： <figure clas
 需要做大量的逻辑判断，则可以通过在 build.gradle 中配置 product
 flavor，在代码中添加两个与 main 平齐的文件夹， 把 DiffBean 从 main
 中抽出来，分别放在两个文件夹中，只关注对应的逻辑即可。</p>
-<p>关于 Product Flavor 中都能定义哪些属性，请参考 <a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/">Android
+<p>关于 Product Flavor 中都能定义哪些属性，请参考 <a href="http://google.github.io/android-gradle-dsl/current/" target="_blank" rel="noopener">Android
 Gradle DSL</a>。</p>
 <h2 id="gradle-使用的仓库">Gradle 使用的仓库</h2>
 <p>要使用远程依赖，就得有个库的仓库，Gradle 支持 maven
@@ -302,24 +288,28 @@ jcenter，前者的繁琐与难以管理，让人深恶痛绝。Android Studio
 <p>私有库可以托管在任何一个能访问到的地方，可以托管在 bintray
 上的私有空间，也可以是内网服务器上，甚至可以是本机磁盘上。</p>
 <p>下面是本人使用的仓库的一个例子：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">allprojects {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()</span><br><span class="line">        mavenCentral()</span><br><span class="line">        maven {</span><br><span class="line">            url 'file:///Users/myusername/repo/'</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">allprojects {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()</span><br><span class="line">        mavenCentral()</span><br><span class="line">        maven {</span><br><span class="line">            url 'file:///Users/myusername/repo/'</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>关于库，会在本系列的四篇会有更详细的叙述。</p>
 <h2 id="使用-jni-预编译-.so-库">使用 jni 预编译 .so 库</h2>
 <ul>
 <li><p>默认情况下，可以放在与 java 平级的 jniLibs 文件夹中</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── AndroidManifest.xml</span><br><span class="line">├── java</span><br><span class="line">│   └── io</span><br><span class="line">│       └── kvh</span><br><span class="line">├── jniLibs</span><br><span class="line">│   ├── armeabi</span><br><span class="line">│   │   └── libweibosdkcore.so</span><br><span class="line">│   └── armeabi-v7a</span><br><span class="line">│       └── libweibosdkcore.so</span><br><span class="line">└── res</span><br></pre></td></tr></table></figure></p></li>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── AndroidManifest.xml</span><br><span class="line">├── java</span><br><span class="line">│   └── io</span><br><span class="line">│       └── kvh</span><br><span class="line">├── jniLibs</span><br><span class="line">│   ├── armeabi</span><br><span class="line">│   │   └── libweibosdkcore.so</span><br><span class="line">│   └── armeabi-v7a</span><br><span class="line">│       └── libweibosdkcore.so</span><br><span class="line">└── res</span><br></pre></td></tr></tbody></table></figure><p></p></li>
 <li><p>很多人喜欢放在与 src 平级的 libs 文件夹中</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── build.gradle</span><br><span class="line">├── libs</span><br><span class="line">│   ├── armeabi</span><br><span class="line">│   │   └── libweibosdkcore.so</span><br><span class="line">│   └── armeabi-v7a</span><br><span class="line">│       └── libweibosdkcore.so</span><br><span class="line">├── proguard-rules.pro</span><br><span class="line">└── src</span><br></pre></td></tr></table></figure> 这样需要在 build.gradle 文件添加如下说明：</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android {</span><br><span class="line">   sourceSets {</span><br><span class="line">       main {</span><br><span class="line">           jniLibs.srcDirs = ['libs']</span><br><span class="line">       }</span><br><span class="line">   }</span><br></pre></td></tr></table></figure> ## 升级 gradle 插件</p></li>
-<li><p>在 <a target="_blank" rel="noopener" href="https://bintray.com/android/android-tools/com.android.tools.build.gradle/view">bintray</a>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── build.gradle</span><br><span class="line">├── libs</span><br><span class="line">│   ├── armeabi</span><br><span class="line">│   │   └── libweibosdkcore.so</span><br><span class="line">│   └── armeabi-v7a</span><br><span class="line">│       └── libweibosdkcore.so</span><br><span class="line">├── proguard-rules.pro</span><br><span class="line">└── src</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>这样需要在 build.gradle 文件添加如下说明：</p>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">android {</span><br><span class="line">   sourceSets {</span><br><span class="line">       main {</span><br><span class="line">           jniLibs.srcDirs = ['libs']</span><br><span class="line">       }</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+</ul>
+<h2 id="升级-gradle-插件">升级 gradle 插件</h2>
+<ul>
+<li><p>在 <a href="https://bintray.com/android/android-tools/com.android.tools.build.gradle/view" target="_blank" rel="noopener">bintray</a>
 上查找最新的版本</p></li>
 <li><p>修改项目的 build.gradle 中插件的版本</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:2.0.0-alpha5'//这里</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure></p></li>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">buildscript {</span><br><span class="line">    repositories {</span><br><span class="line">        jcenter()</span><br><span class="line">    }</span><br><span class="line">    dependencies {</span><br><span class="line">        classpath 'com.android.tools.build:gradle:2.0.0-alpha5'//这里</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure><p></p></li>
 <li><p>如果有提示错误，则可能需要 gradle
 的运行环境版本，修改项目根目录下文件
 <code>gradle/wrapper/gradle-wrapper.properties</code> 中的
 <code>distributionUrl</code>为最新，例如</p>
-<p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle-2.10-all.zip</span><br></pre></td></tr></table></figure></p></li>
+<p></p><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distributionUrl=https\://services.gradle.org/distributions/gradle-2.10-all.zip</span><br></pre></td></tr></tbody></table></figure><p></p></li>
 </ul>
 <h1 id="遇到的坑">遇到的坑</h1>
 <p>笔者所在的项目的包已经发布到了 mavenCentral 和
@@ -327,22 +317,22 @@ jcenter，很多用户的在集成的时候，遇到问题，其中最经典的�
 ## 下载依赖库失败，报 peer not found 连接 jcenter 库默认使用 https
 协议，出现这个错，多数情况下都是因为连接失败了，原因嘛，你懂的。
 可以尝试将 jcenter 改成默认使用 http 连接：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jcenter {</span><br><span class="line">            url "http://jcenter.bintray.com/"</span><br><span class="line">        }</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jcenter {</span><br><span class="line">            url "http://jcenter.bintray.com/"</span><br><span class="line">        }</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="下载不到特定的版本">下载不到特定的版本</h2>
 <p>Maven 和 Gradle
 都会有一个缓存库，默认安装的情况下，是在用户根目录下的 .m2 或者 .gradle
 文件夹中。 可以尝试删除里面的文件。例如将 Gradle 的 cache 文件删除：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.gradle/caches/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/.gradle/caches/</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>注意这个操作可能会导致所有的远程库都需要重新下载，要三思后行。</p>
 </blockquote>
 <h2 id="库重复冲突">库重复冲突</h2>
 <p>笔者的包使用了 com.android.support:support-v4:19.0.0 包，可能用户的
 app 也使用了这个包，就可能在编译进行代码合并到时候出类似的错：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UNEXPECTED TOP-LEVEL EXCEPTION</span><br><span class="line">multiple dex files define Landroid/support/annotation/AniRes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UNEXPECTED TOP-LEVEL EXCEPTION</span><br><span class="line">multiple dex files define Landroid/support/annotation/AniRes</span><br></pre></td></tr></tbody></table></figure>
 <p>这个时候，在 module 的 build.gradle 的 dependency 添加依赖时，加入
 exclude 规则：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">compile ('com.bugtags.library:bugtags-lib:latest.integration') {</span><br><span class="line">        exclude group: 'com.android.support', module: 'support-v4'</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">compile ('com.bugtags.library:bugtags-lib:latest.integration') {</span><br><span class="line">        exclude group: 'com.android.support', module: 'support-v4'</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="后续引言">后续引言</h1>
 <p>讲到这里，有些读者可能会遇到跟我当时开始使用 Gradle
 一样的问题：遇到问题就 stackoverflow，找到 workaround
@@ -359,39 +349,39 @@ exclude 规则：</p>
 <p>而例如 productFlavors 都是一个所谓的 DSL，插件都定义了很多的
 DSL，我理解的所谓的 DSL
 就是一个小语言规范用来处理一个特定的事情（大多情况下是配置）。Android
-的插件的 DSL 文档在 <a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/">Android
+的插件的 DSL 文档在 <a href="http://google.github.io/android-gradle-dsl/current/" target="_blank" rel="noopener">Android
 Gradle DSL</a> 有说明。</p>
 <p>理解了以上基础之后，你就会知其然，知其所以然了。</p>
 <p>以上知识，下一篇将会详细介绍。敬请留意。</p>
 <blockquote>
-<p>本文所使用的 demo 已经上传到了 github 中，可以参阅 <a target="_blank" rel="noopener" href="https://github.com/kevinho/Embrace-Android-Studio-Demo">embrace-android-studio-demo</a></p>
+<p>本文所使用的 demo 已经上传到了 github 中，可以参阅 <a href="https://github.com/kevinho/Embrace-Android-Studio-Demo" target="_blank" rel="noopener">embrace-android-studio-demo</a></p>
 </blockquote>
 <h1 id="参考文献">参考文献</h1>
-<p><a target="_blank" rel="noopener" href="http://developer.android.com/tools/studio/index.html">Android
+<p><a href="http://developer.android.com/tools/studio/index.html" target="_blank" rel="noopener">Android
 Studio Overview</a></p>
-<p><a target="_blank" rel="noopener" href="http://developer.android.com/sdk/installing/studio-build.html">Android
+<p><a href="http://developer.android.com/sdk/installing/studio-build.html" target="_blank" rel="noopener">Android
 Studio Installation</a></p>
-<p><a target="_blank" rel="noopener" href="http://google.github.io/android-gradle-dsl/current/">Android
+<p><a href="http://google.github.io/android-gradle-dsl/current/" target="_blank" rel="noopener">Android
 Gradle DSL</a></p>
-<p><a target="_blank" rel="noopener" href="http://tools.android.com/tech-docs/new-build-system/user-guide">Android
+<p><a href="http://tools.android.com/tech-docs/new-build-system/user-guide" target="_blank" rel="noopener">Android
 New Build System</a></p>
 <h1 id="系列导读">系列导读</h1>
 <p>本文是笔者《拥抱 Android Studio》系列第二篇，其他篇请点击：</p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/01/embrace-android-studio-migration/">拥抱
+<p><a href="http://kvh.io/2015/12/01/embrace-android-studio-migration/" target="_blank" rel="noopener">拥抱
 Android Studio 之一：从 ADT 到 Android Studio</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/">拥抱
+<p><a href="http://kvh.io/2015/12/17/embrace-android-studio-indepth/" target="_blank" rel="noopener">拥抱
 Android Studio 之二：Android Studio 与 Gradle 深入</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/">拥抱
+<p><a href="http://kvh.io/2016/01/04/embrace-android-studio-groovy-gradle/" target="_blank" rel="noopener">拥抱
 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/">拥抱
+<p><a href="http://kvh.io/2016/01/20/embrace-android-studio-maven-deploy/" target="_blank" rel="noopener">拥抱
 Android Studio 之四：Maven 公共仓库使用与私有仓库搭建</a></p>
-<p><a target="_blank" rel="noopener" href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/">拥抱
+<p><a href="http://kvh.io/2016/03/28/embrace-android-studio-gradle-plugin/" target="_blank" rel="noopener">拥抱
 Android Studio 之五：Gradle 插件使用与开发</a></p>
 <blockquote>
 <p>有问题？在文章下留言或者加 qq 群：453503476，希望能帮到你。</p>
 </blockquote>
 <h1 id="番外">番外</h1>
-<p>笔者 <a target="_blank" rel="noopener" href="http://kvh.io">kvh</a> 在开发和运营 <a target="_blank" rel="noopener" href="https://bugtags.com">bugtags.com</a>，这是一款能够极大的提升 app
+<p>笔者 <a href="http://kvh.io" target="_blank" rel="noopener">kvh</a> 在开发和运营 <a href="https://bugtags.com" target="_blank" rel="noopener">bugtags.com</a>，这是一款能够极大的提升 app
 开发者测试效率的 SDK 产品，欢迎使用、转发推荐。</p>
 <p>笔者目前关注点在于移动 SDK 研发，后端服务设计和实现。</p>
 <p>我们团队长期求 PHP 后端研发，有兴趣请加下面公众号勾搭：</p>
@@ -399,7 +389,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
 <img src="https://raw.githubusercontent.com/changbinhe/images/master/16-1-29/87155741.jpg" alt="bugtags">
 <figcaption aria-hidden="true">bugtags</figcaption>
 </figure>
-
+</body></html>
 
             <div class="toc-title"> 相关文章推荐</div>
             <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-gradle-plugin.html">拥抱 Android Studio 之五：Gradle 插件开发</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-maven-deploy.html">拥抱 Android Studio 之四：Maven 仓库使用与私有仓库搭建</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-groovy-gradle.html">拥抱 Android Studio 之三：溯源，Groovy 与 Gradle 基础</a></li></ul>
@@ -525,7 +515,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                 <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active" style="opacity:1;display:block;transform:translateX(0px);">
                     <div class="post-toc" style="max-height:400px">
                         
-                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F"><span class="nav-text">关于学习方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#android-studio-%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="nav-text">Android Studio 相关功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%84%E7%BB%87%E8%A7%86%E5%9B%BE"><span class="nav-text">文件夹组织视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-text">Gradle 相关文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invalidate-cache"><span class="nav-text">Invalidate Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-language-editor"><span class="nav-text">Multiple Language Editor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gradle-%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="nav-text">Gradle 相关功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-view"><span class="nav-text">Gradle View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sync"><span class="nav-text">Sync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-variant"><span class="nav-text">Build Variant</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B"><span class="nav-text">配置实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BB%93%E5%BA%93"><span class="nav-text">Gradle 使用的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-jni-%E9%A2%84%E7%BC%96%E8%AF%91-.so-%E5%BA%93"><span class="nav-text">使用 jni 预编译 .so 库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8D%E5%88%B0%E7%89%B9%E5%AE%9A%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-text">下载不到特定的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%93%E9%87%8D%E5%A4%8D%E5%86%B2%E7%AA%81"><span class="nav-text">库重复冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E5%BC%95%E8%A8%80"><span class="nav-text">后续引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%95%AA%E5%A4%96"><span class="nav-text">番外</span></a></li></ol>
+                            <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于学习方式"><span class="nav-text">关于学习方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#android-studio-相关功能介绍"><span class="nav-text">Android Studio 相关功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件夹组织视图"><span class="nav-text">文件夹组织视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-相关文件结构"><span class="nav-text">Gradle 相关文件结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#invalidate-cache"><span class="nav-text">Invalidate Cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#multiple-language-editor"><span class="nav-text">Multiple Language Editor</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gradle-相关功能介绍"><span class="nav-text">Gradle 相关功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-view"><span class="nav-text">Gradle View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行"><span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sync"><span class="nav-text">Sync</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-variant"><span class="nav-text">Build Variant</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置实例"><span class="nav-text">配置实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle-使用的仓库"><span class="nav-text">Gradle 使用的仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-jni-预编译-.so-库"><span class="nav-text">使用 jni 预编译 .so 库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级-gradle-插件"><span class="nav-text">升级 gradle 插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遇到的坑"><span class="nav-text">遇到的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载不到特定的版本"><span class="nav-text">下载不到特定的版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#库重复冲突"><span class="nav-text">库重复冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后续引言"><span class="nav-text">后续引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系列导读"><span class="nav-text">系列导读</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#番外"><span class="nav-text">番外</span></a></li></ol>
                         
 
                         
@@ -545,7 +535,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <h3 class="widget-title">Catalogue</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">关于学习方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#android-studio-%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">Android Studio 相关功能介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E7%BB%84%E7%BB%87%E8%A7%86%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">文件夹组织视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">Gradle 相关文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#invalidate-cache"><span class="toc-number">2.3.</span> <span class="toc-text">Invalidate Cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multiple-language-editor"><span class="toc-number">2.4.</span> <span class="toc-text">Multiple Language Editor</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gradle-%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">Gradle 相关功能介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-view"><span class="toc-number">3.1.</span> <span class="toc-text">Gradle View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C"><span class="toc-number">3.2.</span> <span class="toc-text">命令行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync"><span class="toc-number">3.3.</span> <span class="toc-text">Sync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#build-variant"><span class="toc-number">3.4.</span> <span class="toc-text">Build Variant</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%AE%9E%E4%BE%8B"><span class="toc-number">3.4.1.</span> <span class="toc-text">配置实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-%E4%BD%BF%E7%94%A8%E7%9A%84%E4%BB%93%E5%BA%93"><span class="toc-number">3.5.</span> <span class="toc-text">Gradle 使用的仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-jni-%E9%A2%84%E7%BC%96%E8%AF%91-.so-%E5%BA%93"><span class="toc-number">3.6.</span> <span class="toc-text">使用 jni 预编译 .so 库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="toc-number">4.</span> <span class="toc-text">遇到的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8D%E5%88%B0%E7%89%B9%E5%AE%9A%E7%9A%84%E7%89%88%E6%9C%AC"><span class="toc-number">4.1.</span> <span class="toc-text">下载不到特定的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%93%E9%87%8D%E5%A4%8D%E5%86%B2%E7%AA%81"><span class="toc-number">4.2.</span> <span class="toc-text">库重复冲突</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD%E5%BC%95%E8%A8%80"><span class="toc-number">5.</span> <span class="toc-text">后续引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E5%88%97%E5%AF%BC%E8%AF%BB"><span class="toc-number">7.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%95%AA%E5%A4%96"><span class="toc-number">8.</span> <span class="toc-text">番外</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于学习方式"><span class="toc-number">1.</span> <span class="toc-text">关于学习方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#android-studio-相关功能介绍"><span class="toc-number">2.</span> <span class="toc-text">Android Studio 相关功能介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件夹组织视图"><span class="toc-number">2.1.</span> <span class="toc-text">文件夹组织视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-相关文件结构"><span class="toc-number">2.2.</span> <span class="toc-text">Gradle 相关文件结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#invalidate-cache"><span class="toc-number">2.3.</span> <span class="toc-text">Invalidate Cache</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#multiple-language-editor"><span class="toc-number">2.4.</span> <span class="toc-text">Multiple Language Editor</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#gradle-相关功能介绍"><span class="toc-number">3.</span> <span class="toc-text">Gradle 相关功能介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-view"><span class="toc-number">3.1.</span> <span class="toc-text">Gradle View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命令行"><span class="toc-number">3.2.</span> <span class="toc-text">命令行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sync"><span class="toc-number">3.3.</span> <span class="toc-text">Sync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#build-variant"><span class="toc-number">3.4.</span> <span class="toc-text">Build Variant</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置实例"><span class="toc-number">3.4.1.</span> <span class="toc-text">配置实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-使用的仓库"><span class="toc-number">3.5.</span> <span class="toc-text">Gradle 使用的仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-jni-预编译-.so-库"><span class="toc-number">3.6.</span> <span class="toc-text">使用 jni 预编译 .so 库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#升级-gradle-插件"><span class="toc-number">3.7.</span> <span class="toc-text">升级 gradle 插件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#遇到的坑"><span class="toc-number">4.</span> <span class="toc-text">遇到的坑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载不到特定的版本"><span class="toc-number">4.1.</span> <span class="toc-text">下载不到特定的版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#库重复冲突"><span class="toc-number">4.2.</span> <span class="toc-text">库重复冲突</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后续引言"><span class="toc-number">5.</span> <span class="toc-text">后续引言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">6.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系列导读"><span class="toc-number">7.</span> <span class="toc-text">系列导读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#番外"><span class="toc-number">8.</span> <span class="toc-text">番外</span></a></li></ol>
         </div>
     </div>
 </div>
@@ -561,30 +551,10 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/monad-megaeth.html" class="thumbnail">
+                            <a href="/en-your-next-coworker-isnt-human.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png)" alt="Monad VS MegaETH-Bankless Episode and Debate" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/monad-megaeth.html" class="title">Monad VS MegaETH-Bankless Episode and Debate</a></p>
-                            <p class="item-date"><time datetime="2024-08-24T16:45:55.000Z" itemprop="datePublished">2024-08-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/wbtc.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="WBTC, It’s Time to Upgrade Your Technical Solutions!" class="thumbnail-image"></span>
+        <span style="background-image:url(/en-your-next-coworker-isnt-human/cover.png)" alt="Your Next Coworker Isn&#39;t Human" class="thumbnail-image"></span>
     
     
 </a>
@@ -592,19 +562,39 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/wbtc.html" class="title">WBTC, It’s Time to Upgrade Your Technical Solutions!</a></p>
-                            <p class="item-date"><time datetime="2024-08-13T01:58:57.000Z" itemprop="datePublished">2024-08-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
+                            <p class="item-title"><a href="/en-your-next-coworker-isnt-human.html" class="title">Your Next Coworker Isn&#39;t Human</a></p>
+                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/action-and-blink.html" class="thumbnail">
+                            <a href="/your-next-coworker-isnt-human.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/82350295.jpg)" alt="Action And Blink" class="thumbnail-image"></span>
+        <span style="background-image:url(/your-next-coworker-isnt-human/cover.png)" alt="你的下一个同事不是人" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
+                            <p class="item-title"><a href="/your-next-coworker-isnt-human.html" class="title">你的下一个同事不是人</a></p>
+                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/web3-nft-overviews.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
     
     
 </a>
@@ -613,18 +603,38 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/action-and-blink.html" class="title">Action And Blink</a></p>
-                            <p class="item-date"><time datetime="2024-07-04T06:58:57.000Z" itemprop="datePublished">2024-07-04</time></p>
+                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
+                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/sigweb3-training-primer.html" class="thumbnail">
+                            <a href="/sparse-merkle-tree.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="sigweb3-training" class="thumbnail-image"></span>
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
+                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/smart-wallet.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
     
     
 </a>
@@ -633,28 +643,8 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/sigweb3-training-primer.html" class="title">sigweb3-training</a></p>
-                            <p class="item-date"><time datetime="2024-02-14T15:20:59.000Z" itemprop="datePublished">2024-02-14</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/en-sigweb3-btc-exp-programme.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/sigweb3-btc-exp-programme/sigweb3-btc-exp-programme-title.png)" alt="SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/en-sigweb3-btc-exp-programme.html" class="title">SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP</a></p>
-                            <p class="item-date"><time datetime="2023-12-15T06:58:57.000Z" itemprop="datePublished">2023-12-15</time></p>
+                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
+                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
                         </div>
                     </li>
                 
@@ -667,7 +657,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -677,7 +667,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -687,7 +677,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/">Agent</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COCO/">COCO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Teamwork/">Teamwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/团队协作/">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -697,7 +687,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/AI/" style="font-size: 12.5px;">AI</a> <a href="/tags/Agent/" style="font-size: 12.5px;">Agent</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/COCO/" style="font-size: 12.5px;">COCO</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Teamwork/" style="font-size: 10px;">Teamwork</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/团队协作/" style="font-size: 10px;">团队协作</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -743,7 +733,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2024 0xkevinhe</p>
+                <p>&copy; 2026 Kevin He</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -779,9 +769,7 @@ Android Studio 之五：Gradle 插件使用与开发</a></p>
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
-
 <script src="/js/main.js"></script>
-
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>

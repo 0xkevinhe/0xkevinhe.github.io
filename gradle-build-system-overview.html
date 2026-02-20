@@ -1,61 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
 
     
 
     
-    <title>Android Gradle 构建系统·初探 | Kevin He&#39;s Website | e/acc</title>
+    <title>Android Gradle 构建系统·初探 | Kevin He&#39;s Website</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="Android,Gradle" />
+        <meta name="keywords" content="Android,Gradle">
     
     <meta name="description" content="8月7号，应北京 GDG 邀请，我做了一个题为《Android Gradle 构建系统·初探》的分享。 主要内容是构建系统背景知识，源码库，代码亮点，写插件。 很明显这是一个很大的话题，有超过 2.5GB 的核心代码和超过50个子项目。 第一步，我进行了宏观的介绍。下一步，我会继续深入子项目，尝试发现更多有意思的点。 对这个话题感兴趣的，请加入技术交流 qq 群：583688711。 Slides">
+<meta name="keywords" content="Android,Gradle">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Gradle 构建系统·初探">
 <meta property="og:url" content="https://0xkevinhe.xyz/gradle-build-system-overview.html">
-<meta property="og:site_name" content="Kevin He&#39;s Website | e&#x2F;acc">
+<meta property="og:site_name" content="Kevin He&#39;s Website">
 <meta property="og:description" content="8月7号，应北京 GDG 邀请，我做了一个题为《Android Gradle 构建系统·初探》的分享。 主要内容是构建系统背景知识，源码库，代码亮点，写插件。 很明显这是一个很大的话题，有超过 2.5GB 的核心代码和超过50个子项目。 第一步，我进行了宏观的介绍。下一步，我会继续深入子项目，尝试发现更多有意思的点。 对这个话题感兴趣的，请加入技术交流 qq 群：583688711。 Slides">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/26151545.jpg">
-<meta property="article:published_time" content="2016-08-13T03:18:16.000Z">
-<meta property="article:modified_time" content="2023-09-27T07:01:22.156Z">
-<meta property="article:author" content="0xkevinhe">
-<meta property="article:tag" content="Android">
-<meta property="article:tag" content="Gradle">
+<meta property="og:updated_time" content="2026-02-20T01:50:55.106Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Gradle 构建系统·初探">
+<meta name="twitter:description" content="8月7号，应北京 GDG 邀请，我做了一个题为《Android Gradle 构建系统·初探》的分享。 主要内容是构建系统背景知识，源码库，代码亮点，写插件。 很明显这是一个很大的话题，有超过 2.5GB 的核心代码和超过50个子项目。 第一步，我进行了宏观的介绍。下一步，我会继续深入子项目，尝试发现更多有意思的点。 对这个话题感兴趣的，请加入技术交流 qq 群：583688711。 Slides">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/26151545.jpg">
     
 
     
-        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website | e/acc" type="application/atom+xml" />
+        <link rel="alternate" href="/atom.xml" title="Kevin He&#39;s Website" type="application/atom+xml">
     
 
     
-        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png" />
+        <link rel="icon" href="https://raw.githubusercontent.com/changbinhe/images/master/common/favicon/favicon-16x16.png">
     
 
-    
-<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-
-    
-<link rel="stylesheet" href="/libs/titillium-web/styles.css">
-
-    
-<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
 
     <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" type="text/css">
 
-    
-<link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
-
-    
-<script src="/libs/jquery/3.3.1/jquery.min.js"></script>
-
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
     
     
     
@@ -74,8 +63,8 @@ var _hmt = _hmt || [];
     
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
-
+</head>
+</html>
 <body>
     <div id="wrap">
         <header id="header">
@@ -97,7 +86,7 @@ var _hmt = _hmt || [];
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/ai/">ai</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/blockchain/">blockchain</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/code/">code</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/personal/">personal</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/product/">product</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/reading/">reading</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/web3/">web3</a></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -135,9 +124,7 @@ var _hmt = _hmt || [];
     window.INSIGHT_CONFIG = INSIGHT_CONFIG;
 })(window);
 </script>
-
 <script src="/js/insight.js"></script>
-
 
 </div>
                         </nav>
@@ -187,14 +174,14 @@ var _hmt = _hmt || [];
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Android/" rel="tag">Android</a>, <a class="tag-link-link" href="/tags/Gradle/" rel="tag">Gradle</a>
+        <a class="tag-link" href="/tags/Android/">Android</a>, <a class="tag-link" href="/tags/Gradle/">Gradle</a>
     </div>
 
             
                 <br>
             
                 <span style="text-transform:capitalize;"> Modified:
-                    <time datetime="2023-09-27T07:01:22.156Z" itemprop="dateModified">2023-09-27</time>
+                    <time datetime="2026-02-20T01:50:55.106Z" itemprop="dateModified">2026-02-20</time>
                 </span>
             
             </div>
@@ -202,7 +189,7 @@ var _hmt = _hmt || [];
         
         <div class="article-entry" itemprop="articleBody">
 
-            <p>8月7号，应<a target="_blank" rel="noopener" href="http://www.chinagdg.com/thread-3462-1-1.html">北京
+            <html><head></head><body><p>8月7号，应<a href="http://www.chinagdg.com/thread-3462-1-1.html" target="_blank" rel="noopener">北京
 GDG</a> 邀请，我做了一个题为《Android Gradle 构建系统·初探》的分享。</p>
 <p>主要内容是构建系统背景知识，源码库，代码亮点，写插件。</p>
 <p>很明显这是一个很大的话题，有超过 2.5GB
@@ -210,14 +197,14 @@ GDG</a> 邀请，我做了一个题为《Android Gradle 构建系统·初探》�
 <p>第一步，我进行了宏观的介绍。下一步，我会继续深入子项目，尝试发现更多有意思的点。</p>
 <p>对这个话题感兴趣的，请加入技术交流 qq 群：583688711。</p>
 <p>Slides 在下面，分别是 PDF 版本和图片版本。</p>
-<p><a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/changbinhe/images/master/static/Android%20Gradle%20Build%20System-Overview-wide-screen.pdf">PDF
+<p><a href="https://raw.githubusercontent.com/changbinhe/images/master/static/Android%20Gradle%20Build%20System-Overview-wide-screen.pdf" target="_blank" rel="noopener">PDF
 here</a>.</p>
 <p>图片：</p>
 <p><img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.001.jpeg" alt="Android-Gradle-Build-System-Overview.001.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.002.jpeg" alt="Android-Gradle-Build-System-Overview.002.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.003.jpeg" alt="Android-Gradle-Build-System-Overview.003.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.004.jpeg" alt="Android-Gradle-Build-System-Overview.004.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.005.jpeg" alt="Android-Gradle-Build-System-Overview.005.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.006.jpeg" alt="Android-Gradle-Build-System-Overview.006.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.007.jpeg" alt="Android-Gradle-Build-System-Overview.007.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.008.jpeg" alt="Android-Gradle-Build-System-Overview.008.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.009.jpeg" alt="Android-Gradle-Build-System-Overview.009.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.010.jpeg" alt="Android-Gradle-Build-System-Overview.010.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.011.jpeg" alt="Android-Gradle-Build-System-Overview.011.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.012.jpeg" alt="Android-Gradle-Build-System-Overview.012.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.013.jpeg" alt="Android-Gradle-Build-System-Overview.013.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.014.jpeg" alt="Android-Gradle-Build-System-Overview.014.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.015.jpeg" alt="Android-Gradle-Build-System-Overview.015.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.016.jpeg" alt="Android-Gradle-Build-System-Overview.016.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.017.jpeg" alt="Android-Gradle-Build-System-Overview.017.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.018.jpeg" alt="Android-Gradle-Build-System-Overview.018.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.019.jpeg" alt="Android-Gradle-Build-System-Overview.019.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.020.jpeg" alt="Android-Gradle-Build-System-Overview.020.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.021.jpeg" alt="Android-Gradle-Build-System-Overview.021.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.022.jpeg" alt="Android-Gradle-Build-System-Overview.022.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.023.jpeg" alt="Android-Gradle-Build-System-Overview.023.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.024.jpeg" alt="Android-Gradle-Build-System-Overview.024.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.025.jpeg" alt="Android-Gradle-Build-System-Overview.025.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.026.jpeg" alt="Android-Gradle-Build-System-Overview.026.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.027.jpeg" alt="Android-Gradle-Build-System-Overview.027.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.028.jpeg" alt="Android-Gradle-Build-System-Overview.028.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.029.jpeg" alt="Android-Gradle-Build-System-Overview.029.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.030.jpeg" alt="Android-Gradle-Build-System-Overview.030.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.031.jpeg" alt="Android-Gradle-Build-System-Overview.031.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.032.jpeg" alt="Android-Gradle-Build-System-Overview.032.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.033.jpeg" alt="Android-Gradle-Build-System-Overview.033.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.034.jpeg" alt="Android-Gradle-Build-System-Overview.034.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.035.jpeg" alt="Android-Gradle-Build-System-Overview.035.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.036.jpeg" alt="Android-Gradle-Build-System-Overview.036.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.037.jpeg" alt="Android-Gradle-Build-System-Overview.037.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.038.jpeg" alt="Android-Gradle-Build-System-Overview.038.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.039.jpeg" alt="Android-Gradle-Build-System-Overview.039.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.040.jpeg" alt="Android-Gradle-Build-System-Overview.040.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.041.jpeg" alt="Android-Gradle-Build-System-Overview.041.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.042.jpeg" alt="Android-Gradle-Build-System-Overview.042.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.043.jpeg" alt="Android-Gradle-Build-System-Overview.043.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.044.jpeg" alt="Android-Gradle-Build-System-Overview.044.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.045.jpeg" alt="Android-Gradle-Build-System-Overview.045.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.046.jpeg" alt="Android-Gradle-Build-System-Overview.046.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.047.jpeg" alt="Android-Gradle-Build-System-Overview.047.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.048.jpeg" alt="Android-Gradle-Build-System-Overview.048.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.049.jpeg" alt="Android-Gradle-Build-System-Overview.049.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.050.jpeg" alt="Android-Gradle-Build-System-Overview.050.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.051.jpeg" alt="Android-Gradle-Build-System-Overview.051.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.052.jpeg" alt="Android-Gradle-Build-System-Overview.052.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.053.jpeg" alt="Android-Gradle-Build-System-Overview.053.jpeg"> <img src="https://raw.githubusercontent.com/changbinhe/images/master/2016/08/13/Android-Gradle-Build-System-Overview.054.jpeg" alt="Android-Gradle-Build-System-Overview.054.jpeg"></p>
 <blockquote>
 <p>有问题？在文章下留言或者加 qq 群：583688711，希望能帮到你。</p>
 </blockquote>
-
+</body></html>
 
             <div class="toc-title"> 相关文章推荐</div>
             <ul class="related-posts"><li class="related-posts-item"><a class="related-posts-link" href="/gradle-indepth-cmd.html">Android Gradle 技巧之二： 最爱命令行</a></li><li class="related-posts-item"><a class="related-posts-link" href="/gradle-indepth-build-variant.html">Android Gradle 技巧之一： Build Variant 相关</a></li><li class="related-posts-item"><a class="related-posts-link" href="/embrace-android-studio-gradle-plugin.html">拥抱 Android Studio 之五：Gradle 插件开发</a></li></ul>
@@ -357,30 +344,10 @@ here</a>.</p>
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/monad-megaeth.html" class="thumbnail">
+                            <a href="/en-your-next-coworker-isnt-human.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/monad-megaeth/article-cover.png)" alt="Monad VS MegaETH-Bankless Episode and Debate" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/monad-megaeth.html" class="title">Monad VS MegaETH-Bankless Episode and Debate</a></p>
-                            <p class="item-date"><time datetime="2024-08-24T16:45:55.000Z" itemprop="datePublished">2024-08-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/wbtc.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="WBTC, It’s Time to Upgrade Your Technical Solutions!" class="thumbnail-image"></span>
+        <span style="background-image:url(/en-your-next-coworker-isnt-human/cover.png)" alt="Your Next Coworker Isn&#39;t Human" class="thumbnail-image"></span>
     
     
 </a>
@@ -388,19 +355,39 @@ here</a>.</p>
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/wbtc.html" class="title">WBTC, It’s Time to Upgrade Your Technical Solutions!</a></p>
-                            <p class="item-date"><time datetime="2024-08-13T01:58:57.000Z" itemprop="datePublished">2024-08-13</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
+                            <p class="item-title"><a href="/en-your-next-coworker-isnt-human.html" class="title">Your Next Coworker Isn&#39;t Human</a></p>
+                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/action-and-blink.html" class="thumbnail">
+                            <a href="/your-next-coworker-isnt-human.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/82350295.jpg)" alt="Action And Blink" class="thumbnail-image"></span>
+        <span style="background-image:url(/your-next-coworker-isnt-human/cover.png)" alt="你的下一个同事不是人" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/ai/">ai</a></p>
+                            <p class="item-title"><a href="/your-next-coworker-isnt-human.html" class="title">你的下一个同事不是人</a></p>
+                            <p class="item-date"><time datetime="2026-02-19T16:00:00.000Z" itemprop="datePublished">2026-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/web3-nft-overviews.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-6-18/37420542.jpg)" alt="web3-nft-overviews" class="thumbnail-image"></span>
     
     
 </a>
@@ -409,18 +396,38 @@ here</a>.</p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/action-and-blink.html" class="title">Action And Blink</a></p>
-                            <p class="item-date"><time datetime="2024-07-04T06:58:57.000Z" itemprop="datePublished">2024-07-04</time></p>
+                            <p class="item-title"><a href="/web3-nft-overviews.html" class="title">web3-nft-overviews</a></p>
+                            <p class="item-date"><time datetime="2022-07-05T15:07:14.000Z" itemprop="datePublished">2022-07-05</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/sigweb3-training-primer.html" class="thumbnail">
+                            <a href="/sparse-merkle-tree.html" class="thumbnail">
     
     
-        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="sigweb3-training" class="thumbnail-image"></span>
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/17-10-14/32035268.jpg)" alt="zksync 存储：sparse-merkle-tree 存储" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/code/">code</a></p>
+                            <p class="item-title"><a href="/sparse-merkle-tree.html" class="title">zksync 存储：sparse-merkle-tree 存储</a></p>
+                            <p class="item-date"><time datetime="2021-02-09T12:02:00.000Z" itemprop="datePublished">2021-02-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/smart-wallet.html" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://raw.githubusercontent.com/changbinhe/images/master/16-10-8/42991917.jpg)" alt="关于智能钱包" class="thumbnail-image"></span>
     
     
 </a>
@@ -429,28 +436,8 @@ here</a>.</p>
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/blockchain/">blockchain</a></p>
-                            <p class="item-title"><a href="/sigweb3-training-primer.html" class="title">sigweb3-training</a></p>
-                            <p class="item-date"><time datetime="2024-02-14T15:20:59.000Z" itemprop="datePublished">2024-02-14</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/en-sigweb3-btc-exp-programme.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://raw.githubusercontent.com/0xkevinhe/images/master/blog/sigweb3-btc-exp-programme/sigweb3-btc-exp-programme-title.png)" alt="SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web3/">web3</a></p>
-                            <p class="item-title"><a href="/en-sigweb3-btc-exp-programme.html" class="title">SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP</a></p>
-                            <p class="item-date"><time datetime="2023-12-15T06:58:57.000Z" itemprop="datePublished">2023-12-15</time></p>
+                            <p class="item-title"><a href="/smart-wallet.html" class="title">关于智能钱包</a></p>
+                            <p class="item-date"><time datetime="2021-01-13T01:58:57.000Z" itemprop="datePublished">2021-01-13</time></p>
                         </div>
                     </li>
                 
@@ -463,7 +450,7 @@ here</a>.</p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">6</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ai/">ai</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blockchain/">blockchain</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/code/">code</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/personal/">personal</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/product/">product</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/reading/">reading</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web3/">web3</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -473,7 +460,7 @@ here</a>.</p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">七月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">二月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">二月 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -483,7 +470,7 @@ here</a>.</p>
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/" rel="tag">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/" rel="tag">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/" rel="tag">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/" rel="tag">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" rel="tag">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/" rel="tag">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bitcoin/" rel="tag">bitcoin</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/" rel="tag">blockchain</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/crypto/" rel="tag">crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/" rel="tag">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/" rel="tag">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/" rel="tag">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/" rel="tag">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solana/" rel="tag">solana</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/training/" rel="tag">training</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/" rel="tag">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/" rel="tag">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%AA%E4%BA%BA/" rel="tag">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%A7%E5%93%81/" rel="tag">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" rel="tag">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" rel="tag">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" rel="tag">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" rel="tag">程序员必读</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Agent/">Agent</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Android/">Android</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/COCO/">COCO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DeFi/">DeFi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/EmbraceAndroidStudio/">EmbraceAndroidStudio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle/">Gradle</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gradle-技巧/">Gradle 技巧</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDK/">SDK</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Teamwork/">Teamwork</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/defi/">defi</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/education/">education</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macOS/">macOS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nft/">nft</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wallet/">wallet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zkp/">zkp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人/">个人</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/产品/">产品</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/后端/">后端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/团队协作/">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拥抱-Android-Studio/">拥抱 Android Studio</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/用户体验/">用户体验</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/社会心理学/">社会心理学</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/程序员必读/">程序员必读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -493,7 +480,7 @@ here</a>.</p>
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 18px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-%E6%8A%80%E5%B7%A7/" style="font-size: 12px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/bitcoin/" style="font-size: 16px;">bitcoin</a> <a href="/tags/blockchain/" style="font-size: 14px;">blockchain</a> <a href="/tags/crypto/" style="font-size: 10px;">crypto</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/solana/" style="font-size: 10px;">solana</a> <a href="/tags/training/" style="font-size: 10px;">training</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/%E4%B8%AA%E4%BA%BA/" style="font-size: 10px;">个人</a> <a href="/tags/%E4%BA%A7%E5%93%81/" style="font-size: 14px;">产品</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 10px;">后端</a> <a href="/tags/%E6%8B%A5%E6%8A%B1-Android-Studio/" style="font-size: 18px;">拥抱 Android Studio</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/" style="font-size: 14px;">用户体验</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/" style="font-size: 10px;">社会心理学</a> <a href="/tags/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%BF%85%E8%AF%BB/" style="font-size: 10px;">程序员必读</a>
+            <a href="/tags/AI/" style="font-size: 12.5px;">AI</a> <a href="/tags/Agent/" style="font-size: 12.5px;">Agent</a> <a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/COCO/" style="font-size: 12.5px;">COCO</a> <a href="/tags/DeFi/" style="font-size: 10px;">DeFi</a> <a href="/tags/EmbraceAndroidStudio/" style="font-size: 17.5px;">EmbraceAndroidStudio</a> <a href="/tags/Gradle/" style="font-size: 10px;">Gradle</a> <a href="/tags/Gradle-技巧/" style="font-size: 12.5px;">Gradle 技巧</a> <a href="/tags/SDK/" style="font-size: 10px;">SDK</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Teamwork/" style="font-size: 10px;">Teamwork</a> <a href="/tags/blockchain/" style="font-size: 10px;">blockchain</a> <a href="/tags/defi/" style="font-size: 10px;">defi</a> <a href="/tags/education/" style="font-size: 10px;">education</a> <a href="/tags/macOS/" style="font-size: 12.5px;">macOS</a> <a href="/tags/nft/" style="font-size: 10px;">nft</a> <a href="/tags/wallet/" style="font-size: 10px;">wallet</a> <a href="/tags/zkp/" style="font-size: 10px;">zkp</a> <a href="/tags/个人/" style="font-size: 10px;">个人</a> <a href="/tags/产品/" style="font-size: 15px;">产品</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/团队协作/" style="font-size: 10px;">团队协作</a> <a href="/tags/拥抱-Android-Studio/" style="font-size: 17.5px;">拥抱 Android Studio</a> <a href="/tags/用户体验/" style="font-size: 15px;">用户体验</a> <a href="/tags/社会心理学/" style="font-size: 10px;">社会心理学</a> <a href="/tags/程序员必读/" style="font-size: 10px;">程序员必读</a>
         </div>
     </div>
 
@@ -539,7 +526,7 @@ here</a>.</p>
                 <h1 class="logo-wrap">
                     <a href="/" class="logo"></a>
                 </h1>
-                <p>&copy; 2024 0xkevinhe</p>
+                <p>&copy; 2026 Kevin He</p>
                 <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
             </div>
             <div class="footer-plugins">
@@ -575,9 +562,7 @@ here</a>.</p>
 <script src="/libs/bootstrap/bootstrap.min.js"></script>
 
 <!-- Custom Scripts -->
-
 <script src="/js/main.js"></script>
-
 
 
         <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
