@@ -19,7 +19,7 @@
 <meta property='og:type' content='article'><meta property='article:section' content='Page' />
 <meta name="twitter:site" content="@0xkevinhe">
     <meta name="twitter:creator" content="@0xkevinhe"><meta name="twitter:title" content="Search">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content=""><link rel="alternate" type="application/json" href="https://kevinhe.io/search/index.json"><link rel="preload" href="/search/index.json" as="fetch" crossorigin="anonymous">
     </head>
     <body class="template-search">
     <script>
@@ -45,7 +45,7 @@
     })();
 </script>
 <div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky compact">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
         </span>
@@ -277,7 +277,7 @@
 
 
 
-                        <span></span>
+                        <span>暗色模式</span>
                     </li>
                 
             </ol>
@@ -286,13 +286,13 @@
 </aside>
 
             <main class="main full-width">
-<form action="/search/" class="search-form">
+<form action="/search/" class="search-form"data-json="/search/index.json">
     <p>
-        <label></label>
-        <input name="keyword" placeholder="" />
+        <label>搜索</label>
+        <input name="keyword" placeholder="输入关键词..." />
     </p>
 
-    <button title="">
+    <button title="搜索">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="10" cy="10" r="7" />
@@ -310,7 +310,7 @@
 </div>
 
 <script>
-    window.searchResultTitleTemplate = ""
+    window.searchResultTitleTemplate = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
 </script><script type="text/javascript" src="/ts/search.js" defer></script>
 
 <footer class="site-footer">
@@ -323,8 +323,8 @@
     </section>
     
     <section class="powerby">
-         <br />
-        
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="4.0.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
 </footer>
 
