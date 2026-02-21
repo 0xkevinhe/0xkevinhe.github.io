@@ -2,15 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Kevin He&#39;s Website | e/acc</title>
   
-  
+  <subtitle>Builder in AI &amp; Web3</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://0xkevinhe.xyz/"/>
+  <link href="https://kevinhe.io/"/>
   <updated>2026-02-20T02:26:03.908Z</updated>
-  <id>https://0xkevinhe.xyz/</id>
+  <id>https://kevinhe.io/</id>
   
   <author>
-    <name>0xkevinhe</name>
+    <name>Kevin He</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Your Next Coworker Isn&#39;t Human</title>
-    <link href="https://0xkevinhe.xyz/en-your-next-coworker-isnt-human.html"/>
-    <id>https://0xkevinhe.xyz/en-your-next-coworker-isnt-human.html</id>
+    <link href="https://kevinhe.io/en-your-next-coworker-isnt-human.html"/>
+    <id>https://kevinhe.io/en-your-next-coworker-isnt-human.html</id>
     <published>2026-02-19T16:00:00.000Z</published>
     <updated>2026-02-20T02:26:03.908Z</updated>
     
@@ -36,23 +36,23 @@
     
     </summary>
     
-      <category term="ai" scheme="https://0xkevinhe.xyz/categories/ai/"/>
+      <category term="ai" scheme="https://kevinhe.io/categories/ai/"/>
     
     
-      <category term="Agent" scheme="https://0xkevinhe.xyz/tags/Agent/"/>
+      <category term="Agent" scheme="https://kevinhe.io/tags/Agent/"/>
     
-      <category term="AI" scheme="https://0xkevinhe.xyz/tags/AI/"/>
+      <category term="AI" scheme="https://kevinhe.io/tags/AI/"/>
     
-      <category term="Teamwork" scheme="https://0xkevinhe.xyz/tags/Teamwork/"/>
+      <category term="Teamwork" scheme="https://kevinhe.io/tags/Teamwork/"/>
     
-      <category term="COCO" scheme="https://0xkevinhe.xyz/tags/COCO/"/>
+      <category term="COCO" scheme="https://kevinhe.io/tags/COCO/"/>
     
   </entry>
   
   <entry>
     <title>你的下一个同事不是人</title>
-    <link href="https://0xkevinhe.xyz/your-next-coworker-isnt-human.html"/>
-    <id>https://0xkevinhe.xyz/your-next-coworker-isnt-human.html</id>
+    <link href="https://kevinhe.io/your-next-coworker-isnt-human.html"/>
+    <id>https://kevinhe.io/your-next-coworker-isnt-human.html</id>
     <published>2026-02-19T16:00:00.000Z</published>
     <updated>2026-02-20T02:25:59.046Z</updated>
     
@@ -70,23 +70,23 @@
     
     </summary>
     
-      <category term="ai" scheme="https://0xkevinhe.xyz/categories/ai/"/>
+      <category term="ai" scheme="https://kevinhe.io/categories/ai/"/>
     
     
-      <category term="Agent" scheme="https://0xkevinhe.xyz/tags/Agent/"/>
+      <category term="Agent" scheme="https://kevinhe.io/tags/Agent/"/>
     
-      <category term="AI" scheme="https://0xkevinhe.xyz/tags/AI/"/>
+      <category term="AI" scheme="https://kevinhe.io/tags/AI/"/>
     
-      <category term="COCO" scheme="https://0xkevinhe.xyz/tags/COCO/"/>
+      <category term="COCO" scheme="https://kevinhe.io/tags/COCO/"/>
     
-      <category term="团队协作" scheme="https://0xkevinhe.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
+      <category term="团队协作" scheme="https://kevinhe.io/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/"/>
     
   </entry>
   
   <entry>
     <title>15 年帮 600 人找工作后，我决定不再做招聘了</title>
-    <link href="https://0xkevinhe.xyz/coco-from-ai-recruiting-to-ai-cofounder.html"/>
-    <id>https://0xkevinhe.xyz/coco-from-ai-recruiting-to-ai-cofounder.html</id>
+    <link href="https://kevinhe.io/coco-from-ai-recruiting-to-ai-cofounder.html"/>
+    <id>https://kevinhe.io/coco-from-ai-recruiting-to-ai-cofounder.html</id>
     <published>2026-01-27T10:00:00.000Z</published>
     <updated>2026-02-20T02:15:36.958Z</updated>
     
@@ -105,21 +105,21 @@
     
     </summary>
     
-      <category term="ai" scheme="https://0xkevinhe.xyz/categories/ai/"/>
+      <category term="ai" scheme="https://kevinhe.io/categories/ai/"/>
     
     
-      <category term="ai" scheme="https://0xkevinhe.xyz/tags/ai/"/>
+      <category term="ai" scheme="https://kevinhe.io/tags/ai/"/>
     
-      <category term="startup" scheme="https://0xkevinhe.xyz/tags/startup/"/>
+      <category term="startup" scheme="https://kevinhe.io/tags/startup/"/>
     
-      <category term="pivot" scheme="https://0xkevinhe.xyz/tags/pivot/"/>
+      <category term="pivot" scheme="https://kevinhe.io/tags/pivot/"/>
     
   </entry>
   
   <entry>
     <title>After 15 Years Helping 600 People Find Jobs, I Decided to Stop Doing Recruiting</title>
-    <link href="https://0xkevinhe.xyz/en-coco-from-ai-recruiting-to-ai-cofounder.html"/>
-    <id>https://0xkevinhe.xyz/en-coco-from-ai-recruiting-to-ai-cofounder.html</id>
+    <link href="https://kevinhe.io/en-coco-from-ai-recruiting-to-ai-cofounder.html"/>
+    <id>https://kevinhe.io/en-coco-from-ai-recruiting-to-ai-cofounder.html</id>
     <published>2026-01-27T10:00:00.000Z</published>
     <updated>2026-02-20T02:15:36.971Z</updated>
     
@@ -136,21 +136,21 @@ in Recruiting&lt;/h2&gt;
     
     </summary>
     
-      <category term="ai" scheme="https://0xkevinhe.xyz/categories/ai/"/>
+      <category term="ai" scheme="https://kevinhe.io/categories/ai/"/>
     
     
-      <category term="ai" scheme="https://0xkevinhe.xyz/tags/ai/"/>
+      <category term="ai" scheme="https://kevinhe.io/tags/ai/"/>
     
-      <category term="startup" scheme="https://0xkevinhe.xyz/tags/startup/"/>
+      <category term="startup" scheme="https://kevinhe.io/tags/startup/"/>
     
-      <category term="pivot" scheme="https://0xkevinhe.xyz/tags/pivot/"/>
+      <category term="pivot" scheme="https://kevinhe.io/tags/pivot/"/>
     
   </entry>
   
   <entry>
     <title>共识之迷：一文读懂比特币升级社区进展</title>
-    <link href="https://0xkevinhe.xyz/bitcoin-next-upgrade-cn.html"/>
-    <id>https://0xkevinhe.xyz/bitcoin-next-upgrade-cn.html</id>
+    <link href="https://kevinhe.io/bitcoin-next-upgrade-cn.html"/>
+    <id>https://kevinhe.io/bitcoin-next-upgrade-cn.html</id>
     <published>2024-11-30T16:45:55.000Z</published>
     <updated>2026-02-20T02:15:36.944Z</updated>
     
@@ -167,17 +167,17 @@ in Recruiting&lt;/h2&gt;
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/tags/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/tags/blockchain/"/>
     
   </entry>
   
   <entry>
     <title>A Brief Report on Bitcoin&#39;s Next Upgrade for All</title>
-    <link href="https://0xkevinhe.xyz/bitcoin-next-upgrade.html"/>
-    <id>https://0xkevinhe.xyz/bitcoin-next-upgrade.html</id>
+    <link href="https://kevinhe.io/bitcoin-next-upgrade.html"/>
+    <id>https://kevinhe.io/bitcoin-next-upgrade.html</id>
     <published>2024-11-30T16:45:55.000Z</published>
     <updated>2026-02-20T02:15:36.945Z</updated>
     
@@ -194,17 +194,17 @@ on Bitcoin&#39;s Next Upgrade for All&lt;/h1&gt;
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/tags/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/tags/blockchain/"/>
     
   </entry>
   
   <entry>
     <title>Monad VS MegaETH-Bankless Episode and Debate</title>
-    <link href="https://0xkevinhe.xyz/monad-megaeth.html"/>
-    <id>https://0xkevinhe.xyz/monad-megaeth.html</id>
+    <link href="https://kevinhe.io/monad-megaeth.html"/>
+    <id>https://kevinhe.io/monad-megaeth.html</id>
     <published>2024-08-24T16:45:55.000Z</published>
     <updated>2026-02-20T02:15:36.981Z</updated>
     
@@ -222,17 +222,17 @@ blockchain is popular, let&#39;s discorver:&lt;/p&gt;
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/tags/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/tags/blockchain/"/>
     
   </entry>
   
   <entry>
     <title>WBTC, It’s Time to Upgrade Your Technical Solutions!</title>
-    <link href="https://0xkevinhe.xyz/wbtc.html"/>
-    <id>https://0xkevinhe.xyz/wbtc.html</id>
+    <link href="https://kevinhe.io/wbtc.html"/>
+    <id>https://kevinhe.io/wbtc.html</id>
     <published>2024-08-13T01:58:57.000Z</published>
     <updated>2026-02-20T02:15:36.988Z</updated>
     
@@ -249,17 +249,17 @@ regarding the transfer of contro
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="crypto" scheme="https://0xkevinhe.xyz/tags/crypto/"/>
+      <category term="crypto" scheme="https://kevinhe.io/tags/crypto/"/>
     
   </entry>
   
   <entry>
     <title>Action And Blink</title>
-    <link href="https://0xkevinhe.xyz/action-and-blink.html"/>
-    <id>https://0xkevinhe.xyz/action-and-blink.html</id>
+    <link href="https://kevinhe.io/action-and-blink.html"/>
+    <id>https://kevinhe.io/action-and-blink.html</id>
     <published>2024-07-04T06:58:57.000Z</published>
     <updated>2026-02-20T02:15:36.928Z</updated>
     
@@ -278,17 +278,17 @@ regarding the transfer of contro
     
     </summary>
     
-      <category term="web3" scheme="https://0xkevinhe.xyz/categories/web3/"/>
+      <category term="web3" scheme="https://kevinhe.io/categories/web3/"/>
     
     
-      <category term="solana" scheme="https://0xkevinhe.xyz/tags/solana/"/>
+      <category term="solana" scheme="https://kevinhe.io/tags/solana/"/>
     
   </entry>
   
   <entry>
     <title>sigweb3-training</title>
-    <link href="https://0xkevinhe.xyz/sigweb3-training-primer.html"/>
-    <id>https://0xkevinhe.xyz/sigweb3-training-primer.html</id>
+    <link href="https://kevinhe.io/sigweb3-training-primer.html"/>
+    <id>https://kevinhe.io/sigweb3-training-primer.html</id>
     <published>2024-02-14T15:20:59.000Z</published>
     <updated>2026-02-20T02:15:36.987Z</updated>
     
@@ -306,17 +306,17 @@ regarding the transfer of contro
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="training" scheme="https://0xkevinhe.xyz/tags/training/"/>
+      <category term="training" scheme="https://kevinhe.io/tags/training/"/>
     
   </entry>
   
   <entry>
     <title>SIGWeb3 Launches BTC Ecosystem Exploration Project - BTC-EXP</title>
-    <link href="https://0xkevinhe.xyz/en-sigweb3-btc-exp-programme.html"/>
-    <id>https://0xkevinhe.xyz/en-sigweb3-btc-exp-programme.html</id>
+    <link href="https://kevinhe.io/en-sigweb3-btc-exp-programme.html"/>
+    <id>https://kevinhe.io/en-sigweb3-btc-exp-programme.html</id>
     <published>2023-12-15T06:58:57.000Z</published>
     <updated>2026-02-20T02:15:36.981Z</updated>
     
@@ -333,17 +333,17 @@ halving) are related to the BTC
     
     </summary>
     
-      <category term="web3" scheme="https://0xkevinhe.xyz/categories/web3/"/>
+      <category term="web3" scheme="https://kevinhe.io/categories/web3/"/>
     
     
-      <category term="bitcoin" scheme="https://0xkevinhe.xyz/tags/bitcoin/"/>
+      <category term="bitcoin" scheme="https://kevinhe.io/tags/bitcoin/"/>
     
   </entry>
   
   <entry>
     <title>SIGWeb3 发布BTC 生态探索项目——BTC-EXP</title>
-    <link href="https://0xkevinhe.xyz/sigweb3-btc-exp-programme.html"/>
-    <id>https://0xkevinhe.xyz/sigweb3-btc-exp-programme.html</id>
+    <link href="https://kevinhe.io/sigweb3-btc-exp-programme.html"/>
+    <id>https://kevinhe.io/sigweb3-btc-exp-programme.html</id>
     <published>2023-12-14T06:58:57.000Z</published>
     <updated>2026-02-20T02:15:36.987Z</updated>
     
@@ -362,17 +362,17 @@ halving) are related to the BTC
     
     </summary>
     
-      <category term="web3" scheme="https://0xkevinhe.xyz/categories/web3/"/>
+      <category term="web3" scheme="https://kevinhe.io/categories/web3/"/>
     
     
-      <category term="bitcoin" scheme="https://0xkevinhe.xyz/tags/bitcoin/"/>
+      <category term="bitcoin" scheme="https://kevinhe.io/tags/bitcoin/"/>
     
   </entry>
   
   <entry>
     <title>比特币生态分析-建立框架</title>
-    <link href="https://0xkevinhe.xyz/bitcoin-ecosystem-overviews.html"/>
-    <id>https://0xkevinhe.xyz/bitcoin-ecosystem-overviews.html</id>
+    <link href="https://kevinhe.io/bitcoin-ecosystem-overviews.html"/>
+    <id>https://kevinhe.io/bitcoin-ecosystem-overviews.html</id>
     <published>2023-12-11T03:18:16.000Z</published>
     <updated>2026-02-20T02:15:36.940Z</updated>
     
@@ -392,17 +392,17 @@ Layer2，可谓百花齐放，百家争鸣。&lt;/p&gt;
     
     </summary>
     
-      <category term="web3" scheme="https://0xkevinhe.xyz/categories/web3/"/>
+      <category term="web3" scheme="https://kevinhe.io/categories/web3/"/>
     
     
-      <category term="bitcoin" scheme="https://0xkevinhe.xyz/tags/bitcoin/"/>
+      <category term="bitcoin" scheme="https://kevinhe.io/tags/bitcoin/"/>
     
   </entry>
   
   <entry>
     <title>Bitcoin Ecosystem Analysis - Establishing a Framework</title>
-    <link href="https://0xkevinhe.xyz/en-bitcoin-ecosystem-overviews.html"/>
-    <id>https://0xkevinhe.xyz/en-bitcoin-ecosystem-overviews.html</id>
+    <link href="https://kevinhe.io/en-bitcoin-ecosystem-overviews.html"/>
+    <id>https://kevinhe.io/en-bitcoin-ecosystem-overviews.html</id>
     <published>2023-12-11T03:18:16.000Z</published>
     <updated>2026-02-20T02:15:36.971Z</updated>
     
@@ -419,17 +419,17 @@ can definitely be considered part of the
     
     </summary>
     
-      <category term="web3" scheme="https://0xkevinhe.xyz/categories/web3/"/>
+      <category term="web3" scheme="https://kevinhe.io/categories/web3/"/>
     
     
-      <category term="bitcoin" scheme="https://0xkevinhe.xyz/tags/bitcoin/"/>
+      <category term="bitcoin" scheme="https://kevinhe.io/tags/bitcoin/"/>
     
   </entry>
   
   <entry>
     <title>blockchain-governance</title>
-    <link href="https://0xkevinhe.xyz/blockchain-governance.html"/>
-    <id>https://0xkevinhe.xyz/blockchain-governance.html</id>
+    <link href="https://kevinhe.io/blockchain-governance.html"/>
+    <id>https://kevinhe.io/blockchain-governance.html</id>
     <published>2022-10-07T00:47:42.000Z</published>
     <updated>2026-02-20T02:15:36.958Z</updated>
     
@@ -449,17 +449,17 @@ https://twitter.com/BNBCHAIN/status/1578148078636650496&lt;/p&gt;&lt;/li&gt;
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/tags/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/tags/blockchain/"/>
     
   </entry>
   
   <entry>
     <title>web3-nft-overviews</title>
-    <link href="https://0xkevinhe.xyz/web3-nft-overviews.html"/>
-    <id>https://0xkevinhe.xyz/web3-nft-overviews.html</id>
+    <link href="https://kevinhe.io/web3-nft-overviews.html"/>
+    <id>https://kevinhe.io/web3-nft-overviews.html</id>
     <published>2022-07-05T15:07:14.000Z</published>
     <updated>2026-02-20T01:50:55.112Z</updated>
     
@@ -476,17 +476,17 @@ the audience was a group of Tesla owners.&lt;/p&gt;
     
     </summary>
     
-      <category term="web3" scheme="https://0xkevinhe.xyz/categories/web3/"/>
+      <category term="web3" scheme="https://kevinhe.io/categories/web3/"/>
     
     
-      <category term="nft" scheme="https://0xkevinhe.xyz/tags/nft/"/>
+      <category term="nft" scheme="https://kevinhe.io/tags/nft/"/>
     
   </entry>
   
   <entry>
     <title>zksync 存储：sparse-merkle-tree 存储</title>
-    <link href="https://0xkevinhe.xyz/sparse-merkle-tree.html"/>
-    <id>https://0xkevinhe.xyz/sparse-merkle-tree.html</id>
+    <link href="https://kevinhe.io/sparse-merkle-tree.html"/>
+    <id>https://kevinhe.io/sparse-merkle-tree.html</id>
     <published>2021-02-09T12:02:00.000Z</published>
     <updated>2026-02-20T01:50:55.112Z</updated>
     
@@ -504,17 +504,17 @@ the audience was a group of Tesla owners.&lt;/p&gt;
     
     </summary>
     
-      <category term="code" scheme="https://0xkevinhe.xyz/categories/code/"/>
+      <category term="code" scheme="https://kevinhe.io/categories/code/"/>
     
     
-      <category term="zkp" scheme="https://0xkevinhe.xyz/tags/zkp/"/>
+      <category term="zkp" scheme="https://kevinhe.io/tags/zkp/"/>
     
   </entry>
   
   <entry>
     <title>关于智能钱包</title>
-    <link href="https://0xkevinhe.xyz/smart-wallet.html"/>
-    <id>https://0xkevinhe.xyz/smart-wallet.html</id>
+    <link href="https://kevinhe.io/smart-wallet.html"/>
+    <id>https://kevinhe.io/smart-wallet.html</id>
     <published>2021-01-13T01:58:57.000Z</published>
     <updated>2026-02-20T01:50:55.112Z</updated>
     
@@ -532,17 +532,17 @@ the audience was a group of Tesla owners.&lt;/p&gt;
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="wallet" scheme="https://0xkevinhe.xyz/tags/wallet/"/>
+      <category term="wallet" scheme="https://kevinhe.io/tags/wallet/"/>
     
   </entry>
   
   <entry>
     <title>0x协议-介绍</title>
-    <link href="https://0xkevinhe.xyz/0x-intro.html"/>
-    <id>https://0xkevinhe.xyz/0x-intro.html</id>
+    <link href="https://kevinhe.io/0x-intro.html"/>
+    <id>https://kevinhe.io/0x-intro.html</id>
     <published>2021-01-01T02:49:05.000Z</published>
     <updated>2026-02-20T01:50:55.103Z</updated>
     
@@ -564,17 +564,17 @@ the audience was a group of Tesla owners.&lt;/p&gt;
     
     </summary>
     
-      <category term="blockchain" scheme="https://0xkevinhe.xyz/categories/blockchain/"/>
+      <category term="blockchain" scheme="https://kevinhe.io/categories/blockchain/"/>
     
     
-      <category term="defi" scheme="https://0xkevinhe.xyz/tags/defi/"/>
+      <category term="defi" scheme="https://kevinhe.io/tags/defi/"/>
     
   </entry>
   
   <entry>
     <title>《你就是孩子最好的玩具》读书笔记</title>
-    <link href="https://0xkevinhe.xyz/reading-emotion-coaching.html"/>
-    <id>https://0xkevinhe.xyz/reading-emotion-coaching.html</id>
+    <link href="https://kevinhe.io/reading-emotion-coaching.html"/>
+    <id>https://kevinhe.io/reading-emotion-coaching.html</id>
     <published>2020-10-05T10:05:12.000Z</published>
     <updated>2026-02-20T01:50:55.108Z</updated>
     
@@ -592,10 +592,10 @@ the audience was a group of Tesla owners.&lt;/p&gt;
     
     </summary>
     
-      <category term="reading" scheme="https://0xkevinhe.xyz/categories/reading/"/>
+      <category term="reading" scheme="https://kevinhe.io/categories/reading/"/>
     
     
-      <category term="education" scheme="https://0xkevinhe.xyz/tags/education/"/>
+      <category term="education" scheme="https://kevinhe.io/tags/education/"/>
     
   </entry>
   
