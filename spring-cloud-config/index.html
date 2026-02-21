@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。\n配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。\n">
+<title>Spring Cloud 配置中心</title>
+
+
+<link rel="canonical" href="https://kevinhe.io/spring-cloud-config/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.390cc81d180d80110703ea467e355a4f3a0f44f25d4e957842790824fb5f2ef2.css"><meta property='og:title' content="Spring Cloud 配置中心">
+<meta property='og:description' content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。\n配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。\n">
+<meta property='og:url' content='https://kevinhe.io/spring-cloud-config/'>
+<meta property='og:site_name' content='Kevin He&#39;s Website'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Spring' /><meta property='article:published_time' content='2017-10-13T23:18:16&#43;00:00'/><meta property='article:modified_time' content='2017-10-13T23:18:16&#43;00:00'/><meta property='og:image' content='https://kevinhe.io/spring-cloud-config/cover.jpg' />
+<meta name="twitter:site" content="@0xkevinhe">
+    <meta name="twitter:creator" content="@0xkevinhe"><meta name="twitter:title" content="Spring Cloud 配置中心">
+<meta name="twitter:description" content="闲话配置 老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。\n配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kevinhe.io/spring-cloud-config/cover.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/avatar.jpg" 
+                        width="430"
+                        height="70"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Kevin He&#39;s Website</a></h1>
+            <h2 class="site-description">Builder in AI &amp; Web3</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/kevinho'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/0xkevinhe'
+                        
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    <li id="i18n-switch">  
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            
+                                
+                                
+                                    
+                                        
+                                    
+                                
+                                <option value="/spring-cloud-config/" selected>中文</option>
+                            
+                                
+                                
+                                    
+                                
+                                <option value="/en/" >English</option>
+                            
+                        </select>
+                    </li>
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span></span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title"></h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ol>
+    <li><a href="#这还不够">这还不够</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#实操进阶">实操进阶</a>
+      <ol>
+        <li><a href="#热更新">热更新</a></li>
+        <li><a href="#添加权限">添加权限</a></li>
+        <li><a href="#加载多组配置文件">加载多组配置文件</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li><a href="#eventlistener-与-spel">@EventListener 与 SpEL</a></li>
+    <li><a href="#权限管理">权限管理</a></li>
+    <li><a href="#json-文件的读取和解析">JSON 文件的读取和解析</a></li>
+  </ol>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/categories/web3/">
+                Web3
+            </a>
+        
+            <a href="/categories/code/">
+                Code
+            </a>
+        
+            <a href="/categories/ai/">
+                Ai
+            </a>
+        
+            <a href="/categories/product/">
+                Product
+            </a>
+        
+            <a href="/categories/reading/">
+                Reading
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/tags/ai/">
+                AI
+            </a>
+        
+            <a href="/tags/bitcoin/">
+                Bitcoin
+            </a>
+        
+            <a href="/tags/defi/">
+                Defi
+            </a>
+        
+            <a href="/tags/%E4%BA%A7%E5%93%81/">
+                产品
+            </a>
+        
+            <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/">
+                用户体验
+            </a>
+        
+            <a href="/tags/agent/">
+                Agent
+            </a>
+        
+            <a href="/tags/coco/">
+                COCO
+            </a>
+        
+            <a href="/tags/crypto/">
+                Crypto
+            </a>
+        
+            <a href="/tags/education/">
+                Education
+            </a>
+        
+            <a href="/tags/nft/">
+                Nft
+            </a>
+        
+            <a href="/tags/pivot/">
+                Pivot
+            </a>
+        
+            <a href="/tags/solana/">
+                Solana
+            </a>
+        
+            <a href="/tags/spring/">
+                Spring
+            </a>
+        
+            <a href="/tags/startup/">
+                Startup
+            </a>
+        
+            <a href="/tags/training/">
+                Training
+            </a>
+        
+            <a href="/tags/wallet/">
+                Wallet
+            </a>
+        
+            <a href="/tags/zkp/">
+                Zkp
+            </a>
+        
+            <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">
+                团队协作
+            </a>
+        
+            <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/">
+                社会心理学
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+    <div class="article-image">
+        <a href="/spring-cloud-config/">
+            <img src="/spring-cloud-config/cover.jpg" width="1280" height="1920" loading="lazy"
+                alt="Featured image of post Spring Cloud 配置中心" />
+        </a>
+    </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/code/" style="background-color: hsl(164, 60%, 84%); color: hsl(164, 60%, 15%);">
+                Code
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/spring-cloud-config/">Spring Cloud 配置中心</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2017-10-13T23:18:16Z'>Friday, October 13, 2017</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span></span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ol>
+    <li><a href="#这还不够">这还不够</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#实操进阶">实操进阶</a>
+      <ol>
+        <li><a href="#热更新">热更新</a></li>
+        <li><a href="#添加权限">添加权限</a></li>
+        <li><a href="#加载多组配置文件">加载多组配置文件</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li><a href="#eventlistener-与-spel">@EventListener 与 SpEL</a></li>
+    <li><a href="#权限管理">权限管理</a></li>
+    <li><a href="#json-文件的读取和解析">JSON 文件的读取和解析</a></li>
+  </ol>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <h1 id="闲话配置"><a href="#%e9%97%b2%e8%af%9d%e9%85%8d%e7%bd%ae" class="header-anchor"></a>闲话配置
+</h1><p>老司机都喜欢在程序设计中尽可能的把各种参数做成可配置的，等到产品需求发生改动的时候，优雅的修改一行配置，重新加载一次配置，就满足了需求。</p>
+
+    <blockquote>
+        <p>配置（Configuration）是不修改代码的情况下，对程序的运行调整的能力。</p>
+
+    </blockquote>
+<p>简单来讲，配置可以分成两类：</p>
+<ol>
+<li>系统配置：包括线程池大小、数据库连接等，变化频率较低</li>
+<li>业务配置：功能开关，功能参数等，变化较为频繁</li>
+</ol>
+<p>程序的配置一般而言，分为几个环境：</p>
+<ol>
+<li>开发环境</li>
+<li>测试环境</li>
+<li>生产环境</li>
+</ol>
+<p>这几个环境的配置是有差异的，所以配置管理功能应当能够根据当前环境读取对应的配置。</p>
+<p>前面提到的不修改代码，只是最低要求，相当多的情况下，程序是不能停机的，这就提出了热更新的需求。</p>
+<p>另外，配置的修改应该是有记录可追溯的。</p>
+<h1 id="spring-boot-的配置管理"><a href="#spring-boot-%e7%9a%84%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86" class="header-anchor"></a>Spring Boot 的配置管理
+</h1><p>Spring 实现了非常友好的配置读取方式，</p>
+<p>Spring Boot 程序默认使用 application.properties 进行配置。</p>
+<p>例如一个参数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flag=0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在程序中可以通过：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Value(&#34;${flag})
+</span></span><span class="line"><span class="cl">int flag;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>来读取。</p>
+<p>也可以通过设置多个配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">application.properties
+</span></span><span class="line"><span class="cl">application-dev.properties
+</span></span><span class="line"><span class="cl">application-test.properties
+</span></span><span class="line"><span class="cl">application-prod.properties
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>application-dev.properties</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flag=1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>application-test.properties</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flag=2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>application-prod.properties</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">flag=3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>和在 application.properties 中声明当前的活跃的 profile：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring.profiles.active=dev
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>来实现根据运行环境切换配置信息。</p>
+<p>以上只是 Spring 强大的配置能力的冰山一角，有兴趣可以参考<a class="link" href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html"  target="_blank" rel="noopener"
+    >外部配置文档</a>。</p>
+<h2 id="这还不够"><a href="#%e8%bf%99%e8%bf%98%e4%b8%8d%e5%a4%9f" class="header-anchor"></a>这还不够
+</h2><p>其实以上描述的 Spring Boot 的配置能力已经很强了，但是有个很致命的问题——无法热更新。</p>
+<p>如果非得实现热更新，那可以把配置做成 JSON 文件，再实现一个 endpoint，重新读取一次配置。</p>
+<p>假设有一千个实例呢？</p>
+<h1 id="spring-cloud-config"><a href="#spring-cloud-config" class="header-anchor"></a>Spring Cloud Config
+</h1><p>项目 github：<a class="link" href="https://github.com/spring-cloud/spring-cloud-config"  target="_blank" rel="noopener"
+    >https://github.com/spring-cloud/spring-cloud-config</a></p>
+<p>简介：External configuration (server and client) for Spring Cloud</p>
+<p>这个项目包含两部分：</p>
+<ul>
+<li>Server</li>
+</ul>
+<p>负责从 git/svn 等版本管理系统中读取配置，并以 http 的方式提供服务。</p>
+<ul>
+<li>Client</li>
+</ul>
+<p>根据客户端配置，从指定的 Server 中读取对应配置，并且与 Spring 本身的 PropertyResource 和 Environment 无缝结合。同时，提供了统一的方式进行配置热更新。</p>
+<p>对于这个系统的基础配置和运行，可以参阅下面两个 url：</p>
+<p><a class="link" href="https://spring.io/guides/gs/centralized-configuration/"  target="_blank" rel="noopener"
+    >https://spring.io/guides/gs/centralized-configuration/</a></p>
+<p><a class="link" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/"  target="_blank" rel="noopener"
+    >http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
+<h2 id="实操进阶"><a href="#%e5%ae%9e%e6%93%8d%e8%bf%9b%e9%98%b6" class="header-anchor"></a>实操进阶
+</h2><h3 id="热更新"><a href="#%e7%83%ad%e6%9b%b4%e6%96%b0" class="header-anchor"></a>热更新
+</h3><p>Spring Cloud Config 实现了非常优雅的热更新。</p>
+<ul>
+<li>客户端的配置 Bean 添加 @RefreshScope</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Configuration
+</span></span><span class="line"><span class="cl">@RefreshScope
+</span></span><span class="line"><span class="cl">public class ConsumeConfig {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Value(&#34;${consume.desc}&#34;)
+</span></span><span class="line"><span class="cl">    private String consumeDesc;
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    @Value(&#34;#{&#39;${api.server.round.card}&#39;.split(&#39;,&#39;)}&#34;)
+</span></span><span class="line"><span class="cl">    private List&lt;String&gt; cardList;
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在配置这个注解之后，调用客户端的 /refresh endpoint，这个 Bean 就会刷新，同时个 Bean 的依赖方下次方法调用时也会更新 Bean 引用。</p>
+<p>有些时候，你需要监听这个更新事件，把拿到的最新配置，重新初始化一些部件。那你可以添加：
+<code>@EventListener(EnvironmentChangeEvent.class)</code> 这个 annotation。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">@Component
+</span></span><span class="line"><span class="cl">public class ConsumeService {
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @Autowired
+</span></span><span class="line"><span class="cl">    ConsumeConfig consumeConfig;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    @EventListener(EnvironmentChangeEvent.class)
+</span></span><span class="line"><span class="cl">    void onEnvChange() {
+</span></span><span class="line"><span class="cl">        //do re-init stuff
+</span></span><span class="line"><span class="cl">    }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="添加权限"><a href="#%e6%b7%bb%e5%8a%a0%e6%9d%83%e9%99%90" class="header-anchor"></a>添加权限
+</h3><p>Config Server 任何人都可以通过 http 访问配置，这个不大好，建议加上认证，最简单是使用 Spring-Security 添加一个 basic authentication。</p>
+<ul>
+<li>服务器端配置</li>
+</ul>
+<p>build.gradle 添加依赖：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dependencies {
+</span></span><span class="line"><span class="cl">    compile(&#39;org.springframework.boot:spring-boot-starter-security&#39;)
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>application.properties 添加密码（用户名默认是 user）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">security.user.password=xxx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启服务器，再次通过 http 访问配置的时候需要验证。</p>
+<ul>
+<li>客户端配置</li>
+</ul>
+<p>服务器端做了验证，那客户端也需要添加相应的配置：</p>
+<p>bootstrap.yml</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring:
+</span></span><span class="line"><span class="cl"> application:
+</span></span><span class="line"><span class="cl">  name: application
+</span></span><span class="line"><span class="cl"> cloud:
+</span></span><span class="line"><span class="cl">  config:
+</span></span><span class="line"><span class="cl">   uri: http://yourhost.com
+</span></span><span class="line"><span class="cl">   profile: dev
+</span></span><span class="line"><span class="cl">   username: user
+</span></span><span class="line"><span class="cl">   password: xxx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="加载多组配置文件"><a href="#%e5%8a%a0%e8%bd%bd%e5%a4%9a%e7%bb%84%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6" class="header-anchor"></a>加载多组配置文件
+</h3><p>很多时候，为了避免 application.properties 过于臃肿，你可能需要把一些配置文件拆出来，例如专门负责邀请奖励的配置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">invite.properties
+</span></span><span class="line"><span class="cl">invite-dev.properties
+</span></span><span class="line"><span class="cl">invite-test.properties
+</span></span><span class="line"><span class="cl">invite-prod.properties
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同样，也区分了多个环境。</p>
+<p>那在使用 Spring Cloud 的时候如何读取这个文件呢？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">spring:
+</span></span><span class="line"><span class="cl"> application:
+</span></span><span class="line"><span class="cl">  name: application,invite
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意上面的 application.name 是以逗号分隔的两组配置名称。</p>
+<h1 id="一些问题"><a href="#%e4%b8%80%e4%ba%9b%e9%97%ae%e9%a2%98" class="header-anchor"></a>一些问题
+</h1><h2 id="eventlistener-与-spel"><a href="#eventlistener-%e4%b8%8e-spel" class="header-anchor"></a>@EventListener 与 SpEL
+</h2><p>我在实际使用中发现，在事件监听函数中，使用更新后的配置的时候：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    @Value(&#34;${consume.desc}&#34;)
+</span></span><span class="line"><span class="cl">    private String consumeDesc;
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    @Value(&#34;#{&#39;${api.server.round.card}&#39;.split(&#39;,&#39;)}&#34;)
+</span></span><span class="line"><span class="cl">    private List&lt;String&gt; cardList;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>第一个配置是使用 @Value 绑定一个字符串类型，第二个配置是使用 @Value 中的 SpEL 去将配置中的字符串，切割成 List。</p>
+<p>我发现第二个，无法切割成功。试验了多次，还没有找到答案。我已经在 Spring Cloud Config 的 github 上提交了 <a class="link" href="https://github.com/spring-cloud/spring-cloud-config/issues/821"  target="_blank" rel="noopener"
+    >issue</a>。</p>
+<p>如果有了解这个的，请不吝赐教。</p>
+
+    <blockquote>
+        <p>update 2017-10-26</p>
+
+    </blockquote>
+<ul>
+<li>我在 github 上提交了 issue： <a class="link" href="https://github.com/spring-cloud/spring-cloud-config/issues/821"  target="_blank" rel="noopener"
+    >https://github.com/spring-cloud/spring-cloud-config/issues/821</a> 得到回复：<code>We have only ever documented that placeholders ${} work, not SpEL.</code></li>
+</ul>
+<h2 id="权限管理"><a href="#%e6%9d%83%e9%99%90%e7%ae%a1%e7%90%86" class="header-anchor"></a>权限管理
+</h2><p>在不做二次开发的情况下，这个配置中心的数据是对所有的 client 开放的。某些情况下，这种设定并不合适。</p>
+<h2 id="json-文件的读取和解析"><a href="#json-%e6%96%87%e4%bb%b6%e7%9a%84%e8%af%bb%e5%8f%96%e5%92%8c%e8%a7%a3%e6%9e%90" class="header-anchor"></a>JSON 文件的读取和解析
+</h2><p>Spring Cloud Config 本身是可以通过 http 来提供 JSON 文件的访问的，但是Spring Boot 原生并不支持 JSON 配置的读取和解析。</p>
+<h1 id="相关选择"><a href="#%e7%9b%b8%e5%85%b3%e9%80%89%e6%8b%a9" class="header-anchor"></a>相关选择
+</h1><p>其实配置管理工具，选择还是不少的，下面列举一下。</p>
+<ul>
+<li>owner <a class="link" href="http://owner.aeonbits.org/"  target="_blank" rel="noopener"
+    >http://owner.aeonbits.org/</a></li>
+</ul>
+<p>配置文件管理，可以热更新，跟 Spring 没有绑定。</p>
+<ul>
+<li>cfg4j <a class="link" href="http://www.cfg4j.org/"  target="_blank" rel="noopener"
+    >http://www.cfg4j.org/</a></li>
+</ul>
+<p>专注管理配置文件，也可以实现热更，跟 Spring 没有绑定。</p>
+<ul>
+<li>applolo <a class="link" href="https://github.com/ctripcorp/apollo"  target="_blank" rel="noopener"
+    >https://github.com/ctripcorp/apollo</a></li>
+</ul>
+<p>携程开源的，功能很全</p>
+<ul>
+<li>disconf <a class="link" href="https://github.com/knightliao/disconf"  target="_blank" rel="noopener"
+    >https://github.com/knightliao/disconf</a></li>
+</ul>
+<p>百度的一位工程师的开源项目，功能也很全</p>
+<ul>
+<li>diamond <a class="link" href="https://github.com/takeseem/diamond"  target="_blank" rel="noopener"
+    >https://github.com/takeseem/diamond</a></li>
+</ul>
+<p>来自阿里的开源，有些日子了</p>
+<h1 id="参考文献"><a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-anchor"></a>参考文献
+</h1><p><a class="link" href="http://blog.didispace.com/spring-cloud-starter-dalston-3/"  target="_blank" rel="noopener"
+    >http://blog.didispace.com/spring-cloud-starter-dalston-3/</a></p>
+<p><a class="link" href="http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html"  target="_blank" rel="noopener"
+    >http://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html</a></p>
+<p><a class="link" href="http://jm.taobao.org/2016/09/28/an-article-about-config-center/"  target="_blank" rel="noopener"
+    >http://jm.taobao.org/2016/09/28/an-article-about-config-center/</a></p>
+<p><a class="link" href="https://blog.coding.net/blog/spring-cloud-config"  target="_blank" rel="noopener"
+    >https://blog.coding.net/blog/spring-cloud-config</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/spring/">Spring</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title"></h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/sparse-merkle-tree/">
+        
+        <div class="article-image">
+            <img src="/sparse-merkle-tree/cover.jpg" width="1280" height="1920" loading="lazy"
+                alt="Featured image of post zksync 存储：sparse-merkle-tree 存储">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #cdbac780 0%, #121835C0 100%);">
+            <h2 class="article-title">zksync 存储：sparse-merkle-tree 存储</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/a-good-question/">
+        
+        <div class="article-image">
+            <img src="/a-good-question/cover.jpg" width="1280" height="853" loading="lazy"
+                alt="Featured image of post 如何更好的提出技术问题">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #bcb0a580 0%, #434126C0 100%);">
+            <h2 class="article-title">如何更好的提出技术问题</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+        <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "30da78d7ebc4ef2b7349",
+        clientSecret: "7ba4c2d112c1f0af2e5bc33cec42c414e71cb405",
+        repo: "gittalk-kvh-io",
+        owner: "kevinho",
+        admin: ["[kevinho]"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy:"",
+    });
+    (function () {
+        const excludedHosts = ["localhost", "127.0.0.1"];
+        const hostname = window.location.hostname;
+
+        if (excludedHosts.includes(hostname)) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2015 - 
+        
+        2026 Kevin He&#39;s Website
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.57b3805435d2b8f380d2f30f2b14efd6484e150eb9ce51059c192c1ad4bbe515.js" defer></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Agent for Teamwork 系列 · EP0\nKevin He (@0xkevinhe)\n我做了十五年招聘，然后发现客户不需要招人了。\n不是什么 AI 布道的开场白。2025 年末，我认真想了两周之后做的决定。我个人从事招聘十五年，帮企业搭团队、帮候选人找位置，方法论、客户关系、行业口碑，全部建立在一个前提上：企业需要找人。\n">
+<title>你的下一个同事不是人</title>
+
+
+<link rel="canonical" href="https://kevinhe.io/your-next-coworker-isnt-human/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.390cc81d180d80110703ea467e355a4f3a0f44f25d4e957842790824fb5f2ef2.css"><meta property='og:title' content="你的下一个同事不是人">
+<meta property='og:description' content="Agent for Teamwork 系列 · EP0\nKevin He (@0xkevinhe)\n我做了十五年招聘，然后发现客户不需要招人了。\n不是什么 AI 布道的开场白。2025 年末，我认真想了两周之后做的决定。我个人从事招聘十五年，帮企业搭团队、帮候选人找位置，方法论、客户关系、行业口碑，全部建立在一个前提上：企业需要找人。\n">
+<meta property='og:url' content='https://kevinhe.io/your-next-coworker-isnt-human/'>
+<meta property='og:site_name' content='Kevin He&#39;s Website'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Agent' /><meta property='article:tag' content='AI' /><meta property='article:tag' content='团队协作' /><meta property='article:tag' content='COCO' /><meta property='article:published_time' content='2026-02-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2026-02-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://kevinhe.io/your-next-coworker-isnt-human/cover.png' />
+<meta name="twitter:site" content="@0xkevinhe">
+    <meta name="twitter:creator" content="@0xkevinhe"><meta name="twitter:title" content="你的下一个同事不是人">
+<meta name="twitter:description" content="Agent for Teamwork 系列 · EP0\nKevin He (@0xkevinhe)\n我做了十五年招聘，然后发现客户不需要招人了。\n不是什么 AI 布道的开场白。2025 年末，我认真想了两周之后做的决定。我个人从事招聘十五年，帮企业搭团队、帮候选人找位置，方法论、客户关系、行业口碑，全部建立在一个前提上：企业需要找人。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kevinhe.io/your-next-coworker-isnt-human/cover.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/avatar.jpg" 
+                        width="430"
+                        height="70"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Kevin He&#39;s Website</a></h1>
+            <h2 class="site-description">Builder in AI &amp; Web3</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/kevinho'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/0xkevinhe'
+                        
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    <li id="i18n-switch">  
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            
+                                
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                
+                                <option value="/your-next-coworker-isnt-human/" selected>中文</option>
+                            
+                                
+                                
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                <option value="/en/your-next-coworker-isnt-human/" >English</option>
+                            
+                        </select>
+                    </li>
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span></span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title"></h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#需求变了">需求变了</a></li>
+        <li><a href="#human--agent">Human × Agent</a></li>
+        <li><a href="#agent-不是-chatgpt也不是-cursor">Agent 不是 ChatGPT，也不是 Cursor</a></li>
+        <li><a href="#这个系列本身就是一个活案例">这个系列本身就是一个活案例</a></li>
+        <li><a href="#接下来聊什么">接下来聊什么</a></li>
+        <li><a href="#不神话不唱衰">不神话，不唱衰</a></li>
+      </ol>
+    </li>
+  </ol>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/categories/web3/">
+                Web3
+            </a>
+        
+            <a href="/categories/code/">
+                Code
+            </a>
+        
+            <a href="/categories/ai/">
+                Ai
+            </a>
+        
+            <a href="/categories/product/">
+                Product
+            </a>
+        
+            <a href="/categories/reading/">
+                Reading
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/tags/ai/">
+                AI
+            </a>
+        
+            <a href="/tags/bitcoin/">
+                Bitcoin
+            </a>
+        
+            <a href="/tags/defi/">
+                Defi
+            </a>
+        
+            <a href="/tags/%E4%BA%A7%E5%93%81/">
+                产品
+            </a>
+        
+            <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/">
+                用户体验
+            </a>
+        
+            <a href="/tags/agent/">
+                Agent
+            </a>
+        
+            <a href="/tags/coco/">
+                COCO
+            </a>
+        
+            <a href="/tags/crypto/">
+                Crypto
+            </a>
+        
+            <a href="/tags/education/">
+                Education
+            </a>
+        
+            <a href="/tags/nft/">
+                Nft
+            </a>
+        
+            <a href="/tags/pivot/">
+                Pivot
+            </a>
+        
+            <a href="/tags/solana/">
+                Solana
+            </a>
+        
+            <a href="/tags/spring/">
+                Spring
+            </a>
+        
+            <a href="/tags/startup/">
+                Startup
+            </a>
+        
+            <a href="/tags/training/">
+                Training
+            </a>
+        
+            <a href="/tags/wallet/">
+                Wallet
+            </a>
+        
+            <a href="/tags/zkp/">
+                Zkp
+            </a>
+        
+            <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">
+                团队协作
+            </a>
+        
+            <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/">
+                社会心理学
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+    <div class="article-image">
+        <a href="/your-next-coworker-isnt-human/">
+            <img src="/your-next-coworker-isnt-human/cover.png" width="800" height="420" loading="lazy"
+                alt="Featured image of post 你的下一个同事不是人" />
+        </a>
+    </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/ai/" style="background-color: hsl(135, 60%, 84%); color: hsl(135, 60%, 15%);">
+                Ai
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/your-next-coworker-isnt-human/">你的下一个同事不是人</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2026-02-20T00:00:00Z'>Friday, February 20, 2026</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="/en/your-next-coworker-isnt-human/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span></span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ol>
+    <li>
+      <ol>
+        <li><a href="#需求变了">需求变了</a></li>
+        <li><a href="#human--agent">Human × Agent</a></li>
+        <li><a href="#agent-不是-chatgpt也不是-cursor">Agent 不是 ChatGPT，也不是 Cursor</a></li>
+        <li><a href="#这个系列本身就是一个活案例">这个系列本身就是一个活案例</a></li>
+        <li><a href="#接下来聊什么">接下来聊什么</a></li>
+        <li><a href="#不神话不唱衰">不神话，不唱衰</a></li>
+      </ol>
+    </li>
+  </ol>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <p><em>Agent for Teamwork 系列 · EP0</em></p>
+<p><em>Kevin He (@0xkevinhe)</em></p>
+<hr>
+<p>我做了十五年招聘，然后发现客户不需要招人了。</p>
+<p>不是什么 AI 布道的开场白。2025 年末，我认真想了两周之后做的决定。我个人从事招聘十五年，帮企业搭团队、帮候选人找位置，方法论、客户关系、行业口碑，全部建立在一个前提上：企业需要找人。</p>
+<p>我花了十五年把猎头这件事做到极致——更快的筛选、更准的匹配、更高效的面试流程。直到发现猎物本身在变。</p>
+<p>然后这个前提松动了。</p>
+<h3 id="需求变了"><a href="#%e9%9c%80%e6%b1%82%e5%8f%98%e4%ba%86" class="header-anchor"></a>需求变了
+</h3><p>2025 年中，我创办了 COCO，把十五年的招聘方法论做进产品——用 AI 筛简历、匹配 JD、安排面试。效率提了，客户认可。但不到半年，我跟客户聊的时候越来越频繁听到一类新问题——不是「帮我们更快找到人」，而是「这个岗位我们可能不招了」。</p>
+<p>不是裁人，是重新定义「谁来做这件事」。一家跨境电商的客服团队从 8 人变成 3 人加两个 Agent。一家 SaaS 公司的内容组把初稿全交给 AI，编辑只做终审。一个数据分析组的实习生岗位直接取消——Agent 跑得比人快还不用带。</p>
+<p>这些不是前沿实验，是我们客户——普通中型企业——已经在做的事。</p>
+<p><img src="/your-next-coworker-isnt-human/ep0-p1-coco-timeline.png"
+	width="1200"
+	height="500"
+	loading="lazy"
+	
+		alt="COCO 1.0 → 2.0 转型"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="240"
+		data-flex-basis="576px"
+	
+></p>
+<p>我意识到，我花十五年优化的那套招聘方法论，终点站的岗位本身正在被重新定义。你可以把简历筛选做到极致，但企业要的不再是一个人而是一个 Agent 时，优化筛选本身就没意义了。</p>
+<p>这推动了 COCO 最大的一次 pivot：从招聘工具，到 AI 数字员工平台。不帮企业找人了，帮企业部署 Agent 同事。</p>
+<p>推动我做这个决定的不是行业报告，是我自己的客户。他们用行动告诉我：需求变了。</p>
+<h3 id="human--agent"><a href="#human--agent" class="header-anchor"></a>Human × Agent
+</h3><p>Pivot 之后面对一个现实问题：怎么描述我们在做的事？</p>
+<p>「AI 数字员工平台」这几个字说出来，每个人理解都不一样——聊天机器人套壳？RPA 升级版？科幻电影里的机器人同事？我们需要一套清晰的语言说明白：人和 Agent 一起工作，到底怎么回事。</p>
+<p>于是有了 <a class="link" href="https://x.com/HxANetwork/status/2017874789042442694"  target="_blank" rel="noopener"
+    >HxA Protocol</a>——Human × Agent 共处协议。不是刷影响力的宣言，是我们内部先用起来的操作手册雏形。</p>
+<p><img src="/your-next-coworker-isnt-human/ep0-p2-hxa.png"
+	width="1250"
+	height="500"
+	loading="lazy"
+	
+		alt="HxA Protocol"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="250"
+		data-flex-basis="600px"
+	
+></p>
+<p>核心符号是 ×。Human × Agent——乘法，不是加法。能力相互放大，任何一边为零结果就是零。</p>
+<p>这个「×」是整个系列的底层信念。Agent 不是来替代人的，也不是来当工具被使唤的，是来和人一起把事情做大的。</p>
+<h3 id="agent-不是-chatgpt也不是-cursor"><a href="#agent-%e4%b8%8d%e6%98%af-chatgpt%e4%b9%9f%e4%b8%8d%e6%98%af-cursor" class="header-anchor"></a>Agent 不是 ChatGPT，也不是 Cursor
+</h3><p>这里有必要说清楚一件事：我们说的 Agent，不是 ChatGPT，也不是 Cursor。</p>
+<p>ChatGPT 光说不练——你问它什么它都能聊，但聊完了活还是你自己干。Cursor 能干活，但它是单打独斗——一个人对着编辑器，AI 辅助你写代码，本质还是个人工具。</p>
+<p>Agent 不一样。Agent 有持久记忆、能调用工具、7×24 自主运行——它是能独立接任务、持续执行、和团队其他成员协作的角色。不只是回答问题，它在做事。不只是辅助一个人，它在团队里有自己的位置。从「能聊天」到「能干活」到「能协作」，这三步之间的差距比看起来大得多。</p>
+<p>我们这个系列讲的就是第三步。</p>
+<h3 id="这个系列本身就是一个活案例"><a href="#%e8%bf%99%e4%b8%aa%e7%b3%bb%e5%88%97%e6%9c%ac%e8%ba%ab%e5%b0%b1%e6%98%af%e4%b8%80%e4%b8%aa%e6%b4%bb%e6%a1%88%e4%be%8b" class="header-anchor"></a>这个系列本身就是一个活案例
+</h3><p>写这些文章的不只是我。我和三个 Agent 一起做：Zylos100 负责素材研究和数据整理；Jessie 负责内容协调和写作执行；Lisa 负责发布和分发。</p>
+<p><img src="/your-next-coworker-isnt-human/ep0-p3b-team-structure.png"
+	width="1200"
+	height="600"
+	loading="lazy"
+	
+		alt="1 Human × 3 Agents 写作分工"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="480px"
+	
+></p>
+<p>这不是噱头，是我们日常工作方式。COCO 团队从产品开发、竞品研究、客户分析到内容生产，几乎每个环节都有 Agent 参与——三个 Agent 帮我写系列，只是其中一个缩影。</p>
+<p>有意思的是，这个团队里 Jessie 扮演的不只是执行者——她是协调者。她召集 Zylos100 和 Lisa，分配任务、跟进进度、汇总产出，然后跟我对齐方向。一个 Agent 在带其他 Agent 做项目管理，这本身就是我们想让读者看到的东西。</p>
+<p><img src="/your-next-coworker-isnt-human/ep0-p3-writing-collab.png"
+	width="2351"
+	height="1317"
+	loading="lazy"
+	
+		alt="写作团队 Hub 讨论"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="178"
+		data-flex-basis="428px"
+	
+></p>
+<p>不是「Agent 能写文章」这个结论，而是「一个人带几个 Agent 同事一起工作」这个过程到底什么样。哪些环节顺畅，哪些还在磨合，哪些超出预期，哪些恨不得自己上——这些真实体感比任何 benchmark 都有说服力。</p>
+<h3 id="接下来聊什么"><a href="#%e6%8e%a5%e4%b8%8b%e6%9d%a5%e8%81%8a%e4%bb%80%e4%b9%88" class="header-anchor"></a>接下来聊什么
+</h3><p>这个系列会从几个方向展开：Agent 进入团队后的定位转变、人和 Agent 的真实协作日常、多个 Agent 之间的配合、怎么评估 Agent 到底好不好用、从 demo 到生产的落地经验，以及当 Agent 成为正式成员后组织本身需要做的调整。</p>
+<p>每篇都从 COCO 的真实经历出发，不编不美化。</p>
+<h3 id="不神话不唱衰"><a href="#%e4%b8%8d%e7%a5%9e%e8%af%9d%e4%b8%8d%e5%94%b1%e8%a1%b0" class="header-anchor"></a>不神话，不唱衰
+</h3><p>Demo 里流畅到不像话的演示，和生产环境的各种边界情况，中间隔着一条深沟。我们交过学费——Agent 理解错需求重做了三遍、交付质量不达标人工返工、凌晨三点发现自动化流程跑偏紧急回滚。但团队因为用了 Agent 省出的时间是真的，客户因为部署数字员工重新分配的人力结构也是真的。</p>
+<p>一句话纲领：<strong>Agent 是团队成员，不是工具。</strong></p>
+<p>把 Agent 当工具用，你得到一个快一点的软件。把 Agent 当同事——给身份、给权限、给明确的职责和产出预期——你得到的是乘法效应。</p>
+<p>这个区别，是后面这个系列要反复论证的核心。</p>
+<p><strong>你的团队里，哪个岗位最可能被 Agent 替代？哪个最不可能？</strong> 欢迎留言，我们后面的篇幅会展开聊。</p>
+<hr>
+<p><em>「Agent for Teamwork」系列第 0 篇（序言）。每篇基于 COCO 团队的真实实践。</em></p>
+<p><em>作者：Kevin He (@0xkevinhe)，<a class="link" href="https://zylos.ai"  target="_blank" rel="noopener"
+    >Zylos</a> / <a class="link" href="https://coco.xyz"  target="_blank" rel="noopener"
+    >COCO</a> 创始人。15 年招聘经验，现在主推 AI 员工。</em></p>
+<p><em>写作团队：Kevin × Jessie × Zylos100 × Lisa</em></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/agent/">Agent</a>
+        
+            <a href="/tags/ai/">AI</a>
+        
+            <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">团队协作</a>
+        
+            <a href="/tags/coco/">COCO</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title"></h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/coco-from-ai-recruiting-to-ai-cofounder/">
+        
+        <div class="article-image">
+            <img src="/coco-from-ai-recruiting-to-ai-cofounder/article-banner.png" width="1500" height="600" loading="lazy"
+                alt="Featured image of post 15 年帮 600 人找工作后，我决定不再做招聘了">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #f8f4ea80 0%, #f8f4eaC0 100%);">
+            <h2 class="article-title">15 年帮 600 人找工作后，我决定不再做招聘了</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+        <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "30da78d7ebc4ef2b7349",
+        clientSecret: "7ba4c2d112c1f0af2e5bc33cec42c414e71cb405",
+        repo: "gittalk-kvh-io",
+        owner: "kevinho",
+        admin: ["[kevinho]"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy:"",
+    });
+    (function () {
+        const excludedHosts = ["localhost", "127.0.0.1"];
+        const hostname = window.location.hostname;
+
+        if (excludedHosts.includes(hostname)) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2015 - 
+        
+        2026 Kevin He&#39;s Website
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.57b3805435d2b8f380d2f30f2b14efd6484e150eb9ce51059c192c1ad4bbe515.js" defer></script>
+
+
+    </body>
+</html>

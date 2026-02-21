@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="前言 关于比特币下一次升级的话题一直不绝于耳，然而到目前（DEC-2024）为止，社区对于要不要升级/升级要解决的问题/要带来的功能等话题并还没有达成一致，基本上是各执一词的情况，像极了某种政治僵局。\n">
+<title>共识之迷：一文读懂比特币升级社区进展</title>
+
+
+<link rel="canonical" href="https://kevinhe.io/bitcoin-next-upgrade/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.390cc81d180d80110703ea467e355a4f3a0f44f25d4e957842790824fb5f2ef2.css"><meta property='og:title' content="共识之迷：一文读懂比特币升级社区进展">
+<meta property='og:description' content="前言 关于比特币下一次升级的话题一直不绝于耳，然而到目前（DEC-2024）为止，社区对于要不要升级/升级要解决的问题/要带来的功能等话题并还没有达成一致，基本上是各执一词的情况，像极了某种政治僵局。\n">
+<meta property='og:url' content='https://kevinhe.io/bitcoin-next-upgrade/'>
+<meta property='og:site_name' content='Kevin He&#39;s Website'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='blockchain' /><meta property='article:published_time' content='2024-12-01T00:45:55&#43;00:00'/><meta property='article:modified_time' content='2024-12-01T00:45:55&#43;00:00'/><meta property='og:image' content='https://kevinhe.io/bitcoin-next-upgrade/cover.png' />
+<meta name="twitter:site" content="@0xkevinhe">
+    <meta name="twitter:creator" content="@0xkevinhe"><meta name="twitter:title" content="共识之迷：一文读懂比特币升级社区进展">
+<meta name="twitter:description" content="前言 关于比特币下一次升级的话题一直不绝于耳，然而到目前（DEC-2024）为止，社区对于要不要升级/升级要解决的问题/要带来的功能等话题并还没有达成一致，基本上是各执一词的情况，像极了某种政治僵局。\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kevinhe.io/bitcoin-next-upgrade/cover.png' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/avatar.jpg" 
+                        width="430"
+                        height="70"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Kevin He&#39;s Website</a></h1>
+            <h2 class="site-description">Builder in AI &amp; Web3</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/kevinho'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/0xkevinhe'
+                        
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    <li id="i18n-switch">  
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            
+                                
+                                
+                                    
+                                        
+                                    
+                                
+                                    
+                                
+                                <option value="/bitcoin-next-upgrade/" selected>中文</option>
+                            
+                                
+                                
+                                    
+                                
+                                    
+                                        
+                                    
+                                
+                                <option value="/en/bitcoin-next-upgrade/" >English</option>
+                            
+                        </select>
+                    </li>
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span></span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title"></h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ol>
+    <li><a href="#什么是比特币升级">什么是比特币升级</a></li>
+    <li><a href="#共识协议升级类型">共识协议升级类型</a></li>
+    <li><a href="#bip和软分叉的流程">BIP和软分叉的流程</a></li>
+    <li><a href="#为什么要升级">为什么要升级</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#升级的利益相关方">升级的利益相关方</a></li>
+    <li><a href="#升级的历史和总结">升级的历史和总结</a></li>
+    <li><a href="#soft-fork-关注方面">Soft Fork 关注方面</a></li>
+    <li><a href="#何为好的升级提案">何为好的升级提案</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#提案归类">提案归类</a></li>
+    <li><a href="#社区呼声">社区呼声</a></li>
+  </ol>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/categories/web3/">
+                Web3
+            </a>
+        
+            <a href="/categories/code/">
+                Code
+            </a>
+        
+            <a href="/categories/ai/">
+                Ai
+            </a>
+        
+            <a href="/categories/product/">
+                Product
+            </a>
+        
+            <a href="/categories/reading/">
+                Reading
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/tags/ai/">
+                AI
+            </a>
+        
+            <a href="/tags/bitcoin/">
+                Bitcoin
+            </a>
+        
+            <a href="/tags/defi/">
+                Defi
+            </a>
+        
+            <a href="/tags/%E4%BA%A7%E5%93%81/">
+                产品
+            </a>
+        
+            <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/">
+                用户体验
+            </a>
+        
+            <a href="/tags/agent/">
+                Agent
+            </a>
+        
+            <a href="/tags/coco/">
+                COCO
+            </a>
+        
+            <a href="/tags/crypto/">
+                Crypto
+            </a>
+        
+            <a href="/tags/education/">
+                Education
+            </a>
+        
+            <a href="/tags/nft/">
+                Nft
+            </a>
+        
+            <a href="/tags/pivot/">
+                Pivot
+            </a>
+        
+            <a href="/tags/solana/">
+                Solana
+            </a>
+        
+            <a href="/tags/spring/">
+                Spring
+            </a>
+        
+            <a href="/tags/startup/">
+                Startup
+            </a>
+        
+            <a href="/tags/training/">
+                Training
+            </a>
+        
+            <a href="/tags/wallet/">
+                Wallet
+            </a>
+        
+            <a href="/tags/zkp/">
+                Zkp
+            </a>
+        
+            <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">
+                团队协作
+            </a>
+        
+            <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/">
+                社会心理学
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+    <div class="article-image">
+        <a href="/bitcoin-next-upgrade/">
+            <img src="/bitcoin-next-upgrade/cover.png" width="1176" height="594" loading="lazy"
+                alt="Featured image of post 共识之迷：一文读懂比特币升级社区进展" />
+        </a>
+    </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/blockchain/" style="background-color: hsl(271, 60%, 84%); color: hsl(271, 60%, 15%);">
+                Blockchain
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/bitcoin-next-upgrade/">共识之迷：一文读懂比特币升级社区进展</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2024-12-01T00:45:55Z'>Sunday, December 1, 2024</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+        <footer class="article-translations">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+            <div>
+                
+                    <a href="/en/bitcoin-next-upgrade/" class="link">English</a>
+                
+            </div>
+        </footer>
+    
+
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span></span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ol>
+    <li><a href="#什么是比特币升级">什么是比特币升级</a></li>
+    <li><a href="#共识协议升级类型">共识协议升级类型</a></li>
+    <li><a href="#bip和软分叉的流程">BIP和软分叉的流程</a></li>
+    <li><a href="#为什么要升级">为什么要升级</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#升级的利益相关方">升级的利益相关方</a></li>
+    <li><a href="#升级的历史和总结">升级的历史和总结</a></li>
+    <li><a href="#soft-fork-关注方面">Soft Fork 关注方面</a></li>
+    <li><a href="#何为好的升级提案">何为好的升级提案</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#提案归类">提案归类</a></li>
+    <li><a href="#社区呼声">社区呼声</a></li>
+  </ol>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <h1 id="前言"><a href="#%e5%89%8d%e8%a8%80" class="header-anchor"></a>前言
+</h1><p>关于比特币下一次升级的话题一直不绝于耳，然而到目前（DEC-2024）为止，社区对于要不要升级/升级要解决的问题/要带来的功能等话题并还没有达成一致，基本上是各执一词的情况，像极了某种政治僵局。</p>
+<p>在这种僵局下，呈现了很多有趣的现象：</p>
+<ol>
+<li>一部分社区成员积极推动升级，出于信息不对称或者商业利益，某些成员言必称某些 opcode，一些项目会依赖某些「可能会出现」的 opcode。</li>
+<li>相当多务实的生态开发者基于不做协议升级的前提，做了大量的密码学和工程工作，来拓展比特币的潜力。</li>
+<li>倡导缓慢升级或者反对升级的声音也不在少数。</li>
+</ol>
+<p>这些现象的出现，说明升级的话题在比特币社区相当热门，但是也体现了相当部分的社区成员对于一次比特币升级完整过程并不了解，同时也缺乏对于创新密码学工具对发挥比特币潜力的作用。本文的核心写作目的正是打破这种信息不对称，让所有人的信息在同一水平线上，进而做更深入的讨论。</p>
+<p>本文将对比特币的升级做相关定义，通过回溯历史来归纳某些规律，进而分析当前的升级提案和潜在的替代方案，最后为读者总结若干 takeaway。意图通过这些信息呈现，让读者掌握比特币升级的概念/历史/进展，为读者对比特币升级话题进行进一步的讨论奠定基础，为最终社区共识的形成做铺垫。</p>
+<p>本文努力呈现事实，同时作者作为比特币生态开发者，期望比特币能有更多的可能性，因此作者会表达对于一些话题的明确的观点，请注意分辨。</p>
+<h1 id="升级简介what-and-why"><a href="#%e5%8d%87%e7%ba%a7%e7%ae%80%e4%bb%8bwhat-and-why" class="header-anchor"></a><strong>升级简介：What and Why</strong>
+</h1><h2 id="什么是比特币升级"><a href="#%e4%bb%80%e4%b9%88%e6%98%af%e6%af%94%e7%89%b9%e5%b8%81%e5%8d%87%e7%ba%a7" class="header-anchor"></a>什么是比特币升级
+</h2><p><a class="link" href="https://bitcoin.org/bitcoin.pdf"  target="_blank" rel="noopener"
+    >比特币白皮书</a>定义了一个协议，由数以万计遵循比特币协议的节点组成了比特币区块链网络。</p>
+<p>协议的实现（通常称为客户端）有很多个版本，根据</p>
+<p><a class="link" href="https://bitnodes.io/nodes/"  target="_blank" rel="noopener"
+    >https://bitnodes.io/nodes/</a> 数据源显示，市占比最大的客户端是 <a class="link" href="https://github.com/bitcoin/bitcoin"  target="_blank" rel="noopener"
+    >Bitcoin Core</a>，因此 Bitcoin-Core 的代码维护者（下称 Bitcoin-Core-Devs）在比特币生具备相当重要的影响力。</p>
+<p><img src="/bitcoin-next-upgrade/what-why-1.png"
+	width="2474"
+	height="744"
+	loading="lazy"
+	
+		alt="what-why-1"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="332"
+		data-flex-basis="798px"
+	
+></p>
+<p>比特币节点软件有多个模块组成，比特币的相关升级提案由 <a class="link" href="https://github.com/bitcoin/bips"  target="_blank" rel="noopener"
+    >BIP(Bitcoin Improvement Proposal)</a>来定义，人们为 BIP 做了若干分类。</p>
+<p>通常情况下，当人们讨论比特币升级，一般是指“共识协议升级”，下文同理，由于共识协议升级需要全网络的大部分的节点形成一致的意见（否则就可能会导致分叉），因此需要特别的慎重。如下图所示，比特币系统中的共识协议相关的模块和 BIP 种共识层有关的提案，值得特别关注。</p>
+<p><img src="/bitcoin-next-upgrade/what-why-2.png"
+	width="2648"
+	height="1048"
+	loading="lazy"
+	
+		alt="what-why-2"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="606px"
+	
+></p>
+<p>实际上，根据比特币 github 仓库的<a class="link" href="https://github.com/bitcoin/bitcoin/pulse/monthly"  target="_blank" rel="noopener"
+    >统计</a>，修改非常活跃，由于大部分的变更都与共识协议无关，因此也没有引起人们的广泛关注。</p>
+<p><img src="/bitcoin-next-upgrade/Bitcoin-core-github-stats.png"
+	width="947"
+	height="632"
+	loading="lazy"
+	
+		alt="Bitcoin-core-github-stats"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="149"
+		data-flex-basis="359px"
+	
+></p>
+<h2 id="共识协议升级类型"><a href="#%e5%85%b1%e8%af%86%e5%8d%8f%e8%ae%ae%e5%8d%87%e7%ba%a7%e7%b1%bb%e5%9e%8b" class="header-anchor"></a>共识协议升级类型
+</h2><p>根据 [BIP-123]https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki)的定义，共识协议的升级主要分为软分叉（soft fork）与硬分叉（hard fork）。</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>特性</strong></th>
+          <th><strong>Soft Fork</strong></th>
+          <th><strong>Hard Fork</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>是否兼容旧节点</td>
+          <td>是</td>
+          <td>否</td>
+      </tr>
+      <tr>
+          <td>是否需要全网更新</td>
+          <td>不一定</td>
+          <td>是</td>
+      </tr>
+      <tr>
+          <td>示例</td>
+          <td>SegWit/Taproot</td>
+          <td>Bitcoin XT/Bitcoin Cash</td>
+      </tr>
+  </tbody>
+</table></div>
+<ul>
+<li>
+<p>另外，还有一个不是那么直觉的方式来诠释和对比，也很有趣：</p>
+<p>Soft fork：增加/加强规则（简单想象一下，增加了一个新功能，例如支持 taproot 地址）</p>
+<p>Hard fork：移除/放松规则（简单想象一下，移除了一个限制，例如移除了区块奖励的限制）</p>
+</li>
+</ul>
+<h2 id="bip和软分叉的流程"><a href="#bip%e5%92%8c%e8%bd%af%e5%88%86%e5%8f%89%e7%9a%84%e6%b5%81%e7%a8%8b" class="header-anchor"></a>BIP和软分叉的流程
+</h2><p>前两次成功的共识协议升级（Taproot/SegWit），均使用软分叉的方式，在不出现巨大的社区分裂的情况下，本文集中讨论soft fork（软分叉），即是兼容老版本软件的情况下进行升级。</p>
+<p>BIP 提案提交之后，经过的流程大概如下图：</p>
+<p><img src="/bitcoin-next-upgrade/bip-state.png"
+	width="746"
+	height="416"
+	loading="lazy"
+	
+		alt="bip-state"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="179"
+		data-flex-basis="430px"
+	
+></p>
+<p>来源：https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</p>
+<p>通常一个软分叉提案会聚合多个 BIP，例如 taproot 就包含了 3 个 BIP：</p>
+<ol>
+<li>Schnorr Signature: <a class="link" href="https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki"  target="_blank" rel="noopener"
+    >BIP-340</a></li>
+<li>Taproot: <a class="link" href="https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki"  target="_blank" rel="noopener"
+    >BIP-341</a></li>
+<li>Tapscript: <a class="link" href="https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki"  target="_blank" rel="noopener"
+    >BIP-342</a></li>
+</ol>
+<p>回顾一下 Taproot 的升级的时间表：</p>
+<p><img src="/bitcoin-next-upgrade/Taproot-timeline.jpg"
+	width="3490"
+	height="942"
+	loading="lazy"
+	
+		alt="Taproot-timeline"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="370"
+		data-flex-basis="889px"
+	
+></p>
+<p>Source: Kraken Intelligence, GitHub, CoinDesk, <a class="link" href="https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained"  target="_blank" rel="noopener"
+    >https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained</a></p>
+<p>Taproot 软分叉的阶段里程碑包括：</p>
+<ol>
+<li>对应的 BIP 被提出，实现方案通过 review</li>
+<li>Bitcoin-Core 代码维护者发起升级 github pull request</li>
+<li>Bitcoin-Core 代码维护者审核和合并 github pull request，决定激活方式</li>
+<li>新版本 Bitcoin-Core 代码发布</li>
+<li>矿工链上投票方式来批准 BIP 的激活区块高度</li>
+<li>区块高度到达约定高度，完成升级</li>
+</ol>
+<p>要注意的是，这个过程是回看历史总结出来的，实际上对这个里程碑也不存在成文的共识。</p>
+<p>在整个过程中，<a class="link" href="https://groups.google.com/g/bitcoindev"  target="_blank" rel="noopener"
+    >Bitcoin Development Mailing List</a>起到了凝结各方共识的关键作用。</p>
+<h2 id="为什么要升级"><a href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e5%8d%87%e7%ba%a7" class="header-anchor"></a>为什么要升级
+</h2><p>如文章开头所述，对于升级当前社区主要是有三类声音：</p>
+<ol>
+<li>积极推动派：提出了大量的提议，下面会进行分析。</li>
+<li>务实建设派：基于现有协议实现Fraud Proof（BitVM及其扩展），函数加密（通过 <a class="link" href="https://www.allocin.it/uploads/placeholder-bitcoin.pdf"  target="_blank" rel="noopener"
+    >Bitcoin PIPEs</a> 实现的契约和zk证明）和哈希碰撞（通过 <a class="link" href="https://eprint.iacr.org/2024/1802"  target="_blank" rel="noopener"
+    >ColliderScript</a>实现的契约）等。</li>
+<li>维持不变派：他们认为升级应该非常缓慢稳妥（10 年为周期）的 TeamSlowAndSteady，和除非出现量子攻击不要升级的 Ossifiers（<a class="link" href="https://blog.bitfinex.com/education/is-ossification-good-or-bad-for-bitcoin/"  target="_blank" rel="noopener"
+    >参考</a>）</li>
+</ol>
+<p>作者做了一下更新与不更新的利弊分析：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>Consensus Change</strong></th>
+          <th><strong>Pros</strong></th>
+          <th><strong>Cons</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Change</strong></td>
+          <td>Technological Advancement, Enhanced Security, Expanded Use Cases</td>
+          <td>Risk of Forking, Increased Complexity</td>
+      </tr>
+      <tr>
+          <td><strong>Unchanged</strong></td>
+          <td>Stability and Trust, Avoids Split Risks, Minimizes Attack Surface</td>
+          <td>Technological Stagnation, Lacks Flexibility for New Demands</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>作为一个务实的比特币生态开发者，作者认为在现有协议框架下，通过密码学或者工程创新，充分挖掘比特币的潜力是必不可少的，同时从「**可持续性」**与「<strong>适应性</strong>」等角度来看，在充分评估影响范围和安全风险的情况下，根据需要来持续升级，是可取的。</p>
+<h1 id="升级深入"><a href="#%e5%8d%87%e7%ba%a7%e6%b7%b1%e5%85%a5" class="header-anchor"></a>升级深入
+</h1><h2 id="升级的利益相关方"><a href="#%e5%8d%87%e7%ba%a7%e7%9a%84%e5%88%a9%e7%9b%8a%e7%9b%b8%e5%85%b3%e6%96%b9" class="header-anchor"></a>升级的利益相关方
+</h2><p>比特币历史上的香港共识（签署于2016 年 2 月的比特币圆桌活动，<a class="link" href="https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff"  target="_blank" rel="noopener"
+    >参考</a>）主要参与方是：</p>
+<ol>
+<li>Bitcoin-Core-Devs</li>
+<li>矿池</li>
+<li>用户和生态开发者（主要是交易所/芯片厂商等）</li>
+</ol>
+<p>随着比特币的采用率的快速提升，比特币升级的利益相关方也从最早简单的三权分立逐步发展演变，进入了列王纷争局面，参考报告<a class="link" href="https://github.com/bitcoin-cap/bcap"  target="_blank" rel="noopener"
+    >Analyzing Bitcoin Consensus: Risks in Protocol Upgrades</a>。</p>
+<p><img src="/bitcoin-next-upgrade/stakeholders.png"
+	width="1628"
+	height="646"
+	loading="lazy"
+	
+		alt="stakeholders"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="252"
+		data-flex-basis="604px"
+	
+></p>
+<p>这里面几个角色值得重点介绍一下：</p>
+<ol>
+<li>Economic Nodes：主要是指主流的 CEX 交易所/支付机构/托管服务商等，他们的在soft fork种的态度决定哪种是合法的比特币，会对采用率有重要影响。</li>
+<li>Investors：在比特币策略（EFT/机构储备/国家储备等）在全球盛行的大背景下，投资者这个角色本身变得更加复杂。</li>
+<li>User&amp;Ecosystem Developer：在 Taproot 升级之后，比特币生态蓬勃发展，出现了 Ordinals 等资产协议，也涌现了一大批原生应用/扩容协议。</li>
+</ol>
+<p>对于这些角色，有一些有趣的结论：</p>
+<ol>
+<li>不同的利益相关方在不同的阶段发挥不同作用：例如 Ecosystem Developer 对于提案有比较大的积极性，Protocol Developer 经常行使对于BIP 审核权限，矿池和经济节点对于激活有比较大的影响力</li>
+<li>不同的 Ecosystem Developer 倾向提出和支持与自己商业利益相关的提案</li>
+</ol>
+<h2 id="升级的历史和总结"><a href="#%e5%8d%87%e7%ba%a7%e7%9a%84%e5%8e%86%e5%8f%b2%e5%92%8c%e6%80%bb%e7%bb%93" class="header-anchor"></a>升级的历史和总结
+</h2><p>根公开资料，从比特币网络启动以来，发生过多次 soft fork 升级。</p>
+<p><img src="/bitcoin-next-upgrade/Bitcoin-soft-forks.png"
+	width="599"
+	height="367"
+	loading="lazy"
+	
+		alt="soft forks"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="163"
+		data-flex-basis="391px"
+	
+></p>
+<p>数据来源：</p>
+<p><a class="link" href="https://blog.bitmex.com/a-complete-history-of-bitcoins-consensus-forks-2022-update/"  target="_blank" rel="noopener"
+    >https://blog.bitmex.com/a-complete-history-of-bitcoins-consensus-forks-2022-update/</a></p>
+<p><a class="link" href="https://www.drivechain.info/media/slides/mit-2023.pdf"  target="_blank" rel="noopener"
+    >https://www.drivechain.info/media/slides/mit-2023.pdf</a></p>
+<p>从上图中可以总结出一些有趣的结论：</p>
+<ol>
+<li>比特币的协议出现了某种僵化，随着时间推移， softfork 的频次降低</li>
+<li>升级的共识达成需要的时间越来越长</li>
+</ol>
+<h2 id="soft-fork-关注方面"><a href="#soft-fork-%e5%85%b3%e6%b3%a8%e6%96%b9%e9%9d%a2" class="header-anchor"></a>Soft Fork 关注方面
+</h2><p>分析过往的 soft fork 包含的 BIP，可以总结出有如下的关注方面：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th><strong>关注方面</strong></th>
+          <th><strong>案例</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>扩展性（scalability）</strong></td>
+          <td>SegWit/Schnorr</td>
+      </tr>
+      <tr>
+          <td><strong>隐私（privacy）</strong></td>
+          <td>Taproot/MAST/P2SH</td>
+      </tr>
+      <tr>
+          <td><strong>可编程性（programability)</strong></td>
+          <td>CLTV/Tapscript</td>
+      </tr>
+      <tr>
+          <td><strong>安全性（security）</strong></td>
+          <td>Disable Opcodes</td>
+      </tr>
+  </tbody>
+</table></div>
+<h2 id="何为好的升级提案"><a href="#%e4%bd%95%e4%b8%ba%e5%a5%bd%e7%9a%84%e5%8d%87%e7%ba%a7%e6%8f%90%e6%a1%88" class="header-anchor"></a>何为好的升级提案
+</h2><p>根据前面的各方面列举的事实和分析，我们尝试定义一个好的升级提案：</p>
+<ol>
+<li>坚持比特币作为支付系统的核心定位：比特币是有独特定位的</li>
+<li>应用潜力/带来风险之间取得优雅的平衡：使得大部分人都喜欢，没有人强烈反对</li>
+<li>合适的升级规模：不能太简单（不值得大动干戈），也不能太复杂（推动很困难）</li>
+<li>合理的时机：需要有强烈的需求，解决特定的问题。例如在 SegWit 升级阶段，扩容是强需求</li>
+</ol>
+<h1 id="升级展望"><a href="#%e5%8d%87%e7%ba%a7%e5%b1%95%e6%9c%9b" class="header-anchor"></a>升级展望
+</h1><h2 id="提案归类"><a href="#%e6%8f%90%e6%a1%88%e5%bd%92%e7%b1%bb" class="header-anchor"></a>提案归类
+</h2><p>作者收集了大部分活跃的提案，尝为他们打上关注方面标签，同时放到四象限中，便于读者进行可视化理解。</p>
+<p>对于归类的需要注意：</p>
+<ol>
+<li>四个关注方面不完全相互隔离，例如有利于增强可编程性的 BIP 实际上某种程度可能也会有助于可扩展性。</li>
+<li>一个提案可能会有多方面的关注，例如 OP_CAT 本身是增强可编程性，但是实际更多人推动是因为它有助于实现 validity rollup。</li>
+<li>对于一个提案的关注哪些方面这个话题，就需要某种的“共识”（政治本身），要注意这里并没有唯一的定义，因为不同的参与者会有不同的角度</li>
+<li>第二个 diagram 不是坐标系，根据标签进行归类划分，圆圈属性（大小/位置/颜色等）不具有特殊意义</li>
+</ol>
+<p><img src="/bitcoin-next-upgrade/soft-fork-proposals-table.png"
+	width="607"
+	height="538"
+	loading="lazy"
+	
+		alt="proposal category-2"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="270px"
+	
+></p>
+<p><img src="/bitcoin-next-upgrade/soft-fork-proposals-matrix.png"
+	width="2262"
+	height="2216"
+	loading="lazy"
+	
+		alt="proposal category-1"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="102"
+		data-flex-basis="244px"
+	
+></p>
+<h2 id="社区呼声"><a href="#%e7%a4%be%e5%8c%ba%e5%91%bc%e5%a3%b0" class="header-anchor"></a>社区呼声
+</h2><p>从上图可以看到，社区对于升级要解决的问题有一定的共识，即围绕支付系统所需要的功能扩展，可以归类为如下2 大类：</p>
+<ol>
+<li>可编程性：使得 UTXO 的更强的编程能力，例如 covenant/vault/交易自省/条件支付/script 增强等</li>
+<li>扩展性：对于 L2 的扩展，整体方案又分为链上验证和链下验证两大类，都有一些积极主推的提案</li>
+</ol>
+<h1 id="共识之谜"><a href="#%e5%85%b1%e8%af%86%e4%b9%8b%e8%b0%9c" class="header-anchor"></a>共识之谜
+</h1><p>作者认为，比特币社区对于下一次升级陷入共识的迷宫，原因如下：</p>
+<ol>
+<li>僵化：接近 $2T FDV 的软件系统，相当部分的利益相关方倾向于保持稳定，没有哪一方愿意承担事故责任</li>
+<li>利益相关方高度分化： 不同利益相关的诉求不一样，在不同的阶段能发挥的作用不一样；政府也成了利益相关者</li>
+<li>治理机制不完善：比特币作为最早的区块链，缺乏非常完善的治理的机制；社区对于软分叉激活方式也没法达成共识</li>
+<li>Protocol Developer 角色本身是动态变化的：即便他们也的确会否决一些提案，但无法用简单的守旧/追新来形容</li>
+<li>缺乏紧迫性：区块链基础设施发展日趋完善，对于比特币的升级没有非常强的需求</li>
+</ol>
+<h1 id="总结takeaway"><a href="#%e6%80%bb%e7%bb%93takeaway" class="header-anchor"></a>总结&amp;Takeaway
+</h1><p>本文通过介绍比特币升级的基础概念，对历史升级进行了深入分析，最后展望了下一次升级的活跃提案，归纳出当前存在的共识之迷的原因。</p>
+<p>经过回顾和展望，相信读者已经对于当前升级所处的状态有一定了解，最后总结若干 takeaway。</p>
+<ol>
+<li>务实建设同时稳妥推进升级，软分叉更可取</li>
+<li>利益相关高度分化，社区倾向于保守</li>
+<li>必须在坚持比特币核心价值定位的前提下谈升级</li>
+<li>扩展性只是其中一个升级的关注方面</li>
+<li>需要一个更好的时机，好的升级提案会快速获得共识</li>
+<li>社区需要探索更好的治理机制</li>
+</ol>
+<h1 id="致谢"><a href="#%e8%87%b4%e8%b0%a2" class="header-anchor"></a>致谢
+</h1><p>本文调研/写作/审校过程中，得到了大量的帮助，包括考虑各种因素不愿意署名社区成员，在这里一并致谢。</p>
+<p><strong>值得注意的是</strong>：考虑到文中观点部分带有个人偏好，下列感谢列表<strong>不代表</strong>他们完全同意文中的内容，本文也<strong>无意</strong>将这些社区的热心人卷入到任何的争执之中。</p>
+<ul>
+<li>协同编辑和审稿（字母排序）</li>
+</ul>
+<p><a class="link" href="https://x.com/adrien_lacombe"  target="_blank" rel="noopener"
+    >Adrien Lacombe</a></p>
+<p><a class="link" href="https://x.com/BobBodily"  target="_blank" rel="noopener"
+    >Bob Bodily</a></p>
+<p><a class="link" href="https://blog.bitlayer.org/?collections=bl_analysis_research"  target="_blank" rel="noopener"
+    >Bitlayer Research Team</a></p>
+<p><a class="link" href="https://x.com/domodata"  target="_blank" rel="noopener"
+    >Domo</a></p>
+<p><a class="link" href="https://x.com/jeffrey_hu"  target="_blank" rel="noopener"
+    >Jeffrey Hu</a></p>
+<p><a class="link" href="https://x.com/redvelvetzip"  target="_blank" rel="noopener"
+    >Red</a></p>
+<p><a class="link" href="https://x.com/nirenzang"  target="_blank" rel="noopener"
+    >Ren Zhang</a></p>
+<p><a class="link" href="https://x.com/KoriClimber"  target="_blank" rel="noopener"
+    >Scott Odell</a></p>
+<p><a class="link" href="https://x.com/super_testnet"  target="_blank" rel="noopener"
+    >Super Testnet</a></p>
+<p><a class="link" href="https://x.com/wsfoxley"  target="_blank" rel="noopener"
+    >Will Foxley</a></p>
+<ul>
+<li>提供了反馈和帮助（字母排序）</li>
+</ul>
+<p><a class="link" href="https://x.com/AurtrianAjian"  target="_blank" rel="noopener"
+    >Ajian</a></p>
+<p><a class="link" href="https://x.com/andrewfenton"  target="_blank" rel="noopener"
+    >Andrew Fenton</a></p>
+<p><a class="link" href="https://x.com/blapta"  target="_blank" rel="noopener"
+    >Ben77</a></p>
+<p><a class="link" href="https://x.com/dntse"  target="_blank" rel="noopener"
+    >David Tse</a></p>
+<p><a class="link" href="https://x.com/EliBenSasson"  target="_blank" rel="noopener"
+    >Eli Ben-Sasson</a></p>
+<p><a class="link" href="https://x.com/zengmi2140"  target="_blank" rel="noopener"
+    >Mi Zeng</a></p>
+<h1 id="未来工作"><a href="#%e6%9c%aa%e6%9d%a5%e5%b7%a5%e4%bd%9c" class="header-anchor"></a>未来工作
+</h1><p>在整个过程中，作者发现还有很多问题值得深入，例如某些功能的解决方案/某些特定的提案的研究/某些观点的数据支撑等。作者将会在后续的系列文章中进行阐述。</p>
+<h1 id="参考文献"><a href="#%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae" class="header-anchor"></a>参考文献
+</h1><p><a class="link" href="https://bitcoinops.org/"  target="_blank" rel="noopener"
+    >https://bitcoinops.org/</a></p>
+<p><a class="link" href="https://opnext.dev/"  target="_blank" rel="noopener"
+    >https://opnext.dev/</a></p>
+<p><a class="link" href="https://groups.google.com/g/bitcoindev"  target="_blank" rel="noopener"
+    >https://groups.google.com/g/bitcoindev</a></p>
+<p><a class="link" href="https://github.com/TABConf/6.tabconf.com"  target="_blank" rel="noopener"
+    >https://github.com/TABConf/6.tabconf.com</a></p>
+<p><a class="link" href="https://petertodd.org/2024/covenant-dependent-layer-2-review"  target="_blank" rel="noopener"
+    >https://petertodd.org/2024/covenant-dependent-layer-2-review</a></p>
+<p><a class="link" href="https://blog.bitmex.com/a-complete-history-of-bitcoins-consensus-forks-2022-update/"  target="_blank" rel="noopener"
+    >https://blog.bitmex.com/a-complete-history-of-bitcoins-consensus-forks-2022-update/</a></p>
+<p><a class="link" href="https://blog.bitmex.com/bitcoins-consensus-forks/"  target="_blank" rel="noopener"
+    >https://blog.bitmex.com/bitcoins-consensus-forks/</a></p>
+<p><a class="link" href="https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki"  target="_blank" rel="noopener"
+    >https://github.com/bitcoin/bips/blob/master/bip-0123.mediawiki</a></p>
+<p><a class="link" href="https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/"  target="_blank" rel="noopener"
+    >https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</a></p>
+<p><a class="link" href="https://bitnodes.io/nodes/"  target="_blank" rel="noopener"
+    >https://bitnodes.io/nodes/</a></p>
+<p><a class="link" href="https://github.com/bitcoin/bitcoin/pulse/monthly"  target="_blank" rel="noopener"
+    >https://github.com/bitcoin/bitcoin/pulse/monthly</a></p>
+<p><a class="link" href="https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/"  target="_blank" rel="noopener"
+    >https://river.com/learn/what-is-a-bitcoin-improvement-proposal-bip/</a></p>
+<p><a class="link" href="https://trustmachines.co/learn/bitcoin-taproot-upgrade-basic-breakdown/"  target="_blank" rel="noopener"
+    >https://trustmachines.co/learn/bitcoin-taproot-upgrade-basic-breakdown/</a></p>
+<p><a class="link" href="https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained"  target="_blank" rel="noopener"
+    >https://www.argoblockchain.com/articles/bitcoin-taproot-upgrade-explained</a></p>
+<p><a class="link" href="https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff"  target="_blank" rel="noopener"
+    >https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff</a></p>
+<p><a class="link" href="https://github.com/bitcoin-cap/bcap"  target="_blank" rel="noopener"
+    >https://github.com/bitcoin-cap/bcap</a></p>
+<p><a class="link" href="https://newsletter.blockspacemedia.com/p/four-takeaways-from-op-next"  target="_blank" rel="noopener"
+    >https://newsletter.blockspacemedia.com/p/four-takeaways-from-op-next</a></p>
+<p><a class="link" href="https://blog.bitfinex.com/education/is-ossification-good-or-bad-for-bitcoin/"  target="_blank" rel="noopener"
+    >https://blog.bitfinex.com/education/is-ossification-good-or-bad-for-bitcoin/</a></p>
+<p><a class="link" href="https://arxiv.org/abs/2305.04079"  target="_blank" rel="noopener"
+    >https://arxiv.org/abs/2305.04079</a></p>
+<p><a class="link" href="https://www.allocin.it/uploads/placeholder-bitcoin.pdf"  target="_blank" rel="noopener"
+    >https://www.allocin.it/uploads/placeholder-bitcoin.pdf</a></p>
+<p><a class="link" href="https://eprint.iacr.org/2024/1802"  target="_blank" rel="noopener"
+    >https://eprint.iacr.org/2024/1802</a></p>
+<p><a class="link" href="https://en.bitcoin.it/wiki/Covenants_support"  target="_blank" rel="noopener"
+    >https://en.bitcoin.it/wiki/Covenants_support</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/blockchain/">Blockchain</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title"></h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/monad-megaeth/">
+        
+        <div class="article-image">
+            <img src="/monad-megaeth/cover.png" width="2138" height="890" loading="lazy"
+                alt="Featured image of post Monad VS MegaETH-Bankless Episode and Debate">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #21252b80 0%, #e1f9eaC0 100%);">
+            <h2 class="article-title">Monad VS MegaETH-Bankless Episode and Debate</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/blockchain-governance/">
+        
+        <div class="article-image">
+            <img src="/blockchain-governance/cover.jpg" width="1280" height="960" loading="lazy"
+                alt="Featured image of post blockchain-governance">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #dac4e380 0%, #432b35C0 100%);">
+            <h2 class="article-title">blockchain-governance</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/blockchain-bsc-intro/">
+        
+        <div class="article-image">
+            <img src="/blockchain-bsc-intro/cover.jpg" width="1280" height="853" loading="lazy"
+                alt="Featured image of post 币安链（BC）与币安智能链（BSC）简介">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #25273280 0%, #c0bfc4C0 100%);">
+            <h2 class="article-title">币安链（BC）与币安智能链（BSC）简介</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/wbtc/">
+        
+        <div class="article-image">
+            <img src="/wbtc/cover.jpg" width="1280" height="853" loading="lazy"
+                alt="Featured image of post WBTC, It’s Time to Upgrade Your Technical Solutions!">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #343d4780 0%, #cfc7bbC0 100%);">
+            <h2 class="article-title">WBTC, It’s Time to Upgrade Your Technical Solutions!</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/sigweb3-training-primer/">
+        
+        <div class="article-image">
+            <img src="/sigweb3-training-primer/cover.jpg" width="1280" height="1920" loading="lazy"
+                alt="Featured image of post sigweb3-training">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #cdbac780 0%, #121835C0 100%);">
+            <h2 class="article-title">sigweb3-training</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+        <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "30da78d7ebc4ef2b7349",
+        clientSecret: "7ba4c2d112c1f0af2e5bc33cec42c414e71cb405",
+        repo: "gittalk-kvh-io",
+        owner: "kevinho",
+        admin: ["[kevinho]"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy:"",
+    });
+    (function () {
+        const excludedHosts = ["localhost", "127.0.0.1"];
+        const hostname = window.location.hostname;
+
+        if (excludedHosts.includes(hostname)) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2015 - 
+        
+        2026 Kevin He&#39;s Website
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.57b3805435d2b8f380d2f30f2b14efd6484e150eb9ce51059c192c1ad4bbe515.js" defer></script>
+
+
+    </body>
+</html>

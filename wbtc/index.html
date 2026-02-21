@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="Background Recently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project.\nThe author has extensive experience in building blockchain infrastructure, having personally developed centralized wrapped token systems and MPC-based custody platforms, and is currently working on building Bitcoin native validation capabilities.\nIn this article, the author will review the events, covering the actions and feedback from multiple parties to present the facts. Based on practical experience in system development, the author has abstracted a simple architecture and security model for wrapped BTC products.\n">
+<title>WBTC, It’s Time to Upgrade Your Technical Solutions!</title>
+
+
+<link rel="canonical" href="https://kevinhe.io/wbtc/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap">
+
+
+<link rel="stylesheet" href="/scss/style.min.390cc81d180d80110703ea467e355a4f3a0f44f25d4e957842790824fb5f2ef2.css"><meta property='og:title' content="WBTC, It’s Time to Upgrade Your Technical Solutions!">
+<meta property='og:description' content="Background Recently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project.\nThe author has extensive experience in building blockchain infrastructure, having personally developed centralized wrapped token systems and MPC-based custody platforms, and is currently working on building Bitcoin native validation capabilities.\nIn this article, the author will review the events, covering the actions and feedback from multiple parties to present the facts. Based on practical experience in system development, the author has abstracted a simple architecture and security model for wrapped BTC products.\n">
+<meta property='og:url' content='https://kevinhe.io/wbtc/'>
+<meta property='og:site_name' content='Kevin He&#39;s Website'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='crypto' /><meta property='article:published_time' content='2024-08-13T09:58:57&#43;00:00'/><meta property='article:modified_time' content='2024-08-13T09:58:57&#43;00:00'/><meta property='og:image' content='https://kevinhe.io/wbtc/cover.jpg' />
+<meta name="twitter:site" content="@0xkevinhe">
+    <meta name="twitter:creator" content="@0xkevinhe"><meta name="twitter:title" content="WBTC, It’s Time to Upgrade Your Technical Solutions!">
+<meta name="twitter:description" content="Background Recently, there has been widespread community discussion and concern regarding the transfer of control over the WBTC project.\nThe author has extensive experience in building blockchain infrastructure, having personally developed centralized wrapped token systems and MPC-based custody platforms, and is currently working on building Bitcoin native validation capabilities.\nIn this article, the author will review the events, covering the actions and feedback from multiple parties to present the facts. Based on practical experience in system development, the author has abstracted a simple architecture and security model for wrapped BTC products.\n"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://kevinhe.io/wbtc/cover.jpg' />
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        <figure class="site-avatar">
+                <a href="/">
+                    <img src="/img/avatar.jpg" 
+                        width="430"
+                        height="70"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                </a>
+                
+            </figure>
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Kevin He&#39;s Website</a></h1>
+            <h2 class="site-description">Builder in AI &amp; Web3</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://github.com/kevinho'
+                        
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/0xkevinhe'
+                        
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/projects/' >
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Projects</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+                    <li id="i18n-switch">  
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                            
+                                
+                                
+                                    
+                                        
+                                    
+                                
+                                <option value="/wbtc/" selected>中文</option>
+                            
+                                
+                                
+                                    
+                                
+                                <option value="/en/" >English</option>
+                            
+                        </select>
+                    </li>
+                
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span></span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title"></h2>
+        
+        <div class="widget--toc">
+            <nav class="toc-nav" id="TableOfContents">
+                
+  <ol>
+    <li><a href="#involved-parties">Involved Parties</a></li>
+    <li><a href="#related-parties">Related Parties</a></li>
+    <li><a href="#third-parties">Third Parties</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#non-trustless">Non-Trustless</a></li>
+    <li><a href="#single-way-trustless">Single Way Trustless</a></li>
+    <li><a href="#dual-way-trustless">Dual Way Trustless</a></li>
+    <li><a href="#summary-of-solution-comparisons">Summary of Solution Comparisons</a></li>
+  </ol>
+
+            </nav>
+        </div>
+    </section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/categories/web3/">
+                Web3
+            </a>
+        
+            <a href="/categories/code/">
+                Code
+            </a>
+        
+            <a href="/categories/ai/">
+                Ai
+            </a>
+        
+            <a href="/categories/product/">
+                Product
+            </a>
+        
+            <a href="/categories/reading/">
+                Reading
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                
+<section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">
+        
+            
+        
+    </h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/blockchain/">
+                Blockchain
+            </a>
+        
+            <a href="/tags/ai/">
+                AI
+            </a>
+        
+            <a href="/tags/bitcoin/">
+                Bitcoin
+            </a>
+        
+            <a href="/tags/defi/">
+                Defi
+            </a>
+        
+            <a href="/tags/%E4%BA%A7%E5%93%81/">
+                产品
+            </a>
+        
+            <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%93%E9%AA%8C/">
+                用户体验
+            </a>
+        
+            <a href="/tags/agent/">
+                Agent
+            </a>
+        
+            <a href="/tags/coco/">
+                COCO
+            </a>
+        
+            <a href="/tags/crypto/">
+                Crypto
+            </a>
+        
+            <a href="/tags/education/">
+                Education
+            </a>
+        
+            <a href="/tags/nft/">
+                Nft
+            </a>
+        
+            <a href="/tags/pivot/">
+                Pivot
+            </a>
+        
+            <a href="/tags/solana/">
+                Solana
+            </a>
+        
+            <a href="/tags/spring/">
+                Spring
+            </a>
+        
+            <a href="/tags/startup/">
+                Startup
+            </a>
+        
+            <a href="/tags/training/">
+                Training
+            </a>
+        
+            <a href="/tags/wallet/">
+                Wallet
+            </a>
+        
+            <a href="/tags/zkp/">
+                Zkp
+            </a>
+        
+            <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/">
+                团队协作
+            </a>
+        
+            <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%BF%83%E7%90%86%E5%AD%A6/">
+                社会心理学
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+    <div class="article-image">
+        <a href="/wbtc/">
+            <img src="/wbtc/cover.jpg" width="1280" height="853" loading="lazy"
+                alt="Featured image of post WBTC, It’s Time to Upgrade Your Technical Solutions!" />
+        </a>
+    </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            
+            
+            
+            <a href="/categories/blockchain/" style="background-color: hsl(271, 60%, 84%); color: hsl(271, 60%, 15%);">
+                Blockchain
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/wbtc/">WBTC, It’s Time to Upgrade Your Technical Solutions!</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published" datetime='2024-08-13T09:58:57Z'>Tuesday, August 13, 2024</time>
+            </div>
+        
+
+        
+    </footer>
+    
+
+    
+
+    
+</div>
+
+</header>
+
+    
+    <aside class="article-toc">
+        <details>
+            <summary>
+                <div class="article-toc-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg>
+                    <span></span>
+                </div>
+            </summary>
+            <nav class="toc-nav">
+                
+  <ol>
+    <li><a href="#involved-parties">Involved Parties</a></li>
+    <li><a href="#related-parties">Related Parties</a></li>
+    <li><a href="#third-parties">Third Parties</a></li>
+  </ol>
+
+  <ol>
+    <li><a href="#non-trustless">Non-Trustless</a></li>
+    <li><a href="#single-way-trustless">Single Way Trustless</a></li>
+    <li><a href="#dual-way-trustless">Dual Way Trustless</a></li>
+    <li><a href="#summary-of-solution-comparisons">Summary of Solution Comparisons</a></li>
+  </ol>
+
+            </nav>
+        </details>
+    </aside>
+    
+
+    <section class="article-content">
+    
+    
+    <h1 id="background"><a href="#background" class="header-anchor"></a>Background
+</h1><p>Recently, there has been widespread community discussion and concern regarding the transfer of control over the <a class="link" href="https://x.com/BitGo/status/1821927623494439130"  target="_blank" rel="noopener"
+    >WBTC project</a>.</p>
+<p>The author has extensive experience in building blockchain infrastructure, having personally developed centralized wrapped token systems and MPC-based custody platforms, and is currently working on building Bitcoin native validation capabilities.</p>
+<p>In this article, the author will review the events, covering the actions and feedback from multiple parties to present the facts. Based on practical experience in system development, the author has abstracted a simple architecture and security model for wrapped BTC products.</p>
+<p>Subsequently, the author categorizes different technical solutions according to their level of trustlessness, pointing out that the technical solutions based on Bitcoin&rsquo;s native validation capabilities represent the future direction.</p>
+<h1 id="event-review"><a href="#event-review" class="header-anchor"></a>Event Review
+</h1><h2 id="involved-parties"><a href="#involved-parties" class="header-anchor"></a>Involved Parties
+</h2><ul>
+<li>WBTC <a class="link" href="https://wbtc.network/"  target="_blank" rel="noopener"
+    >https://wbtc.network/</a>
+WBTC has wrapped over 150K BTC (worth over $9B USD) and displays proof of reserve on its website.</li>
+<li>Bitgo (Controller of WBTC)
+<a class="link" href="https://x.com/BitGo/status/1821927623494439130"  target="_blank" rel="noopener"
+    >https://x.com/BitGo/status/1821927623494439130</a>
+<a class="link" href="https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8"  target="_blank" rel="noopener"
+    >https://blog.bitgo.com/bitgo-to-move-wbtc-to-multi-jurisdictional-custody-to-accelerate-global-expansion-plan-2ea0623fa2c8</a>
+Announced that control of the WBTC project will be transferred from BitGo to an institution related to Justin Sun&rsquo;s BiT Global within 60 days.</li>
+</ul>
+<h2 id="related-parties"><a href="#related-parties" class="header-anchor"></a>Related Parties
+</h2><ul>
+<li>
+<p>MakerDAO (DAI) Risk Management Team <a class="link" href="https://x.com/BlockAnalitica"  target="_blank" rel="noopener"
+    >https://x.com/BlockAnalitica</a></p>
+<p><a class="link" href="https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo"  target="_blank" rel="noopener"
+    >https://forum.makerdao.com/t/wbtc-changes-and-risk-mitigation-10-august-2024/24844?u=mhluongo</a>
+Expressed concern about the transfer of control and indicated that WBTC poses a risk, leading them to reduce exposure in relevant protocols.</p>
+</li>
+<li>
+<p>Justin Sun (New Controller of WBTC)
+<a class="link" href="https://x.com/justinsuntron/status/1822370692014485937"  target="_blank" rel="noopener"
+    >https://x.com/justinsuntron/status/1822370692014485937</a>
+Promised not to touch BitGo&rsquo;s reserves.</p>
+</li>
+</ul>
+<h2 id="third-parties"><a href="#third-parties" class="header-anchor"></a>Third Parties
+</h2><ul>
+<li>Weidai (VC)
+<a class="link" href="https://x.com/_weidai/status/1822338179640218081?s=46&amp;t=d7GvsY4LzVKLbD34L3431w"  target="_blank" rel="noopener"
+    >https://x.com/_weidai/status/1822338179640218081?s=46&amp;t=d7GvsY4LzVKLbD34L3431w</a>
+Suggested that validating bridges would be a better solution.</li>
+<li>Liufeng (Media)
+<a class="link" href="https://x.com/fishkiller/status/1822455929247498459?s=46&amp;t=h607g0TWNMlmAGBrzTVpyw"  target="_blank" rel="noopener"
+    >https://x.com/fishkiller/status/1822455929247498459?s=46&amp;t=h607g0TWNMlmAGBrzTVpyw</a>
+Questioned the qualifications of BiT Global.</li>
+</ul>
+<h1 id="business-model-of-wrapped-btc"><a href="#business-model-of-wrapped-btc" class="header-anchor"></a>Business Model of Wrapped BTC
+</h1><p>The business model of Wrapped BTC is quite simple, as shown below:
+<img src="/wbtc/wrap-model-model.png"
+	width="621"
+	height="491"
+	loading="lazy"
+	
+		alt="model"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<ul>
+<li>
+<p>Wrap:
+Represents the conversion from BTC to W-BTC.</p>
+<p>Wrap-house:
+Represents the operation mechanism of wrapping, ensuring that the BTC deposited by users is minted as the corresponding W-BTC on a ledger (usually a blockchain, such as ETH), with no more, no less.</p>
+</li>
+<li>
+<p>Unwrap:
+Represents the conversion from W-BTC to BTC.</p>
+<p>Unwrap-house:
+Represents the operation mechanism of unwrapping, ensuring that after the user destroys W-BTC, there is a mechanism to allow them to obtain BTC on the Bitcoin network, with no more, no less.</p>
+</li>
+</ul>
+<h1 id="comparison-of-trustless-levels"><a href="#comparison-of-trustless-levels" class="header-anchor"></a>Comparison of Trustless Levels
+</h1><p>There are many dimensions to compare the business and technical models mentioned above. Below, the author will compare the levels of trustlessness from the perspectives of wrapping and unwrapping.</p>
+<h2 id="non-trustless"><a href="#non-trustless" class="header-anchor"></a>Non-Trustless
+</h2><p>A typical example is the current WBTC by BitGO, where the operations of the wrap-house and unwrap-house are controlled by BitGo Custody.
+<img src="/wbtc/wrap-model-bitgo.png"
+	width="621"
+	height="491"
+	loading="lazy"
+	
+		alt="bitgo"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p>It is evident that users need to trust that the BitGo Custody service provider will always operate correctly.</p>
+
+    <blockquote>
+        <p>Update: 2024-09-16</p>
+<p>cbbtc use the similar model: <a class="link" href="https://www.coinbase.com/en-sg/campaigns/cbbtc"  target="_blank" rel="noopener"
+    >https://www.coinbase.com/en-sg/campaigns/cbbtc</a></p>
+
+    </blockquote>
+<h2 id="single-way-trustless"><a href="#single-way-trustless" class="header-anchor"></a>Single Way Trustless
+</h2><p>Next, let’s look at two representative projects that emerged around 2020: tBTC.</p>
+<p><img src="/wbtc/wrap-model-tbtc.png"
+	width="621"
+	height="491"
+	loading="lazy"
+	
+		alt="tbtc"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p>We can see that on the X-chain (e.g., with complete validation capability, such as having EVM), the wrap-house can more easily achieve a high level of trustlessness.</p>
+<p>However, due to the technical limitations at the time, the unwrap-house could only enhance security through threshold signatures, regardless of the extent of pre-signed signatures.</p>
+<h2 id="dual-way-trustless"><a href="#dual-way-trustless" class="header-anchor"></a>Dual Way Trustless
+</h2><p>Fast forward to 2024, thanks to groundbreaking attempts by teams like BitVM/Starkware in Bitcoin native validation capabilities (including fraud proof and validity proof) and the practical implementations by community teams like BitlayerLabs, the unwrap-house is expected to achieve trustlessness.</p>
+<p><img src="/wbtc/wrap-model-validating.png"
+	width="621"
+	height="491"
+	loading="lazy"
+	
+		alt="validating"
+	
+    
+	
+		class="gallery-image" 
+		data-flex-grow="126"
+		data-flex-basis="303px"
+	
+></p>
+<p>Among them, fraud proof is represented by BitVM and its derivative projects, which achieve optimistic validation without OP_CAT. The mainstream implementation is the process of commitment and challenge using ZK validation.</p>
+<p>Validity proof, on the other hand, assumes the existence of OP_CAT opcode and directly implements ZK validation. With OP_CAT, locked BTC will be controlled by so-called covenants (contract-like structures).</p>
+<h2 id="summary-of-solution-comparisons"><a href="#summary-of-solution-comparisons" class="header-anchor"></a>Summary of Solution Comparisons
+</h2><p>A horizontal comparison of the various technical solutions mentioned above reveals that solutions based on Bitcoin validation capabilities (validation) perform better in terms of trustlessness in both directions.</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>Product</th>
+          <th>Wrap-house Trustless</th>
+          <th>Unwrap-house Trustless</th>
+          <th>Team</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>WBTC/cbBTC</td>
+          <td>NO</td>
+          <td>NO</td>
+          <td>BitGO</td>
+      </tr>
+      <tr>
+          <td>tBTC</td>
+          <td>High</td>
+          <td>Low</td>
+          <td>tBTC</td>
+      </tr>
+      <tr>
+          <td>BitVM/OP_CAT</td>
+          <td>High</td>
+          <td>High</td>
+          <td>BitVM/Starkware/Bitlayer</td>
+      </tr>
+  </tbody>
+</table></div>
+<h1 id="conclusion"><a href="#conclusion" class="header-anchor"></a>Conclusion
+</h1><p>The emergence of WBTC in 2018 marked the beginning of bringing BTC liquidity into the DeFi world. Subsequent projects like tBTC in 2020 made some optimizations and improvements. Validation technical solutions, represented by Bitcoin&rsquo;s native validation capabilities (fraud proof and validity proof), will perform better in terms of bidirectional trustlessness.</p>
+<p>WBTC, it’s time to upgrade your technical solutions!</p>
+<h1 id="reference"><a href="#reference" class="header-anchor"></a>Reference
+</h1><p><a class="link" href="https://wbtc.network/"  target="_blank" rel="noopener"
+    >https://wbtc.network/</a></p>
+<p><a class="link" href="https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live"  target="_blank" rel="noopener"
+    >https://www.coinbase.com/en-sg/blog/coinbase-wrapped-btc-cbbtc-is-now-live</a></p>
+<p><a class="link" href="https://tbtc.network/developers/tbtc-security-model/"  target="_blank" rel="noopener"
+    >https://tbtc.network/developers/tbtc-security-model/</a></p>
+<p><a class="link" href="https://bitvm.org/bitvm_bridge.pdf"  target="_blank" rel="noopener"
+    >https://bitvm.org/bitvm_bridge.pdf</a></p>
+<p><a class="link" href="https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/"  target="_blank" rel="noopener"
+    >https://blog.bitlayer.org/opcat_a_big_step_towards_Bitcoin_contracts/</a></p>
+<p><a class="link" href="https://www.bitlayer.org/"  target="_blank" rel="noopener"
+    >https://www.bitlayer.org/</a></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/crypto/">Crypto</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title"></h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="has-image">
+    <a href="/bitcoin-next-upgrade/">
+        
+        <div class="article-image">
+            <img src="/bitcoin-next-upgrade/cover.png" width="1176" height="594" loading="lazy"
+                alt="Featured image of post 共识之迷：一文读懂比特币升级社区进展">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #23262c80 0%, #fff9e7C0 100%);">
+            <h2 class="article-title">共识之迷：一文读懂比特币升级社区进展</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/monad-megaeth/">
+        
+        <div class="article-image">
+            <img src="/monad-megaeth/cover.png" width="2138" height="890" loading="lazy"
+                alt="Featured image of post Monad VS MegaETH-Bankless Episode and Debate">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #21252b80 0%, #e1f9eaC0 100%);">
+            <h2 class="article-title">Monad VS MegaETH-Bankless Episode and Debate</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/sigweb3-training-primer/">
+        
+        <div class="article-image">
+            <img src="/sigweb3-training-primer/cover.jpg" width="1280" height="1920" loading="lazy"
+                alt="Featured image of post sigweb3-training">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #cdbac780 0%, #121835C0 100%);">
+            <h2 class="article-title">sigweb3-training</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/blockchain-governance/">
+        
+        <div class="article-image">
+            <img src="/blockchain-governance/cover.jpg" width="1280" height="960" loading="lazy"
+                alt="Featured image of post blockchain-governance">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #dac4e380 0%, #432b35C0 100%);">
+            <h2 class="article-title">blockchain-governance</h2>
+        </div>
+    </a>
+</article>
+            
+                
+<article class="has-image">
+    <a href="/smart-wallet/">
+        
+        <div class="article-image">
+            <img src="/smart-wallet/cover.jpg" width="1280" height="853" loading="lazy"
+                alt="Featured image of post 关于智能钱包">
+        </div>
+        
+
+        <div class="article-details"style="background: linear-gradient(0deg, #343d4780 0%, #cfc7bbC0 100%);">
+            <h2 class="article-title">关于智能钱包</h2>
+        </div>
+    </a>
+</article>
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+        <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "30da78d7ebc4ef2b7349",
+        clientSecret: "7ba4c2d112c1f0af2e5bc33cec42c414e71cb405",
+        repo: "gittalk-kvh-io",
+        owner: "kevinho",
+        admin: ["[kevinho]"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+        proxy:"",
+    });
+    (function () {
+        const excludedHosts = ["localhost", "127.0.0.1"];
+        const hostname = window.location.hostname;
+
+        if (excludedHosts.includes(hostname)) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2015 - 
+        
+        2026 Kevin He&#39;s Website
+    </section>
+    
+    <section class="powerby">
+         <br />
+        
+    </section>
+</footer>
+
+
+    
+
+
+
+<script type="module">
+    import gallery from '\/ts\/gallery.js';
+
+    const articleContent = document.querySelector('.article-content');
+    const shouldLoad = articleContent && (articleContent.querySelectorAll('figure').length > 0 || articleContent.querySelectorAll('img.gallery-image').length > 0);
+    
+    if (shouldLoad) {
+        gallery(articleContent);
+
+        const PhotoSwipeLightbox = (await import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js")).default;
+        const styleHref = "https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.css";
+
+        const styleTag = document.createElement('link');
+        styleTag.rel = 'stylesheet';
+        styleTag.href = styleHref;
+        document.head.appendChild(styleTag);
+
+        const lightbox = new PhotoSwipeLightbox({
+            gallerySelector: '.article-content',
+            childSelector: 'figure a.image-link',
+            pswpModule: () => import("https:\/\/cdn.jsdelivr.net\/npm\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js")
+        });
+        lightbox.init();
+    }
+</script>
+    
+
+            </main>
+        </div>
+        
+<script type="text/javascript" src="/ts/main.57b3805435d2b8f380d2f30f2b14efd6484e150eb9ce51059c192c1ad4bbe515.js" defer></script>
+
+
+    </body>
+</html>
