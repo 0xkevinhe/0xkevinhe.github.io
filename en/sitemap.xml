@@ -2,22 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kevinhe.io/en/clawfeed/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kevinhe.io/clawfeed/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kevinhe.io/en/clawfeed/"
-                />
-  </url><url>
     <loc>https://kevinhe.io/en/tags/agent/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <xhtml:link
                 rel="alternate"
@@ -31,7 +17,7 @@
                 />
   </url><url>
     <loc>https://kevinhe.io/en/categories/ai/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <xhtml:link
                 rel="alternate"
@@ -45,7 +31,7 @@
                 />
   </url><url>
     <loc>https://kevinhe.io/en/tags/ai/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <xhtml:link
                 rel="alternate"
@@ -59,7 +45,7 @@
                 />
   </url><url>
     <loc>https://kevinhe.io/en/categories/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-02-20T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <xhtml:link
                 rel="alternate"
@@ -70,76 +56,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://kevinhe.io/en/categories/"
-                />
-  </url><url>
-    <loc>https://kevinhe.io/en/tags/clawfeed/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kevinhe.io/tags/clawfeed/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kevinhe.io/en/tags/clawfeed/"
-                />
-  </url><url>
-    <loc>https://kevinhe.io/en/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kevinhe.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kevinhe.io/en/"
-                />
-  </url><url>
-    <loc>https://kevinhe.io/en/tags/openclaw/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kevinhe.io/tags/openclaw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kevinhe.io/en/tags/openclaw/"
-                />
-  </url><url>
-    <loc>https://kevinhe.io/en/tags/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kevinhe.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kevinhe.io/en/tags/"
-                />
-  </url><url>
-    <loc>https://kevinhe.io/en/tags/zylos/</loc>
-    <lastmod>2026-02-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://kevinhe.io/tags/zylos/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://kevinhe.io/en/tags/zylos/"
                 />
   </url><url>
     <loc>https://kevinhe.io/en/tags/coco/</loc>
@@ -154,6 +70,34 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://kevinhe.io/en/tags/coco/"
+                />
+  </url><url>
+    <loc>https://kevinhe.io/en/</loc>
+    <lastmod>2026-02-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kevinhe.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kevinhe.io/en/"
+                />
+  </url><url>
+    <loc>https://kevinhe.io/en/tags/</loc>
+    <lastmod>2026-02-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://kevinhe.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://kevinhe.io/en/tags/"
                 />
   </url><url>
     <loc>https://kevinhe.io/en/tags/teamwork/</loc>
