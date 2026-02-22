@@ -5,17 +5,35 @@
         <description>Recent content in Tags on Kevin He&#39;s Website</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 20 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://kevinhe.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 22 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://kevinhe.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
             <title>Agent</title>
             <link>https://kevinhe.io/tags/agent/</link>
-            <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
             <guid>https://kevinhe.io/tags/agent/</guid>
             <description></description>
         </item><item>
-            <title>Ai</title>
+            <title>AI</title>
             <link>https://kevinhe.io/tags/ai/</link>
-            <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
             <guid>https://kevinhe.io/tags/ai/</guid>
+            <description></description>
+        </item><item>
+            <title>ClawFeed</title>
+            <link>https://kevinhe.io/tags/clawfeed/</link>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+            <guid>https://kevinhe.io/tags/clawfeed/</guid>
+            <description></description>
+        </item><item>
+            <title>OpenClaw</title>
+            <link>https://kevinhe.io/tags/openclaw/</link>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+            <guid>https://kevinhe.io/tags/openclaw/</guid>
+            <description></description>
+        </item><item>
+            <title>Zylos</title>
+            <link>https://kevinhe.io/tags/zylos/</link>
+            <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+            <guid>https://kevinhe.io/tags/zylos/</guid>
             <description></description>
         </item><item>
             <title>COCO</title>
@@ -90,7 +108,7 @@
             <guid>https://kevinhe.io/tags/wallet/</guid>
             <description></description>
         </item><item>
-            <title>DeFi</title>
+            <title>Defi</title>
             <link>https://kevinhe.io/tags/defi/</link>
             <pubDate>Fri, 01 Jan 2021 10:49:05 +0000</pubDate>
             <guid>https://kevinhe.io/tags/defi/</guid>
